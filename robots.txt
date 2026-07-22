@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /first-draft/
+
+Sitemap: https://hsraep.org/sitemap.xml

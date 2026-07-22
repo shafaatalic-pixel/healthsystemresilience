@@ -1,0 +1,59 @@
+name: Roundtable synthesis (auto-draft)
+
+# Pulls Tally responses after a roundtable window closes, drafts a synthesis with
+# the Claude API, and opens a Pull Request for human approval. Nothing publishes
+# on its own: a person reviews the draft, sets "approved": true in the JSON, and
+# merges. Only then does the live page show the synthesis.
+
+on:
+  schedule:
+    # Runs daily at 08:00 UTC. The script itself decides whether there is anything
+    # to do (it no-ops until a roundtable's close date has passed).
+    - cron: "0 8 * * *"
+  workflow_dispatch: {}   # allows a manual run from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  synthesize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Draft synthesis (if a window has closed)
+        env:
+          TALLY_API_KEY: ${{ secrets.TALLY_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+        run: python scripts/roundtable_synth.py
+
+      - name: Open a pull request with the draft
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Roundtable: draft synthesis for review"
+          branch: roundtable/auto-synthesis
+          delete-branch: true
+          title: "Roundtable synthesis ready for review"
+          body: |
+            An automated draft synthesis was generated from the closed roundtable's
+            consented responses.
+
+            **Nothing is published yet.** To publish:
+            1. Read the draft in `roundtables/rt-01.json` (the `synthesis_md` field).
+            2. Edit it freely — it is a draft, not a final record.
+            3. Set `"approved": true` in that same file.
+            4. Merge this pull request.
+
+            The live roundtable page will then render the synthesis and the list of
+            named, consented contributors. Private responses are never included, and
+            "anonymous" responses appear without a name.
+          add-paths: |
+            roundtables/*.json

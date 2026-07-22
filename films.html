@@ -141,6 +141,19 @@ section.dark .lead{color:#A9B7C6}
 .find .beat .l{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8ea1b8;padding-top:2px}
 .find .beat .x{color:#cdd9e6;line-height:1.5}
 .find .beat .x b{color:var(--coral);font-weight:600}
+/* findings — secondary tiers */
+.find-more{margin-top:46px;border-top:1px solid rgba(255,255,255,.14);padding-top:30px}
+.fm-head{margin-bottom:20px}
+.fm-head .fm-k{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.fm-head .fm-s{color:#aeb9c7;font-size:.9rem;max-width:60ch}
+.fm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.fm-grid.four{grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:900px){.fm-grid,.fm-grid.four{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fm-grid,.fm-grid.four{grid-template-columns:1fr}}
+.fm-card{border-top:2px solid rgba(242,109,90,.5);padding-top:13px}
+.fm-card .fm-t{font-family:var(--font-display);color:#fff;font-size:1.02rem;line-height:1.3;margin-bottom:8px}
+.fm-card .fm-x{color:#cdd9e6;font-size:.85rem;line-height:1.56}
+.fm-card .fm-x b{color:#fff;font-weight:600}
 /* roundtable */
 .rtgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;margin-top:8px;align-items:start}
 @media(max-width:900px){.rtgrid{grid-template-columns:1fr}}
@@ -266,6 +279,12 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 .ftile .fnum{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--coral);margin-bottom:12px}
 .ftile h3{font-size:1.12rem;line-height:1.25;margin-bottom:8px}
 .ftile p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.5}
+.ftile.next{grid-column:1/-1;border-right:0;background:rgba(28,46,74,.025);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:22px 22px 22px 22px}
+.ftile.next .fnum{color:var(--muted);margin:0}
+.ftile.next .badge{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);border:1px solid rgba(242,109,90,.4);border-radius:999px;padding:3px 10px}
+.ftile.next h3{font-size:1.05rem;margin:0}
+.ftile.next p{flex-basis:100%;margin:6px 0 0;max-width:74ch}
+.ftile.next p b{color:var(--navy);font-weight:600}
 /* ===== identity storytelling banner (animated) ===== */
 .idstory{position:relative;overflow:hidden}
 .idstage{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(26px,4vw,60px);align-items:center;margin-top:8px}
@@ -408,7 +427,7 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 @media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.vgrid{grid-template-columns:1fr}}
 .vcard{background:var(--white);border:1px solid var(--hairline);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs)}
-.vcard video{width:100%;aspect-ratio:16/9;background:var(--navy);display:block;object-fit:cover}
+.vcard video{width:100%;aspect-ratio:9/16;background:var(--navy);display:block;object-fit:cover}
 .vcard .vb{padding:18px 20px 22px}
 .vcard .vtag{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:9px}
 .vcard h3{font-size:1.08rem;line-height:1.25;margin-bottom:12px}

@@ -144,6 +144,19 @@ section.dark .lead{color:#A9B7C6}
 .find .beat .l{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8ea1b8;padding-top:2px}
 .find .beat .x{color:#cdd9e6;line-height:1.5}
 .find .beat .x b{color:var(--coral);font-weight:600}
+/* findings — secondary tiers */
+.find-more{margin-top:46px;border-top:1px solid rgba(255,255,255,.14);padding-top:30px}
+.fm-head{margin-bottom:20px}
+.fm-head .fm-k{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.fm-head .fm-s{color:#aeb9c7;font-size:.9rem;max-width:60ch}
+.fm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.fm-grid.four{grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:900px){.fm-grid,.fm-grid.four{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fm-grid,.fm-grid.four{grid-template-columns:1fr}}
+.fm-card{border-top:2px solid rgba(242,109,90,.5);padding-top:13px}
+.fm-card .fm-t{font-family:var(--font-display);color:#fff;font-size:1.02rem;line-height:1.3;margin-bottom:8px}
+.fm-card .fm-x{color:#cdd9e6;font-size:.85rem;line-height:1.56}
+.fm-card .fm-x b{color:#fff;font-weight:600}
 /* roundtable */
 .rtgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;margin-top:8px;align-items:start}
 @media(max-width:900px){.rtgrid{grid-template-columns:1fr}}
@@ -445,7 +458,26 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 <div class="beat"><div class="l">Claim</div><div class="x">The argument&rsquo;s arc showed in the audience data.</div></div>
 <div class="beat"><div class="l">Evidence</div><div class="x">The closing post was the only untagged piece where U.S. exceeded Bangladesh — <b>48.5% &gt; 39.3%</b>.</div></div>
 <div class="beat"><div class="l">Interpretation</div><div class="x">Sustained binational framing built a genuinely two-country audience — the data followed the argument.</div></div></div>
-</div></div></section>
+</div>
+
+<div class="find-more rv">
+<div class="fm-head"><span class="fm-k">Secondary observations</span><span class="fm-s">Patterns that shaped practice, below the level of a headline finding — but replicable.</span></div>
+<div class="fm-grid">
+<div class="fm-card"><div class="fm-t">Outlet credibility outweighs editorial effort</div><div class="fm-x">Daily Star pieces out-reached Eastern Echo even where the U.S. writing was arguably stronger — <b>12,775</b> vs ~<b>1,260</b> median Facebook views. Placement in a trusted outlet amplifies in ways craft on a single piece cannot.</div></div>
+<div class="fm-card"><div class="fm-t">A branded template can stand in for an outlet</div><div class="fm-x">The no-outlet earthquake Special Report sat in the same LinkedIn range as published chapters (<b>1,013</b> vs 1,240–1,565 impressions) — where content routes by topic, design under a credible brand can substitute for institutional authority.</div></div>
+<div class="fm-card"><div class="fm-t">Platform-native optimization beats cross-posting</div><div class="fm-x">Music on Instagram, PDF uploads on LinkedIn, collaborator and location tags on Facebook — small native adjustments with outsized organic-reach effects. Content that looks imported performs worse.</div></div>
+</div></div>
+
+<div class="find-more rv">
+<div class="fm-head"><span class="fm-k">Four more mechanisms</span><span class="fm-s">Additional replicable levers documented in the campaign appendices — each activated organically, with no ad spend or targeting.</span></div>
+<div class="fm-grid four">
+<div class="fm-card"><div class="fm-t">The Reel-format flip</div><div class="fm-x">Same chapter, same week: switching Chapter 2 to a Reel flipped the audience from <b>63.8% Bangladesh</b> to <b>75% U.S.</b> Video format triggers topic-routing, the same lever as &ldquo;Suggested&rdquo;.</div></div>
+<div class="fm-card"><div class="fm-t">The place-name effect</div><div class="fm-x">Putting &ldquo;Michigan&rdquo; in the headline produced the closest U.S./Bangladesh gap of any untagged article (<b>40.2% U.S.</b>) — a named geography is an explicit location signal to the algorithm.</div></div>
+<div class="fm-card"><div class="fm-t">Regional bleed by topic</div><div class="fm-x">Topic predicts tail-country audiences: <b>India 7.6%</b> on the earthquake piece, <b>Canada 20%</b> on U.S. messaging, Saudi Arabia on Bangladesh literacy — each surfaced without targeting.</div></div>
+<div class="fm-card"><div class="fm-t">Cold-start growth from zero</div><div class="fm-x">Built with no pre-existing audience: <b style="color:#4FA98F">↑2,121%</b> Facebook and <b style="color:#4FA98F">↑3,536%</b> LinkedIn reach across the eight-week window.</div></div>
+</div></div>
+
+</div></section>
 
 <!-- § 04 ROUNDTABLE + ENDORSEMENTS -->
 <section id="roundtable"><div class="wrap">

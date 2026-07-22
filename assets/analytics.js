@@ -12,8 +12,8 @@
    not secret keys.
    ============================================================ */
 (function () {
-  var GA_ID    = "";   /* e.g. "G-AB12CD34EF" */
-  var CF_TOKEN = "";   /* e.g. "a1b2c3d4e5f6..." */
+  var GA_ID    = "G-7NQTBY7GPK";                      /* GA4 Measurement ID — hsraep.org property */
+  var CF_TOKEN = "3156abf2ff704feda229e970b0b2787d";  /* Cloudflare Web Analytics beacon token */
 
   var GA_ON = /^G-[A-Z0-9]{6,}$/.test(GA_ID);
   var CF_ON = /^[A-Za-z0-9]{6,}$/.test(CF_TOKEN);

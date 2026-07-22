@@ -18,6 +18,9 @@
   var GA_ON = /^G-[A-Z0-9]{6,}$/.test(GA_ID);
   var CF_ON = /^[A-Za-z0-9]{6,}$/.test(CF_TOKEN);
 
+  /* status object the Analytics Command Center reads */
+  window.HS_ANALYTICS = { ga: GA_ON, cf: CF_ON, gaId: GA_ON ? GA_ID : null };
+
   /* ---------- Google Analytics 4 (gtag.js) ---------- */
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }

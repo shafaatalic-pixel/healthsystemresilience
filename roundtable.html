@@ -503,16 +503,18 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
     return html;
   }
   function renderDates(open,close,now){
+    var MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var rng=' <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.03em;white-space:nowrap">'+MO[open.getMonth()]+' '+open.getDate()+' &ndash; '+MO[close.getMonth()]+' '+close.getDate()+', '+close.getFullYear()+' &middot; 14-day window</span>';
     if(now<open){
-      box.innerHTML=pill('Opens in '+days(open,now)+' days','#F26D5A');
+      box.innerHTML=pill('Opens in '+days(open,now)+' days','#F26D5A')+rng;
       cta.innerHTML='<a class="btn ghost on-dark" href="index.html#roundtable">How roundtables work &rarr;</a>';
       synth.innerHTML='<p class="big">Roundtable &#8470; 01 opens '+open.toDateString().slice(4)+'. The synthesis will publish here once the 14-day window closes.</p>';
     }else if(now<=close){
-      box.innerHTML=pill('Open · closes in '+days(close,now)+' days','#267A69');
+      box.innerHTML=pill('Open · closes in '+days(close,now)+' days','#267A69')+rng;
       cta.innerHTML='<a class="btn accent" href="https://tally.so/r/VLBbYM" target="_blank" rel="noopener">Submit your response &rarr;</a>';
       synth.innerHTML='<p class="big">This roundtable is open. Responses are being collected; the published synthesis appears here after it closes on '+close.toDateString().slice(4)+'.</p>';
     }else{
-      box.innerHTML=pill('Closed · synthesis in preparation','#65717E');
+      box.innerHTML=pill('Closed · synthesis in preparation','#65717E')+rng;
       cta.innerHTML='<a class="btn ghost on-dark" href="#synthesis">Read the record &rarr;</a>';
       synth.innerHTML='<p class="big">The response window has closed. The moderated synthesis — naming consented contributors and the through-line — is in preparation and will be posted here.</p>';
     }

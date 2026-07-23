@@ -662,7 +662,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   parts.forEach(p=>p.style.opacity='0');
   const dots=beats.map((b,i)=>{const d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Chapter '+(i+1));d.addEventListener('click',()=>{stop();go(i);});dotsWrap.appendChild(d);return d;});
   dotsWrap.insertAdjacentHTML('beforeend','<span class="hint" id="authint">Auto</span>');
-  function activeSet(h){if(h==='all')return new Set(order);if(h==='figs')return new Set(['figs','core']);return new Set([h]);}
+  function activeSet(h){if(h==='all')return new Set(order);if(h==='figs')return new Set(['figs','core']);if(h==='core')return new Set(['core','point']);return new Set([h]);}
   function setHot(h){const on=activeSet(h);parts.forEach(p=>{const a=on.has(p.dataset.g);p.style.opacity=a?'1':'0.24';p.classList.toggle('hi',a);});}
   let i=0,timer=null;
   function go(n){i=(n+beats.length)%beats.length;beats.forEach((b,j)=>b.classList.toggle('active',j===i));dots.forEach((d,j)=>d.classList.toggle('on',j===i));setHot(beats[i].dataset.hot);}

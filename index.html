@@ -451,6 +451,7 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 <div class="beatbox rv" style="transition-delay:.08s">
 <div class="lbl">Our identity, beat by beat <span class="aut">· auto-plays · tap a dot</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Ambient off</button></div>
 <audio id="ambient" loop preload="none"><source src="assets/hsrep-theme.mp3" type="audio/mpeg"></audio>
+<audio id="ambientsting" preload="none"><source src="assets/hsrep-sting.mp3" type="audio/mpeg"></audio>
 <div class="beats" id="beats">
 <div class="beat active" data-hot="all"><div class="bk">The mark</div><p class="bt">Every mark makes a promise. Ours is a <b>Humanist Crest</b> — health protection drawn as infrastructure, with people, not systems, kept at its centre.</p></div>
 <div class="beat" data-hot="arch"><div class="bk">The open arch</div><p class="bt">An open arch with deliberate side openings — a system that shelters and admits, never a wall.</p></div>
@@ -674,7 +675,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   const hz=sec.querySelector('#beats');
   if(hz){hz.addEventListener('mouseenter',stop);hz.addEventListener('mouseleave',start);hz.addEventListener('focusin',stop);hz.addEventListener('focusout',start);}
   dots[0].classList.add('on');
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){obs.disconnect();beats.forEach((b,j)=>b.classList.toggle('active',j===0));assemble(()=>{setHot('all');start();});}}),{threshold:.32});
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){obs.disconnect();beats.forEach((b,j)=>b.classList.toggle('active',j===0));(function(){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){window.__hsStung=false;});}catch(e){window.__hsStung=false;}}})();assemble(()=>{setHot('all');start();});}}),{threshold:.32});
   obs.observe(sec);
 })();
 // ambient music toggle (muted by default; gentle fade)
@@ -684,7 +685,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   function set(txt,state){btn.innerHTML='<span class="ico"></span>'+txt;btn.classList.toggle('on',state);btn.setAttribute('aria-pressed',state);}
   btn.addEventListener('click',()=>{
     clearInterval(fade);
-    if(!on){a.volume=0;a.play().then(()=>{on=true;set('Ambient on',true);fade=setInterval(()=>{a.volume=Math.min(0.6,a.volume+0.04);if(a.volume>=0.6)clearInterval(fade);},60);}).catch(()=>{});}
+    if(!on){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){});}catch(e){}}a.volume=0;a.play().then(()=>{on=true;set('Ambient on',true);fade=setInterval(()=>{a.volume=Math.min(0.6,a.volume+0.04);if(a.volume>=0.6)clearInterval(fade);},60);}).catch(()=>{});}
     else{fade=setInterval(()=>{a.volume=Math.max(0,a.volume-0.06);if(a.volume<=0){a.pause();clearInterval(fade);}},50);on=false;set('Ambient off',false);}
   });
 })();

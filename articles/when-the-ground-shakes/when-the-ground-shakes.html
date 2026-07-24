@@ -140,6 +140,17 @@ h2.sec{font-family:var(--sans);color:var(--heading);font-weight:700;font-size:13
 #artnav .an-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
 #artnav .an-cta{background:#F26D5A;color:#fff!important;border-radius:999px;padding:7px 14px;margin-left:6px}
 #artnav .an-cta:hover{background:#e35c49}
+@media(max-width:680px){
+#artnav{padding:7px 10px}
+#artnav a{font-size:11px;padding:5px 6px}
+#artnav .an-back{white-space:nowrap}
+#artnav .an-cta{padding:6px 10px;margin-left:2px}
+#artnav .an-links{gap:0;flex-wrap:nowrap}
+}
+@media(max-width:420px){
+#artnav .an-back{font-size:0}
+#artnav .an-back::before{content:"\2190  Articles";font-size:11px}
+}
 </style>
 </head>
 <body><div id="artnav"><a class="an-back" href="../index.html">&larr; All articles</a><span class="an-links"><a href="../../index.html">Home</a><a href="../../initiative.html">Initiative</a><a href="../../about.html">About</a><a class="an-cta" href="../../index.html#participate">Participate</a></span></div>

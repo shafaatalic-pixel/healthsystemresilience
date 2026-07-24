@@ -75,18 +75,34 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 .src ol{margin:0;padding-left:20px;font-size:.8rem;color:var(--muted);line-height:1.6}.src a{color:var(--coral)}
 .foot{padding:26px 0 50px;color:var(--muted);font-size:.8rem;font-family:var(--mono);line-height:1.6}
 @media(max-width:600px){table{display:block;overflow-x:auto}.grid{grid-template-columns:1fr}}
+
+.rbtn{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#DCE6F2;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:7px;padding:7px 12px;cursor:pointer;transition:.15s}
+.rbtn:hover{border-color:var(--coral-bright);color:#fff}
+.prov{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:.02em}
+.chwcard{border-color:rgba(38,122,105,.3)}
+.chwcard h3 .g{color:var(--green)}
+.prodhead{font-family:var(--serif);font-size:1.35rem;color:var(--heading);margin:26px 0 4px}
+.prodsub{color:var(--muted);font-size:.86rem;margin-bottom:16px;max-width:80ch;line-height:1.5}
+.prodgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px}@media(max-width:940px){.prodgrid{grid-template-columns:1fr}}
+.prodcard{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:22px}
+.prodcard .pk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.prodcard h4{font-family:var(--serif);font-size:1.08rem;color:var(--heading);margin:0 0 12px}
+.prodcard ul{margin:0;padding-left:17px}.prodcard li{font-size:.83rem;line-height:1.5;color:var(--ink);margin-bottom:9px}
+.prodcard li b{color:var(--heading)}
+.prodcard .whatelse{margin-top:13px;padding-top:13px;border-top:1px solid var(--hairline);font-size:.79rem;color:var(--muted);line-height:1.5}
+.prodcard .whatelse b{color:var(--heading)}
 </style>
 </head><body>
 <a href="#main" class="skip-link">Skip to content</a>
 <header class="d"><div class="wrap"><div class="row">
 <a href="initiative.html"><img src="assets/logo-0eecf814.svg" alt="HSREP"></a>
-<div class="sp"><span class="dpill">Demonstration</span><a href="initiative.html">&larr; Back to the initiative</a></div>
+<div class="sp"><button class="rbtn" type="button" onclick="resetDemo()">&#8635; Reset demo</button><span class="dpill">Demonstration</span><a href="initiative.html">&larr; Back to the initiative</a></div>
 </div></div></header>
 <div class="demobar">DEMONSTRATION · SYNTHETIC DATA ONLY · NO EHR CONNECTION · NO PHI · MESSAGES SIMULATED, NOT SENT</div>
 <main id="main" tabindex="-1"><div class="wrap">
 <div class="head"><div class="eyebrow">Prevention Adoption Initiative · Data-infrastructure pillar</div>
 <h1>The colorectal-cancer screening cascade — completion &amp; follow-up</h1>
-<p>Screening only counts when the whole cascade closes: an overdue patient completes a stool test, and — if it is positive — completes the follow-up colonoscopy that turns a warning into a diagnosis. Nationally, that second step is where people fall through: only <b>24–75%</b> of positive stool tests get a follow-up colonoscopy, and patients who miss it are about <b>twice as likely to die</b> of colorectal cancer.<sup>1,2</sup> This is the registry the initiative would install to close both gaps — with an explainable risk model, a next-best action, and a time-to-colonoscopy clock. Work the reds first and watch the numbers move.</p></div>
+<p>Screening only counts when the whole cascade closes: an overdue patient completes a stool test, and — if it is positive — completes the follow-up colonoscopy that turns a warning into a diagnosis. Nationally, that second step is where people fall through: only <b>24–75%</b> of positive stool tests get a follow-up colonoscopy, and patients who miss it are about <b>twice as likely to die</b> of colorectal cancer.<sup>1,2</sup> This is the registry the initiative would install to close both gaps — with an explainable risk model, a next-best action, and a time-to-colonoscopy clock. Work the reds first and watch the numbers move.</p><div class="prov">Synthetic single-site view · 30 patients shown of 247 screened · last sync: static demo · no live EHR</div></div>
 
 <div class="kpis" id="kpis"></div>
 
@@ -107,12 +123,45 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 </div>
 </div>
 
+<div class="card chwcard" style="margin-bottom:20px"><h3><span class="g">Community health workers</span> — the human layer for the hardest cases</h3><div class="sub">When two low-touch attempts (reminder, mailed FIT) don&rsquo;t close the gap — or a positive FIT stalls behind transport, language, or trust — the case escalates to a CHW. Higher cost per touch, far higher yield; the intervention with the strongest evidence for non-responders. Escalate one from the screening queue and it appears here.</div><div id="chwq"></div></div>
+
 <div class="sci"><h3>Why this is state-of-the-art — and honest</h3><div class="sub">Design claims the initiative would build toward. Everything here is illustrative; nothing is deployed.</div>
 <div class="si"><div class="k">Cascade, not a checkbox</div><p>Most registries mark screening "done" at the stool test. This one tracks the <b>full cascade to a closed diagnosis</b> — and treats a positive FIT with no colonoscopy as an <b>open, time-critical</b> item, aligned with the proposed <b>NCQA follow-up HEDIS measure</b>.<sup>1</sup></p></div>
 <div class="si"><div class="k">Explainable risk</div><p>The score is <b>decomposable</b> — every point traces to a driver (a SHAP-style contribution breakdown). In production the additive score is replaced by a trained model (logistic regression → gradient boosting) with the same explainability, human-in-the-loop, never a black box.</p></div>
 <div class="si"><div class="k">Next-best action</div><p>Not just "who is high-risk," but <b>which action most changes completion</b> for this person — mailed FIT for access barriers, <b>centralized navigation</b> for positive-FIT follow-up (the intervention with the strongest evidence), transport support where that is the blocker.<sup>3</sup></p></div>
 <div class="si"><div class="k">FHIR-native</div><p>Ingest overdue panels and results via <b>Bulk FHIR / SMART-on-FHIR</b>; write actions back as FHIR <b>Communication / Task</b> resources. Phase 1 runs on a flat export; deep write-back is Phase 2.</p></div>
 <div class="si"><div class="k">Fairness monitoring</div><p>The <b>follow-up equity gap</b> is a first-class metric, tracked so outreach automation never widens disparities for patients with unstable contact, low portal access, or a language mismatch.</p></div>
+</div>
+
+<div class="prodhead">How it would work in production</div>
+<div class="prodsub">The demo is static and synthetic. In a real deployment, three things carry it: the AI that ranks and recommends, the pipe that gets your data in, and the security that keeps it compliant.</div>
+<div class="prodgrid">
+<div class="prodcard"><div class="pk">01 · The AI&rsquo;s role</div><h4>Predict, prioritise, explain — never decide</h4>
+<ul>
+<li><b>Predicts non-completion</b> for each overdue patient, and — via an uplift model — <b>which one action</b> most changes their odds, not just who is high-risk.</li>
+<li><b>Explainable by design:</b> every score decomposes to its drivers (SHAP), shown per patient. Logistic-regression baseline &rarr; gradient boosting.</li>
+<li><b>Human-in-the-loop:</b> the model ranks and suggests; staff and CHWs decide and act. No autonomous clinical decisions.</li>
+<li><b>Guardrails:</b> fairness-audited (the equity gap is a monitored metric), no protected attributes as direct features, and drift monitoring on live performance.</li>
+</ul>
+<div class="whatelse"><b>Signals that would sharpen it:</b> prior colonoscopy history, insurance follow-up cost-sharing, comorbidity burden, transportation access, appointment-slot availability, portal engagement, area deprivation index, and prior FIT-kit return behaviour.</div></div>
+
+<div class="prodcard"><div class="pk">02 · Feeding data in</div><h4>Start with a flat file; grow into FHIR</h4>
+<ul>
+<li><b>Pilot with the least effort:</b> a nightly de-identified export (CSV) of the overdue registry + results. No deep integration needed to begin.</li>
+<li><b>Standards path:</b> <b>FHIR Bulk Data</b> (<span style="font-family:var(--mono);font-size:.9em">$export</span>) for panels and results; a <b>SMART-on-FHIR</b> app for in-EHR use.</li>
+<li><b>Write-back:</b> recommended actions return as FHIR <b>Communication / Task</b> resources into the EHR worklist.</li>
+<li><b>Mapping</b> (patient id, screening status, last result, contact prefs, SDOH) is a one-time setup; refresh nightly to start, near-real-time later.</li>
+</ul>
+<div class="whatelse"><b>Effort:</b> a single-site flat-file pilot can run in weeks, not quarters — the FHIR and write-back work comes only when the value is proven.</div></div>
+
+<div class="prodcard"><div class="pk">03 · Build &amp; security (HIPAA)</div><h4>Compliant by construction</h4>
+<ul>
+<li><b>HIPAA-eligible cloud</b> (AWS / GCP / Azure) under a signed <b>BAA</b>; PHI stays inside the covered entity&rsquo;s environment or a BAA-covered tenant.</li>
+<li><b>Encryption</b> in transit (TLS 1.2+) and at rest (AES-256); <b>role-based access</b> + SSO/MFA; <b>full audit logging</b> of every view and action.</li>
+<li><b>Minimum-necessary</b> access; the model trains on <b>de-identified</b> data; no PHI in analytics — or in this demo.</li>
+<li>Access reviews, breach monitoring, and a documented incident-response plan; aligns with the <b>HIPAA Security Rule</b> (and 42 CFR Part 2 where behavioral data applies).</li>
+</ul>
+<div class="whatelse"><b>Rollout:</b> (1) flat-file pilot at one site &rarr; (2) FHIR ingest + write-back &rarr; (3) multi-site + the AI layer — each gated by an evaluation.</div></div>
 </div>
 
 <div class="card"><h3>Full panel</h3><div class="sub">All <span id="pcount">30</span> synthetic patients across the cascade. Stage shows where each one is.</div>
@@ -167,6 +216,12 @@ P.forEach(p=>{
   else if(p.status==='done'){p.stage='fit_neg';}
   else {p.stage='due';}
 });
+// CHW escalation: community health worker actively working the hardest cases (non-responders / barrier-blocked)
+const CHW={5:'T. Okafor',11:'J. Park',29:'M. Reyes'};
+P.forEach(p=>{ if(CHW[p.id]){p.chw=CHW[p.id];p.chwTouches=2;} });
+const SNAP=JSON.stringify(P);
+function resetDemo(){var d=JSON.parse(SNAP);P.length=0;d.forEach(x=>P.push(x));render();}
+function escalate(id){var p=P.find(x=>x.id===id);if(!p)return;p.chw='T. Okafor';p.chwTouches=1;p.cost_cents=(p.cost_cents||0)+1800;render();}
 
 function median(a){if(!a.length)return 0;const s=[...a].sort((x,y)=>x-y);const m=Math.floor(s.length/2);return s.length%2?s[m]:Math.round((s[m-1]+s[m])/2);}
 function clockClass(d){return d>90?'late':d>60?'warn':'ok';}
@@ -175,6 +230,8 @@ function nbaFor(p){
     if(p.colo==='done')return null;
     return {t:'Navigate + schedule colonoscopy',c:p.barriers.includes('transport')?'navigation + transport':'centralized navigation'};
   }
+  if(p.chw)return {t:'CHW working the case — home visit + navigation',c:'CHW '+p.chw};
+  if(p.band==='high'&&p.barriers.length)return {t:'Escalate to a community health worker',c:'CHW outreach'};
   if(p.barriers.includes('transport'))return {t:'Mail FIT kit + transport offer',c:'mail'};
   if(p.language!=='en')return {t:'Mail FIT kit (language-matched)',c:'mail'};
   return {t:'Mail FIT kit (lowest friction)',c:'mail'};
@@ -220,7 +277,7 @@ function queue(){
     return `<div class=qrow><div><div class=qname>${p.name}</div><div class=qmeta>${p.age}/${p.sex} · ${p.language.toUpperCase()} · ${p.neighborhood} · ${p.payer}</div>
     <div class=tags>${tags}</div><div class=nba>▸ <b>${nba.t}</b> · via ${nba.c}</div></div>
     <div style="text-align:right"><div class=risk><span class="dot ${p.band}"></span>${p.risk}</div>
-    <button class=btn onclick="doFit(${p.id})">Log FIT ✓</button></div></div>`;}).join('')
+    <button class=btn onclick="doFit(${p.id})">Log FIT ✓</button>${p.band==='high'&&!p.chw?`<button class=btn onclick="escalate(${p.id})" title="Hand the hardest cases to a community health worker">Escalate to CHW</button>`:''}</div></div>`;}).join('')
     ||'<div class=qmeta style="padding:12px 0">Screening queue clear. ✓</div>';
 }
 function funnel(){
@@ -254,12 +311,24 @@ function table(){
     if(p.stage==='fit_pos'){st=p.colo==='done'?'<span class="pill done">colonoscopy done</span>':p.colo==='sched'?'<span class="pill sched">colo scheduled</span>':'<span class="pill pos">positive · awaiting</span>';}
     else if(p.stage==='fit_neg'){st='<span class="pill done">screened · neg</span>';}
     else{st='<span class="pill">overdue</span>';}
+    if(p.chw)st+=' <span class="pill" style="background:rgba(38,122,105,.12);color:var(--green)">CHW</span>';
     return `<tr><td><b>${p.name}</b></td><td>${p.language.toUpperCase()}</td><td>${p.zip}</td><td>${p.payer}</td>
    <td>${p.barriers.length?p.barriers.join(', '):'—'}</td><td><span class="dot ${p.band}" style="display:inline-block;margin-right:6px"></span>${p.risk}</td>
    <td>${st}</td></tr>`;}).join('');
 }
 function doColo(id){const p=P.find(x=>x.id===id);if(!p)return;p.colo='done';if(!p.ttc)p.ttc=p.days_pos||30;p.cost_cents=2405;render();}
 function doFit(id){const p=P.find(x=>x.id===id);if(!p)return;p.stage='fit_neg';p.cost_cents=(p.cost_cents||0)+ (p.barriers.includes('transport')?600:5);render();}
-function render(){kpis();urgent();queue();funnel();equity();table();}
+function chw(){
+  const list=P.filter(p=>p.chw);
+  document.getElementById('chwq').innerHTML=list.map(p=>{
+    const tags=Object.entries(p.parts).filter(([k,v])=>v>0).map(([k,v])=>`<span class=tag>${k} +${v}</span>`).join('');
+    const act=p.stage==='fit_pos'&&p.colo!=='done'?`<button class="btn go" onclick="doColo(${p.id})">Complete colonoscopy \u2713</button>`:p.stage==='due'?`<button class=btn onclick="doFit(${p.id})">Log FIT \u2713</button>`:'<span class=qmeta>completed \u2713</span>';
+    return `<div class=qrow><div><div class=qname>${p.name} <span class=chwtag>\u00b7 CHW: ${p.chw}</span></div>
+    <div class=qmeta>${p.age}/${p.sex} \u00b7 ${p.language.toUpperCase()} \u00b7 ${p.neighborhood} \u00b7 ${p.payer} \u00b7 ${p.chwTouches||2} home/phone touches</div>
+    <div class=tags>${tags}</div><div class=nba>\u25b8 <b>Home visit + navigation to completion</b> \u00b7 CHW-led</div></div>
+    <div style="text-align:right"><div class=risk><span class="dot ${p.band}"></span>${p.risk}</div>${act}</div></div>`;}).join('')
+    ||'<div class=qmeta style="padding:12px 0">No active CHW escalations. Escalate a high-risk patient from the screening queue.</div>';
+}
+function render(){kpis();urgent();queue();chw();funnel();equity();table();}
 render();
 </script></body></html>

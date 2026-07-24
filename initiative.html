@@ -686,12 +686,12 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 <div class="shead rv"><div class="eyebrow on-dark"><span class="snum" style="color:var(--coral)">§ 03</span> · The approach</div>
 <div class="top"><h2 class="sec">Six pillars, one completion loop.</h2></div></div>
 <div class="grid3" style="grid-template-columns:repeat(3,1fr)">
-<div class="gcard dark rv"><div class="n">PILLAR 01</div><h3>Service redesign &amp; friction reduction</h3><p>Make the completed path the easiest one — defaults, mailed at-home FIT, one-click scheduling, barrier removal.</p></div>
-<div class="gcard dark rv" style="transition-delay:.06s"><div class="n">PILLAR 02</div><h3>Interoperable data infrastructure</h3><p>Registries and dashboards that surface who is overdue and where patients drop out — FHIR / TEFCA-ready integration, automated reminders, and CHW escalation on one record.</p></div>
-<div class="gcard dark rv" style="transition-delay:.12s"><div class="n">PILLAR 03</div><h3>Predictive AI, explainable by design</h3><p>A proposed model layer that flags who is most likely to fall out of the loop and prioritizes outreach accordingly — explainable and fairness-audited, human-in-the-loop, never a black box.</p></div>
-<div class="gcard dark rv" style="transition-delay:.18s"><div class="n">PILLAR 04</div><h3>Agentic &amp; conversational outreach</h3><p>Generative-AI patient navigation: multilingual, two-way reminders over SMS and messaging that shepherd each patient through scheduling and at-home testing — culturally tailored, and always handing off to a human when it matters.</p></div>
-<div class="gcard dark rv" style="transition-delay:.24s"><div class="n">PILLAR 05</div><h3>Algorithmic equity &amp; governance</h3><p>Continuous bias and fairness auditing, SDOH-aware targeting, and privacy-by-design under a human review board — so the model narrows disparities in who completes care rather than widening them.</p></div>
-<div class="gcard dark rv" style="transition-delay:.30s"><div class="n">PILLAR 06</div><h3>Implementation enablement</h3><p>Training so a site can run and sustain the toolkit itself — the pillar the evidence says matters most.</p></div>
+<details class="gcard dark rv pillacc" open><summary><span class="n">PILLAR 01</span><h3>Service redesign &amp; friction reduction</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Make the completed path the easiest one — defaults, mailed at-home FIT, one-click scheduling, barrier removal.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.06s" open><summary><span class="n">PILLAR 02</span><h3>Interoperable data infrastructure</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Registries and dashboards that surface who is overdue and where patients drop out — FHIR / TEFCA-ready integration, automated reminders, and CHW escalation on one record.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.12s" open><summary><span class="n">PILLAR 03</span><h3>Predictive AI, explainable by design</h3><span class="pillchev" aria-hidden="true"></span></summary><p>A proposed model layer that flags who is most likely to fall out of the loop and prioritizes outreach accordingly — explainable and fairness-audited, human-in-the-loop, never a black box.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.18s" open><summary><span class="n">PILLAR 04</span><h3>Agentic &amp; conversational outreach</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Generative-AI patient navigation: multilingual, two-way reminders over SMS and messaging that shepherd each patient through scheduling and at-home testing — culturally tailored, and always handing off to a human when it matters.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.24s" open><summary><span class="n">PILLAR 05</span><h3>Algorithmic equity &amp; governance</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Continuous bias and fairness auditing, SDOH-aware targeting, and privacy-by-design under a human review board — so the model narrows disparities in who completes care rather than widening them.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.30s" open><summary><span class="n">PILLAR 06</span><h3>Implementation enablement</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Training so a site can run and sustain the toolkit itself — the pillar the evidence says matters most.</p></details>
 </div>
 <div class="chain2 rv" style="margin-top:34px">
 <div class="c2"><span class="cn">01</span><div><b>Identify</b> <span>— surface who is overdue from the registry.</span></div></div>
@@ -891,6 +891,14 @@ html.hmenu-open #hmenu-panel{display:block}
 .skip-link{position:fixed;left:8px;top:-64px;z-index:3000;background:#0F2036;color:#fff;padding:10px 16px;border-radius:8px;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:top .15s}
 .skip-link:focus{top:8px;outline:3px solid #fff;outline-offset:2px}
 :focus-visible{outline:2px solid #C7442F;outline-offset:2px}
+.pillacc summary{list-style:none;cursor:pointer;position:relative;padding-right:26px;display:block}
+.pillacc summary::-webkit-details-marker{display:none}
+.pillacc summary .n{display:block}
+.pillacc summary h3{margin:.28em 0 0}
+.pillacc>p{margin:11px 0 0}
+.pillchev{position:absolute;right:0;top:7px;width:8px;height:8px;border-right:2px solid #F26D5A;border-bottom:2px solid #F26D5A;transform:rotate(45deg);transition:transform .2s;opacity:.85}
+.pillacc[open] .pillchev{transform:rotate(-135deg)}
+@media(min-width:721px){.pillchev{display:none}.pillacc summary{padding-right:0}}
 :root{--muted:#55606E}
 .hero,.dark,.mvband,.idstory,.toast,footer{--muted:#AEB9C7}
 @media(max-width:640px){
@@ -905,5 +913,6 @@ html.hmenu-open #hmenu-panel{display:block}
 .btn.accent:hover,.sn-cta:hover{background:#A83722!important;border-color:#A83722!important}
 #secnav .sn-cta{display:none!important}
 </style>
+<script>(function(){var pil=[].slice.call(document.querySelectorAll('.pillacc'));if(!pil.length)return;function sync(){var wide=window.innerWidth>=721;pil.forEach(function(d,i){d.open = wide ? true : (i===0);});}sync();window.addEventListener('resize',sync);})();</script>
 </body>
 </html>

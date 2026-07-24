@@ -824,5 +824,34 @@ apply();})();
  if(hs.length){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-15% 0px -75% 0px'});hs.forEach(function(h){io.observe(h);});}
 })();
 </script>
+<style id="hsrep-tocfix">
+#secnav{display:none!important}
+html.toc-fixed #secnav{display:block!important;position:fixed!important;left:34px;top:130px;width:206px;z-index:60;background:rgba(251,252,253,.96);backdrop-filter:blur(6px);padding:14px 16px 16px;border-radius:12px;border:1px solid rgba(28,46,74,.08);box-shadow:0 6px 24px rgba(15,32,54,.07)}
+#tocbtn{display:none;position:fixed;left:14px;bottom:26px;z-index:1200;width:44px;height:44px;border-radius:50%;background:#1C2E4A;color:#fff;border:0;box-shadow:0 8px 24px rgba(15,32,54,.3);cursor:pointer;align-items:center;justify-content:center;padding:0}
+#tocbtn svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+html.toc-compact #tocbtn{display:flex}
+html.toc-compact.toc-open #secnav{display:block!important;position:fixed!important;left:14px;bottom:82px;top:auto;width:226px;max-height:62vh;overflow:auto;z-index:1190;background:rgba(251,252,253,.98);backdrop-filter:blur(8px);padding:14px 16px 16px;border-radius:14px;border:1px solid rgba(28,46,74,.1);box-shadow:0 14px 44px rgba(15,32,54,.22)}
+@media(max-width:999px){#tocbtn{display:none!important}}
+</style>
+<script>
+(function(){
+ var nav=document.getElementById('secnav'); if(!nav||nav.children.length<2) return;
+ var btn=document.createElement('button'); btn.id='tocbtn'; btn.setAttribute('aria-label','On this page');
+ btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>';
+ document.body.appendChild(btn);
+ var H=document.documentElement;
+ function gutter(){var w=document.querySelector('.wrap, .paper, .exec-wrap'); if(!w) return 0; var r=w.getBoundingClientRect(); return r.left;}
+ function apply(){
+  H.classList.remove('toc-fixed','toc-compact','toc-open');
+  if(window.innerWidth<1000) return;
+  if(gutter()>=300){H.classList.add('toc-fixed');}
+  else{H.classList.add('toc-compact');}
+ }
+ btn.addEventListener('click',function(){H.classList.toggle('toc-open');});
+ nav.addEventListener('click',function(e){if(e.target.tagName==='A'&&H.classList.contains('toc-compact'))H.classList.remove('toc-open');});
+ document.addEventListener('click',function(e){if(H.classList.contains('toc-open')&&!nav.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))H.classList.remove('toc-open');});
+ window.addEventListener('resize',apply); apply(); setTimeout(apply,400);
+})();
+</script>
 </body>
 </html>

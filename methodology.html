@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How we count 57,274 — Season 1 Methodology | HSREP</title>
+<meta name="description" content="A transparent methodology appendix for HSREP Season 1: how 57,274 impressions are built from 36,997 Facebook views, 13,054 LinkedIn impressions, and 7,223 Instagram native views — with definitions, reconciliation, limitations, and the full dataset to download.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2036;--navy2:#1C2E4A;--ink:#16202e;--muted:#55606E;--line:#e4e8ee;
+    --coral:#C7442F;--coral-b:#F26D5A;--green:#267A69;--blue:#2b5c8a;
+    --paper:#f6f7f9;--card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  a{color:var(--blue)}
+  .skip-link{position:absolute;left:-999px}.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:99;border-radius:8px}
+
+  /* header */
+  header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  header.site .row{display:flex;align-items:center;gap:18px;padding:12px 0}
+  header.site img.logo{height:38px}
+  header.site nav{display:flex;gap:18px;margin-left:8px;flex-wrap:wrap}
+  header.site nav a{color:var(--navy2);text-decoration:none;font-weight:600;font-size:14px}
+  header.site nav a.here{color:var(--coral)}
+  header.site nav a:hover{color:var(--coral)}
+  .btn{display:inline-block;background:var(--coral);color:#fff;text-decoration:none;font-weight:700;
+    border-radius:9px;padding:10px 18px;font-size:14px;margin-left:auto}
+  .btn:hover{filter:brightness(1.05)}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:52px 0 46px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-70px;top:-80px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(242,109,90,.24),transparent 70%)}
+  .hero .ey{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-b);font-weight:700}
+  .hero h1{font-family:'Spectral',Georgia,serif;font-weight:700;font-size:41px;line-height:1.08;margin:10px 0 14px;letter-spacing:-.01em}
+  .hero p{color:#cdd6e2;max-width:64ch;font-size:16px;margin:0}
+
+  section{padding:38px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:6px}
+  h2{font-family:'Spectral',Georgia,serif;font-size:26px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em;color:var(--navy2)}
+  h2 + .sub{color:var(--muted);margin:0 0 20px;font-size:15px;max-width:70ch}
+  p.body{font-size:15.5px;color:#2b333d;max-width:72ch}
+
+  /* equation */
+  .eq{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin:6px 0 4px}
+  .eqc{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 16px;text-align:center;position:relative}
+  .eqc .v{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--navy2)}
+  .eqc .m{font-size:12.5px;font-weight:700;color:var(--coral);margin-top:2px}
+  .eqc .src{font-size:11px;color:var(--muted);margin-top:5px}
+  .eqop{align-self:center;font-size:24px;font-weight:800;color:var(--muted)}
+  .eqc.total{background:var(--navy2);border-color:var(--navy2)}
+  .eqc.total .v{color:#fff}.eqc.total .m{color:var(--coral-b)}.eqc.total .src{color:#aeb9c8}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:6px}
+  th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line)}
+  th{background:var(--navy2);color:#fff;font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  td.num,th.num{text-align:right;font-family:'IBM Plex Mono',monospace}
+  tr:last-child td{border-bottom:0}
+  tr.sum td{font-weight:700;background:#f3f6fa}
+  tr.lock td{font-weight:700;background:#eef4ef;color:var(--green)}
+  .bd{color:#6b46a8;font-weight:600}.us{color:var(--blue);font-weight:600}
+
+  /* definition cards */
+  .defs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  .def{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px;border-top:4px solid var(--c)}
+  .def.fb{--c:#2b5c8a}.def.li{--c:#1a5566}.def.ig{--c:#b5468a}
+  .def h4{margin:0 0 3px;font-size:15px}
+  .def .metric{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--c);font-weight:600}
+  .def p{font-size:13px;color:#3a434e;margin:8px 0 0}
+
+  .callout{background:#eef4ef;border:1px solid #cfe6d9;border-left:5px solid var(--green);border-radius:10px;padding:15px 18px;margin-top:18px}
+  .callout.warn{background:#fdf6f4;border-color:#f3cabf;border-left-color:var(--coral)}
+  .callout h4{margin:0 0 5px;font-size:14px;color:var(--navy2)}
+  .callout p{margin:0;font-size:13.5px;color:#3a434e}
+  .callout ul{margin:8px 0 0;padding-left:18px}.callout li{font-size:13.5px;margin-bottom:4px;color:#3a434e}
+
+  .recstat{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 14px}
+  .rs{flex:1;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+  .rs .big{font-size:26px;font-weight:800;color:var(--green);letter-spacing:-.02em}
+  .rs .lb{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+  /* download */
+  .dl{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:26px 28px;margin-top:8px;display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+  .dl .txt{flex:1;min-width:240px}
+  .dl h3{margin:0 0 6px;font-size:19px;font-family:'Spectral',serif}
+  .dl p{margin:0;color:#cbd5e2;font-size:14px}
+  .dl a.get{background:var(--coral-b);color:#3a1109;text-decoration:none;font-weight:800;border-radius:10px;padding:14px 22px;font-size:14.5px;white-space:nowrap}
+
+  /* footer */
+  footer{background:var(--navy);color:#c8d2e0;padding:40px 0 22px;font-size:14px}
+  footer .fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px}
+  footer img.flogo{height:64px}
+  footer p{color:#9fb0c6;font-size:13px;margin:10px 0 0}
+  footer h4{color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+  footer a{display:block;color:#c8d2e0;text-decoration:none;margin-bottom:7px;font-size:13.5px}
+  footer a:hover{color:#fff}
+  .acro{text-align:center;font-size:.72rem;letter-spacing:.05em;opacity:.55;padding:16px 0 4px}
+  .fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.12);margin-top:18px;padding-top:14px;font-size:11.5px;color:#8b95a5}
+  .fbot span{color:#93a2b8}
+
+  @media(max-width:760px){
+    .hero h1{font-size:31px}.defs{grid-template-columns:1fr}
+    footer .fg{grid-template-columns:1fr 1fr}
+    header.site .btn{display:none}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site"><div class="wrap"><div class="row">
+  <a href="index.html"><img class="logo" src="assets/logo-2212309f.svg" alt="HSREP — Health System Resilience And Economic Protection"></a>
+  <nav><a href="index.html">Home</a><a class="here" href="season-1.html">Season 1</a><a href="articles.html">Articles</a><a href="initiative.html">Initiative</a><a href="about.html">About</a></nav>
+  <a class="btn" href="index.html#participate">Participate</a>
+</div></div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="ey">Season 1 · Impact Methodology &amp; Reconciliation</div>
+  <h1>How we count 57,274.</h1>
+  <p>Season 1 reached <strong>57,274</strong> people across three platforms and two countries at zero ad spend. This page shows exactly how that number is built, what each platform actually counts, how it reconciles against the platforms' own dashboards, and where its limits are — so you can check it, not just take our word for it.</p>
+</div></div>
+
+<main id="main">
+
+<!-- 1. THE NUMBER -->
+<section><div class="wrap">
+  <div class="kicker">The number, built from its parts</div>
+  <h2>57,274 is a sum, not a headline.</h2>
+  <p class="sub">Every impression comes from one of three platform dashboards. Add the three authoritative platform totals and you get the figure — no rounding, no estimation on top.</p>
+  <div class="eq">
+    <div class="eqc"><div class="v mono">36,997</div><div class="m">Facebook views</div><div class="src">Meta Professional Dashboard</div></div>
+    <div class="eqop">+</div>
+    <div class="eqc"><div class="v mono">13,054</div><div class="m">LinkedIn impressions</div><div class="src">LinkedIn Analytics</div></div>
+    <div class="eqop">+</div>
+    <div class="eqc"><div class="v mono">7,223</div><div class="m">Instagram native views</div><div class="src">Post-level insights (calculated)</div></div>
+    <div class="eqop">=</div>
+    <div class="eqc total"><div class="v mono">57,274</div><div class="m">Total organic reach</div><div class="src">Feb 21 – Apr 12, 2026 · $0 ad spend</div></div>
+  </div>
+</div></section>
+
+<!-- 2. DEFINITIONS -->
+<section><div class="wrap">
+  <div class="kicker">What each platform counts</div>
+  <h2>Three platforms, three different meters.</h2>
+  <p class="sub">These are not the same metric relabelled. Each platform measures reach its own way; we take each at its dashboard-authoritative value and are explicit about what it means — and we deliberately <em>deflate</em> the Instagram figure to avoid double-counting.</p>
+  <div class="defs">
+    <div class="def fb"><h4>Facebook</h4><div class="metric">"Views" · Meta Professional Dashboard</div>
+      <p>The number of times campaign content appeared on screen. Taken directly from the chapter-level dashboard for each custom date range. Authoritative, not estimated.</p></div>
+    <div class="def li"><h4>LinkedIn</h4><div class="metric">"Impressions" · LinkedIn Analytics</div>
+      <p>The number of times content was displayed in feeds. Taken from the LinkedIn analytics dashboard per chapter window. Reach ("members reached") is reported separately and never summed, because it deduplicates people.</p></div>
+    <div class="def ig"><h4>Instagram</h4><div class="metric">"Native views" · calculated by subtraction</div>
+      <p>Total views <strong>minus</strong> "From Other" — the cross-post referral traffic that flows FB&nbsp;→&nbsp;IG. Subtracting it removes reach already counted on Facebook, so the same view is never counted twice. For Reels, the FB-reported "Instagram views" is used as the subtraction value and cross-validates exactly in three chapters.</p></div>
+  </div>
+  <div class="callout"><h4>Why Instagram is the only adjusted number</h4>
+    <p>Facebook and LinkedIn are reported exactly as their dashboards show them. Instagram is the one platform where cross-posting could inflate the total, so it is the one number we reduce — the conservative choice. The full per-post subtraction is in the dataset.</p></div>
+</div></section>
+
+<!-- 3. PER-UNIT -->
+<section><div class="wrap">
+  <div class="kicker">Built from 9 published units, across 2 countries</div>
+  <h2>Where the reach came from.</h2>
+  <p class="sub">The campaign ran as nine units — six chapters, a special report, a launch, and a close — alternating Bangladesh and United States themes. This shows how reach distributed across them (chapter-dashboard figures; the launch post is nested inside Chapter&nbsp;1).</p>
+  <table>
+    <thead><tr><th>Unit</th><th>Theme · country</th><th class="num">Facebook</th><th class="num">LinkedIn</th><th class="num">Instagram</th><th class="num">3-platform</th></tr></thead>
+    <tbody>
+      <tr><td>Chapter 1</td><td>Investment in public health · <span class="bd">BD</span></td><td class="num">12,775</td><td class="num">2,922</td><td class="num">1,152</td><td class="num">16,849</td></tr>
+      <tr><td>Chapter 2</td><td>Medical-debt crisis · <span class="us">US</span></td><td class="num">4,712</td><td class="num">1,282</td><td class="num">929</td><td class="num">6,923</td></tr>
+      <tr><td>Chapter 3</td><td>Michigan health policy · <span class="us">US</span></td><td class="num">3,877</td><td class="num">1,565</td><td class="num">1,221</td><td class="num">6,663</td></tr>
+      <tr><td>Special Report</td><td>Bengal Basin earthquake · <span class="bd">BD</span></td><td class="num">2,190</td><td class="num">1,013</td><td class="num">562</td><td class="num">3,765</td></tr>
+      <tr><td>Chapter 4</td><td>Private-healthcare literacy · <span class="bd">BD</span></td><td class="num">3,547</td><td class="num">1,910</td><td class="num">877</td><td class="num">6,334</td></tr>
+      <tr><td>Chapter 5</td><td>Health communication · <span class="us">US</span></td><td class="num">1,632</td><td class="num">1,240</td><td class="num">1,363</td><td class="num">4,235</td></tr>
+      <tr><td>Chapter 6</td><td>Workforce crisis · <span class="us">US</span></td><td class="num">5,187</td><td class="num">1,529</td><td class="num">877</td><td class="num">7,593</td></tr>
+      <tr><td>Season Closing</td><td>Bi-national reflection</td><td class="num">1,815</td><td class="num">903</td><td class="num">76</td><td class="num">2,794</td></tr>
+      <tr class="sum"><td colspan="2">Chapter-level sum</td><td class="num">35,735</td><td class="num">12,364</td><td class="num">7,057</td><td class="num">—</td></tr>
+      <tr class="lock"><td colspan="2">Full-campaign dashboard lock (headline)</td><td class="num">36,997</td><td class="num">13,054</td><td class="num">7,223</td><td class="num">57,274</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- 4. RECONCILIATION -->
+<section><div class="wrap">
+  <div class="kicker">Reconciliation &amp; integrity</div>
+  <h2>The parts reconcile to the whole — to within a few percent, and we say why.</h2>
+  <p class="sub">Adding the individual chapter dashboards gets you very close to the full-campaign dashboard, but not to the exact digit. That small gap is expected in honest manual tracking, and here is precisely how large it is and what causes it.</p>
+  <div class="recstat">
+    <div class="rs"><div class="big">96.6%</div><div class="lb">Facebook: chapter sum 35,735 of 36,997 dashboard lock</div></div>
+    <div class="rs"><div class="big">94.7%</div><div class="lb">LinkedIn: chapter sum 12,364 of 13,054 dashboard lock</div></div>
+  </div>
+  <div class="callout"><h4>Why a 3–5% residual exists — and why it's a feature, not an error</h4>
+    <p>This campaign was tracked by hand across three platforms over eight weeks from native dashboard screenshots, with no API aggregation tool. Dashboards attribute traffic differently at the whole-campaign level than at the individual-post level. The residual comes from:</p>
+    <ul>
+      <li>Post <strong>lifetime accrual</strong> — algorithmically promoted posts kept gathering views after their chapter window closed.</li>
+      <li><strong>Reshares and profile discovery</strong> attributed at the page level, not to any single post.</li>
+      <li><strong>Window-boundary gaps</strong> between one chapter's date range and the next's.</li>
+      <li><strong>Hashtag and keyword tails</strong> from #HealthSystemResilience and related tags.</li>
+    </ul>
+    <p style="margin-top:9px">The full-campaign dashboard figures are the authoritative headline; the chapter sums are a secondary validation view. A 96.6% reconciliation on manual tracking supports the integrity of the method without requiring the sub-sums to match to the digit.</p></div>
+</div></section>
+
+<!-- 5. CAPTURE -->
+<section><div class="wrap">
+  <div class="kicker">How it was captured</div>
+  <h2>Manually, by one person, with the receipts kept.</h2>
+  <p class="body">Every figure was captured from the platforms' own native dashboards — the Meta Professional Dashboard for Facebook, LinkedIn Analytics for LinkedIn, and per-post insights for Instagram — via manual screenshots taken at the end of each chapter and again on a lifetime review, typically two to fourteen days after publication. No third-party analytics or API aggregation tool was used. This was a solo-practitioner campaign with a $0 advertising budget over an eight-week window, which is also why any comparison to published industry benchmarks (built on funded, multi-person organizational accounts) is a conservative one.</p>
+</div></section>
+
+<!-- 6. LIMITATIONS -->
+<section><div class="wrap">
+  <div class="kicker">What these numbers are — and aren't</div>
+  <h2>Read honestly.</h2>
+  <div class="callout warn"><h4>The limits we want you to know</h4>
+    <ul>
+      <li><strong>Impressions and views are not unique people.</strong> One person can be reached several times; 57,274 is total reach across platforms, not 57,274 distinct individuals.</li>
+      <li><strong>The three metrics are not identical.</strong> Facebook "views," LinkedIn "impressions," and Instagram "native views" measure related but different things; the total is a cross-platform reach indicator, not a single deduplicated count.</li>
+      <li><strong>These are the platforms' own estimates.</strong> They are taken from native dashboards and have not been independently audited by a third party. What we can show is that every number traces to a dated dashboard and a documented rule.</li>
+      <li><strong>The Instagram figure is calculated,</strong> not read directly, using the subtraction method above — a deliberately conservative choice, but a modeled one.</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- 7. DOWNLOAD -->
+<section style="border-bottom:0"><div class="wrap">
+  <div class="kicker">Check it yourself</div>
+  <h2>The full dataset is public.</h2>
+  <p class="sub">Every figure on this page traces to a single source file: a post-level master dataset with each of the ~40 cascade posts, per-platform metrics, the reconciliation tab, the full methodology rules, country distribution, and APA references.</p>
+  <div class="dl">
+    <div class="txt">
+      <h3>HSR Season 1 — Master Dataset (.xlsx)</h3>
+      <p>12 tabs · post-level detail for Facebook, LinkedIn &amp; Instagram · dashboard-vs-sum reconciliation · calculation rules · country distribution · references.</p>
+    </div>
+    <a class="get" href="assets/HSR_Season1_Master_Dataset.xlsx" download>Download the dataset →</a>
+  </div>
+  <p class="body" style="margin-top:16px;font-size:13.5px;color:var(--muted)">Prepared as the HLED&nbsp;695 capstone deliverable, April 2026. The headline figures (36,997 Facebook / 13,054 LinkedIn / 276 LinkedIn social engagements) are the platform-dashboard authoritative numbers; Instagram native views are calculated post-by-post as described above.</p>
+</div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><img class="flogo" src="assets/logo-0eecf814.svg" alt="HSREP"><p>An independent policy-research and advocacy platform examining health-system resilience as economic protection infrastructure.</p></div>
+    <div><h4>Platform</h4><a href="season-1.html">Season 1</a><a href="articles.html">Articles</a><a href="films.html">Films &amp; explainers</a><a href="roundtable.html">Roundtable</a><a href="initiative.html">Initiative</a></div>
+    <div><h4>Methodology</h4><a href="methodology.html">Methods &amp; sources</a><a href="about.html">Editorial standards</a><a href="about.html">Corrections policy</a><a href="about.html">Accessibility</a><a href="media.html">Media &amp; brand kit</a></div>
+    <div><h4>Connect</h4><a href="mailto:shafaatalichoyon@gmail.com">Contact &amp; partnerships</a><a href="https://www.linkedin.com/in/sacgrowthspecialist/" target="_blank" rel="noopener">LinkedIn</a><a href="https://shafaatalichoyon.com" target="_blank" rel="noopener">Founder site ↗</a><a href="https://buttondown.com/shafaat">Subscribe</a></div>
+  </div>
+  <div class="acro"><b>H</b>ealth <b>S</b>ystem <b>R</b>esilience <b>A</b>nd <b>E</b>conomic <b>P</b>rotection&nbsp;—&nbsp;hsraep.org</div>
+  <div class="fbot"><span>HSREP v1.7 · Updated July 2026</span><span>Human in purpose · Systemic in method · Protective in outcome</span></div>
+</div></footer>
+
+</body>
+</html>

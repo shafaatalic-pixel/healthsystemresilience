@@ -10,6 +10,7 @@
 
 - [Homepage](https://hsraep.org/): The platform's thesis, current season, findings, and ways for professionals to engage.
 - [Season 1](https://hsraep.org/season-1.html): A two-country public-health advocacy campaign (U.S. + Bangladesh) — one cumulative argument told across nine published pieces, reaching 57,274 people at $0 ad spend.
+- [Methodology](https://hsraep.org/methodology.html): How Season 1's 57,274 organic impressions are measured and reconciled — per-platform definitions, the full breakdown, dashboard reconciliation (96.6% Facebook / 94.7% LinkedIn), limitations, and the complete downloadable dataset.
 - [Articles](https://hsraep.org/articles.html): The full library of published arguments, each a complete advocacy package with evidence, media, and a response pathway.
 - [Roundtable](https://hsraep.org/roundtable.html): Structured, time-boxed professional discussion tied to a specific finding. Roundtable No. 1 runs August 1–15, 2026.
 - [Films & explainers](https://hsraep.org/films.html): Short and long-form video and infographic explainers of the arguments.
@@ -33,6 +34,7 @@
 - Tagging named officials is a repeatable ~3x reach amplifier, but concentrates a home-country audience rather than crossing borders.
 - Algorithmic recommendation ("Suggested" traffic) is the gate to cross-border reach, achievable without ad spend.
 - Sustained binational framing built a genuinely two-country audience by the campaign's close.
+- Reach is fully sourced and reconciled: the 57,274 organic impressions are 36,997 Facebook views + 13,054 LinkedIn impressions + 7,223 Instagram native views, reconciled to the platform dashboards at 96.6% (Facebook) and 94.7% (LinkedIn). Full post-level dataset: https://hsraep.org/assets/HSR_Season1_Master_Dataset.xlsx
 
 ## Founder
 

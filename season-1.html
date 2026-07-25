@@ -522,6 +522,14 @@ section:target,div:target{animation:hsflash 1.8s ease 1}
 #secnav .sn-cta:hover{background:#e35c49;color:#fff}
 </style>
 <style id="hs-mob-polish">@media(max-width:600px){.focus,.fm-grid,.finds,.four,.endos{grid-template-columns:1fr!important}[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:.85fr 1.15fr"]{grid-template-columns:1fr!important}[data-acro="1"]{text-align:left!important}.fbot{flex-direction:column!important;align-items:flex-start!important;gap:5px!important}}</style>
+<style id="hs-grid-mobilefix">
+/* Responsive grid collapse: override inline repeat() that blocked the tablet breakpoint */
+@media(max-width:920px){[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}}
+@media(max-width:820px){[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}}
+@media(max-width:600px){[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important}}
+/* Accordion cards size to their own content instead of stretching to an open sibling */
+.pillacc{align-self:start;min-width:0}
+</style>
 </head><body><a href="#main" class="skip-link">Skip to content</a>
 <header class="site"><div class="wrap"><div class="row">
 <a href="index.html"><img class="logo-lite" src="assets/logo-2212309f.svg" alt="HSREP — Health System Resilience &amp; Economic Protection"><img class="logo-drk" src="assets/logo-0eecf814.svg" alt="HSREP — Health System Resilience &amp; Economic Protection"></a>

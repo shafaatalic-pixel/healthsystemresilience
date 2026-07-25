@@ -98,7 +98,7 @@
  var section = nearestSection(a);
 
  /* share controls */
- if (a.matches(".blockshare.sharebtn.cl") || /share|copy link/i.test(text)) {
+ if (a.matches(".blockshare,.sharebtn,.cl") || /share|copy link/i.test(text)) {
  track("share_click", { engagement_type: "share", method: "copy_link",
  page_group: GROUP, section: section });
  return;

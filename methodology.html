@@ -41,12 +41,12 @@
   .skip-link{position:absolute;left:-999px}.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:99;border-radius:8px}
 
   /* header */
-  header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-  header.site .row{display:flex;align-items:center;gap:18px;padding:12px 0}
-  header.site img.logo{height:38px}
+  header.site{background:rgba(251,252,253,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  header.site .row{display:flex;align-items:center;gap:26px;padding:8px 0}
+  header.site img.logo{height:80px;margin-right:auto}
   header.site nav{display:flex;gap:18px;margin-left:8px;flex-wrap:wrap}
   header.site nav a{color:var(--navy2);text-decoration:none;font-weight:600;font-size:14px}
-  header.site nav a.here{color:var(--coral)}
+  header.site nav a.here{color:var(--coral);border-bottom:2px solid var(--coral);padding-bottom:3px}
   header.site nav a:hover{color:var(--coral)}
   .btn{display:inline-block;background:var(--coral);color:#fff;text-decoration:none;font-weight:700;
     border-radius:9px;padding:10px 18px;font-size:14px;margin-left:auto}
@@ -127,11 +127,10 @@
   @media(max-width:760px){
     .hero h1{font-size:31px}.defs{grid-template-columns:1fr}
     footer .fg{grid-template-columns:1fr 1fr}
-    header.site .btn{display:none}
   }
 </style>
-<style id="hs-mob-polish">@media(max-width:600px){.focus,.fm-grid,.finds,.four,.endos{grid-template-columns:1fr!important}[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:.85fr 1.15fr"]{grid-template-columns:1fr!important}[data-acro="1"]{text-align:left!important}.fbot{flex-direction:column!important;align-items:flex-start!important;gap:5px!important}}</style>
-<style id="mth-secnav-css">.mth-secnav{position:sticky;top:62px;z-index:15;display:flex;align-items:center;gap:2px;background:rgba(246,247,249,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 22px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none}.mth-secnav::-webkit-scrollbar{display:none}.mth-secnav .sn-lab{flex:0 0 auto;margin-right:12px;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9AA4B0}.mth-secnav a{flex:0 0 auto;padding:12px 12px 11px;font-size:13px;font-weight:600;color:#5A6673;text-decoration:none;border-bottom:2px solid transparent;transition:color .16s,border-color .16s}.mth-secnav a:hover{color:var(--navy2)}.mth-secnav a.active{color:var(--navy);border-bottom-color:var(--coral)}.kicker{scroll-margin-top:120px}@media(max-width:640px){.mth-secnav .sn-lab{display:none}.mth-secnav{padding:0 14px}}</style></head>
+<style id="hs-mob-polish">@media(max-width:600px){header.site img.logo{height:44px!important}.mth-secnav{top:69px!important}.focus,.fm-grid,.finds,.four,.endos{grid-template-columns:1fr!important}[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:.85fr 1.15fr"]{grid-template-columns:1fr!important}[data-acro="1"]{text-align:left!important}.fbot{flex-direction:column!important;align-items:flex-start!important;gap:5px!important}}</style>
+<style id="mth-secnav-css">.mth-secnav{position:sticky;top:105px;z-index:15;display:flex;align-items:center;gap:2px;background:rgba(246,247,249,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 22px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none}.mth-secnav::-webkit-scrollbar{display:none}.mth-secnav .sn-lab{flex:0 0 auto;margin-right:12px;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9AA4B0}.mth-secnav a{flex:0 0 auto;padding:12px 12px 11px;font-size:13px;font-weight:600;color:#5A6673;text-decoration:none;border-bottom:2px solid transparent;transition:color .16s,border-color .16s}.mth-secnav a:hover{color:var(--navy2)}.mth-secnav a.active{color:var(--navy);border-bottom-color:var(--coral)}.kicker{scroll-margin-top:150px}@media(max-width:640px){.mth-secnav .sn-lab{display:none}.mth-secnav{padding:0 14px;top:79px}header.site img.logo{height:62px}.mth-secnav{top:87px}}</style></head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
 
@@ -298,5 +297,37 @@
   <div class="fbot"><span>HSREP v1.7 · Updated July 2026</span><span>Human in purpose · Systemic in method · Protective in outcome</span></div>
 </div></footer>
 
-<script>(function(){var nav=document.querySelector(".mth-secnav");if(!nav)return;var links=[].slice.call(nav.querySelectorAll("a"));var map={};links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove("active");});var t=map[e.target.id];if(t)t.classList.add("active");}});},{rootMargin:"-15% 0px -75% 0px"});["the-number","definitions","by-unit","reconciliation","limits","questions","download"].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});})();</script></body>
+<script>(function(){var nav=document.querySelector(".mth-secnav");if(!nav)return;var links=[].slice.call(nav.querySelectorAll("a"));var map={};links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove("active");});var t=map[e.target.id];if(t)t.classList.add("active");}});},{rootMargin:"-15% 0px -75% 0px"});["the-number","definitions","by-unit","reconciliation","limits","questions","download"].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});})();</script><style id="mth-hmenu">
+#hmenu-btn{display:none}
+@media(max-width:940px){
+ header.site nav{display:none}
+ #hmenu-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:var(--navy2);cursor:pointer}
+ #hmenu-btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.2;fill:none}
+ #hmenu-panel{display:none;position:fixed;top:var(--hdr,69px);left:0;right:0;z-index:70;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 14px 34px rgba(15,32,54,.14);padding:6px 20px 14px}
+ html.hmenu-open #hmenu-panel{display:block}
+ #hmenu-panel a{display:block;padding:13px 4px;font-family:'Inter',sans-serif;font-size:15.5px;font-weight:600;color:var(--navy2);text-decoration:none;border-bottom:1px solid rgba(28,46,74,.07)}
+ #hmenu-panel a:last-child{border-bottom:0}
+ #hmenu-panel a.here,#hmenu-panel a:hover{color:var(--coral)}
+}
+</style>
+<script id="mth-hmenu-js">
+(function(){
+ var H=document.documentElement, hdr=document.querySelector('header.site');
+ function setH(){ if(hdr){ H.style.setProperty('--hdr',Math.round(hdr.getBoundingClientRect().height)+'px'); } }
+ setH(); window.addEventListener('resize',setH); window.addEventListener('load',setH); setTimeout(setH,300);
+ if(hdr){
+  var src=hdr.querySelector('nav');
+  if(src && src.querySelectorAll('a').length>1){
+   var btn=document.createElement('button');btn.id='hmenu-btn';btn.type='button';btn.setAttribute('aria-label','Menu');btn.setAttribute('aria-expanded','false');
+   btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span>';
+   var panel=document.createElement('div');panel.id='hmenu-panel';panel.innerHTML=src.innerHTML;
+   var row=hdr.querySelector('.row')||hdr;row.appendChild(btn);document.body.appendChild(panel);
+   btn.addEventListener('click',function(e){e.stopPropagation();var o=H.classList.toggle('hmenu-open');btn.setAttribute('aria-expanded',o?'true':'false');});
+   panel.addEventListener('click',function(e){if(e.target.tagName==='A')H.classList.remove('hmenu-open');});
+   document.addEventListener('click',function(e){if(H.classList.contains('hmenu-open')&&!panel.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){H.classList.remove('hmenu-open');btn.setAttribute('aria-expanded','false');}});
+  }
+ }
+})();
+</script>
+</body>
 </html>

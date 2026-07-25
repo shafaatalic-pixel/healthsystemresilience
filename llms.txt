@@ -20,13 +20,20 @@
 
 - [Prevention Adoption Initiative](https://hsraep.org/initiative.html): A proposed, in-development toolkit that closes the "Prevention Adoption Gap" — the distance between recommended and completed preventive care in safety-net settings — beginning with a proposed colorectal-cancer screening completion pilot in Southeast Michigan. Status: proposed and in development; nothing has been deployed. All operational designs are illustrative.
 
-## Areas of focus (evergreen lenses)
+## Areas of focus
 
+Evergreen lenses (persist across every season):
 - Household financial protection (medical debt, catastrophic cost)
 - System resilience & preparedness (disaster readiness, continuity under shock)
 - Health financing as investment (public health spending as economic infrastructure)
 - Prevention & adoption (why proven preventive services stall at completion)
+
+Season 2 pillars (in development) — answering "when the climate shocks the system, who absorbs the cost?":
+- Climate & health-system resilience (climate shock as an economic threat to health systems; the Season 2 central question)
 - Applied AI & health-system equity (predictive and agentic tools, explainable and fairness-audited)
+- Audience science & health communication (platform routing, framing, and measurement, so evidence reaches people)
+- Population health at scale (community-worker and data models that deliver prevention across whole populations)
+- Digital health & the access frontier (telehealth and mobile tools that extend care to the last mile)
 
 ## Key findings from Season 1
 

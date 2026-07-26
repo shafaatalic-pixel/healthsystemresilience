@@ -1,24 +1,24 @@
-# HSREP — Health System Resilience & Economic Protection
+# HSREP, Health System Resilience & Economic Protection
 
 > HSREP is an independent policy-research and advocacy platform making the case that health-system resilience is economic protection: when health systems hold under shock, households, institutions, and public trust hold with them. It publishes evidence-based arguments, pairs each with usable media and advocacy tools, and turns them into structured professional discussion. Founded 2026 by Md Shafaat Ali Choyon (MBA, MCIM, MPH, CHES®). Independent and non-partisan; all figures carry their source and methodology.
 
 ## Core proposition
 
-- Health protection is economic infrastructure, not a residual budget line. Structural underinvestment in health systems produces the same kind of failure across very different economies — demonstrated across the United States and Bangladesh.
+- Health protection is economic infrastructure, not a residual budget line. Structural underinvestment in health systems produces the same kind of failure across very different economies, demonstrated across the United States and Bangladesh.
 
 ## Platform
 
 - [Homepage](https://hsraep.org/): The platform's thesis, current season, findings, and ways for professionals to engage.
-- [Season 1](https://hsraep.org/season-1.html): A two-country public-health advocacy campaign (U.S. + Bangladesh) — one cumulative argument told across nine published pieces, reaching 57,274 people at $0 ad spend.
-- [Methodology](https://hsraep.org/methodology.html): How Season 1's 57,274 organic impressions are measured and reconciled — per-platform definitions, the full breakdown, dashboard reconciliation (96.6% Facebook / 94.7% LinkedIn), limitations, and the complete downloadable dataset.
+- [Season 1](https://hsraep.org/season-1.html): A two-country public-health advocacy campaign (U.S. + Bangladesh), one cumulative argument told across nine published pieces, reaching 57,274 people at $0 ad spend.
+- [Methodology](https://hsraep.org/methodology.html): How Season 1's 57,274 organic impressions are measured and reconciled: per-platform definitions, the full breakdown, dashboard reconciliation (96.6% Facebook / 94.7% LinkedIn), limitations, and the complete downloadable dataset.
 - [Articles](https://hsraep.org/articles.html): The full library of published arguments, each a complete advocacy package with evidence, media, and a response pathway.
-- [Roundtable](https://hsraep.org/roundtable.html): Structured, time-boxed professional discussion tied to a specific finding. Roundtable No. 1 runs August 1–15, 2026.
+- [Roundtable](https://hsraep.org/roundtable.html): Structured, time-boxed professional discussion tied to a specific finding. Roundtable No. 1 runs August 1-15, 2026.
 - [Films & explainers](https://hsraep.org/films.html): Short and long-form video and infographic explainers of the arguments.
 - [About](https://hsraep.org/about.html): Purpose, origin, founder, editorial standards, and corrections policy.
 
 ## Applied initiative
 
-- [Prevention Adoption Initiative](https://hsraep.org/initiative.html): A proposed, in-development toolkit that closes the "Prevention Adoption Gap" — the distance between recommended and completed preventive care in safety-net settings — beginning with a proposed colorectal-cancer screening completion pilot in Southeast Michigan. Status: proposed and in development; nothing has been deployed. All operational designs are illustrative.
+- [Prevention Adoption Initiative](https://hsraep.org/initiative.html): A proposed, in-development toolkit that closes the "Prevention Adoption Gap", the distance between recommended and completed preventive care in safety-net settings, beginning with a proposed colorectal-cancer screening completion pilot in Southeast Michigan. Status: proposed and in development; nothing has been deployed. All operational designs are illustrative.
 
 ## Areas of focus
 
@@ -28,7 +28,7 @@ Evergreen lenses (persist across every season):
 - Health financing as investment (public health spending as economic infrastructure)
 - Prevention & adoption (why proven preventive services stall at completion)
 
-Season 2 pillars (in development) — answering "when the climate shocks the system, who absorbs the cost?":
+Season 2 pillars (in development), answering "when the climate shocks the system, who absorbs the cost?":
 - Climate & health-system resilience (climate shock as an economic threat to health systems; the Season 2 central question)
 - Applied AI & health-system equity (predictive and agentic tools, explainable and fairness-audited)
 - Audience science & health communication (platform routing, framing, and measurement, so evidence reaches people)
@@ -37,7 +37,7 @@ Season 2 pillars (in development) — answering "when the climate shocks the sys
 
 ## Key findings from Season 1
 
-- Platform, not content, decides who sees a health argument — the same piece routed to opposite audiences on Facebook vs. LinkedIn.
+- Platform, not content, decides who sees a health argument: the same piece routed to opposite audiences on Facebook vs. LinkedIn.
 - Tagging named officials is a repeatable ~3x reach amplifier, but concentrates a home-country audience rather than crossing borders.
 - Algorithmic recommendation ("Suggested" traffic) is the gate to cross-border reach, achievable without ad spend.
 - Sustained binational framing built a genuinely two-country audience by the campaign's close.
@@ -45,7 +45,7 @@ Season 2 pillars (in development) — answering "when the climate shocks the sys
 
 ## Founder
 
-- Md Shafaat Ali Choyon — growth, marketing and public-health strategist (MBA, MCIM, MPH, CHES®), 16+ years turning complex systems into measurable results. Founder site: https://shafaatalichoyon.com
+- Md Shafaat Ali Choyon: growth, marketing and public-health strategist (MBA, MCIM, MPH, CHES®), 16+ years turning complex systems into measurable results. Founder site: https://shafaatalichoyon.com
 
 ## Contact
 

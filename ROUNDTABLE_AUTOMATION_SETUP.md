@@ -1,7 +1,7 @@
-# HSREP Roundtable — auto-synthesis setup (Tier 1)
+# HSREP Roundtable: auto-synthesis setup (Tier 1)
 
 This wires the roundtable so that **after a discussion window closes, a synthesis is
-drafted automatically** from your Tally responses — but **nothing publishes until you
+drafted automatically** from your Tally responses, but **nothing publishes until you
 approve it.** The draft arrives as a GitHub pull request you read, edit, and merge.
 
 ```
@@ -48,7 +48,7 @@ current model id from docs.anthropic.com/en/docs/about-claude/models. If you ski
 the script uses a sensible default.
 
 > Note on Tally: the free tier does **not** include API access. If you'd rather not
-> upgrade, you can skip the automation entirely and paste responses in by hand — the
+> upgrade, you can skip the automation entirely and paste responses in by hand, the
 > page works either way (see "Manual fallback" below).
 
 ### 2. Confirm the Tally field labels match
@@ -82,7 +82,7 @@ Edit `roundtables/rt-01.json` (or copy it to `rt-02.json` for the next one):
 ```
 
 The page shows "Opens in N days" before `open`, "Open · closes in N days" during the
-window, and "Closed · synthesis in preparation" after — all automatically from these
+window, and "Closed · synthesis in preparation" after, all automatically from these
 dates. No code change needed to schedule; just edit the two dates.
 
 ---
@@ -94,7 +94,7 @@ after close it:
 1. Pulls completed submissions from Tally.
 2. Drops non-consenting responses; anonymizes the ones that asked to stay anonymous.
 3. Asks Claude to draft a restrained, Chatham-House-style synthesis (agreements, real
-   disagreements, "what this means for practice") — with an explicit instruction to
+   disagreements, "what this means for practice"), with an explicit instruction to
    invent nothing.
 4. Writes the draft into `rt-01.json` as `status:"drafted"`, `approved:false`.
 5. Opens a pull request titled **"Roundtable synthesis ready for review."**
@@ -102,7 +102,7 @@ after close it:
 ## What you do (the approval gate)
 
 1. Open the pull request. Read the `synthesis_md` field in the diff.
-2. Edit it however you like — it's a draft, not a verdict.
+2. Edit it however you like; it's a draft, not a verdict.
 3. Set `"approved": true` in `rt-01.json`.
 4. Merge. The live page now renders the synthesis and the named, consented contributors.
 
@@ -135,7 +135,7 @@ not a dependency.
 
 ## Cost & privacy notes
 - The Action runs daily but does real work (a Claude call) only once per closed
-  roundtable — effectively pennies.
+  roundtable, effectively pennies.
 - No response data is stored anywhere except your own repo, and only consented
   responses ever leave Tally.
 - Nothing is ever published without a human merge.

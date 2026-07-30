@@ -109,12 +109,12 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 
 <div class="stakes">
 <div class="sh">Why the follow-up step is the one that kills</div>
-<div><div class="n">24-75%</div><div class="t">of positive stool tests actually get a follow-up colonoscopy, a gap so wide that <b>NCQA is building a new HEDIS measure</b> for it.<sup>1</sup></div></div>
+<div><div class="n">24-75%</div><div class="t">of positive stool tests actually get a follow-up colonoscopy, a gap so wide that <b>NCQA has proposed a dedicated HEDIS measure</b> for it (COF-E, MY2027: colonoscopy within 180 days).<sup>1</sup></div></div>
 <div><div class="n">~2×</div><div class="t">higher risk of <b>dying</b> of colorectal cancer for patients with a positive test and <b>no</b> follow-up colonoscopy.<sup>1</sup></div></div>
 <div><div class="n">10&nbsp;months</div><div class="t">is the danger line: past it, colorectal-cancer risk rises <b>~50%</b> and advanced-stage risk nearly doubles.<sup>2</sup> Sooner is better.</div></div>
 </div>
 
-<div class="card urgent" style="margin-bottom:20px"><h3><span class="u">Urgent</span>: positive FIT, awaiting colonoscopy</h3><div class="sub">The cohort that decides whether screening saves a life. Sorted by days since the positive result, a live time-to-colonoscopy clock, banded against the 10-month risk line and the ~90-day best-practice target. This queue does not exist in most EHRs today.</div><div id="urgent"></div></div>
+<div class="card urgent" style="margin-bottom:20px"><h3><span class="u">Urgent</span>: positive FIT, awaiting colonoscopy</h3><div class="sub">The cohort that decides whether screening saves a life. Sorted by days since the positive result, a live time-to-colonoscopy clock, banded against the ~90-day best-practice target, the 180-day COF-E follow-up window, and the 10-month risk line. This queue does not exist in most EHRs today.</div><div id="urgent"></div></div>
 
 <div class="grid">
 <div class="card"><h3>Screening queue, overdue for a stool test</h3><div class="sub">Ranked by an <b>explainable</b> non-completion risk = care gap + prior no-shows + SDOH barriers + language mismatch. Each score shows its contributions; the next-best action is matched to the barrier.</div><div id="queue"></div></div>
@@ -127,7 +127,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <div class="card chwcard" style="margin-bottom:20px"><h3><span class="g">Community health workers</span>, the human layer for the hardest cases</h3><div class="sub">When two low-touch attempts (reminder, mailed FIT) don&rsquo;t close the gap (or a positive FIT stalls behind transport, language, or trust) the case escalates to a CHW. Higher cost per touch, far higher yield; the intervention with the strongest evidence for non-responders. Escalate one from the screening queue and it appears here.</div><div id="chwq"></div></div>
 
 <div class="sci"><h3>Why this is state-of-the-art, and honest</h3><div class="sub">Design claims the initiative would build toward. Everything here is illustrative; nothing is deployed.</div>
-<div class="si"><div class="k">Cascade, not a checkbox</div><p>Most registries mark screening "done" at the stool test. This one tracks the <b>full cascade to a closed diagnosis</b>, and treats a positive FIT with no colonoscopy as an <b>open, time-critical</b> item, aligned with the proposed <b>NCQA follow-up HEDIS measure</b>.<sup>1</sup></p></div>
+<div class="si"><div class="k">Cascade, not a checkbox</div><p>Most registries mark screening "done" at the stool test. This one tracks the <b>full cascade to a closed diagnosis</b>, and treats a positive FIT with no colonoscopy as an <b>open, time-critical</b> item, aligned with the proposed <b>NCQA follow-up HEDIS measure</b> (COF-E, MY2027).<sup>1</sup></p></div>
 <div class="si"><div class="k">Explainable risk</div><p>The score is <b>decomposable</b>: every point traces to a driver (a SHAP-style contribution breakdown). In production the additive score is replaced by a trained model (logistic regression → gradient boosting) with the same explainability, human-in-the-loop, never a black box.</p></div>
 <div class="si"><div class="k">Next-best action</div><p>Not just "who is high-risk," but <b>which action most changes completion</b> for this person, mailed FIT for access barriers, <b>centralized navigation</b> for positive-FIT follow-up (the intervention with the strongest evidence), transport support where that is the blocker.<sup>3</sup></p></div>
 <div class="si"><div class="k">FHIR-native</div><p>Ingest overdue panels and results via <b>Bulk FHIR / SMART-on-FHIR</b>; write actions back as FHIR <b>Communication / Task</b> resources. Phase 1 runs on a flat export; deep write-back is Phase 2.</p></div>

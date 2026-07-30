@@ -1,0 +1,6 @@
+patient_id,birth_year,sex,preferred_language,zip3,payer_type,screening_status,months_overdue,last_fit_date,last_fit_result,positive_fit_date,colonoscopy_status,colonoscopy_date,prior_no_shows_24mo,portal_active,preferred_contact,sdoh_flags,pcp_id,site_id
+PT-000001,1971,F,en,481,medicaid,overdue,14,,,,,,1,TRUE,sms,transport,PR-014,SITE-01
+PT-000002,1966,M,es,482,uninsured,fit_positive,0,2026-03-02,positive,2026-03-05,open,,2,FALSE,phone,transport|language,PR-007,SITE-01
+PT-000003,1959,F,en,481,medicare,fit_negative,0,2026-01-18,negative,,,,0,TRUE,email,,PR-014,SITE-01
+PT-000004,1978,M,ar,483,sliding_fee,fit_positive,0,2025-11-20,positive,2025-11-24,completed,2026-01-09,0,TRUE,sms,,PR-021,SITE-01
+PT-000005,1963,F,es,482,commercial,overdue,27,,,,,,3,FALSE,mail,food|housing,PR-007,SITE-01

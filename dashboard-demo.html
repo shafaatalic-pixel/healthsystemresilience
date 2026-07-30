@@ -45,7 +45,8 @@ header.d a{color:#C9D4E1;font-size:.85rem}header.d a:hover{color:#fff}
 .tag{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--panel);border:1px solid var(--hairline);border-radius:5px;padding:2px 7px}
 .nba{font-size:.85rem;color:var(--heading);margin-top:8px}.nba b{color:var(--coral)}
 .clock{font-family:var(--mono);font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;display:inline-block;margin-top:7px}
-.clock.ok{background:rgba(38,122,105,.12);color:var(--green)}.clock.warn{background:rgba(201,120,30,.14);color:var(--med)}.clock.late{background:rgba(179,38,30,.12);color:var(--alarm)}
+.bands{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 2px}.bands .clock{margin-top:0}.bandnote{font-size:.78rem;color:var(--muted);flex:1 1 260px;min-width:220px}
+.clock.ok{background:rgba(38,122,105,.12);color:var(--green)}.clock.warn{background:rgba(201,120,30,.14);color:var(--med)}.clock.late{background:rgba(179,38,30,.12);color:var(--alarm)}.clock.crit{background:var(--alarm);color:#fff}
 .risk{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:1.5rem;color:var(--heading);justify-content:flex-end}
 .dot{width:10px;height:10px;border-radius:50%}.dot.high{background:var(--hi)}.dot.med{background:var(--med)}.dot.low{background:var(--low)}
 .btn{font-family:var(--body);font-weight:600;font-size:.8rem;border:1px solid var(--hairline);background:var(--white);color:var(--heading);border-radius:6px;padding:8px 13px;cursor:pointer;transition:all .15s;white-space:nowrap;margin-top:9px}
@@ -84,6 +85,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 .prodhead{font-family:var(--serif);font-size:1.35rem;color:var(--heading);margin:26px 0 4px}
 .prodsub{color:var(--muted);font-size:.86rem;margin-bottom:16px;max-width:80ch;line-height:1.5}
 .prodgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px}@media(max-width:940px){.prodgrid{grid-template-columns:1fr}}
+.oneminute{background:var(--white);border:1px solid var(--hairline);border-left:3px solid var(--coral);border-radius:10px;padding:16px 20px;margin:0 0 20px}.oneminute .om-h{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}.oneminute ol{margin:0;padding-left:19px}.oneminute li{font-size:.85rem;line-height:1.55;color:var(--ink);margin-bottom:5px}.oneminute li b{color:var(--heading)}
 .prodcard{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:22px}
 .prodcard .pk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
 .prodcard h4{font-family:var(--serif);font-size:1.08rem;color:var(--heading);margin:0 0 12px}
@@ -91,6 +93,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 .prodcard li b{color:var(--heading)}
 .prodcard .whatelse{margin-top:13px;padding-top:13px;border-top:1px solid var(--hairline);font-size:.79rem;color:var(--muted);line-height:1.5}
 .prodcard .whatelse b{color:var(--heading)}
+.spec{margin-top:13px;padding-top:13px;border-top:1px solid var(--hairline)}.spec summary{font-size:.83rem;font-weight:600;color:var(--heading);cursor:pointer;list-style:none}.spec summary::-webkit-details-marker{display:none}.spec summary:before{content:'\25B8 ';color:var(--coral)}.spec[open] summary:before{content:'\25BE '}.spec table{width:100%;border-collapse:collapse;margin-top:10px;font-family:var(--mono);font-size:10.5px}.spec td{padding:4px 6px;border-bottom:1px solid var(--hairline);vertical-align:top}.spec td:first-child{color:var(--heading);font-weight:600;white-space:nowrap}.spec td:last-child{color:var(--muted);font-family:var(--body);font-size:11.5px}.dl{display:inline-block;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--coral);text-decoration:none;border-bottom:1px solid currentColor}
 </style>
 <style id="hs-demohead-mob">@media(max-width:600px){header.d .row{flex-wrap:wrap;gap:10px}header.d .sp{margin-left:0;flex-wrap:wrap;gap:10px}}</style>
 </head><body>
@@ -106,6 +109,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <p>Screening only counts when the whole cascade closes: an overdue patient completes a stool test, and, if it is positive, completes the follow-up colonoscopy that turns a warning into a diagnosis. Nationally, that second step is where people fall through: only <b>24-75%</b> of positive stool tests get a follow-up colonoscopy, and patients who miss it are about <b>twice as likely to die</b> of colorectal cancer.<sup>1,2</sup> This is the registry the initiative would install to close both gaps, with an explainable risk model, a next-best action, and a time-to-colonoscopy clock. Work the reds first and watch the numbers move.</p><div class="prov">Synthetic single-site view · 30 patients shown of 247 screened · last sync: static demo · no live EHR</div></div>
 
 <div class="kpis" id="kpis"></div>
+<div class="oneminute"><div class="om-h">If you have one minute, do these three things</div><ol><li><b>Read the top row of the Urgent queue.</b> One patient is 194 days past a positive stool test &mdash; already outside the 180-day window of the HEDIS measure NCQA has proposed. Most EHRs have no screen that shows you this.</li><li><b>Press &ldquo;Complete colonoscopy&rdquo; on that patient.</b> Watch the follow-up rate, the median days-to-colonoscopy and the equity gap all move together. That is the loop a site would work each week.</li><li><b>Open &ldquo;Equity, follow-up by language.&rdquo;</b> The gap between English and non-English follow-up is the number a QI committee is graded on, and the number outreach automation most often makes worse.</li></ol></div>
 
 <div class="stakes">
 <div class="sh">Why the follow-up step is the one that kills</div>
@@ -114,7 +118,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <div><div class="n">10&nbsp;months</div><div class="t">is the danger line: past it, colorectal-cancer risk rises <b>~50%</b> and advanced-stage risk nearly doubles.<sup>2</sup> Sooner is better.</div></div>
 </div>
 
-<div class="card urgent" style="margin-bottom:20px"><h3><span class="u">Urgent</span>: positive FIT, awaiting colonoscopy</h3><div class="sub">The cohort that decides whether screening saves a life. Sorted by days since the positive result, a live time-to-colonoscopy clock, banded against the ~90-day best-practice target, the 180-day COF-E follow-up window, and the 10-month risk line. This queue does not exist in most EHRs today.</div><div id="urgent"></div></div>
+<div class="card urgent" style="margin-bottom:20px"><h3><span class="u">Urgent</span>: positive FIT, awaiting colonoscopy</h3><div class="sub">The cohort that decides whether screening saves a life. Sorted by days since the positive result, a live time-to-colonoscopy clock, banded against the ~90-day best-practice target, the 180-day COF-E follow-up window, and the 10-month risk line. This queue does not exist in most EHRs today.</div><div class="bands"><span class="clock ok">&le; 90d &middot; on target</span><span class="clock late">&gt; 90d &middot; past best practice</span><span class="clock crit">&gt; 180d &middot; fails COF-E</span><span class="bandnote">COF-E: the follow-up-after-positive measure NCQA has proposed for HEDIS MY2027 &mdash; colonoscopy within 180 days, ages 45&ndash;85.</span></div><div id="urgent"></div></div>
 
 <div class="grid">
 <div class="card"><h3>Screening queue, overdue for a stool test</h3><div class="sub">Ranked by an <b>explainable</b> non-completion risk = care gap + prior no-shows + SDOH barriers + language mismatch. Each score shows its contributions; the next-best action is matched to the barrier.</div><div id="queue"></div></div>
@@ -134,7 +138,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <div class="si"><div class="k">Fairness monitoring</div><p>The <b>follow-up equity gap</b> is a first-class metric, tracked so outreach automation never widens disparities for patients with unstable contact, low portal access, or a language mismatch.</p></div>
 </div>
 
-<div class="prodhead">How it would work in production</div>
+<div class="prodhead" id="prod">How it would work in production</div>
 <div class="prodsub">The demo is static and synthetic. In a real deployment, three things carry it: the AI that ranks and recommends, the pipe that gets your data in, and the security that keeps it compliant.</div>
 <div class="prodgrid">
 <div class="prodcard"><div class="pk">01 · The AI&rsquo;s role</div><h4>Predict, prioritise, explain, never decide</h4>
@@ -153,7 +157,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <li><b>Write-back:</b> recommended actions return as FHIR <b>Communication / Task</b> resources into the EHR worklist.</li>
 <li><b>Mapping</b> (patient id, screening status, last result, contact prefs, SDOH) is a one-time setup; refresh nightly to start, near-real-time later.</li>
 </ul>
-<div class="whatelse"><b>Effort:</b> a single-site flat-file pilot can run in weeks, not quarters. The FHIR and write-back work comes only when the value is proven.</div></div>
+<div class="whatelse"><b>Effort:</b> a single-site flat-file pilot can run in weeks, not quarters. The FHIR and write-back work comes only when the value is proven.</div><details class="spec"><summary>The exact file we would ask for &mdash; 19 columns</summary><table><tr><td>patient_id</td><td>Site-generated pseudonym. No name, MRN, DOB, address or phone leaves your system.</td></tr><tr><td>birth_year</td><td>Year only — enough to apply the 45–85 eligibility window.</td></tr><tr><td>sex, preferred_language</td><td>Reporting and outreach-channel matching.</td></tr><tr><td>zip3</td><td>First three digits only, per the HIPAA Safe Harbor rule.</td></tr><tr><td>payer_type</td><td>Coded category, not a policy number.</td></tr><tr><td>screening_status</td><td>overdue | fit_negative | fit_positive | colonoscopy_completed</td></tr><tr><td>months_overdue</td><td>Months since the patient became due.</td></tr><tr><td>last_fit_date, last_fit_result</td><td>Most recent stool test and its result.</td></tr><tr><td>positive_fit_date</td><td>Starts the COF-E clock. The single most important field.</td></tr><tr><td>colonoscopy_status, colonoscopy_date</td><td>open | scheduled | completed — closes the cascade.</td></tr><tr><td>prior_no_shows_24mo</td><td>Count. Drives the non-completion risk score.</td></tr><tr><td>portal_active, preferred_contact</td><td>Which channel actually reaches this person.</td></tr><tr><td>sdoh_flags</td><td>Pipe-separated: transport | language | food | housing | cost. Optional.</td></tr><tr><td>pcp_id, site_id</td><td>Panel attribution for multi-provider or multi-site reporting.</td></tr></table><a class="dl" href="assets/HSREP_PAI_Pilot_Data_Spec_v1.csv" download>Download the sample file (CSV, 5 synthetic rows)</a></details></div>
 
 <div class="prodcard"><div class="pk">03 · Build &amp; security (HIPAA)</div><h4>Compliant by construction</h4>
 <ul>
@@ -211,7 +215,7 @@ const P=[{"name":"Maria G.","age":46,"sex":"F","language":"en","zip":"48197","ne
 // ---- Cascade augmentation: assign FIT results + colonoscopy sub-stage (deterministic) ----
 // stage: 'due' (overdue for FIT) | 'fit_neg' (screened, negative) | 'fit_pos' (positive → colonoscopy)
 // colo (only for fit_pos): 'open' (awaiting) | 'sched' (scheduled) | 'done'
-const POS={2:{colo:'done',ttc:45},8:{colo:'done',ttc:31},14:{colo:'done',ttc:68},26:{colo:'sched',d:14},10:{colo:'done',ttc:84},22:{colo:'open',d:128},16:{colo:'open',d:96},6:{colo:'done',ttc:58},12:{colo:'open',d:103}};
+const POS={2:{colo:'done',ttc:45},8:{colo:'done',ttc:31},14:{colo:'done',ttc:68},26:{colo:'sched',d:14},10:{colo:'done',ttc:84},22:{colo:'open',d:194},16:{colo:'open',d:96},6:{colo:'done',ttc:58},12:{colo:'open',d:103}};
 P.forEach(p=>{
   if(POS[p.id]){p.stage='fit_pos';p.colo=POS[p.id].colo;p.days_pos=POS[p.id].d||null;p.ttc=POS[p.id].ttc||null;}
   else if(p.status==='done'){p.stage='fit_neg';}
@@ -225,7 +229,7 @@ function resetDemo(){var d=JSON.parse(SNAP);P.length=0;d.forEach(x=>P.push(x));r
 function escalate(id){var p=P.find(x=>x.id===id);if(!p)return;p.chw='T. Okafor';p.chwTouches=1;p.cost_cents=(p.cost_cents||0)+1800;render();}
 
 function median(a){if(!a.length)return 0;const s=[...a].sort((x,y)=>x-y);const m=Math.floor(s.length/2);return s.length%2?s[m]:Math.round((s[m-1]+s[m])/2);}
-function clockClass(d){return d>90?'late':d>60?'warn':'ok';}
+function clockClass(d){return d>180?'crit':d>90?'late':d>60?'warn':'ok';}
 function nbaFor(p){
   if(p.stage==='fit_pos'){
     if(p.colo==='done')return null;
@@ -247,12 +251,13 @@ function kpis(){
   const ttcs=pos.filter(p=>p.colo==='done'&&p.ttc).map(p=>p.ttc);
   const medttc=median(ttcs);
   const overdue=pos.filter(p=>p.colo==='open'&&p.days_pos>90).length;
+  const cofe=pos.filter(p=>p.colo==='open'&&p.days_pos>180).length;
   const scr=Math.round(screened/total*100);
   document.getElementById('kpis').innerHTML=[
    ['Screening rate',scr+'%','stool test completed, of the panel',''],
    ['Follow-up rate',fu+'%','colonoscopy done, of positive FITs · national 24-75%',''],
    ['Median days to colonoscopy',medttc||', ','completed follow-ups · target ≤ ~90d',''],
-   ['Overdue follow-ups',overdue,'positive FIT, no colonoscopy > 90 days','alarm']
+   ['Overdue follow-ups',overdue,`positive FIT, no colonoscopy > 90 days · ${cofe} past the 180-day COF-E window`,'alarm']
   ].map(k=>`<div class="kpi ${k[3]}"><div class=l>${k[0]}</div><div class=v>${k[1]}</div><div class=d>${k[2]}</div></div>`).join('');
 }
 function urgent(){
@@ -260,7 +265,7 @@ function urgent(){
   document.getElementById('urgent').innerHTML=list.map(p=>{
     const d=p.days_pos||0;const cc=clockClass(d);
     const clock=p.colo==='sched'?`<span class="clock ok">Colonoscopy scheduled · day ${d}</span>`
-      :`<span class="clock ${cc}">${d} days since positive${d>90?' · past 90-day target':''}</span>`;
+      :`<span class="clock ${cc}">${d} days since positive${d>180?' · past the 180-day COF-E window':d>90?' · past 90-day target':''}</span>`;
     const nba=nbaFor(p);
     const tags=Object.entries(p.parts).filter(([k,v])=>v>0).map(([k,v])=>`<span class=tag>${k} +${v}</span>`).join('');
     return `<div class=qrow><div><div class=qname>${p.name}</div><div class=qmeta>${p.age}/${p.sex} · ${p.language.toUpperCase()} · ${p.neighborhood} · ${p.payer}</div>

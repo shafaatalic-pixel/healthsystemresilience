@@ -700,6 +700,27 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 <div class="gcard rv" style="transition-delay:.06s"><div class="n">SIGNAL 02</div><h3>63.5% vs 72.8%</h3><p>U.S. colorectal-cancer screening sits at 63.5% (2023) against the Healthy People 2030 target of 72.8%, and has barely moved off baseline.</p></div>
 <div class="gcard rv" style="transition-delay:.12s"><div class="n">SIGNAL 03</div><h3>~44% in FQHCs</h3><p>Federally Qualified Health Centers screened just 44.1% nationally (2018 UDS); Michigan health centers reported 47.1% in CY2024 UDS, still about 26 points under the benchmark. The gap concentrates exactly where the pilot proposes to work.</p></div>
 </div>
+<div class="gapviz rv" id="gapviz">
+<div class="gvp">
+<div class="gvk">Panel A &middot; Screening completion</div>
+<p class="gvsub">Share of the eligible population up to date with colorectal-cancer screening.</p>
+<div class="gvrows">
+<div class="gvrow"><div class="gvlab"><span>U.S. adults, 2023</span><b>63.5%</b></div><div class="gvtrack"><span class="gvbar" style="--w:63.5%"></span><span class="gvtgt" aria-hidden="true"></span></div></div>
+<div class="gvrow"><div class="gvlab"><span>Michigan health centers, CY2024 UDS</span><b>47.1%</b></div><div class="gvtrack"><span class="gvbar" style="--w:47.1%"></span><span class="gvtgt" aria-hidden="true"></span></div></div>
+<div class="gvrow"><div class="gvlab"><span>Federally Qualified Health Centers, national 2018 UDS</span><b>44.1%</b></div><div class="gvtrack"><span class="gvbar" style="--w:44.1%"></span><span class="gvtgt" aria-hidden="true"></span></div></div>
+
+</div>
+<p class="gvnote">Vertical marks show the Healthy People 2030 target of <b>72.8%</b> (objective C-07). Bars run on a 0&ndash;100% axis.</p>
+</div>
+<div class="gvp">
+<div class="gvk">Panel B &middot; Follow-up after a positive test</div>
+<p class="gvsub">Share of people with a positive stool test who complete the diagnostic colonoscopy. Reported figures vary widely by setting.</p>
+<div class="gvrows">
+<div class="gvrow"><div class="gvlab"><span>Reported range, national</span><b>24-75%</b></div><div class="gvtrack"><span class="gvband" style="--a:24%;--w:51%"></span></div></div>
+</div>
+<p class="gvnote"><b>Different denominator.</b> Panel A is measured on everyone eligible for screening. Panel B is measured only on those who screen positive. The two are not stages of one funnel and the percentages should not be multiplied together.</p>
+</div>
+</div>
 <p class="srcnote rv"><b>SOURCES:</b> Borsky et al., <i>Health Affairs</i> 2018; Healthy People 2030 objective C-07 (2023); NCCRT / HRSA UDS 2018; HRSA UDS CY2024 state performance indicators (Michigan 47.1%). Figures reconciled to current objectives; the older 68.3%/74.4% pair referred to the prior 50-75 age objective.</p>
 </div></section>
 
@@ -952,5 +973,50 @@ html.hmenu-open #hmenu-panel{display:block}
 #secnav .sn-cta{display:none!important}
 </style>
 <script>(function(){var pil=[].slice.call(document.querySelectorAll('.pillacc'));if(!pil.length)return;function sync(){var wide=window.innerWidth>=721;pil.forEach(function(d,i){d.open = wide ? true : (i===0);});}sync();window.addEventListener('resize',sync);})();</script>
+
+<style id="hs-motion-2026">
+/* --- Build 3 - the Prevention Adoption Gap, two panels ------------------- */
+.gapviz{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;margin-top:34px;padding-top:28px;border-top:1px solid var(--hairline)}
+@media(max-width:860px){.gapviz{grid-template-columns:1fr;gap:32px}}
+.gvp{min-width:0}
+.gvk{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:7px}
+.gvsub{margin:0 0 18px;font-size:.9rem;color:var(--muted);line-height:1.55;max-width:54ch}
+.gvrows{position:relative}
+.gvrow{padding:9px 0}
+.gvlab{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:6px;font-size:.86rem;color:var(--ink);line-height:1.35}
+.gvlab b{font-family:var(--font-mono);font-size:.95rem;color:var(--heading);white-space:nowrap}
+.gvtrack{position:relative;height:10px;border-radius:2px;background:var(--panel);overflow:hidden}
+.gvbar{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--coral);border-radius:2px;transition:width 1s var(--ease)}
+.gvband{position:absolute;top:0;bottom:0;left:var(--a);width:var(--w);border-radius:2px;background:linear-gradient(90deg,rgba(242,109,90,.32),rgba(242,109,90,.78));transition:width 1s var(--ease)}
+.hasjs .gapviz:not(.in) .gvbar,.hasjs .gapviz:not(.in) .gvband{width:0}
+.gvrow:nth-child(2) .gvbar{transition-delay:.1s}
+.gvrow:nth-child(3) .gvbar{transition-delay:.2s}
+.gvtgt{position:absolute;left:72.8%;top:0;bottom:0;width:2px;background:var(--navy);opacity:.55;z-index:3}
+.gvnote{margin:16px 0 0;font-size:.82rem;color:var(--muted);line-height:1.6;max-width:56ch}
+.gvnote b{color:var(--heading)}
+/* --- Build 2 - accordion easing ----------------------------------------- */
+@keyframes faqin{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.faqi summary{transition:color .18s var(--ease)}
+.faqi summary:hover{color:var(--coral)}
+.faqi[open] .faqa{animation:faqin .34s var(--ease) both}
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  .faqi::details-content{block-size:0;overflow:hidden;content-visibility:hidden;transition:block-size .34s var(--ease),content-visibility .34s allow-discrete}
+  .faqi[open]::details-content{block-size:auto;content-visibility:visible}
+  .pillacc::details-content{block-size:0;overflow:hidden;content-visibility:hidden;transition:block-size .34s var(--ease),content-visibility .34s allow-discrete}
+  .pillacc[open]::details-content{block-size:auto;content-visibility:visible}
+}
+</style>
+
+<script>
+/* Build 3 - draw the gap once, on scroll */
+(function(){
+  document.documentElement.classList.add('hasjs');
+  var el=document.getElementById('gapviz'); if(!el) return;
+  if(!('IntersectionObserver' in window)){el.classList.add('in');return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.3});
+  io.observe(el);
+})();
+</script>
 </body>
 </html>

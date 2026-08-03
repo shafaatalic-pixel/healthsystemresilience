@@ -641,8 +641,8 @@ section:target,div:target{animation:hsflash 1.8s ease 1}
 
 <section class="band" id="how-it-works"><div class="wrap">
 <div class="shead rv"><div class="eyebrow"><span class="snum">§ 02</span> · How it works</div><div class="top"><h2 class="sec">Low friction to join. High standard for the record.</h2></div></div>
-<div class="road">
-<div class="rd rv"><div class="rk">Open · 14 days</div><div><b>Respond</b><p>Answer with your real name and affiliation through one short form. A named moderator curates.</p></div></div>
+<div class="road" id="rtroad">
+<div class="rd rv"><div class="rk">Window · 14 days</div><div><b>Respond</b><p>Answer with your real name and affiliation through one short form. A named moderator curates.</p></div></div>
 <div class="rd rv"><div class="rk">On close</div><div><b>Synthesis</b><p>When the window ends, responses are reviewed and a single published synthesis names consented contributors and the through-line.</p></div></div>
 <div class="rd rv"><div class="rk">After</div><div><b>The record</b><p>The question, the synthesis, and any resulting advocacy brief become a permanent, citable page.</p></div></div>
 </div>
@@ -857,4 +857,65 @@ html.hmenu-open #hmenu-panel{display:block}
 .btn.accent:hover,.sn-cta:hover{background:#A83722!important;border-color:#A83722!important}
 #secnav .sn-cta{display:none!important}
 </style>
+
+<style id="hs-motion-2026">
+/* --- Build 1 · §02 stage rail ------------------------------------------- */
+.road{position:relative}
+.rd{position:relative}
+.rd .rdlive{display:block;margin-top:7px;max-width:112px;font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
+.rd[data-state="next"] .rk{color:var(--muted)}
+.rd[data-state="next"] b{color:var(--muted)}
+.rd[data-state="next"] p{color:#8A939D}
+@media(min-width:721px){
+  .road::before{content:"";position:absolute;left:126px;top:24px;bottom:24px;width:1px;background:var(--hairline)}
+  .road .rdfill{position:absolute;left:126px;top:24px;width:1px;height:0;background:var(--coral);transition:height .95s var(--ease)}
+  .road.in .rdfill{height:var(--rdh,0px)}
+  .rd::before{content:"";position:absolute;left:122.5px;top:24px;width:9px;height:9px;border-radius:50%;background:var(--white);border:1px solid var(--hairline);box-sizing:border-box;z-index:2}
+  .rd[data-state="done"]::before{background:var(--coral);border-color:var(--coral)}
+  .rd[data-state="now"]::before{background:var(--coral);border-color:var(--coral);box-shadow:0 0 0 5px var(--coral-wash)}
+}
+/* --- Build 2 · accordion easing ----------------------------------------- */
+@keyframes faqin{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.faqi summary{transition:color .18s var(--ease)}
+.faqi summary:hover{color:var(--coral)}
+.faqi[open] .faqa{animation:faqin .34s var(--ease) both}
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  .faqi::details-content{block-size:0;overflow:hidden;content-visibility:hidden;transition:block-size .34s var(--ease),content-visibility .34s allow-discrete}
+  .faqi[open]::details-content{block-size:auto;content-visibility:visible}
+}
+</style>
+
+<script>
+/* Build 1 · roundtable stage rail, driven by the same dates as #rtstatus */
+(function(){
+  var road=document.getElementById('rtroad'), st=document.getElementById('rtstatus');
+  if(!road||!st) return;
+  var open=new Date(st.getAttribute('data-open')+'T00:00:00');
+  var close=new Date(st.getAttribute('data-close')+'T23:59:59');
+  var now=new Date();
+  var d=function(t){return Math.max(0,Math.ceil((t-now)/86400000));};
+  var rds=road.querySelectorAll('.rd');
+  if(!rds.length) return;
+  var cur,live;
+  if(now<open){cur=0;live='Opens in '+d(open)+' days';}
+  else if(now<=close){cur=0;live='Closes in '+d(close)+' days';}
+  else {cur=1;live='Window closed';}
+  for(var i=0;i<rds.length;i++){rds[i].setAttribute('data-state', i<cur?'done':(i===cur?'now':'next'));}
+  var k=rds[cur].querySelector('.rk');
+  if(k&&live){var sp=document.createElement('span');sp.className='rdlive';sp.textContent=live;k.appendChild(sp);}
+  var fill=document.createElement('span');fill.className='rdfill';fill.setAttribute('aria-hidden','true');road.appendChild(fill);
+  function setH(){
+    var top=road.getBoundingClientRect().top;
+    var y=rds[cur].getBoundingClientRect().top-top+28;
+    road.style.setProperty('--rdh',Math.max(0,y-24)+'px');
+  }
+  setH();
+  addEventListener('resize',setH,{passive:true});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setH();road.classList.add('in');io.unobserve(e.target);}})},{threshold:.25});
+    io.observe(road);
+  } else { road.classList.add('in'); }
+})();
+</script>
 </body></html>

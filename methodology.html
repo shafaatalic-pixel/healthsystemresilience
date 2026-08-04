@@ -90,13 +90,13 @@
   .defs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
   .def{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px;border-top:4px solid var(--c)}
   .def.fb{--c:#2b5c8a}.def.li{--c:#1a5566}.def.ig{--c:#b5468a}
-  .def h4{margin:0 0 3px;font-size:15px}
+  .def h3,.def h4{margin:0 0 3px;font-size:15px}
   .def .metric{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--c);font-weight:600}
   .def p{font-size:13px;color:#3a434e;margin:8px 0 0}
 
   .callout{background:#eef4ef;border:1px solid #cfe6d9;border-left:5px solid var(--green);border-radius:10px;padding:15px 18px;margin-top:18px}
   .callout.warn{background:#fdf6f4;border-color:#f3cabf;border-left-color:var(--coral)}
-  .callout h4{margin:0 0 5px;font-size:14px;color:var(--navy2)}
+  .callout h3,.callout h4{margin:0 0 5px;font-size:14px;color:var(--navy2)}
   .callout p{margin:0;font-size:13.5px;color:#3a434e}
   .callout ul{margin:8px 0 0;padding-left:18px}.callout li{font-size:13.5px;margin-bottom:4px;color:#3a434e}
 
@@ -117,7 +117,7 @@
   footer .fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px}
   footer img.flogo{height:64px}
   footer p{color:#9fb0c6;font-size:13px;margin:10px 0 0}
-  footer h4{color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+  footer h2,footer h4{color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
   footer a{display:block;color:#c8d2e0;text-decoration:none;margin-bottom:7px;font-size:13.5px}
   footer a:hover{color:#fff}
   .acro{text-align:center;font-size:.72rem;letter-spacing:.05em;opacity:.55;padding:16px 0 4px}
@@ -204,14 +204,14 @@
  <h2>Three platforms, three different meters.</h2>
  <p class="sub">These are not the same metric relabelled. Each platform measures exposure its own way; we take each at its dashboard-authoritative value and are explicit about what it means, and we deliberately <em>deflate</em> the Instagram figure to avoid double-counting.</p>
  <div class="defs">
- <div class="def fb"><h4>Facebook</h4><div class="metric">"Views" · Meta Professional Dashboard</div>
+ <div class="def fb"><h3>Facebook</h3><div class="metric">"Views" · Meta Professional Dashboard</div>
  <p>The number of times campaign content appeared on screen. Taken directly from the chapter-level dashboard for each custom date range. Authoritative, not estimated.</p></div>
- <div class="def li"><h4>LinkedIn</h4><div class="metric">"Impressions" · LinkedIn Analytics</div>
+ <div class="def li"><h3>LinkedIn</h3><div class="metric">"Impressions" · LinkedIn Analytics</div>
  <p>The number of times content was displayed in feeds. Taken from the LinkedIn analytics dashboard per chapter window. Reach ("members reached") is reported separately and never summed, because it deduplicates people.</p></div>
- <div class="def ig"><h4>Instagram</h4><div class="metric">"Native views" · calculated by subtraction</div>
+ <div class="def ig"><h3>Instagram</h3><div class="metric">"Native views" · calculated by subtraction</div>
  <p>Total views <strong>minus</strong> "From Other", the cross-post referral traffic that flows FB&nbsp;→&nbsp;IG. Subtracting it removes views already counted on Facebook, so the same view is never counted twice. For Reels, the FB-reported "Instagram views" is used as the subtraction value and cross-validates exactly in three chapters.</p></div>
  </div>
- <div class="callout"><h4>Why Instagram is the only adjusted number</h4>
+ <div class="callout"><h3>Why Instagram is the only adjusted number</h3>
  <p>Facebook and LinkedIn are reported exactly as their dashboards show them. Instagram is the one platform where cross-posting could inflate the total, so it is the one number we reduce, the conservative choice. The full per-post subtraction is in the dataset.</p></div>
 </div></section>
 
@@ -246,7 +246,7 @@
  <div class="rs"><div class="big">96.6%</div><div class="lb">Facebook: chapter sum 35,735 of 36,997 dashboard lock</div></div>
  <div class="rs"><div class="big">94.7%</div><div class="lb">LinkedIn: chapter sum 12,364 of 13,054 dashboard lock</div></div>
  </div>
- <div class="callout"><h4>Why a 3-5% residual exists, and why it's a feature, not an error</h4>
+ <div class="callout"><h3>Why a 3-5% residual exists, and why it's a feature, not an error</h3>
  <p>This campaign was tracked by hand across three platforms over eight weeks from native dashboard screenshots, with no API aggregation tool. Dashboards attribute traffic differently at the whole-campaign level than at the individual-post level. The residual comes from:</p>
  <ul>
  <li>Post <strong>lifetime accrual</strong>: algorithmically promoted posts kept gathering views after their chapter window closed.</li>
@@ -268,7 +268,7 @@
 <section><div class="wrap">
  <div class="kicker" id="limits">What these numbers are, and aren't</div>
  <h2>Read honestly.</h2>
- <div class="callout warn"><h4>The limits we want you to know</h4>
+ <div class="callout warn"><h3>The limits we want you to know</h3>
  <ul>
  <li><strong>Impressions and views are not unique people.</strong> One person can be reached several times; 57,274 is the sum of platform impressions, not 57,274 distinct individuals.</li>
  <li><strong>The three metrics are not identical.</strong> Facebook "views," LinkedIn "impressions," and Instagram "native views" measure related but different things; the total is a cross-platform impression sum, not a single deduplicated count.</li>
@@ -330,9 +330,9 @@
 
  <div class="fg">
  <div><img class="flogo" src="assets/logo-0eecf814.svg" alt="HSREP"><p>An independent policy-research and advocacy platform examining health-system resilience as economic protection infrastructure.</p></div>
- <div><h4>Platform</h4><a href="season-1.html">Season 1</a><a href="articles.html">Articles</a><a href="films.html">Films &amp; explainers</a><a href="roundtable.html">Roundtable</a><a href="initiative.html">Initiative</a></div>
- <div><h4>Methodology</h4><a href="methodology.html">Methods &amp; sources</a><a href="about.html">Editorial standards</a><a href="about.html">Corrections policy</a><a href="/accessibility.html">Accessibility</a><a href="media.html">Media &amp; brand kit</a></div>
- <div><h4>Connect</h4><a href="mailto:contact@hsraep.org">Contact &amp; partnerships</a><a href="https://www.linkedin.com/in/sacgrowthspecialist/" target="_blank" rel="noopener">Founder on LinkedIn</a><a href="https://shafaatalichoyon.com" target="_blank" rel="noopener">Founder site ↗</a><div class="folw"><span class="fll">Follow HSREP</span><div class="fl-row"><a class="li" href="https://www.linkedin.com/company/hsrep-org/" target="_blank" rel="noopener" aria-label="HSREP on LinkedIn" title="HSREP on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21H20v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a><a class="fb" href="https://www.facebook.com/HSREP.org" target="_blank" rel="noopener" aria-label="HSREP on Facebook" title="HSREP on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H8v3h2.6v8z"/></svg></a></div></div></div>
+ <div><h2>Platform</h2><a href="season-1.html">Season 1</a><a href="articles.html">Articles</a><a href="films.html">Films &amp; explainers</a><a href="roundtable.html">Roundtable</a><a href="initiative.html">Initiative</a></div>
+ <div><h2>Methodology</h2><a href="methodology.html">Methods &amp; sources</a><a href="about.html">Editorial standards</a><a href="about.html">Corrections policy</a><a href="/accessibility.html">Accessibility</a><a href="media.html">Media &amp; brand kit</a></div>
+ <div><h2>Connect</h2><a href="mailto:contact@hsraep.org">Contact &amp; partnerships</a><a href="https://www.linkedin.com/in/sacgrowthspecialist/" target="_blank" rel="noopener">Founder on LinkedIn</a><a href="https://shafaatalichoyon.com" target="_blank" rel="noopener">Founder site ↗</a><div class="folw"><span class="fll">Follow HSREP</span><div class="fl-row"><a class="li" href="https://www.linkedin.com/company/hsrep-org/" target="_blank" rel="noopener" aria-label="HSREP on LinkedIn" title="HSREP on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21H20v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a><a class="fb" href="https://www.facebook.com/HSREP.org" target="_blank" rel="noopener" aria-label="HSREP on Facebook" title="HSREP on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H8v3h2.6v8z"/></svg></a></div></div></div>
  </div>
  <div class="acro"><b>H</b>ealth <b>S</b>ystem <b>R</b>esilience <b>A</b>nd <b>E</b>conomic <b>P</b>rotection&nbsp;, &nbsp;hsraep.org</div>
  <div class="flegal" style="text-align:center;font-size:.72rem;opacity:.6;padding:.35rem 0 .1rem"><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; Cookies: Google Analytics; Cloudflare is cookieless</div><div class="fbot"><span>HSREP v1.8 · Updated August 2026</span><span>Human in purpose · Systemic in method · Protective in outcome</span></div>

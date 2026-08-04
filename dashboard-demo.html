@@ -6,9 +6,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#1C2E4A;--navy-deep:#0F2036;--coral:#C7442F;--coral-bright:#F26D5A;--coral-press:#A83722;--green:#267A69;
+:root{--navy:#1C2E4A;--navy-deep:#0F2036;--coral:#C43C25;--coral-bright:#F26D5A;--coral-press:#A83722;--green:#267A69;
 --ink:#28333F;--muted:#556072;--panel:#F2F5F8;--hairline:#DCE3EA;--paper:#FBFCFD;--white:#fff;--heading:#1C2E4A;
---hi:#C7442F;--med:#C9781E;--low:#267A69;--alarm:#B3261E;--mono:"IBM Plex Mono",monospace;--serif:"Spectral",Georgia,serif;--body:"Inter",system-ui,sans-serif}
+--hi:#C43C25;--med:#C9781E;--low:#267A69;--alarm:#B3261E;--mono:"IBM Plex Mono",monospace;--serif:"Spectral",Georgia,serif;--body:"Inter",system-ui,sans-serif}
 *{box-sizing:border-box}body{margin:0;font-family:var(--body);background:var(--panel);color:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased}
 a{color:var(--coral);text-decoration:none}.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
 .skip-link{position:fixed;left:8px;top:-64px;z-index:3000;background:#0F2036;color:#fff;padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none;transition:top .15s}.skip-link:focus{top:8px}
@@ -35,8 +35,8 @@ header.d a{color:#C9D4E1;font-size:.85rem}header.d a:hover{color:#fff}
 .grid{display:grid;grid-template-columns:1.55fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:940px){.grid{grid-template-columns:1fr}}
 .card{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:22px}
 .card.urgent{border-color:rgba(179,38,30,.35);box-shadow:0 0 0 3px rgba(179,38,30,.05)}
-.card h3{font-family:var(--serif);font-size:1.18rem;color:var(--heading);margin:0 0 4px}
-.card h3 .u{color:var(--alarm)}
+.card h2{font-family:var(--serif);font-size:1.18rem;color:var(--heading);margin:0 0 4px}
+.card h2 .u{color:var(--alarm)}
 .card .sub{font-size:.82rem;color:var(--muted);margin-bottom:16px;line-height:1.45}
 .qrow{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 0;border-top:1px solid var(--hairline);align-items:center}
 .qrow:first-of-type{border-top:0}
@@ -60,7 +60,7 @@ header.d a{color:#C9D4E1;font-size:.85rem}header.d a:hover{color:#fff}
 .eqrow{display:grid;grid-template-columns:92px 1fr 46px;gap:10px;align-items:center;font-size:.82rem;padding:6px 0}
 .eqrow .track{height:7px;background:var(--panel);border-radius:4px;overflow:hidden}.eqrow .fill{height:100%;background:var(--navy)}.eqrow .fill.low{background:var(--alarm)}
 .sci{background:var(--navy);color:#cdd8e6;border-radius:10px;padding:22px 24px;margin-bottom:20px}
-.sci h3{color:#fff;font-family:var(--serif);font-size:1.18rem;margin:0 0 4px}.sci .sub{color:#9fb0c4;font-size:.82rem;margin-bottom:14px}
+.sci h2{color:#fff;font-family:var(--serif);font-size:1.18rem;margin:0 0 4px}.sci .sub{color:#9fb0c4;font-size:.82rem;margin-bottom:14px}
 .sci .si{display:grid;grid-template-columns:150px 1fr;gap:13px;padding:12px 0;border-top:1px solid rgba(255,255,255,.1)}
 @media(max-width:640px){.sci .si{grid-template-columns:1fr;gap:3px}}
 .sci .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-bright);white-space:nowrap;padding-top:2px}
@@ -72,27 +72,29 @@ td .pill.done{background:rgba(38,122,105,.12);color:var(--green)}
 td .pill.pos{background:rgba(179,38,30,.12);color:var(--alarm)}
 td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 .src{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:20px 22px;margin-bottom:20px}
-.src h3{font-family:var(--serif);font-size:1.05rem;color:var(--heading);margin:0 0 10px}
+.src h2{font-family:var(--serif);font-size:1.05rem;color:var(--heading);margin:0 0 10px}
 .src ol{margin:0;padding-left:20px;font-size:.8rem;color:var(--muted);line-height:1.6}.src a{color:var(--coral)}
 .src.corr{border-left:3px solid var(--coral)}
 .src.corr p{margin:0;font-size:.8rem;color:var(--muted);line-height:1.6}
-.src.corr h3{color:var(--coral)}
+{color:var(--coral)}
 .src.corr b{color:var(--heading)}
 .foot{padding:26px 0 50px;color:var(--muted);font-size:.8rem;font-family:var(--mono);line-height:1.6}
+.foot a{color:var(--coral);border-bottom:1px solid rgba(0,0,0,.2)}
+.foot a:hover{border-bottom-color:currentColor}
 @media(max-width:600px){table{display:block;overflow-x:auto}.grid{grid-template-columns:1fr}}
 
 .rbtn{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#DCE6F2;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:7px;padding:7px 12px;cursor:pointer;transition:.15s}
 .rbtn:hover{border-color:var(--coral-bright);color:#fff}
 .prov{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:.02em}
 .chwcard{border-color:rgba(38,122,105,.3)}
-.chwcard h3 .g{color:var(--green)}
+.chwcard h2 .g{color:var(--green)}
 .prodhead{font-family:var(--serif);font-size:1.35rem;color:var(--heading);margin:26px 0 4px}
 .prodsub{color:var(--muted);font-size:.86rem;margin-bottom:16px;max-width:80ch;line-height:1.5}
 .prodgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px}@media(max-width:940px){.prodgrid{grid-template-columns:1fr}}
 .oneminute{background:var(--white);border:1px solid var(--hairline);border-left:3px solid var(--coral);border-radius:10px;padding:16px 20px;margin:0 0 20px}.oneminute .om-h{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}.oneminute ol{margin:0;padding-left:19px}.oneminute li{font-size:.85rem;line-height:1.55;color:var(--ink);margin-bottom:5px}.oneminute li b{color:var(--heading)}
 .prodcard{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:22px}
 .prodcard .pk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
-.prodcard h4{font-family:var(--serif);font-size:1.08rem;color:var(--heading);margin:0 0 12px}
+.prodcard h3{font-family:var(--serif);font-size:1.08rem;color:var(--heading);margin:0 0 12px}
 .prodcard ul{margin:0;padding-left:17px}.prodcard li{font-size:.83rem;line-height:1.5;color:var(--ink);margin-bottom:9px}
 .prodcard li b{color:var(--heading)}
 .prodcard .whatelse{margin-top:13px;padding-top:13px;border-top:1px solid var(--hairline);font-size:.79rem;color:var(--muted);line-height:1.5}
@@ -104,7 +106,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 </head><body>
 <a href="#main" class="skip-link">Skip to content</a>
 <header class="d"><div class="wrap"><div class="row">
-<a href="initiative.html"><img src="assets/logo-0eecf814.svg" alt="HSREP"></a>
+<a href="initiative.html"><img src="assets/logo-0eecf814.svg" width="2700" height="940" alt="HSREP"></a>
 <div class="sp"><button class="rbtn" type="button" onclick="resetDemo()">&#8635; Reset demo</button><span class="dpill">Demonstration</span><a href="initiative.html">&larr; Back to the initiative</a></div>
 </div></div></header>
 <div class="demobar">DEMONSTRATION · SYNTHETIC DATA ONLY · NO EHR CONNECTION · NO PHI · MESSAGES SIMULATED, NOT SENT</div>
@@ -123,19 +125,19 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <div><div class="n">12&nbsp;months</div><div class="t">is the danger line: beyond it, the odds of any colorectal cancer are <b>2.25×</b> and of advanced-stage disease <b>3.22×</b> those of a colonoscopy done within a month.<sup>3</sup> Sooner is better.</div></div>
 </div>
 
-<div class="card urgent" style="margin-bottom:20px"><h3><span class="u">Urgent</span>: positive FIT, awaiting colonoscopy</h3><div class="sub">The cohort that decides whether screening saves a life. Sorted by days since the positive result, a live time-to-colonoscopy clock, banded against the 90-day mark CDC&rsquo;s Colorectal Cancer Control Program uses as its quality indicator and the 180-day COF-E follow-up window.<sup>5</sup> This queue does not exist in most EHRs today.</div><div class="bands"><span class="clock ok">&le; 90d &middot; on target</span><span class="clock late">&gt; 90d &middot; past best practice</span><span class="clock crit">&gt; 180d &middot; fails COF-E</span><span class="bandnote">COF-E: the follow-up-after-positive measure NCQA has proposed for HEDIS MY2027 &mdash; colonoscopy within 180 days, ages 45&ndash;85.</span></div><div id="urgent"></div></div>
+<div class="card urgent" style="margin-bottom:20px"><h2><span class="u">Urgent</span>: positive FIT, awaiting colonoscopy</h2><div class="sub">The cohort that decides whether screening saves a life. Sorted by days since the positive result, a live time-to-colonoscopy clock, banded against the 90-day mark CDC&rsquo;s Colorectal Cancer Control Program uses as its quality indicator and the 180-day COF-E follow-up window.<sup>5</sup> This queue does not exist in most EHRs today.</div><div class="bands"><span class="clock ok">&le; 90d &middot; on target</span><span class="clock late">&gt; 90d &middot; past best practice</span><span class="clock crit">&gt; 180d &middot; fails COF-E</span><span class="bandnote">COF-E: the follow-up-after-positive measure NCQA has proposed for HEDIS MY2027 &mdash; colonoscopy within 180 days, ages 45&ndash;85.</span></div><div id="urgent"></div></div>
 
 <div class="grid">
-<div class="card"><h3>Screening queue, overdue for a stool test</h3><div class="sub">Ranked by an <b>explainable</b> non-completion risk = care gap + prior no-shows + SDOH barriers + language mismatch. Each score shows its contributions; the next-best action is matched to the barrier.</div><div id="queue"></div></div>
+<div class="card"><h2>Screening queue, overdue for a stool test</h2><div class="sub">Ranked by an <b>explainable</b> non-completion risk = care gap + prior no-shows + SDOH barriers + language mismatch. Each score shows its contributions; the next-best action is matched to the barrier.</div><div id="queue"></div></div>
 <div>
-<div class="card" style="margin-bottom:20px"><h3>The screening cascade</h3><div class="sub">Where the panel is right now, and where it leaks.</div><div class="funnel" id="funnel"></div></div>
-<div class="card"><h3>Equity, follow-up by language</h3><div class="sub">Colonoscopy-after-positive-FIT completion, watched as a fairness guardrail so automation never widens the gap.</div><div id="equity"></div></div>
+<div class="card" style="margin-bottom:20px"><h2>The screening cascade</h2><div class="sub">Where the panel is right now, and where it leaks.</div><div class="funnel" id="funnel"></div></div>
+<div class="card"><h2>Equity, follow-up by language</h2><div class="sub">Colonoscopy-after-positive-FIT completion, watched as a fairness guardrail so automation never widens the gap.</div><div id="equity"></div></div>
 </div>
 </div>
 
-<div class="card chwcard" style="margin-bottom:20px"><h3><span class="g">Community health workers</span>, the human layer for the hardest cases</h3><div class="sub">When two low-touch attempts (reminder, mailed FIT) don&rsquo;t close the gap (or a positive FIT stalls behind transport, language, or trust) the case escalates to a CHW. Higher cost per touch, far higher yield; the intervention with the strongest evidence for non-responders. Escalate one from the screening queue and it appears here.</div><div id="chwq"></div></div>
+<div class="card chwcard" style="margin-bottom:20px"><h2><span class="g">Community health workers</span>, the human layer for the hardest cases</h2><div class="sub">When two low-touch attempts (reminder, mailed FIT) don&rsquo;t close the gap (or a positive FIT stalls behind transport, language, or trust) the case escalates to a CHW. Higher cost per touch, far higher yield; the intervention with the strongest evidence for non-responders. Escalate one from the screening queue and it appears here.</div><div id="chwq"></div></div>
 
-<div class="sci"><h3>Why this is state-of-the-art, and honest</h3><div class="sub">Design claims the initiative would build toward. Everything here is illustrative; nothing is deployed.</div>
+<div class="sci"><h2>Why this is state-of-the-art, and honest</h2><div class="sub">Design claims the initiative would build toward. Everything here is illustrative; nothing is deployed.</div>
 <div class="si"><div class="k">Cascade, not a checkbox</div><p>Most registries mark screening "done" at the stool test. This one tracks the <b>full cascade to a closed diagnosis</b>, and treats a positive FIT with no colonoscopy as an <b>open, time-critical</b> item, aligned with the proposed <b>NCQA follow-up HEDIS measure</b> (COF-E, MY2027).<sup>1</sup></p></div>
 <div class="si"><div class="k">Explainable risk</div><p>The score is <b>decomposable</b>: every point traces to a driver (a SHAP-style contribution breakdown). In production the additive score is replaced by a trained model (logistic regression → gradient boosting) with the same explainability, human-in-the-loop, never a black box.</p></div>
 <div class="si"><div class="k">Next-best action</div><p>Not just "who is high-risk," but <b>which action most changes completion</b> for this person, mailed FIT for access barriers, <b>centralized navigation</b> for positive-FIT follow-up (the intervention with the strongest evidence), transport support where that is the blocker.<sup>4</sup></p></div>
@@ -146,7 +148,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <div class="prodhead" id="prod">How it would work in production</div>
 <div class="prodsub">The demo is static and synthetic. In a real deployment, three things carry it: the AI that ranks and recommends, the pipe that gets your data in, and the security that keeps it compliant.</div>
 <div class="prodgrid">
-<div class="prodcard"><div class="pk">01 · The AI&rsquo;s role</div><h4>Predict, prioritize, explain, never decide</h4>
+<div class="prodcard"><div class="pk">01 · The AI&rsquo;s role</div><h3>Predict, prioritize, explain, never decide</h3>
 <ul>
 <li><b>Predicts non-completion</b> for each overdue patient, and, via an uplift model, <b>which one action</b> most changes their odds, not just who is high-risk.</li>
 <li><b>Explainable by design:</b> every score decomposes to its drivers (SHAP), shown per patient. Logistic-regression baseline &rarr; gradient boosting.</li>
@@ -155,7 +157,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 </ul>
 <div class="whatelse"><b>Signals that would sharpen it:</b> prior colonoscopy history, insurance follow-up cost-sharing, comorbidity burden, transportation access, appointment-slot availability, portal engagement, area deprivation index, and prior FIT-kit return behavior.</div></div>
 
-<div class="prodcard"><div class="pk">02 · Feeding data in</div><h4>Start with a flat file; grow into FHIR</h4>
+<div class="prodcard"><div class="pk">02 · Feeding data in</div><h3>Start with a flat file; grow into FHIR</h3>
 <ul>
 <li><b>Pilot with the least effort:</b> a nightly de-identified export (CSV) of the overdue registry + results. No deep integration needed to begin.</li>
 <li><b>Standards path:</b> <b>FHIR Bulk Data</b> (<span style="font-family:var(--mono);font-size:.9em">$export</span>) for panels and results; a <b>SMART-on-FHIR</b> app for in-EHR use.</li>
@@ -164,7 +166,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 </ul>
 <div class="whatelse"><b>Effort:</b> a single-site flat-file pilot can run in weeks, not quarters. The FHIR and write-back work comes only when the value is proven.</div><details class="spec"><summary>The exact file we would ask for &mdash; 19 columns</summary><table><tr><td>patient_id</td><td>Site-generated pseudonym. No name, MRN, DOB, address or phone leaves your system.</td></tr><tr><td>birth_year</td><td>Year only — enough to apply the 45–85 eligibility window.</td></tr><tr><td>sex, preferred_language</td><td>Reporting and outreach-channel matching.</td></tr><tr><td>zip3</td><td>First three digits only, per the HIPAA Safe Harbor rule.</td></tr><tr><td>payer_type</td><td>Coded category, not a policy number.</td></tr><tr><td>screening_status</td><td>overdue | fit_negative | fit_positive | colonoscopy_completed</td></tr><tr><td>months_overdue</td><td>Months since the patient became due.</td></tr><tr><td>last_fit_date, last_fit_result</td><td>Most recent stool test and its result.</td></tr><tr><td>positive_fit_date</td><td>Starts the COF-E clock. The single most important field.</td></tr><tr><td>colonoscopy_status, colonoscopy_date</td><td>open | scheduled | completed — closes the cascade.</td></tr><tr><td>prior_no_shows_24mo</td><td>Count. Drives the non-completion risk score.</td></tr><tr><td>portal_active, preferred_contact</td><td>Which channel actually reaches this person.</td></tr><tr><td>sdoh_flags</td><td>Pipe-separated: transport | language | food | housing | cost. Optional.</td></tr><tr><td>pcp_id, site_id</td><td>Panel attribution for multi-provider or multi-site reporting.</td></tr></table><a class="dl" href="assets/HSREP_PAI_Pilot_Data_Spec_v1.csv" download>Download the sample file (CSV, 5 synthetic rows)</a></details></div>
 
-<div class="prodcard"><div class="pk">03 · Build &amp; security (HIPAA)</div><h4>Compliant by construction</h4>
+<div class="prodcard"><div class="pk">03 · Build &amp; security (HIPAA)</div><h3>Compliant by construction</h3>
 <ul>
 <li><b>HIPAA-eligible cloud</b> (AWS / GCP / Azure) under a signed <b>BAA</b>; PHI stays inside the covered entity&rsquo;s environment or a BAA-covered tenant.</li>
 <li><b>Encryption</b> in transit (TLS 1.2+) and at rest (AES-256); <b>role-based access</b> + SSO/MFA; <b>full audit logging</b> of every view and action.</li>
@@ -174,10 +176,10 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 <div class="whatelse"><b>Rollout:</b> (1) flat-file pilot at one site &rarr; (2) FHIR ingest + write-back &rarr; (3) multi-site + the AI layer, each gated by an evaluation.</div></div>
 </div>
 
-<div class="card"><h3>Full panel</h3><div class="sub">All <span id="pcount">30</span> synthetic patients across the cascade. Stage shows where each one is.</div>
+<div class="card"><h2>Full panel</h2><div class="sub">All <span id="pcount">30</span> synthetic patients across the cascade. Stage shows where each one is.</div>
 <div style="overflow-x:auto"><table id="tbl"><thead><tr><th>Patient</th><th>Lang</th><th>ZIP</th><th>Payer</th><th>Barriers</th><th>Risk</th><th>Stage</th></tr></thead><tbody id="tbody"></tbody></table></div></div>
 
-<div class="src"><h3>Sources</h3><ol>
+<div class="src"><h2>Sources</h2><ol>
 <li>NCQA. <a href="https://wpcdn.ncqa.org/www-prod/wp-content/uploads/02.-COF-E.pdf" target="_blank" rel="noopener">Follow-Up After Positive Colorectal Cancer Non-Invasive Screening Test (COF-E)</a>, proposed for HEDIS MY2027: colonoscopy within 180 days of a positive stool-based test, ages 45&ndash;85. The published literature puts follow-up completion between 24% and 75%; NCQA&rsquo;s own field testing found plan-level rates of 21.7% to 37.5% at 180 days.</li>
 <li>Zorzi M, et al. Non-compliance with colonoscopy after a positive faecal immunochemical test, and colorectal cancer mortality. <i>Gut</i> 2022;71(3):561-567. doi:10.1136/gutjnl-2020-322192. Hazard ratio 2.03 (95% CI 1.68-2.44) for colorectal-cancer death among non-compliers. Observational; a published critique (Winters &amp; Ford, <i>Gut</i> 2023;72(9):1799-1800) argues immortal-time bias may inflate the estimate.</li>
 <li>Corley DA, et al. Association between time to colonoscopy after a positive fecal test result and risk of colorectal cancer and cancer stage at diagnosis. <i>JAMA</i> 2017;317(16):1631-1641. 70,124 Kaiser Permanente patients across Northern and Southern California: beyond 12 months, the odds of any colorectal cancer were 2.25 and of advanced-stage disease 3.22, against colonoscopy within one month. The study measures incidence and stage, not mortality. <a href="https://www.kp-scalresearch.org/for-patients-with-positive-fecal-screening-test-sooner-is-better-for-follow-up-colonoscopy/" target="_blank" rel="noopener">Summary</a>.</li>
@@ -186,7 +188,7 @@ td .pill.sched{background:rgba(201,120,30,.14);color:var(--med)}
 </ol></div>
 
 
-<div class="foot">A demonstration of the Prevention Adoption Initiative (an HSREP initiative in development). Synthetic data; no real patients, no PHI, no EHR connection. Positive-FIT share is amplified for illustration; a real panel would surface these from hundreds of screened patients. Illustrative only.</div>
+<div class="foot">A demonstration of the Prevention Adoption Initiative (an HSREP initiative in development). Synthetic data; no real patients, no PHI, no EHR connection. Positive-FIT share is amplified for illustration; a real panel would surface these from hundreds of screened patients. Illustrative only. One figure on this page was corrected on 3 August 2026; the record is in the <a href="/corrections.html#screening-dashboard-1">corrections log</a>.</div>
 </div></main>
 <script>
 const P=[{"name":"Maria G.","age":46,"sex":"F","language":"en","zip":"48197","neighborhood":"Ypsilanti S.","payer":"Medicaid","no_shows":0,"sdoh":"transport","status":"reminder","cost_cents":5,"months_overdue":6,"id":1,"risk":14,"band":"low","parts":{"Care gap":7,"Prior no-shows":0,"SDOH barriers":7,"Language mismatch":0},"barriers":["transport"]},

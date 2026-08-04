@@ -14,6 +14,7 @@
 - [Articles](https://hsraep.org/articles.html): The full library of published arguments, each a complete advocacy package with evidence, media, and a response pathway.
 - [Roundtable](https://hsraep.org/roundtable.html): Structured, time-boxed professional discussion tied to a specific finding. Roundtable No. 1 runs August 11-25, 2026.
 - [Films & explainers](https://hsraep.org/films.html): Short and long-form video and infographic explainers of the arguments.
+- Film transcripts: each of the nine Season 1 films has its own transcript page at https://hsraep.org/transcripts/<film-slug>.html, with the full spoken text, timed captions and a downloadable .vtt file. Every film card on the films page links to its transcript.
 - [About](https://hsraep.org/about.html): Purpose, origin, founder, editorial standards, and corrections policy.
 
 ## Applied initiative

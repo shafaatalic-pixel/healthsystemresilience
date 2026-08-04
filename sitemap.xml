@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://hsraep.org/films.html</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -107,6 +107,60 @@
     <lastmod>2026-08-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/how-earthquakes-trigger-economic-collapse.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/why-health-spending-is-economic-infrastructure.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/how-out-of-pocket-healthcare-drains-economies.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/how-medical-debt-functions-as-a-disease.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/why-health-spending-is-economic-infrastructure-michigan.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/why-confusing-health-messaging-bankrupts-the-system.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/public-health-workforce-crisis-economic-cost.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/upstream-prevention-health-as-economic-infrastructure.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hsraep.org/transcripts/why-public-health-is-economic-infrastructure.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 <url><loc>https://hsraep.org/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 <url><loc>https://hsraep.org/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

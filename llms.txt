@@ -16,6 +16,7 @@
 - [Films & explainers](https://hsraep.org/films.html): Short and long-form video and infographic explainers of the arguments.
 - Film transcripts: each of the nine Season 1 films has its own transcript page at https://hsraep.org/transcripts/<film-slug>.html, with the full spoken text, timed captions and a downloadable .vtt file. Every film card on the films page links to its transcript.
 - [About](https://hsraep.org/about.html): Purpose, origin, founder, editorial standards, and corrections policy.
+- [Corrections](https://hsraep.org/corrections.html): Every correction HSREP has issued, each with its date, what changed, and where the change sits. Ten items from the 3 August 2026 source check are listed.
 
 ## Applied initiative
 

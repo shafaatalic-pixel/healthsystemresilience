@@ -509,7 +509,7 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 <style id="hsrep-execlayer">
 #rprog{position:fixed;top:0;left:0;height:3px;background:#F26D5A;width:0;z-index:9999}
 .exec-layer{background:#F2F5F8;padding:44px 24px;border-bottom:1px solid #E1E7EE}
-.exec-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:26px}
+.exec-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:stretch}
 @media(max-width:820px){.exec-wrap{grid-template-columns:1fr;gap:18px}}
 .exec-sum,.exec-role{background:#fff;border:1px solid #DCE3EA;border-radius:14px;padding:22px 24px}
 .exec-sum{border-left:4px solid #F26D5A}
@@ -518,7 +518,7 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 .es-status{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#F26D5A}
 .es-rows>div{display:grid;grid-template-columns:86px 1fr;gap:14px;padding:9px 0;border-top:1px solid #F3F5F8}
 .es-rows>div:first-child{border-top:0}
-.es-rows dt{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A94A2;padding-top:2px;margin:0}
+.es-rows dt{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A94A2;padding-top:2px;margin:0;overflow-wrap:anywhere;hyphens:none}
 .es-rows dd{margin:0;font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.5;color:#2b3540}
 .es-rows dd b{color:#1C2E4A}
 .er-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1C2E4A;margin-bottom:14px;border-bottom:1px solid #EEF1F4;padding-bottom:11px}
@@ -553,6 +553,217 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 .step .sn{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#F26D5A;letter-spacing:.12em;margin-bottom:8px}
 .step h3{font-size:16px;margin:0 0 6px}
 .step p{font-size:12.8px;line-height:1.5;color:#5a6574;margin:0}
+.costmini{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:13.5px;margin:2px 0 9px}
+.costmini th,.costmini td{text-align:right;padding:5px 0 5px 12px;border-bottom:1px solid #F3F5F8}
+.costmini thead th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A94A2;font-weight:400;border-bottom:1px solid #E6EBF0}
+.costmini tbody th{text-align:left;font-weight:500;color:#3a4550;padding-left:0;line-height:1.4}
+.costmini tbody td{font-family:'IBM Plex Mono',monospace;font-size:14px;color:#2b3540;white-space:nowrap}
+.costmini tbody td b{color:#1C2E4A;font-weight:600}
+.costmini tbody tr:last-child th,.costmini tbody tr:last-child td{border-bottom:0}
+.costnote{font-family:'Inter',sans-serif;font-size:12px;line-height:1.5;color:#65717E;margin:0}
+@media(max-width:560px){.costmini{font-size:12.5px}
+.costmini th,.costmini td{padding-left:8px}
+.costmini tbody td{font-size:13px}
+.costmini thead th{font-size:9px;letter-spacing:.06em}}
+.demoex{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:start}
+@media(max-width:900px){.demoex{grid-template-columns:1fr;gap:24px}}
+.demoshot{display:block;border:1px solid #DCE3EA;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(28,46,74,.10);position:relative;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.demoshot:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(28,46,74,.16)}
+.dsbar{background:#0F2036;color:#C9D6E4;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;line-height:1.55}
+.demoshot img{display:block;width:100%;height:auto}
+.dshover{position:absolute;right:14px;bottom:14px;background:#1C2E4A;color:#fff;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;padding:9px 16px;border-radius:999px;box-shadow:0 6px 18px rgba(15,32,54,.28);opacity:0;transform:translateY(6px);transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.demoshot:hover .dshover,.demoshot:focus-visible .dshover{opacity:1;transform:none}
+@media(hover:none){.dshover{opacity:1;transform:none}}
+.dsl{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A94A2;margin:0 0 13px}
+.dslist{margin:0 0 20px;padding:0;list-style:none;counter-reset:ds}
+.dslist li{counter-increment:ds;position:relative;padding-left:31px;margin-bottom:13px;font-family:'Inter',sans-serif;font-size:13.8px;line-height:1.55;color:#3a4550}
+.dslist li:before{content:counter(ds);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:#1C2E4A;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;display:flex;align-items:center;justify-content:center}
+.dslist b{color:#1C2E4A}
+.dsnote{font-family:'Inter',sans-serif;font-size:12px;line-height:1.55;color:#65717E;margin:15px 0 0}
+.dsnote a{color:#C7442F}.exec-pick{grid-column:1/-1;background:#fff;border:1px solid #DCE3EA;border-radius:14px;padding:16px 20px 16px}.ep-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px;border-bottom:1px solid #EEF1F4;padding-bottom:11px}.ep-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1C2E4A}.ep-hint{font-family:'Inter',sans-serif;font-size:12.5px;line-height:1.5;color:#65717E}.ep-groups .er-chips-grp{display:flex;align-items:flex-start;gap:18px;margin-bottom:10px}.ep-groups .er-chips-grp:last-child{margin-bottom:0}.ep-groups .er-gh{flex:0 0 152px;margin:0;padding-top:9px;white-space:nowrap}.ep-groups .er-chips{flex:1 1 auto;margin-bottom:0}@media(max-width:820px){.ep-groups .er-chips-grp{display:block;margin-bottom:13px}.ep-groups .er-gh{margin-bottom:9px;padding-top:0}}.er-label{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}.er-role-now{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none;color:#65717E}.er-panel .wayrow{margin-top:16px;padding-top:16px;border-top:1px solid #F3F5F8}.er-panel .wayrow .pbtn{margin-top:2px}.pbtn{display:inline-flex;align-items:center;gap:9px;background:#1C2E4A;color:#fff;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;padding:11px 18px;border-radius:6px;text-decoration:none;transition:background .16s var(--ease),transform .16s var(--ease)}.pbtn:hover{background:#0F2036;transform:translateY(-1px)}.pbtn .ar{transition:transform .18s var(--ease)}.pbtn:hover .ar{transform:translateX(3px)}
+.gapfig{margin:2px 0 0}
+.gf{margin-bottom:14px}
+.gfh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+.gft{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:#3a4550;line-height:1.35}
+.gfv{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#1C2E4A;white-space:nowrap}
+.gfb{position:relative;height:9px;border-radius:5px;background:#E6EBF0}
+.gfb .fill,.gfb .rng{position:absolute;top:0;bottom:0;border-radius:5px;width:var(--w)}
+.gfb .fill{left:0;background:#1C2E4A}
+.gfb .rng{background:#FBC9BF;border:1px solid #F26D5A;box-sizing:border-box}
+.gfb .tgt{position:absolute;top:-4px;bottom:-4px;width:2px;background:#65717E;border-radius:1px}
+.gfn{font-family:'Inter',sans-serif;font-size:11.5px;line-height:1.45;color:#65717E;margin-top:6px}
+.gfkey{font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.5;color:#3a4550;margin:0}
+.gfkey b{color:#1C2E4A}
+.mapfig{margin:2px 0 10px;border-top:1px solid #F3F5F8}
+.mf{display:grid;grid-template-columns:auto 16px 1fr;align-items:start;gap:0 10px;padding:10px 0;border-bottom:1px solid #F3F5F8}
+.mfa{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:#1C2E4A;line-height:1.4;max-width:170px}
+.mfr{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C7442F;line-height:1.4;text-align:center}
+.mfb{font-family:'Inter',sans-serif;font-size:13px;color:#3a4550;line-height:1.5}
+@media(max-width:560px){.mf{grid-template-columns:1fr;gap:3px}.mfr{display:none}.mfa{max-width:none}}
+.esnote{font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;color:#3a4550;margin:0}
+.esnote b{color:#1C2E4A}
+.exec-right{display:flex;flex-direction:column;gap:26px;min-width:0}
+.exec-role{flex:0 0 auto}
+.exec-loop{flex:1 1 auto;display:flex;flex-direction:column}
+.el-steps{flex:1 1 auto;display:flex;flex-direction:column}
+.el-steps li:not(:last-child){flex:1 1 auto}
+.el-steps li>div{flex:1 1 auto}
+@media(max-width:820px){.exec-right{gap:18px}}
+.exec-loop{background:#1C2E4A;border-radius:14px;padding:22px 24px 20px;color:#dfe7f1}
+.el-head{border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:12px;margin-bottom:3px}
+.el-label{display:block;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.el-sub{display:block;font-family:'Inter',sans-serif;font-size:12.5px;line-height:1.5;color:#9fb0c6;margin-top:5px}
+.el-steps{list-style:none;margin:0;padding:0;position:relative}
+.el-steps li:not(:last-child):after{content:'';position:absolute;left:13px;top:38px;bottom:-11px;width:1px;background:rgba(242,109,90,.45);transform-origin:top}
+.el-steps li{display:flex;gap:14px;padding:11px 0 0;position:relative}
+.els{flex:0 0 27px;width:27px;height:27px;border-radius:50%;background:#0F2036;border:1px solid rgba(242,109,90,.55);color:#F26D5A;font-family:'IBM Plex Mono',monospace;font-size:10.5px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.el-steps li>div{font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;color:#b9c7d8;padding-top:3px}
+.el-steps li>div b{display:block;font-family:'Spectral',Georgia,serif;font-size:15.5px;font-weight:700;color:#fff;margin-bottom:2px}
+.el-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;padding-top:13px;border-top:1px solid rgba(255,255,255,.14)}
+.el-loopback{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8fa2ba}
+.el-link{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#F26D5A;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.el-link:hover{text-decoration:underline}
+.el-link .ar{transition:transform .18s var(--ease)}
+.el-link:hover .ar{transform:translateX(3px)}
+.sysp{margin-top:32px}
+.sysp-bar{position:relative;overflow:hidden;border-radius:var(--r-md);background:var(--navy);color:#fff;padding:13px 20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+.sysp-fill{position:absolute;inset:0;background:var(--navy);transform-origin:left;z-index:0}
+.sysp-bar b{position:relative;z-index:1;font-family:var(--font-body);font-size:13px;font-weight:600}
+.sysp-bar em{position:relative;z-index:1;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#F26D5A}
+.sysp-grid{display:grid;grid-template-columns:150px 1fr 1fr;column-gap:26px;margin-top:6px}
+.sysp-grid>div{padding:14px 0;border-bottom:1px solid var(--hairline)}
+.sysp-lab{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:17px!important}
+.sysp-hd{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--heading);border-bottom:1px solid var(--navy)!important;padding-bottom:9px!important}
+.sysp-c{font-family:var(--font-body);font-size:13px;line-height:1.6;color:#3a4550}
+.sysp-c b{font-weight:600;color:var(--heading)}
+@media(max-width:820px){
+.sysp-grid{grid-template-columns:1fr;column-gap:0}
+.sysp-lab{padding:18px 0 0!important;border-bottom:0!important}
+.sysp-hd{display:none}
+.sysp-c{position:relative;padding:10px 0 12px 0}
+.sysp-grid>div.sysp-c:before{content:attr(data-s);display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8b96a2;margin-bottom:4px}
+}
+.fx.anim .sysp-fill{transform:scaleX(0);transition:transform .8s var(--ease)}
+.fx.anim.go .sysp-fill{transform:scaleX(1)}
+.fx.anim .sysp-bar{background:transparent;box-shadow:inset 0 0 0 1px var(--hairline)}
+.fx.anim .sysp-bar b,.fx.anim .sysp-bar em{opacity:0;transition:opacity .4s var(--ease) .5s}
+.fx.anim.go .sysp-bar b,.fx.anim.go .sysp-bar em{opacity:1}
+.fx.anim .sysp-grid>div{opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.fx.anim.go .sysp-grid>div{opacity:1;transform:none}
+.fx.anim.go .sysp-grid>div:nth-child(n+4){transition-delay:.2s}
+.fx.anim.go .sysp-grid>div:nth-child(n+7){transition-delay:.32s}
+.fx.anim.go .sysp-grid>div:nth-child(n+10){transition-delay:.44s}
+.fx.anim.go .sysp-grid>div:nth-child(n+13){transition-delay:.56s}
+.lring{display:grid;grid-template-columns:352px 1fr;gap:46px;align-items:center;margin-top:34px}
+.lr-fig{position:relative;width:352px;height:352px}
+.lr-fig svg{width:100%;height:100%;display:block;overflow:visible}
+.lr-track{fill:none;stroke:rgba(255,255,255,.13);stroke-width:1.5}
+.lr-arc{fill:none;stroke:#F26D5A;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:160.79 530.36;stroke-dashoffset:0}
+.lr-node,.lr-arrow{fill:#F26D5A}
+.lr-num{fill:#8fa3ba;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em}
+.lr-word{fill:#fff;font-family:'Spectral',Georgia,serif;font-size:16px;font-weight:700}
+.lr-mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.lr-mid b{font-family:'Spectral',Georgia,serif;font-size:17px;font-weight:700;color:#fff;line-height:1.3;max-width:140px}
+.lr-mid span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8fa3ba;margin-top:9px}
+.lr-list{list-style:none;margin:0;padding:0}
+.lr-list li{display:flex;gap:16px;padding:15px 0;border-top:1px solid rgba(255,255,255,.1)}
+.lr-list li:first-child{border-top:0;padding-top:0}
+.lrn{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;color:#F26D5A;padding-top:5px;flex:0 0 auto}
+.lr-list b{display:block;font-family:'Spectral',Georgia,serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
+.lr-list p{font-family:'Inter',sans-serif;font-size:13px;line-height:1.6;color:#c3d0de;margin:0}
+.lr-again{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8fa3ba;margin:16px 0 0;padding-left:38px}
+.pillintro{font-family:'Inter',sans-serif;font-size:13.5px;color:#9fb2c9;margin:38px 0 16px}
+.pillacc .n i{font-style:normal;color:#F26D5A}
+@media(max-width:900px){.lring{grid-template-columns:1fr;gap:30px}.lr-fig{width:min(300px,86vw);height:min(300px,86vw);margin:0 auto}.lr-again{padding-left:0}}
+.fx.anim .lr-arc{stroke-dashoffset:160.79;transition:stroke-dashoffset .75s var(--ease)}
+.fx.anim.go .lr-arc{stroke-dashoffset:0}
+.fx.anim.go .lr-a2{transition-delay:.18s}
+.fx.anim.go .lr-a3{transition-delay:.36s}
+.fx.anim.go .lr-a4{transition-delay:.54s}
+.fx.anim .lr-node,.fx.anim .lr-arrow,.fx.anim .lr-lab,.fx.anim .lr-mid{opacity:0;transition:opacity .4s var(--ease)}
+.fx.anim.go .lr-node,.fx.anim.go .lr-arrow,.fx.anim.go .lr-lab,.fx.anim.go .lr-mid{opacity:1}
+.fx.anim.go .lr-node,.fx.anim.go .lr-arrow{transition-delay:.66s}
+.fx.anim.go .lr-lab{transition-delay:.8s}
+.fx.anim.go .lr-mid{transition-delay:.9s}
+.fx.anim .lr-list li{opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.fx.anim.go .lr-list li{opacity:1;transform:none}
+.fx.anim.go .lr-list li:nth-child(1){transition-delay:.15s}
+.fx.anim.go .lr-list li:nth-child(2){transition-delay:.33s}
+.fx.anim.go .lr-list li:nth-child(3){transition-delay:.51s}
+.fx.anim.go .lr-list li:nth-child(4){transition-delay:.69s}
+.fid{margin:30px 0 0;padding:0}
+.fidcap{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#1C2E4A;margin-bottom:30px}
+.fidplot{position:relative;height:96px}
+.fidbase{position:absolute;left:0;right:0;bottom:26px;height:14px;border-radius:7px;background:#E6EBF0}
+.fidband{position:absolute;bottom:26px;left:var(--l);width:var(--w);height:14px;border-radius:7px;background:#FBC9BF;border:1px solid #F26D5A;box-sizing:border-box;transform-origin:left}
+.fidzero{position:absolute;bottom:18px;left:var(--l);width:1px;height:30px;background:#B9C3CE}
+.fidpin{position:absolute;bottom:22px;left:var(--l);width:2px;height:44px;background:#1C2E4A}
+.fidpin:after{content:'';position:absolute;left:-3px;top:-4px;width:8px;height:8px;border-radius:50%;background:#1C2E4A}
+.fidpin.ev{background:#9AA6B2}
+.fidpin.ev:after{background:#9AA6B2}
+.fpl{position:absolute;bottom:52px;left:1px;transform:translateX(-50%);white-space:nowrap;font-family:'Inter',sans-serif;font-size:11.5px;line-height:1.35;color:#65717E;text-align:center}
+.fpl b{display:block;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#1C2E4A;margin-top:2px}
+.fidpin.ev .fpl b{color:#65717E}
+.fidax{position:relative;height:18px;margin-top:2px}
+.fidax span{position:absolute;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8b96a2}
+.fidnote{font-family:'Inter',sans-serif;font-size:12.5px;line-height:1.6;color:#3a4550;margin:12px 0 0;max-width:78ch}
+@media(max-width:640px){.fidcap{margin-bottom:58px}.fpl{font-size:10.5px;white-space:normal;width:104px}.fpl b{font-size:14px}.fidpin.ev .fpl{left:auto;right:1px;transform:none;text-align:right}.fidax span:last-child{transform:translateX(-88%)}}
+.fx.anim .fidband{transform:scaleX(0);transition:transform .85s var(--ease) .05s}
+.fx.anim.go .fidband{transform:scaleX(1)}
+.fx.anim .fidpin{opacity:0;transform:translateY(7px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.fx.anim.go .fidpin{opacity:1;transform:none}
+.fx.anim.go .fidpin.av{transition-delay:.72s}
+.fx.anim.go .fidpin.ev{transition-delay:.92s}
+.fx.anim .gvbar,.fx.anim .gvband{width:0}
+.fx.anim.go .gvbar,.fx.anim.go .gvband{width:var(--w)}
+.fx.anim .gvtgt{opacity:0;transition:opacity .5s var(--ease) .85s}
+.fx.anim.go .gvtgt{opacity:.55}
+
+.ptl{margin:30px 0 0}
+.ptl-ph,.ptl-stops{display:grid;grid-template-columns:1.05fr 1.05fr 1.15fr 1.45fr .95fr .95fr 1.05fr;gap:0 14px}
+.ptl-ph{margin-bottom:12px}
+.ptl-ph .p{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#65717E;border-top:1px solid #DCE3EA;border-left:1px solid #DCE3EA;padding:7px 0 0 9px}
+.ptl-stops{list-style:none;margin:0;padding:0;position:relative}
+.ptl-stops:before{content:'';position:absolute;left:5px;right:6px;top:5px;height:1px;background:#DCE3EA;transform-origin:left}
+.ptl-stops li{position:relative;padding-top:22px}
+.ptl-dot{position:absolute;top:0;left:0;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid #1C2E4A;box-sizing:border-box}
+.ptl-stops li.key .ptl-dot{background:#C7442F;border-color:#C7442F}
+.ptl-when{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8b96a2;margin-bottom:4px}
+.ptl-stops li.key .ptl-when{color:#C7442F}
+.ptl-stops li b{display:block;font-family:'Spectral',Georgia,serif;font-size:16px;font-weight:700;color:#1C2E4A;line-height:1.25;margin-bottom:5px}
+.ptl-stops li p{font-family:'Inter',sans-serif;font-size:12.5px;line-height:1.55;color:#3a4550;margin:0}
+.fx.anim .ptl-stops:before{transform:scaleX(0);transition:transform .9s var(--ease)}
+.fx.anim.go .ptl-stops:before{transform:scaleX(1)}
+.fx.anim .ptl-ph .p,.fx.anim .ptl-stops li{opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.fx.anim.go .ptl-ph .p,.fx.anim.go .ptl-stops li{opacity:1;transform:none}
+.fx.anim.go .ptl-stops li:nth-child(1){transition-delay:0.12s}
+.fx.anim.go .ptl-stops li:nth-child(2){transition-delay:0.21s}
+.fx.anim.go .ptl-stops li:nth-child(3){transition-delay:0.29s}
+.fx.anim.go .ptl-stops li:nth-child(4){transition-delay:0.38s}
+.fx.anim.go .ptl-stops li:nth-child(5){transition-delay:0.46s}
+.fx.anim.go .ptl-stops li:nth-child(6){transition-delay:0.55s}
+.fx.anim.go .ptl-stops li:nth-child(7){transition-delay:0.63s}
+.fx.anim.go .ptl-ph .p{transition-delay:.62s}
+@media(max-width:860px){
+.ptl-ph{display:none}
+.ptl-stops{grid-template-columns:1fr;gap:0}
+.ptl-stops:before{left:5px;right:auto;top:6px;bottom:16px;height:auto;width:1px;transform-origin:top}
+.ptl-stops li{padding:0 0 18px 26px}
+.ptl-dot{top:1px}
+.fx.anim .ptl-stops:before{transform:scaleY(0)}
+.fx.anim.go .ptl-stops:before{transform:scaleY(1)}
+}
+
+.exec-layer.anim .gfb .fill,.exec-layer.anim .gfb .rng{width:0;transition:width .95s var(--ease) .05s}
+.exec-layer.anim.go .gfb .fill,.exec-layer.anim.go .gfb .rng{width:var(--w)}
+.exec-layer.anim .el-steps li{opacity:0;transform:translateY(9px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.exec-layer.anim.go .el-steps li{opacity:1;transform:none}
+.exec-layer.anim.go .el-steps li:nth-child(1){transition-delay:.10s}
+.exec-layer.anim.go .el-steps li:nth-child(2){transition-delay:.24s}
+.exec-layer.anim.go .el-steps li:nth-child(3){transition-delay:.38s}
+.exec-layer.anim.go .el-steps li:nth-child(4){transition-delay:.52s}
+.exec-layer.anim .el-steps li:not(:last-child):after{transform:scaleY(0);transition:transform .5s var(--ease)}
+.exec-layer.anim.go .el-steps li:not(:last-child):after{transform:scaleY(1)}
 .receipt .rn{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:var(--navy,#1C2E4A);margin-bottom:6px}
 .receipt .rp{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#F26D5A;margin-top:10px}
 .honest{display:inline-flex;align-items:center;gap:8px;border:1px solid #DCE3EA;border-radius:999px;padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#65717E;margin-top:22px}
@@ -603,6 +814,18 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 .er-gh.e{color:#65717E}.er-gh.e .gd{background:#C9D2DC}
 </style>
 <style id="hs-shead-stack">.shead .top:has(.lead){flex-direction:column;align-items:flex-start;gap:0}</style>
+<style id="hs-align-fix">
+/* § 06 — credibility callout spans the full card row above it */
+.callout.wide{margin-top:22px}
+.callout.wide .t{columns:2;column-gap:38px;font-size:1.02rem}
+@media(max-width:820px){.callout.wide .t{columns:1}}
+/* § 05 — demo snapshot fills the column so both bottoms land together */
+.demoex{align-items:stretch}
+.demoshot{display:flex;flex-direction:column;overflow:hidden}
+.demoshot img{flex:1 1 0;height:0;min-height:0;width:100%;object-fit:cover;object-position:top center}
+.demoshot:after{content:'';position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 82%);pointer-events:none}
+@media(max-width:900px){.demoex{align-items:start}.demoshot img{flex:0 0 auto;height:auto;aspect-ratio:1156/700}.demoshot:after{height:48px}}
+</style>
 <style id="hs-phero-fix">.phero .wrap{position:relative;z-index:1}.phero .crest{pointer-events:none;z-index:0}</style>
 <link rel="manifest" href="/site.webmanifest"><style id="hs-social">footer .folw{margin-top:18px}footer .folw .fll{display:block;font-family:var(--font-mono,ui-monospace,SFMono-Regular,Menlo,monospace);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8EA1B8;margin-bottom:9px}footer .folw .fl-row{display:flex;gap:9px}footer .folw a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#DCE5EF;margin:0;padding:0;text-decoration:none;transition:background .16s,border-color .16s,color .16s,transform .16s}footer .folw a svg{width:16px;height:16px;fill:currentColor}footer .folw a:hover,footer .folw a:focus-visible{transform:translateY(-2px);color:#fff}footer .folw a.li:hover,footer .folw a.li:focus-visible{background:#0A66C2;border-color:#0A66C2}footer .folw a.fb:hover,footer .folw a.fb:focus-visible{background:#1877F2;border-color:#1877F2}footer.foot .folw{margin-top:0;display:flex;align-items:center;gap:11px}footer.foot .folw .fll{margin:0;color:#9FB0C4;font-size:9.5px}footer.foot .folw a{width:34px;height:34px}@media(max-width:640px){footer.foot .folw .fll{display:none}}@media(prefers-reduced-motion:reduce){footer .folw a{transition:none}footer .folw a:hover{transform:none}}</style></head><body><a href="#main" class="skip-link">Skip to content</a>
 <header class="site"><div class="wrap"><div class="row">
@@ -621,86 +844,42 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 </div></section>
 
 <section class="exec-layer"><div class="exec-wrap">
+<div class="exec-pick">
+<div class="ep-head"><span class="ep-label">Which one are you?</span><span class="ep-hint">Pick one to see what this means for you.</span></div>
+<div class="ep-groups"><div class="er-chips-grp"><div class="er-gh us"><span class="gd"></span>United States</div><div class="er-chips"><button type="button" data-role="fqhc" class="er-chip">Health Center / FQHC</button><button type="button" data-role="system" class="er-chip">Health system / Pop. health</button><button type="button" data-role="plan" class="er-chip">Health plan / MCO</button></div></div><div class="er-chips-grp"><div class="er-gh bd"><span class="gd"></span>Bangladesh</div><div class="er-chips"><button type="button" data-role="private" class="er-chip">Private network</button><button type="button" data-role="publicbd" class="er-chip">Public program</button></div></div><div class="er-chips-grp"><div class="er-gh e"><span class="gd"></span>Either context</div><div class="er-chips"><button type="button" data-role="research" class="er-chip">Public-health researcher</button><button type="button" data-role="funder" class="er-chip">Funder / Partner</button><button type="button" data-role="association" class="er-chip">Association / Coalition</button><button type="button" data-role="community" class="er-chip">Community member</button></div></div></div>
+</div>
 <div class="exec-sum">
-<div class="es-head"><span class="es-label">The pitch in 30 seconds</span><span class="es-status">Proposed &middot; in development</span></div>
+<div class="es-head"><span class="es-label">The short version</span><span class="es-status">Proposed &middot; in development</span></div>
 <dl class="es-rows">
-<div><dt>Problem</dt><dd>U.S. colorectal-cancer screening sits at <b>63.5% against a 72.8% target</b>, ~45% in FQHCs. And it fails twice: only <b>24-75%</b> of positive stool tests get the follow-up colonoscopy that turns a warning into a diagnosis. The services work; <b>completion</b> is what fails.</dd></div>
-<div><dt>Solution</dt><dd>A proposed <b>disease-agnostic completion engine</b>: it finds who&rsquo;s overdue, removes friction, and drives follow-through, with an explainable, fairness-audited dashboard.</dd></div>
-<div><dt>Evidence</dt><dd>Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16pp, reminders +15pp, navigation +14pp). One honest limitation: real-world gains depend on <b>implementation fidelity</b>, which this design exists to protect.</dd></div>
-<div><dt>Cost-effectiveness</dt><dd><b>$54.83</b> in direct program cost per patient screened in a published mailed-FIT trial (Pignone et al., <i>JGIM</i> 2021; $72.90 including overhead). That equals cost per <i>additional</i> person screened only where background screening is near zero; at 5% background the same paper reports $67.05 direct and $91.47 total. The funding model is discussed with each partner.</dd></div>
+<div><dt>Problem</dt><dd><div class="gapfig"><div class="gf"><div class="gfh"><span class="gft">Adults 45&ndash;75 up to date on screening</span><span class="gfv">63.5%</span></div><div class="gfb"><span class="fill" style="--w:63.5%"></span><span class="tgt" style="left:72.8%"></span></div><div class="gfn">National target 72.8% (marked). FQHC average ~45%.</div></div><div class="gf"><div class="gfh"><span class="gft">Positive stool tests that get the colonoscopy</span><span class="gfv">24&ndash;75%</span></div><div class="gfb"><span class="rng" style="left:24%;--w:51%"></span></div><div class="gfn">A reported range, not a settled figure. NCQA has proposed a HEDIS measure to close it.</div></div><p class="gfkey">Screening fails twice, and the second failure is the one that costs a life. The services work; <b>completion is what fails</b>.</p></div></dd></div>
+<div><dt>Solution</dt><dd><div class="mapfig"><div class="mf"><span class="mfa">Never screened</span><span class="mfr">&rarr;</span><span class="mfb">A mailed kit and reminders, aimed first at whoever is least likely to finish.</span></div><div class="mf"><span class="mfa">Positive test, no colonoscopy</span><span class="mfr">&rarr;</span><span class="mfb">Navigation, and time-to-colonoscopy tracked until the result is closed.</span></div></div><p class="esnote">One proposed <b>disease-agnostic completion engine</b> covers both gaps, on an explainable, fairness-audited dashboard. The weekly loop it runs is set out under &ldquo;How it works.&rdquo;</p></dd></div>
+<div><dt>Evidence</dt><dd><table class="costmini"><thead><tr><th scope="col"></th><th scope="col">Median increase</th></tr></thead><tbody><tr><th scope="row">Mailed FIT outreach</th><td><b>+16pp</b></td></tr><tr><th scope="row">Reminders</th><td><b>+15pp</b></td></tr><tr><th scope="row">Patient navigation</th><td><b>+14pp</b></td></tr></tbody></table><p class="costnote">All three already carry a Community Preventive Services Task Force recommendation. Nothing here needs a new intervention invented. One honest limitation: real-world gains depend on <b>implementation fidelity</b>, which this design exists to protect.</p></dd></div>
+<div><dt>Cost</dt><dd><table class="costmini"><thead><tr><th scope="col"></th><th scope="col">Direct</th><th scope="col">With overhead</th></tr></thead><tbody><tr><th scope="row">Per patient screened</th><td><b>$54.83</b></td><td>$72.90</td></tr><tr><th scope="row">Per <i>additional</i> patient screened</th><td><b>$67.05</b></td><td>$91.47</td></tr></tbody></table><p class="costnote">Mailed-FIT outreach, Pignone et al., <i>JGIM</i> 2021. The second row assumes 5% of the panel would have been screened anyway; where background screening is near zero the two rows are the same number. Funding is discussed with each partner.</p></dd></div>
 <div><dt>The ask</dt><dd>One clinic to run a pre-registered <b>12-month pilot</b>; partners to scale it.</dd></div>
 </dl>
 </div>
+<div class="exec-right">
 <div class="exec-role">
-<div class="er-label">Which one are you?</div>
-<div class="er-chips-grp"><div class="er-gh us"><span class="gd"></span>United States</div><div class="er-chips"><button type="button" data-role="fqhc" class="er-chip">Health Center / FQHC</button><button type="button" data-role="system" class="er-chip">Health system / Pop. health</button><button type="button" data-role="plan" class="er-chip">Health plan / MCO</button></div></div><div class="er-chips-grp"><div class="er-gh bd"><span class="gd"></span>Bangladesh</div><div class="er-chips"><button type="button" data-role="private" class="er-chip">Private network</button><button type="button" data-role="publicbd" class="er-chip">Public program</button></div></div><div class="er-chips-grp"><div class="er-gh e"><span class="gd"></span>Either context</div><div class="er-chips"><button type="button" data-role="research" class="er-chip">Public-health researcher</button><button type="button" data-role="funder" class="er-chip">Funder / Partner</button><button type="button" data-role="association" class="er-chip">Association / Coalition</button><button type="button" data-role="community" class="er-chip">Community member</button></div></div>
-<div class="er-panels"><div class="er-panel" data-role="fqhc"><h4>Improve a measure you already report</h4><div class="pr"><span class="pl">Why you</span><span class="pv">CRC completion is a UDS measure you report every year, and the national FQHC average is ~45% (Michigan: 48.74%, CY2025 UDS).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Not a new program: a fidelity loop that runs inside your existing staffing, your clinical team in the lead.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Host the 12-month pilot (step 1: MOU + baseline) &rarr;</a></span></div></div><div class="er-panel" data-role="system"><h4>Move a system measure with a fidelity-first loop</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Your population-health team owns HEDIS COL and value-based targets, and soon, follow-up-after-positive completion.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop instruments execution (who was reached, what closed) not just outcomes, so gains hold across sites.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Pilot in one clinic; scale through the system &rarr;</a></span></div></div><div class="er-panel" data-role="plan"><h4>Move the measure you're already paid on</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Colorectal cancer screening (COL) has been in the CMS Medicaid Adult Core Set since 2022, and managed-care contracts commonly tie Core Set performance to a quality withhold or incentive payment. NCQA has proposed the follow-up measure itself (COF-E, HEDIS MY2027: colonoscopy within 180 days of a positive test).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A published mailed-FIT cost benchmark, $54.83 direct per patient screened (Pignone 2021), equity-stratified, run inside your network's clinics.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Sponsor a network-clinic pilot &rarr;</a></span></div></div><div class="er-panel" data-role="research"><h4>Co-design a publishable pilot</h4><div class="pr"><span class="pl">Why you</span><span class="pv">A pre-registered stepped-wedge / RE-AIM evaluation of completion fidelity in a safety-net site, implementation science's live question.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Protocol-first publication, rigor built in from day one, co-authorship on the table.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Co-design the protocol (step 2: baseline) &rarr;</a></span></div></div><div class="er-panel" data-role="funder"><h4>Fund a cost-effective, scalable model</h4><div class="pr"><span class="pl">Why you</span><span class="pv">A published mailed-FIT cost benchmark, $54.83 direct per patient screened (Pignone 2021), equity-stratified, with a named post-grant sustainability path.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">You fund execution infrastructure that outlasts the grant, not another one-off program. In Bangladesh: a donor-supported implementation-research pilot inside the national screening program.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Fund the demonstration; scale what works &rarr;</a></span></div></div><div class="er-panel" data-role="association"><h4>Bring a measurable completion model to your members</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Your member sites report these measures, and most face the same completion gap.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A turnkey, evidence-based package members run inside existing staffing, with the fidelity discipline included.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Introduce one member site; replicate what works &rarr;</a></span></div></div><div class="er-panel" data-role="private"><h4>Raise entry-test &rarr; package conversion</h4><div class="pr"><span class="pl">Why you</span><span class="pv">You already run entry-level test campaigns. The leak is conversion: price shock at the next step, urgency that never lands, and second-visit logistics.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop attacks all three: transparent bundled next-step pricing, literacy-tailored urgency communication, one-visit and home-collection logistics. An operational lesson from inside a private network: coverage alone doesn't complete care; a designed loop does.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Pilot in one facility &rarr;</a></span></div></div><div class="er-panel" data-role="publicbd"><h4>Strengthen a program that already exists</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Bangladesh's national screening program has reach and a registry (roughly 14,000 community clinics on e-HIS as of 2019) yet its own evaluation found only 40.4% of VIA-positive women attended for colposcopy between January 2018 and May 2023 (Nessa et al., <i>BMC Global and Public Health</i> 2025;3:34).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Embed, don't build: the completion loop plugs into the registry and clinics you already run, DGHS NCDC, NCCBCST, and the Community Clinic Health Support Trust, piloted in a few upazilas.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="#host">Pilot the loop in a few upazilas &rarr;</a></span></div></div><div class="er-panel" data-role="community"><h4>Care that reaches you, honestly</h4><div class="pr"><span class="pl">Why you</span><span class="pv">This work exists so recommended care actually reaches people, with dignity, in plain language.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">No data exploitation, explainable decisions, and honest limits, by design.</span></div><div class="pr"><span class="pl">Way in</span><span class="pv"><a class="wayin" href="https://buttondown.com/shafaat">Follow the work, join the newsletter &rarr;</a></span></div></div></div>
+<div class="er-label">What this means for you <span class="er-role-now" id="erNow"></span></div>
+<div class="er-panels"><div class="er-panel" data-role="fqhc"><h4>Improve a measure you already report</h4><div class="pr"><span class="pl">Why you</span><span class="pv">CRC completion is a UDS measure you report every year, and the national FQHC average is ~45% (Michigan: 48.74%, CY2025 UDS).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Not a new program: a fidelity loop that runs inside your existing staffing, your clinical team in the lead.</span></div><div class="wayrow"><a class="pbtn" href="#host">Host the 12-month pilot (step 1: MOU + baseline) <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="system"><h4>Move a system measure with a fidelity-first loop</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Your population-health team owns HEDIS COL and value-based targets, and soon, follow-up-after-positive completion.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop instruments execution (who was reached, what closed) not just outcomes, so gains hold across sites.</span></div><div class="wayrow"><a class="pbtn" href="#host">Pilot in one clinic; scale through the system <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="plan"><h4>Move the measure you're already paid on</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Colorectal cancer screening (COL) has been in the CMS Medicaid Adult Core Set since 2022, and managed-care contracts commonly tie Core Set performance to a quality withhold or incentive payment. NCQA has proposed the follow-up measure itself (COF-E, HEDIS MY2027: colonoscopy within 180 days of a positive test).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A published mailed-FIT cost benchmark, $54.83 direct per patient screened (Pignone 2021), equity-stratified, run inside your network's clinics.</span></div><div class="wayrow"><a class="pbtn" href="#host">Sponsor a network-clinic pilot <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="research"><h4>Co-design a publishable pilot</h4><div class="pr"><span class="pl">Why you</span><span class="pv">A pre-registered stepped-wedge / RE-AIM evaluation of completion fidelity in a safety-net site, implementation science's live question.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Protocol-first publication, rigor built in from day one, co-authorship on the table.</span></div><div class="wayrow"><a class="pbtn" href="#host">Co-design the protocol (step 2: baseline) <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="funder"><h4>Fund a cost-effective, scalable model</h4><div class="pr"><span class="pl">Why you</span><span class="pv">A published mailed-FIT cost benchmark, $54.83 direct per patient screened (Pignone 2021), equity-stratified, with a named post-grant sustainability path.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">You fund execution infrastructure that outlasts the grant, not another one-off program. In Bangladesh: a donor-supported implementation-research pilot inside the national screening program.</span></div><div class="wayrow"><a class="pbtn" href="#host">Fund the demonstration; scale what works <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="association"><h4>Bring a measurable completion model to your members</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Your member sites report these measures, and most face the same completion gap.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A turnkey, evidence-based package members run inside existing staffing, with the fidelity discipline included.</span></div><div class="wayrow"><a class="pbtn" href="#host">Introduce one member site; replicate what works <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="private"><h4>Raise entry-test &rarr; package conversion</h4><div class="pr"><span class="pl">Why you</span><span class="pv">You already run entry-level test campaigns. The leak is conversion: price shock at the next step, urgency that never lands, and second-visit logistics.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop attacks all three: transparent bundled next-step pricing, literacy-tailored urgency communication, one-visit and home-collection logistics. An operational lesson from inside a private network: coverage alone doesn't complete care; a designed loop does.</span></div><div class="wayrow"><a class="pbtn" href="#host">Pilot in one facility <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="publicbd"><h4>Strengthen a program that already exists</h4><div class="pr"><span class="pl">Why you</span><span class="pv">Bangladesh's national screening program has reach and a registry (roughly 14,000 community clinics on e-HIS as of 2019) yet its own evaluation found only 40.4% of VIA-positive women attended for colposcopy between January 2018 and May 2023 (Nessa et al., <i>BMC Global and Public Health</i> 2025;3:34).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Embed, don't build: the completion loop plugs into the registry and clinics you already run, DGHS NCDC, NCCBCST, and the Community Clinic Health Support Trust, piloted in a few upazilas.</span></div><div class="wayrow"><a class="pbtn" href="#host">Pilot the loop in a few upazilas <span class="ar">&rarr;</span></a></div></div><div class="er-panel" data-role="community"><h4>Care that reaches you, honestly</h4><div class="pr"><span class="pl">Why you</span><span class="pv">This work exists so recommended care actually reaches people, with dignity, in plain language.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">No data exploitation, explainable decisions, and honest limits, by design.</span></div><div class="wayrow"><a class="pbtn" href="https://buttondown.com/shafaat">Follow the work, join the newsletter <span class="ar">&rarr;</span></a></div></div></div>
+</div>
+<div class="exec-loop">
+<div class="el-head"><span class="el-label">How it works</span><span class="el-sub">One loop, run every week. Colorectal cancer screening is the first test of it.</span></div>
+<ol class="el-steps"><li><span class="els">01</span><div><b>Find</b>Everyone overdue, plus every positive test still waiting on a colonoscopy.</div></li><li><span class="els">02</span><div><b>Rank</b>Score who is least likely to finish, and show the reasons behind each score.</div></li><li><span class="els">03</span><div><b>Act</b>Match the action to the barrier: a mailed kit, a reminder, navigation, or a community health worker.</div></li><li><span class="els">04</span><div><b>Close</b>Record completion and time-to-colonoscopy, and watch the equity gap so outreach never widens it.</div></li></ol>
+<div class="el-foot"><span class="el-loopback">Then it runs again next week</span><a class="el-link" href="dashboard-demo.html">See the loop running <span class="ar">&rarr;</span></a></div>
+</div>
 </div>
 </div></section>
-<section class="band"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 00</span> · In one breath</div></div>
-<div class="rich rv" style="max-width:80ch"></div>
-<div class="grid3 rv" style="margin-top:30px">
-<div class="gcard"><div class="n">WHAT</div><h3>A completion engine</h3><p>An installable toolkit, registry + friction removal + reminders + escalation, that makes recommended preventive care actually get finished. CRC first; disease-agnostic by design.</p></div>
-<div class="gcard" style="transition-delay:.06s"><div class="n">WHY</div><p style="margin-bottom:8px"><b style="font-family:var(--font-display);color:var(--heading);font-size:1.12rem">The failure is adoption, not science</b></p><p>Every lever is already recommended and cost-effective; what&rsquo;s missing is reliable execution in under-resourced settings, a measurable, economic problem.</p></div>
-<div class="gcard" style="transition-delay:.12s"><div class="n">HOW</div><h3>Prove it, then scale it</h3><p>A pre-registered single-site pilot with internal controls, an explainable AI dashboard, and a named sustainability path, then replicate across a network.</p></div>
-</div>
-<div class="cta rv" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="btn accent" href="dashboard-demo.html">See the live dashboard demo <span class="ar">&rarr;</span></a><a class="btn ghost" href="#host">Work with me on the pilot <span class="ar">&rarr;</span></a></div>
-</div></section>
-<section><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">&sect; 00b</span> &middot; What makes this different</div>
-<div class="top"><h2 class="sec">Not another intervention, the execution layer for the ones you already run.</h2>
-<div class="lead">Every lever here is already recommended and, in most systems, already attempted. The difference is what happens between recommendation and completion.</div></div></div>
-<div class="grid2x rv">
-<div class="gcard"><div class="n">01 &middot; COMPLETION, NOT INITIATION</div><h3>Designed around finishing</h3><p>The test returned, the positive followed up, the loop closed. Follow-up after a positive result, the measure NCQA has proposed for HEDIS MY2027 (COF-E: colonoscopy within 180 days of a positive test), is this initiative&rsquo;s core object, not an afterthought.</p></div>
-<div class="gcard"><div class="n">02 &middot; FIDELITY-FIRST</div><h3>Execution quality decides outcomes</h3><p>STOP CRC&rsquo;s range, &minus;7 to +18 points on the <em>same</em> intervention, shows fidelity is where results leak. The dashboard tracks whether each step actually happened, not just the end number.</p></div>
-<div class="gcard"><div class="n">03 &middot; DISEASE-AGNOSTIC</div><h3>Infrastructure, not a program</h3><p>CRC first; the same loop applies to cervical and breast screening, hypertension, and immunizations. One engine, many measures, and not only in the U.S.</p></div>
-<div class="gcard"><div class="n">04 &middot; EMBED, DON&rsquo;T BUILD</div><h3>Runs inside what exists</h3><p>Inside existing staffing, EHRs, and national programs. No parallel system, no new burden: the completed path becomes the easiest path.</p></div>
-</div>
-</div></section>
-<section class="band"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">&sect; 00c</span> &middot; Credibility</div>
-<div class="top"><h2 class="sec">The work already done.</h2>
-<div class="lead">Judge the initiative by what exists before the ask, not by claims.</div></div></div>
-<div class="grid2x rv">
-<div class="gcard receipt"><div class="rn">+34%</div><h3>Screening growth, operationally</h3><p>At a private healthcare network in Bangladesh, led the growth strategy that raised preventive screening utilization 34%, this exact class of metric, moved inside a real delivery system.</p><div class="rp">Proves &middot; operational delivery</div></div>
-<div class="gcard receipt"><div class="rn">2 countries</div><h3>A published evidence base</h3><p>An MPH capstone (Eastern Michigan University) examining health-system fragility and prevention across the U.S. and Bangladesh, published publicly as Season 1&rsquo;s nine-article argument.</p><div class="rp">Proves &middot; research grounding</div></div>
-<div class="gcard receipt"><div class="rn">57,274</div><h3>Attention on a $0 budget</h3><p>Season 1&rsquo;s advocacy campaign drew 57,274 verified impressions across two countries with no ad spend, 5.7&times; the target. Attention can be mobilized without a grant.</p><div class="rp">Proves &middot; mobilization</div></div>
-<div class="gcard receipt"><div class="rn">Built</div><h3>The engine, before the ask</h3><p>The completion loop, six pillars, evaluation approach, dashboard demo, and both country briefs are already designed and public, execution discipline shown before anyone is asked to commit.</p><div class="rp">Proves &middot; execution discipline</div></div>
-</div>
-<div class="rv" style="margin-top:26px;font-family:'Inter',sans-serif;font-size:14px;color:#5a6574"><b style="color:var(--navy,#1C2E4A)">Md Shafaat Ali Choyon</b>, Founder, HSREP &middot; MBA, MCIM, MPH, CHES&reg;</div>
-<div class="honest rv">Proposed &middot; no pilot yet, that is the point of the ask</div>
-</div></section>
-<section><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">&sect; 00d</span> &middot; How this happens</div>
-<div class="top"><h2 class="sec">Five steps from agreement to evidence.</h2>
-<div class="lead">The execution path is designed to be inspected. Every step is future-tense, pre-registered, and honest about limits.</div></div></div>
-<div class="stepflow rv">
-<div class="step"><div class="sn">STEP 1</div><h3>Agree</h3><p>An MOU with one host site plus an academic / IRB home, the entire permission structure. No entity required.</p></div>
-<div class="step"><div class="sn">STEP 2</div><h3>Baseline</h3><p>Pull the site&rsquo;s own screening and follow-up data; pre-register the target and protocol before anything runs.</p></div>
-<div class="step"><div class="sn">STEP 3</div><h3>Install</h3><p>Embed the completion loop in existing staffing and the EHR; the fidelity dashboard tracks whether each step actually happens.</p></div>
-<div class="step"><div class="sn">STEP 4</div><h3>Evaluate</h3><p>12 months, RE-AIM, against the site&rsquo;s own baseline; comparison clinic where feasible; guaranteed diagnostic follow-up.</p></div>
-<div class="step"><div class="sn">STEP 5</div><h3>Scale</h3><p>Publish protocol and results, then replicate through networks, PCAs, CRCCP, plan networks, associations.</p></div>
-</div>
-<div class="grid3 rv" style="margin-top:26px">
-<div class="gcard"><div class="n">YOUR TEAM</div><h3>Delivers care</h3><p>The site&rsquo;s own clinical staff keep doing their jobs; the loop removes friction around them, not on top of them.</p></div>
-<div class="gcard"><div class="n">MY ROLE</div><h3>Implementation lead</h3><p>Fidelity, training, measurement, and coordination, the discipline that makes the interventions land as designed.</p></div>
-<div class="gcard"><div class="n">ACADEMIC PARTNER</div><h3>Owns the evaluation</h3><p>Research standing, IRB coverage, and the pre-registered protocol, rigor held independently of the implementer.</p></div>
-</div>
-<p class="srcnote rv" style="margin-top:18px"><b>DATA GOVERNANCE:</b> the host site remains the covered entity; patient data stays in the site's environment or a BAA-covered tenant; HSREP operates under a signed BAA with minimum-necessary access.</p>
-</div></section>
+
+
 
 
 <section><div class="wrap">
 <div class="shead rv"><div class="eyebrow"><span class="snum">§ 01</span> · The problem</div>
 <div class="top"><h2 class="sec">Recommended, reimbursed, and still not completed.</h2>
 <div class="lead">The failure is in adoption, not in the science. Proven, recommended services stall before completion, especially in the communities safety-net systems serve.</div></div></div>
-<div class="grid3">
-<div class="gcard rv"><div class="n">SIGNAL 01</div><h3>~8% get everything</h3><p>Only about 8% of U.S. adults 35+ received all 15 high-priority clinical preventive services measured (Borsky et al., <i>Health Affairs</i>, 2018), directional, but stark.</p></div>
-<div class="gcard rv" style="transition-delay:.06s"><div class="n">SIGNAL 02</div><h3>63.5% vs 72.8%</h3><p>U.S. colorectal-cancer screening sits at 63.5% (2023) against the Healthy People 2030 target of 72.8%, and has barely moved off baseline.</p></div>
-<div class="gcard rv" style="transition-delay:.12s"><div class="n">SIGNAL 03</div><h3>~45% in FQHCs</h3><p>Federally Qualified Health Centers screened 44.89% nationally in CY2025 UDS; Michigan health centers reported 48.74%, still about 24 points under the Healthy People 2030 target. The gap concentrates exactly where the pilot proposes to work.</p></div>
-</div>
-<div class="gapviz rv" id="gapviz">
+<div class="rich rv"><p class="big">Only about 8% of U.S. adults 35 and older received all fifteen high-priority clinical preventive services measured (Borsky et al., <i>Health Affairs</i>, 2018). Colorectal-cancer screening is one measure inside that failure, and it is the one this pilot takes on.</p></div>
+<div class="gapviz fx rv" id="gapviz">
 <div class="gvp">
 <div class="gvk">Panel A &middot; Screening completion</div>
 <p class="gvsub">Share of the eligible population up to date with colorectal-cancer screening.</p>
@@ -725,7 +904,7 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 </div></section>
 
 <section class="band"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 02</span> · Does the model work?</div>
+<div class="shead rv"><div class="eyebrow"><span class="snum">§ 02</span> · The constraint</div>
 <div class="top"><h2 class="sec">Every lever is already evidence-based. The hard part is execution.</h2>
 <div class="lead">The Community Preventive Services Task Force recommends each mechanism, with quantified median effects. But real-world safety-net effect sizes depend on implementation fidelity.</div></div></div>
 <table class="etable rv">
@@ -735,58 +914,146 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 <tr><td>Patient navigation</td><td><b>+13.6 pp</b></td><td>Implementation</td></tr>
 <tr><td>Client (patient) reminders</td><td><b>+11.5 pp</b> standalone, <b>+10.9 pp</b> incremental</td><td>Data infrastructure</td></tr>
 </table>
+
+<figure class="fid fx rv">
+<figcaption class="fidcap">The same mailed-FIT program, 26 safety-net clinics. Change in completion, percentage points.</figcaption>
+<div class="fidplot">
+<span class="fidbase"></span>
+<span class="fidband" style="--l:3.7%;--w:92.6%"></span>
+<span class="fidzero" style="--l:29.63%"></span>
+<span class="fidpin ev" style="--l:89.26%"><span class="fpl">CPSTF median for mailed FIT<b>+16.1</b></span></span>
+<span class="fidpin av" style="--l:42.22%"><span class="fpl">STOP CRC average<b>+3.4</b></span></span>
+</div>
+<div class="fidax"><span style="left:3.7%">&minus;7</span><span style="left:29.63%">0</span><span style="left:96.3%">+18</span></div>
+<p class="fidnote">The coral bar is the full spread of site results, not a distribution; individual clinic values are not published. Every one of these clinics ran the same program. What separates the two ends is how faithfully each one executed it.</p>
+</figure>
 <div class="callout rv"><div class="t"><b>The honest limitation that shapes the whole design.</b> The flagship real-world FQHC trial (STOP CRC, 26 clinics) raised FIT completion only ~3.4 points on average, with site results ranging from &minus;7 to +18 points, driven almost entirely by how faithfully each clinic executed the mailing. Implementation fidelity, not the science, is the binding constraint. That is precisely why this initiative leads with an implementation-enablement pillar.</div></div>
 <p class="srcnote rv"><b>SOURCES:</b> CDC Community Preventive Services Task Force, colorectal-cancer screening findings, accessed 3 August 2026 (all figures are median effect sizes); Coronado et al., STOP CRC cluster-RCT (<i>JAMA Internal Medicine</i>, 2018).</p>
 </div></section>
 
-<section class="dark"><div class="wrap">
-<div class="shead rv"><div class="eyebrow on-dark"><span class="snum" style="color:var(--coral)">§ 03</span> · The approach</div>
-<div class="top"><h2 class="sec">Six pillars, one completion loop.</h2></div></div>
-<div class="grid3" style="grid-template-columns:repeat(3,1fr)">
-<details class="gcard dark rv pillacc" open><summary><span class="n">PILLAR 01</span><h3>Service redesign &amp; friction reduction</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Make the completed path the easiest one, defaults, mailed at-home FIT, one-click scheduling, barrier removal.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.06s" open><summary><span class="n">PILLAR 02</span><h3>Interoperable data infrastructure</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Registries and dashboards that surface who is overdue and where patients drop out, FHIR / TEFCA-ready integration, automated reminders, and CHW escalation on one record.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.12s" open><summary><span class="n">PILLAR 03</span><h3>Predictive AI, explainable by design</h3><span class="pillchev" aria-hidden="true"></span></summary><p>A proposed model layer that flags who is most likely to fall out of the loop and prioritizes outreach accordingly, explainable and fairness-audited, human-in-the-loop, never a black box.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.18s" open><summary><span class="n">PILLAR 04</span><h3>Agentic &amp; conversational outreach</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Generative-AI patient navigation: multilingual, two-way reminders over SMS and messaging that shepherd each patient through scheduling and at-home testing, culturally tailored, and always handing off to a human when it matters.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.24s" open><summary><span class="n">PILLAR 05</span><h3>Algorithmic equity &amp; governance</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Continuous bias and fairness auditing, SDOH-aware targeting, and privacy-by-design under a human review board, so the model narrows disparities in who completes care rather than widening them.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.30s" open><summary><span class="n">PILLAR 06</span><h3>Implementation enablement</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Training so a site can run and sustain the toolkit itself, the pillar the evidence says matters most.</p></details>
-</div>
-<div class="chain2 rv" style="margin-top:34px">
-<div class="c2"><span class="cn">01</span><div><b>Identify:</b> <span>surface who is overdue from the registry.</span></div></div>
-<div class="c2"><span class="cn">02</span><div><b>Reduce friction:</b> <span>mail the at-home test, default the easy path.</span></div></div>
-<div class="c2"><span class="cn">03</span><div><b>Communicate:</b> <span>literacy-tailored reminders in the patient&rsquo;s language.</span></div></div>
-<div class="c2"><span class="cn">04</span><div><b>Escalate:</b> <span>community health worker outreach for non-responders.</span></div></div>
-<div class="c2"><span class="cn">05</span><div><b>Measure:</b> <span>close the loop, including diagnostic follow-up after a positive result.</span></div></div>
+<section><div class="wrap">
+<div class="shead rv"><div class="eyebrow"><span class="snum">&sect; 03</span> &middot; What makes this different</div>
+<div class="top"><h2 class="sec">Not another intervention, the execution layer for the ones you already run.</h2>
+<div class="lead">Every lever here is already recommended and, in most systems, already attempted. The difference is what happens between recommendation and completion.</div></div></div>
+<div class="grid3 rv">
+<div class="gcard"><div class="n">01 &middot; COMPLETION, NOT INITIATION</div><h3>Designed around finishing</h3><p>The test returned, the positive followed up, the loop closed. Follow-up after a positive result, the measure NCQA has proposed for HEDIS MY2027 (COF-E: colonoscopy within 180 days of a positive test), is this initiative&rsquo;s core object, not an afterthought.</p></div>
+<div class="gcard"><div class="n">02 &middot; FIDELITY-FIRST</div><h3>Execution quality decides outcomes</h3><p>STOP CRC&rsquo;s range, &minus;7 to +18 points on the <em>same</em> intervention, shows fidelity is where results leak. The dashboard tracks whether each step actually happened, not just the end number.</p></div>
+<div class="gcard"><div class="n">03 &middot; EMBED, DON&rsquo;T BUILD</div><h3>Runs inside what exists</h3><p>Inside existing staffing, EHRs, and national programs. No parallel system, no new burden: the completed path becomes the easiest path.</p></div>
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 04</span> · The demonstration</div>
-<div class="top"><h2 class="sec">A proposed 12-month colorectal-cancer completion pilot.</h2>
-<div class="lead">One Southeast Michigan FQHC. Disease-agnostic infrastructure, proven first on a single measure the site already reports and is paid on.</div></div></div>
-<div class="rich rv"><p>The pilot would target a clinic below the UDS colorectal-cancer benchmark, with a FHIR-capable EHR, an existing outreach function, and a quality-improvement sponsor. Evaluation would follow the RE-AIM framework against the site&rsquo;s own baseline.</p>
-<div class="callout"><div class="t"><b>What would make the evidence credible</b>, and where the honest weaknesses are. A single-site pre/post design cannot separate the intervention from secular trends. To be credible, the pilot should pre-register a benchmarked target (for example, ≥10 points above the site&rsquo;s trend and above the ~3.4-point STOP CRC benchmark), add a comparison clinic or stepped-wedge where feasible, name the payment mechanism that sustains staffing after the grant, and guarantee diagnostic follow-up after a positive test.</div></div></div>
+<section class="dark"><div class="wrap">
+<div class="shead rv"><div class="eyebrow on-dark"><span class="snum" style="color:var(--coral)">§ 04</span> · The approach</div>
+<div class="top"><h2 class="sec">Six pillars, one completion loop.</h2>
+<div class="lead">One loop, four stages, run on a weekly cycle. The six pillars below are what a site needs in place for that loop to run.</div></div></div>
+<div class="lring fx rv">
+<div class="lr-fig">
+<svg viewBox="0 0 352 352" role="img" aria-label="A loop of four stages running clockwise: find, rank, act, close, then it starts again.">
+<circle class="lr-track" cx="176" cy="176" r="110"/>
+<circle class="lr-arc lr-a1" cx="176" cy="176" r="110" transform="rotate(-87 176 176)"/>
+<circle class="lr-arc lr-a2" cx="176" cy="176" r="110" transform="rotate(3 176 176)"/>
+<circle class="lr-arc lr-a3" cx="176" cy="176" r="110" transform="rotate(93 176 176)"/>
+<circle class="lr-arc lr-a4" cx="176" cy="176" r="110" transform="rotate(183 176 176)"/>
+<path class="lr-arrow" d="M169.5 60 L183 66 L169.5 72 Z"/>
+<circle class="lr-node" cx="286" cy="176" r="5"/>
+<circle class="lr-node" cx="176" cy="286" r="5"/>
+<circle class="lr-node" cx="66" cy="176" r="5"/>
+<g class="lr-lab">
+<text class="lr-num" x="176" y="30" text-anchor="middle">01</text><text class="lr-word" x="176" y="48" text-anchor="middle">Find</text>
+<text class="lr-num" x="302" y="171" text-anchor="start">02</text><text class="lr-word" x="302" y="189" text-anchor="start">Rank</text>
+<text class="lr-num" x="176" y="312" text-anchor="middle">03</text><text class="lr-word" x="176" y="330" text-anchor="middle">Act</text>
+<text class="lr-num" x="50" y="171" text-anchor="end">04</text><text class="lr-word" x="50" y="189" text-anchor="end">Close</text>
+</g>
+</svg>
+<div class="lr-mid" aria-hidden="true"><b>The completion loop</b><span>Run every week</span></div>
+</div>
+<div>
+<ol class="lr-list">
+<li><span class="lrn">01</span><div><b>Find</b><p>Pull everyone overdue from the registry, plus every positive test still waiting on a colonoscopy.</p></div></li>
+<li><span class="lrn">02</span><div><b>Rank</b><p>Score who is least likely to finish without help, and show the reasons behind each score.</p></div></li>
+<li><span class="lrn">03</span><div><b>Act</b><p>Match the action to the barrier: a mailed at-home test, a reminder in the patient&rsquo;s language, help with scheduling, or a community health worker.</p></div></li>
+<li><span class="lrn">04</span><div><b>Close</b><p>Record completion and time to colonoscopy, and watch the equity gap so outreach does not widen it.</p></div></li>
+</ol>
+<p class="lr-again">Then it runs again the following week</p>
+</div>
+</div>
+<p class="pillintro rv">Each pillar carries one part of the loop.</p>
+<div class="grid3" style="grid-template-columns:repeat(3,1fr)">
+<details class="gcard dark rv pillacc" open><summary><span class="n">PILLAR 01 <i>&middot; Act</i></span><h3>Service redesign &amp; friction reduction</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Make the completed path the easiest one, defaults, mailed at-home FIT, one-click scheduling, barrier removal.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.06s" open><summary><span class="n">PILLAR 02 <i>&middot; Find</i></span><h3>Interoperable data infrastructure</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Registries and dashboards that surface who is overdue and where patients drop out, FHIR / TEFCA-ready integration, automated reminders, and CHW escalation on one record.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.12s" open><summary><span class="n">PILLAR 03 <i>&middot; Rank</i></span><h3>Predictive AI, explainable by design</h3><span class="pillchev" aria-hidden="true"></span></summary><p>A proposed model layer that flags who is most likely to fall out of the loop and prioritizes outreach accordingly, explainable and fairness-audited, human-in-the-loop, never a black box.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.18s" open><summary><span class="n">PILLAR 04 <i>&middot; Act</i></span><h3>Agentic &amp; conversational outreach</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Generative-AI patient navigation: multilingual, two-way reminders over SMS and messaging that shepherd each patient through scheduling and at-home testing, culturally tailored, and always handing off to a human when it matters.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.24s" open><summary><span class="n">PILLAR 05 <i>&middot; Close</i></span><h3>Algorithmic equity &amp; governance</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Continuous bias and fairness auditing, SDOH-aware targeting, and privacy-by-design under a human review board, so the model narrows disparities in who completes care rather than widening them.</p></details>
+<details class="gcard dark rv pillacc" style="transition-delay:.30s" open><summary><span class="n">PILLAR 06 <i>&middot; All four</i></span><h3>Implementation enablement</h3><span class="pillchev" aria-hidden="true"></span></summary><p>Training so a site can run and sustain the toolkit itself, the pillar the evidence says matters most.</p></details>
+</div>
 </div></section>
 
 <section class="band"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 05</span> · Who this is for</div>
-<div class="top"><h2 class="sec">Built for the people who own preventive-care completion.</h2>
-<div class="lead">The same argument, told in each partner&rsquo;s terms. If one of these is you, there&rsquo;s a way in.</div></div></div>
-<div class="grid3" style="grid-template-columns:1fr 1fr">
-<a class="gcard rv" href="#host" style="text-decoration:none"><div class="n">HEALTH CENTERS &amp; FQHCS</div><h3>Improve a measure you already report</h3><p>Raise a UDS/HEDIS measure within your existing staffing, with the fidelity discipline that makes outreach reliably land, low added burden, your clinical team in the lead.</p></a>
-<a class="gcard rv" href="#host" style="text-decoration:none;transition-delay:.05s"><div class="n">FUNDERS &amp; PARTNERS</div><h3>Fund a cost-effective, scalable model</h3><p>A disease-agnostic engine built on a published mailed-FIT cost benchmark of $54.83 direct per patient screened (Pignone 2021), with an equity-stratified design and a path from one site to a network.</p></a>
-<a class="gcard rv" href="#host" style="text-decoration:none;transition-delay:.1s"><div class="n">RESEARCHERS &amp; ACADEMIC PARTNERS</div><h3>Co-design a publishable pilot</h3><p>A pre-registered stepped-wedge / RE-AIM evaluation with a protocol-first publication, rigor built in from the start, co-authorship on the table.</p></a>
-<a class="gcard rv" href="#host" style="text-decoration:none;transition-delay:.15s"><div class="n">COMMUNITY</div><h3>Care that reaches you, honestly</h3><p>Designed so reminders and navigation don&rsquo;t widen gaps for patients with unstable contact or low portal access, benefit first, no data exploitation.</p></a>
+<div class="shead rv"><div class="eyebrow"><span class="snum">&sect; 05</span> &middot; See it working</div>
+<div class="top"><h2 class="sec">The registry a site would work each week.</h2>
+<div class="lead">Everything above is a claim about how completion gets closed. This is the screen where it would happen, built and open, so you can judge it instead of taking it on trust.</div></div></div>
+<div class="demoex rv">
+<a class="demoshot" href="dashboard-demo.html"><div class="dsbar">Demonstration &middot; synthetic data only &middot; no EHR connection &middot; no PHI &middot; messages simulated, not sent</div><img src="assets/pai-dashboard-preview-v2.png" width="1156" height="1032" loading="lazy" decoding="async" alt="The demonstration dashboard, showing the urgent queue of patients with a positive stool test still awaiting a colonoscopy. Each row carries days since the positive result, a banded time-to-colonoscopy clock, an explainable risk score broken into its drivers, and a next-best action."><span class="dshover">Interactive &middot; open the demo <span class="ar">&rarr;</span></span></a>
+<div class="demoside">
+<p class="dsl">If you have one minute</p>
+<ol class="dslist">
+<li>Read the top row. One patient is <b>194 days</b> past a positive stool test, already outside the 180-day window of the follow-up measure NCQA has proposed. Most EHRs have no screen that shows you this.</li>
+<li>Press <b>Complete colonoscopy</b> on that patient. The follow-up rate, the median days-to-colonoscopy and the equity gap all move together. That is the loop a site would work.</li>
+<li>Open <b>Equity, follow-up by language</b>. That gap is the number a QI committee is graded on, and the one outreach automation most often makes worse.</li>
+</ol>
+<a class="btn accent" href="dashboard-demo.html">Open the demo dashboard <span class="ar">&rarr;</span></a>
+<p class="dsnote">Static and synthetic. No real patients, no PHI, no EHR connection, and nothing is deployed. The file a site would send is <a href="dashboard-demo.html#prod">specified field by field</a>, all 19 columns, with a sample you can download.</p>
+</div>
 </div>
 </div></section>
 
 <section><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 06</span> · Global by design</div>
+<div class="shead rv"><div class="eyebrow"><span class="snum">§ 06</span> · The demonstration</div>
+<div class="top"><h2 class="sec">A proposed pilot, end to end.</h2>
+<div class="lead">One Southeast Michigan FQHC, twelve months, colorectal cancer first. The infrastructure is disease-agnostic; it gets proven on a single measure the site already reports and is paid on.</div></div></div>
+<div class="rich rv"><p>The pilot would target a clinic below the UDS colorectal-cancer benchmark, with a FHIR-capable EHR, an existing outreach function, and a quality-improvement sponsor. The route to that clinic runs through the Michigan Primary Care Association and EMU faculty. Evaluation would follow the RE-AIM framework against the site&rsquo;s own baseline.</p></div>
+<div class="ptl fx rv">
+<div class="ptl-ph"><span class="p" style="grid-column:1/3">Phase 0 &middot; Mo 1-3</span><span class="p" style="grid-column:3/5">Phase 1 &middot; The pilot year</span><span class="p" style="grid-column:5/8">Phase 2-3 &middot; After the pilot</span></div>
+<ol class="ptl-stops"><li><span class="ptl-dot"></span><div class="ptl-when">Step 01</div><b>MOU</b><p>One host FQHC plus an academic and IRB home. No entity required.</p></li><li><span class="ptl-dot"></span><div class="ptl-when">Step 02</div><b>Baseline</b><p>Pull the site&rsquo;s own screening and follow-up data, then pre-register the target and the protocol before anything runs.</p></li><li><span class="ptl-dot"></span><div class="ptl-when">Step 03</div><b>Install</b><p>Embed the completion loop in existing staffing and the EHR. The fidelity dashboard tracks whether each step actually happens.</p></li><li class="key"><span class="ptl-dot"></span><div class="ptl-when">Step 04 &middot; 12 months</div><b>Evaluate</b><p>RE-AIM against the site&rsquo;s own baseline, a comparison clinic where feasible, and guaranteed diagnostic follow-up after a positive test.</p></li><li><span class="ptl-dot"></span><div class="ptl-when">Step 05</div><b>Publish</b><p>Protocol and results in the open, including the parts that did not work.</p></li><li><span class="ptl-dot"></span><div class="ptl-when">Step 06</div><b>Second site</b><p>Package the toolkit, seek peer review, and replicate at a second clinic.</p></li><li><span class="ptl-dot"></span><div class="ptl-when">Step 07</div><b>Network</b><p>Distribute through PCA, HCCN and NTTAP networks and professional bodies: NACCHO, ASTHO, APHA, SOPHE.</p></li></ol>
+</div>
+<div class="grid3 rv" style="margin-top:32px">
+<div class="gcard"><div class="n">YOUR TEAM</div><h3>Delivers care</h3><p>The site&rsquo;s own clinical staff keep doing their jobs; the loop removes friction around them, not on top of them.</p></div>
+<div class="gcard"><div class="n">MY ROLE</div><h3>Implementation lead</h3><p>Fidelity, training, measurement, and coordination, the discipline that makes the interventions land as designed.</p></div>
+<div class="gcard"><div class="n">ACADEMIC PARTNER</div><h3>Owns the evaluation</h3><p>Research standing, IRB coverage, and the pre-registered protocol, rigor held independently of the implementer.</p></div>
+</div>
+<div class="rv" style="max-width:none"><div class="callout wide"><div class="t"><b>What would make the evidence credible</b>, and where the honest weaknesses are. A single-site pre/post design cannot separate the intervention from secular trends. To be credible, the pilot should pre-register a benchmarked target (for example, ≥10 points above the site&rsquo;s trend and above the ~3.4-point STOP CRC benchmark), add a comparison clinic or stepped-wedge where feasible, name the payment mechanism that sustains staffing after the grant, and guarantee diagnostic follow-up after a positive test.</div></div></div>
+<p class="srcnote rv" style="margin-top:18px"><b>DATA GOVERNANCE:</b> the host site remains the covered entity; patient data stays in the site's environment or a BAA-covered tenant; HSREP operates under a signed BAA with minimum-necessary access.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<div class="shead rv"><div class="eyebrow"><span class="snum">§ 07</span> · Who this is for</div>
+<div class="top"><h2 class="sec">Built for the people who own preventive-care completion.</h2>
+<div class="lead">The same argument, told in each partner&rsquo;s terms. If one of these is you, there&rsquo;s a way in.</div></div></div>
+<div class="grid3" style="grid-template-columns:1fr 1fr">
+<a class="gcard rv" href="#host" style="text-decoration:none"><div class="n">HEALTH CENTERS &amp; FQHCS</div><h3>Improve a measure you already report</h3><p>Raise a UDS or HEDIS measure inside your existing staffing, with your clinical team in the lead.</p></a>
+<a class="gcard rv" href="#host" style="text-decoration:none;transition-delay:.05s"><div class="n">FUNDERS &amp; PARTNERS</div><h3>Fund a cost-effective, scalable model</h3><p>A published mailed-FIT benchmark of $54.83 direct per patient screened (Pignone 2021), equity-stratified, with a route from one site to a network.</p></a>
+<a class="gcard rv" href="#host" style="text-decoration:none;transition-delay:.1s"><div class="n">RESEARCHERS &amp; ACADEMIC PARTNERS</div><h3>Co-design a publishable pilot</h3><p>A pre-registered stepped-wedge / RE-AIM evaluation, protocol published before results, co-authorship on the table.</p></a>
+<a class="gcard rv" href="#host" style="text-decoration:none;transition-delay:.15s"><div class="n">COMMUNITY</div><h3>Care that reaches you, honestly</h3><p>Built so reminders and navigation reach patients with unstable contact or low portal access instead of skipping past them.</p></a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<div class="shead rv"><div class="eyebrow"><span class="snum">§ 08</span> · Global by design</div>
 <div class="top"><h2 class="sec">One engine, many diseases, and not only in the U.S.</h2>
 <div class="lead">Colorectal cancer is the first proof, not the scope. The completion gap is the same wherever recommended care stalls before it is finished.</div></div></div>
-<div class="rich rv"><p>The registry-plus-outreach loop is deliberately disease-agnostic: the same mechanism applies to cervical and breast screening, hypertension, diabetes follow-up, and immunizations. It is also system-portable. National screening systems abroad face the identical problem: Bangladesh, for example, runs a community-clinic cervical and breast screening program with a national registry, yet reports low uptake and loss to follow-up, a completion-and-fidelity gap, not a science gap.</p>
-<p>As the initiative matures, the engine is intended to extend to those settings, beginning where the founder already has standing and screening-service experience, so a method proven in one U.S. health center can inform preventive-care completion far more broadly. <b>This global extension is a future direction, in development; the current work is the U.S. demonstration above.</b></p></div>
+<div class="rich rv"><p>The loop does not care which disease it runs on. The same registry-plus-outreach mechanism applies to cervical and breast screening, hypertension, diabetes follow-up, and immunizations. It travels across health systems too. The table below sets the U.S. demonstration beside the health system the founder knows best.</p></div>
+<div class="sysp fx rv">
+<div class="sysp-bar"><span class="sysp-fill"></span><b>The same four stages, either way</b><em>Find &rarr; Rank &rarr; Act &rarr; Close</em></div>
+<div class="sysp-grid">
+<div class="sysp-lab"></div><div class="sysp-hd">United States</div><div class="sysp-hd">Bangladesh</div>
+<div class="sysp-lab">Where it runs</div><div class="sysp-c" data-s="United States">One Southeast Michigan health center, colorectal cancer screening first.</div><div class="sysp-c" data-s="Bangladesh">Community clinics under the national cervical and breast screening program.</div>
+<div class="sysp-lab">What already exists</div><div class="sysp-c" data-s="United States">UDS reporting, a FHIR-capable EHR, and an outreach function the site already staffs.</div><div class="sysp-c" data-s="Bangladesh">Roughly 14,000 community clinics as of 2019, and a national electronic registry.</div>
+<div class="sysp-lab">Where it leaks</div><div class="sysp-c" data-s="United States">Screening gets counted, but a positive test is not always followed to colonoscopy.</div><div class="sysp-c" data-s="Bangladesh">Low uptake and loss to follow-up, reported by the program&rsquo;s own evaluation.</div>
+<div class="sysp-lab">Status</div><div class="sysp-c" data-s="United States"><b>The demonstration described above.</b></div><div class="sysp-c" data-s="Bangladesh"><b>A future direction, in development.</b></div>
+</div></div>
+<div class="rich rv" style="margin-top:26px"><p>Where the work begins abroad is where the founder already has standing and screening-service experience. That is a reason to start there, not evidence that it will work there. The current work is the U.S. demonstration above.</p></div>
 
-<div class="shead rv" style="margin-top:52px"><div class="eyebrow"><span class="snum">§ 06b</span> · Bangladesh, the engagement models</div>
+<div class="shead rv" style="margin-top:52px"><div class="eyebrow"><span class="snum">§ 08b</span> · Bangladesh, the engagement models</div>
 <div class="top"><h2 class="sec" style="font-size:clamp(1.4rem,1.1rem+1vw,1.9rem)">Different partners, different value, same completion engine.</h2></div></div>
 <div class="grid3 rv">
 <div class="gcard"><div class="n">PRIVATE HEALTHCARE</div><h3>Where completion is also good business</h3><p>For a private network, a natural first partner, higher completion compounds commercially: more screenings lead to more diagnostics, more appropriate downstream care, stronger patient retention, and better-positioned corporate-wellness and payer contracts. The initiative raises the completion rate the business is already working to grow, advancing patient health and commercial performance together.</p></div>
@@ -796,17 +1063,22 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 </div></section>
 
 <section class="band"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 07</span> · Development roadmap</div><div class="top"><h2 class="sec">From MOU to national scale.</h2></div></div>
-<div class="road">
-<div class="rd rv"><div class="rk">Phase 0 · Mo 1-3</div><div><b>Site MOU</b><p>Recruit a Wayne/Washtenaw FQHC via the Michigan Primary Care Association and EMU faculty; lock outcomes and follow-up in the agreement.</p></div></div>
-<div class="rd rv"><div class="rk">Phase 1 · 12 months</div><div><b>CRC completion beta</b><p>Run the loop; evaluate with RE-AIM against baseline (and a comparison where feasible).</p></div></div>
-<div class="rd rv"><div class="rk">Phase 2</div><div><b>Productize &amp; replicate</b><p>Package the toolkit, seek peer review, replicate at a second site.</p></div></div>
-<div class="rd rv"><div class="rk">Phase 3</div><div><b>National scale</b><p>Distribute via PCA / HCCN / NTTAP networks and professional bodies (NACCHO, ASTHO, APHA, SOPHE).</p></div></div>
+<div class="shead rv"><div class="eyebrow"><span class="snum">&sect; 09</span> &middot; Credibility</div>
+<div class="top"><h2 class="sec">The work already done.</h2>
+<div class="lead">Judge the initiative by what exists before the ask, not by claims.</div></div></div>
+<div class="grid2x rv">
+<div class="gcard receipt"><div class="rn">+34%</div><h3>Screening growth, operationally</h3><p>At a private healthcare network in Bangladesh, led the growth strategy that raised preventive screening utilization 34%, this exact class of metric, moved inside a real delivery system.</p><div class="rp">Proves &middot; operational delivery</div></div>
+<div class="gcard receipt"><div class="rn">2 countries</div><h3>A published evidence base</h3><p>An MPH capstone (Eastern Michigan University) examining health-system fragility and prevention across the U.S. and Bangladesh, published publicly as Season 1&rsquo;s nine-article argument.</p><div class="rp">Proves &middot; research grounding</div></div>
+<div class="gcard receipt"><div class="rn">57,274</div><h3>Attention on a $0 budget</h3><p>Season 1&rsquo;s advocacy campaign drew 57,274 verified impressions across two countries with no ad spend, 5.7&times; the target. Attention can be mobilized without a grant.</p><div class="rp">Proves &middot; mobilization</div></div>
+<div class="gcard receipt"><div class="rn">Built</div><h3>The engine, before the ask</h3><p>The completion loop, six pillars, evaluation approach, dashboard demo, and both country briefs are already designed and public, execution discipline shown before anyone is asked to commit.</p><div class="rp">Proves &middot; execution discipline</div></div>
 </div>
+<div class="rv" style="margin-top:26px;font-family:'Inter',sans-serif;font-size:14px;color:#5a6574"><b style="color:var(--navy,#1C2E4A)">Md Shafaat Ali Choyon</b>, Founder, HSREP &middot; MBA, MCIM, MPH, CHES&reg;</div>
+<div class="honest rv">Proposed &middot; no pilot yet, that is the point of the ask</div>
 </div></section>
 
+
 <section class="dark" id="host"><div class="wrap">
-<div class="shead rv"><div class="eyebrow on-dark"><span class="snum" style="color:var(--coral)">§ 08</span> · Status &amp; participation</div></div>
+<div class="shead rv"><div class="eyebrow on-dark"><span class="snum" style="color:var(--coral)">§ 10</span> · Status &amp; participation</div></div>
 <div class="rich rv" style="max-width:70ch"><p class="big" style="color:#fff">This is an HSREP initiative in development. All designs are illustrative, all language is future-tense, and no patient data has been collected. Operational materials will be reviewed by counsel before any launch.</p>
 <p style="color:#A9B7C6">I&rsquo;m seeking the institutional home to lead this pilot, a partnership, a funded engagement, or a role with a health center, a payer, or a research group that owns this problem.</p></div>
 <div class="grid3 rv" style="margin-top:26px">
@@ -870,13 +1142,16 @@ apply();})();
  var chips=[].slice.call(document.querySelectorAll('.er-chip'));var panels=[].slice.call(document.querySelectorAll('.er-panel'));
  var roles=chips.map(function(c){return c.getAttribute('data-role');});
  function pick(r,push){chips.forEach(function(c){c.classList.toggle('on',c.getAttribute('data-role')===r);});panels.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-role')===r);});
+  var nw=document.getElementById('erNow');if(nw){var sel=chips.filter(function(c){return c.getAttribute('data-role')===r;})[0];nw.textContent=sel?'\u00b7 '+sel.textContent:'';}
   if(push&&window.history&&history.replaceState){history.replaceState(null,'','#for-'+r);}}
  chips.forEach(function(c){c.addEventListener('click',function(){pick(c.getAttribute('data-role'),true);});});
  var h=(location.hash||'').replace('#','');var pre=null;
  if(h.indexOf('for-')===0&&roles.indexOf(h.slice(4))>=0)pre=h.slice(4);
  pick(pre||roles[0],false);
  if(pre){var el=document.querySelector('.exec-layer');if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth'});},150);}
- var LMAP=[['execution layer','What\u2019s different'],['work already done','Credibility'],['agreement to evidence','How it happens'],['still not completed','The problem'],['evidence-based','Does it work?'],['Six pillars','Six pillars'],['pilot','The pilot'],['Built for the people','Who it\u2019s for'],['many diseases','Beyond CRC'],['Different partners','Partners'],['national scale','Roadmap']];
+(function(){var L=document.querySelector('.exec-layer');if(!L)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(!('IntersectionObserver' in window))return;L.classList.add('anim');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){L.classList.add('go');io.disconnect();}});},{threshold:.12});io.observe(L);})();
+(function(){var ns=document.querySelectorAll('.fx');if(!ns.length)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target);}});},{threshold:.18});Array.prototype.forEach.call(ns,function(n){n.classList.add('anim');io.observe(n);});})();
+ var LMAP=[['execution layer','What\u2019s different'],['work already done','Credibility'],['agreement to evidence','How it happens'],['still not completed','The problem'],['evidence-based','Does it work?'],['Six pillars','Six pillars'],['registry a site','The dashboard'],['pilot','The pilot'],['Built for the people','Who it\u2019s for'],['many diseases','Beyond CRC'],['Different partners','Partners'],['national scale','Roadmap']];
  function labelFor(t){for(var i=0;i<LMAP.length;i++){if(t.indexOf(LMAP[i][0])>=0)return LMAP[i][1];}return t.split(/\s+/).slice(0,3).join(' ');}
  var hs=[].slice.call(document.querySelectorAll('h2'));var nav=document.getElementById('secnav');var links=[];
  hs.forEach(function(h,i){if(!h.id)h.id='isec'+i;var a=document.createElement('a');a.href='#'+h.id;a.textContent=labelFor(h.textContent||'');nav.appendChild(a);links.push(a);});

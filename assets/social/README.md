@@ -23,9 +23,20 @@ Wired into the `og:image` and `twitter:image` tags of the pages they front:
 `/og-image.png` (repo root) stays the homepage card and the fallback.
 
 ## /cards — square campaign creatives
-1080 x 1080 px, 1x. These are the section cards used in the 28-link promotion
-sequence. Full-resolution 2x masters are kept outside the repo; these are the
-web-weight copies.
+Nineteen files, **2160 x 2160 px**, about 0.9 MB each and 16.7 MB in total.
+These are the full-resolution masters, not web-weight copies, and no page on the
+site loads them. They are sized for native upload to Facebook, LinkedIn and
+Instagram, which recompress on their own terms and reward the larger source.
+
+They are committed so the posting kit, partner decks, emails and press can cite
+a stable URL: `https://hsraep.org/assets/social/cards/<file>.png`. Each card
+fronts one entry in the posting kit, and the kit lists which card belongs to
+which post.
+
+Re-compressed losslessly on 4 August 2026 with oxipng, level 6, safe chunks
+stripped. That took the folder from 30.7 MB to 16.7 MB. Filenames, dimensions
+and URLs are unchanged, and every file was checked pixel for pixel against its
+original before the change was kept.
 
 Copy on every card is drawn from the page it fronts. No claim appears here that
 is not already published on hsraep.org. In particular: 57,274 is a **sum of

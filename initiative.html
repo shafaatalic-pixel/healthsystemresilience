@@ -1153,7 +1153,7 @@ apply();})();
 (function(){var ns=document.querySelectorAll('.fx');if(!ns.length)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target);}});},{threshold:.18});Array.prototype.forEach.call(ns,function(n){n.classList.add('anim');io.observe(n);});})();
  var LMAP=[['execution layer','What\u2019s different'],['work already done','Credibility'],['agreement to evidence','How it happens'],['still not completed','The problem'],['evidence-based','Does it work?'],['Six pillars','Six pillars'],['registry a site','The dashboard'],['pilot','The pilot'],['Built for the people','Who it\u2019s for'],['many diseases','Beyond CRC'],['Different partners','Partners'],['national scale','Roadmap']];
  function labelFor(t){for(var i=0;i<LMAP.length;i++){if(t.indexOf(LMAP[i][0])>=0)return LMAP[i][1];}return t.split(/\s+/).slice(0,3).join(' ');}
- var hs=[].slice.call(document.querySelectorAll('h2'));var nav=document.getElementById('secnav');var links=[];
+ var hs=[].slice.call(document.querySelectorAll('h2.sec'));var nav=document.getElementById('secnav');var links=[];
  hs.forEach(function(h,i){if(!h.id)h.id='isec'+i;var a=document.createElement('a');a.href='#'+h.id;a.textContent=labelFor(h.textContent||'');nav.appendChild(a);links.push(a);});
  if(hs.length){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-15% 0px -75% 0px'});hs.forEach(function(h){io.observe(h);});}
 })();

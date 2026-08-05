@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Search - HSREP</title><meta name="description" content="Search every HSREP article, film transcript, season page, methodology note and initiative page from one place."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://hsraep.org/search.html"><link rel="icon" href="/favicon.ico"><link rel="manifest" href="/site.webmanifest"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+:root{--navy:#1C2E4A;--coral:#BC3A26;--ink:#28313C;--mut:#5A6572;--line:#D9E1E9;--ground:#F3F6F9;--paper:#FBFCFD}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Inter",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--coral)}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.skip-link{position:fixed;left:8px;top:-64px;z-index:3000;background:#0F2036;color:#fff;padding:10px 16px;border-radius:8px;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:top .15s}
+.skip-link:focus{top:8px;outline:3px solid #fff;outline-offset:2px}
+header.site{position:sticky;top:0;z-index:50;background:rgba(251,252,253,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .row{max-width:1180px;margin:0 auto;padding:9px clamp(18px,4vw,34px);display:flex;align-items:center;gap:26px}
+header.site .row>a:first-child{margin-right:auto;line-height:0}
+header.site img{height:52px;width:auto;display:block}
+header.site nav{display:flex;align-items:center;gap:22px}
+header.site nav a{font:600 15px/1 "Inter",sans-serif;color:var(--navy);text-decoration:none;white-space:nowrap}
+header.site nav a:hover{color:var(--coral)}
+header.site .cta{background:#BC3A26;color:#fff!important;font:700 15px/1 "Inter",sans-serif;text-decoration:none;padding:11px 20px;border-radius:999px;white-space:nowrap}
+header.site a:focus-visible,header.site .cta:focus-visible{text-decoration:underline}
+main p a,main li a{text-decoration:underline}
+main a:focus-visible,main button:focus-visible,main input:focus-visible{outline:3px solid #BC3A26;outline-offset:2px;border-radius:3px}
+@media(max-width:820px){header.site nav{display:none}header.site img{height:44px}}
+main{padding:44px 0 56px}
+.eyebrow{font:700 11px/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin:0 0 10px}
+h1{font-size:34px;line-height:1.15;color:var(--navy);margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
+.lead{font-size:17px;color:var(--mut);margin:0}
+.box{background:var(--ground);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:22px 0}
+.box h2{font-size:16px;color:var(--navy);margin:0 0 6px;font-weight:700}
+.box p{margin:0 0 6px}
+form.sbar{display:flex;gap:10px;margin:22px 0 0}
+form.sbar input{flex:1;min-width:0;font:400 17px/1.4 "Inter",sans-serif;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 15px;-webkit-appearance:none;appearance:none}
+form.sbar input:focus{border-color:var(--coral)}
+form.sbar button{font:700 15px/1 "Inter",sans-serif;background:var(--coral);color:#fff;border:0;border-radius:10px;padding:0 22px;cursor:pointer}
+form.sbar button:hover{background:#A63120}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.chips button{font:600 13px/1 "Inter",sans-serif;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer}
+.chips button:hover{border-color:var(--coral);color:var(--coral)}
+.chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.status{color:var(--mut);font-size:13.5px;margin:18px 0 0}
+ol.res{list-style:none;margin:4px 0 0;padding:0}
+ol.res li{border-top:1px solid var(--line);padding:18px 0}
+ol.res .k{margin:0 0 5px;font:700 11px/1 "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
+ol.res .k span{color:var(--mut);font-weight:600}
+ol.res h2{font-size:18px;line-height:1.3;color:var(--navy);margin:0 0 6px;font-weight:700}
+ol.res h2 a{color:var(--navy);text-decoration:none}
+ol.res h2 a:hover{color:var(--coral);text-decoration:underline}
+ol.res .sn{margin:0;color:var(--mut);font-size:14.5px}
+ol.res mark{background:rgba(188,58,38,.16);color:inherit;font-weight:600;border-radius:2px;padding:0 1px}
+ol.res .u{margin:6px 0 0;color:#8A94A2;font-size:12.5px;word-break:break-word}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.sugg a{font:600 13px/1 "Inter",sans-serif;text-decoration:none!important;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 13px}
+.sugg a:hover{border-color:var(--coral);color:var(--coral)}
+footer{background:var(--navy);color:#C7D0DD;margin-top:40px;padding:34px 0 26px;font-size:14px}
+footer .wrap{max-width:1080px}
+footer a{color:#C7D0DD;text-decoration:none;display:inline-block}
+footer a:hover{color:#fff}
+footer h2,footer h4{color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+footer .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px;margin-bottom:22px}
+footer .fg a{display:block;margin:5px 0}
+footer .legal{border-top:1px solid rgba(255,255,255,.14);padding-top:16px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:12.5px;color:#9AA7B8}
+footer .legal a{color:#9AA7B8}
+@media(max-width:640px){footer .fg{grid-template-columns:1fr 1fr}h1{font-size:27px}form.sbar button{padding:0 16px}}
+@media(prefers-reduced-motion:reduce){.skip-link{transition:none}}
+</style><style id="hs-social">footer .folw{margin-top:18px}footer .folw .fll{display:block;font-family:var(--font-mono,ui-monospace,SFMono-Regular,Menlo,monospace);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8EA1B8;margin-bottom:9px}footer .folw .fl-row{display:flex;gap:9px}footer .folw a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#DCE5EF;margin:0;padding:0;text-decoration:none;transition:background .16s,border-color .16s,color .16s,transform .16s}footer .folw a svg{width:16px;height:16px;fill:currentColor}footer .folw a:hover,footer .folw a:focus-visible{transform:translateY(-2px);color:#fff}footer .folw a.li:hover,footer .folw a.li:focus-visible{background:#0A66C2;border-color:#0A66C2}footer .folw a.fb:hover,footer .folw a.fb:focus-visible{background:#1877F2;border-color:#1877F2}footer.foot .folw{margin-top:0;display:flex;align-items:center;gap:11px}footer.foot .folw .fll{margin:0;color:#9FB0C4;font-size:9.5px}footer.foot .folw a{width:34px;height:34px}@media(max-width:640px){footer.foot .folw .fll{display:none}}@media(prefers-reduced-motion:reduce){footer .folw a{transition:none}footer .folw a:hover{transform:none}}</style><style id="hs-imgfix">img{width:auto;height:auto}</style>
+</head><body><header class="site"><div class="row"><a href="/index.html" aria-label="HSREP home"><img src="/assets/logo-2212309f.svg" width="2700" height="940" alt="HSREP, Health System Resilience and Economic Protection"></a><nav><a href="/index.html">Home</a><a href="/season-1.html">Season 1</a><a href="/articles.html">Articles</a><a href="/initiative.html">Initiative</a><a href="/about.html">About</a></nav><a class="cta" href="/index.html#participate">Participate</a></div></header><a href="#main" class="skip-link">Skip to content</a><main id="main"><div class="wrap"><p class="eyebrow">Search</p><h1>Search HSREP</h1>
+<p class="lead">Every article, film transcript, season page, methodology note and initiative page on this site, in one index. Results update as you type.</p>
+<form class="sbar" role="search" action="/search.html" method="get"><label class="vh" for="q">Search HSREP</label><input id="q" name="q" type="search" placeholder="Medical debt, workforce, screening…" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit">Search</button></form>
+<div class="chips" id="chips" hidden></div>
+<p class="status" id="status">Loading the index…</p>
+<div aria-live="polite" class="vh" id="live"></div>
+<ol class="res" id="res"></ol>
+<div class="box" id="start"><h2>Start here</h2><p>Nine Season 1 articles, nine film transcripts, the methodology behind the engagement numbers, and the Prevention Adoption Initiative.</p><div class="sugg"><a href="/search.html?q=medical+debt">medical debt</a><a href="/search.html?q=workforce">workforce</a><a href="/search.html?q=prevention">prevention</a><a href="/search.html?q=health+literacy">health literacy</a><a href="/search.html?q=Bangladesh">Bangladesh</a><a href="/search.html?q=Michigan">Michigan</a><a href="/search.html?q=screening">screening</a><a href="/search.html?q=methodology">methodology</a></div></div>
+<noscript><div class="box"><h2>Search needs JavaScript</h2><p>This page filters the site index in your browser, so it needs JavaScript switched on. Without it, the fastest routes in are the <a href="/articles.html">article library</a>, the <a href="/films.html">films and explainers</a>, the <a href="/season-1.html">Season 1 hub</a> and the <a href="/methodology.html">methodology</a>.</p></div></noscript>
+</div></main><footer><div class="wrap"><div class="fg"><div><h2>HSREP</h2><p style="margin:0;color:#9AA7B8;font-size:13.5px">An independent policy-research and advocacy platform examining health-system resilience as economic protection.</p></div><div><h2>Platform</h2><a href="/season-1.html">Season 1</a><a href="/articles.html">Articles</a><a href="/roundtable.html">Roundtable</a><a href="/initiative.html">Initiative</a><a href="/methodology.html">Methodology</a></div><div><h2>Connect</h2><a href="mailto:contact@hsraep.org">Contact &amp; partnerships</a><a href="https://www.linkedin.com/in/sacgrowthspecialist/" target="_blank" rel="noopener">Founder on LinkedIn</a><a href="/about.html">About &amp; standards</a><div class="folw"><span class="fll">Follow HSREP</span><div class="fl-row"><a class="li" href="https://www.linkedin.com/company/hsrep-org/" target="_blank" rel="noopener" aria-label="HSREP on LinkedIn" title="HSREP on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21H20v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a><a class="fb" href="https://www.facebook.com/HSREP.org" target="_blank" rel="noopener" aria-label="HSREP on Facebook" title="HSREP on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H8v3h2.6v8z"/></svg></a></div></div></div></div><div class="legal"><span>© 2026 HSREP · Md Shafaat Ali Choyon</span><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/accessibility.html">Accessibility</a><a href="/corrections.html">Corrections</a><span>Cookies: Google Analytics; Cloudflare is cookieless, see Privacy.</span></div></div></footer><script>
+(function(){
+ "use strict";
+ var qEl=document.getElementById("q"),resEl=document.getElementById("res"),stEl=document.getElementById("status"),
+     liveEl=document.getElementById("live"),chipsEl=document.getElementById("chips"),startEl=document.getElementById("start"),
+     formEl=document.querySelector("form.sbar");
+ var DOCS=null,ready=false,filter="",timer=null,lastQ=null,lastHits=[];
+ var MAX=40;                       // results drawn per query; the count line reports the rest
+ var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+ /* Length-preserving on purpose: snippet offsets are taken from the normalised
+    string and used against the original, so nothing here may add or drop a
+    character. Digit-group commas are handled on the query side instead. */
+ function norm(s){return String(s||"").toLowerCase().replace(/[‘’]/g,"'");}
+ function words(s){
+  return norm(s).replace(/(\d),(?=\d\d\d)/g,"$1").split(/[^a-z0-9']+/)
+   .filter(function(t){return t.length>1||/^\d$/.test(t);});
+ }
+ function rxEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
+ /* 57274 typed plain still has to find "57,274" in the page text. */
+ function pat(t){return /^\d{4,}$/.test(t)?t.split("").join(",?"):rxEsc(t);}
+ function hEsc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+ function prep(d){
+  d._t=norm(d.t); d._h=norm(d.h); d._d=norm(d.d); d._b=norm(d.b);
+  d._all=d._t+" \n"+d._h+" \n"+d._d+" \n"+d._b;
+  return d;
+ }
+ function hits(hay,re){var n=0;re.lastIndex=0;while(re.exec(hay)!==null){n++;if(n>40)break;}return n;}
+
+ function score(d,tk,phrase){
+  var s=0,matched=0,i,re,ct;
+  for(i=0;i<tk.length;i++){
+   re=new RegExp("\\b"+pat(tk[i]),"g");
+   var any=0;
+   ct=hits(d._t,re); if(ct){s+=14*ct;any=1;}
+   ct=hits(d._h,re); if(ct){s+=6*Math.min(ct,4);any=1;}
+   ct=hits(d._d,re); if(ct){s+=5*Math.min(ct,3);any=1;}
+   ct=hits(d._b,re); if(ct){s+=Math.min(ct,8);any=1;}
+   if(any)matched++;
+  }
+  if(!matched)return{s:0,m:0};
+  if(phrase){
+   if(d._t.indexOf(phrase)>=0)s+=45;
+   if(d._h.indexOf(phrase)>=0)s+=18;
+   if(d._d.indexOf(phrase)>=0)s+=14;
+   if(d._b.indexOf(phrase)>=0)s+=10;
+  }
+  return{s:s,m:matched};
+ }
+
+ function search(raw){
+  var tk=words(raw); if(!tk.length)return[];
+  var phrase=tk.length>1?norm(raw).replace(/\s+/g," ").trim():"";
+  var all=[],i,r;
+  for(i=0;i<DOCS.length;i++){
+   r=score(DOCS[i],tk,phrase);
+   if(r.m)all.push({d:DOCS[i],s:r.s,m:r.m});
+  }
+  var full=all.filter(function(x){return x.m===tk.length;});
+  var out=full.length?full:all;                    // AND first, OR only if AND finds nothing
+  out.sort(function(a,b){
+   if(b.s!==a.s)return b.s-a.s;
+   if(a.d.w!==b.d.w)return a.d.w-b.d.w;
+   return (b.d.p||"").localeCompare(a.d.p||"");
+  });
+  return out;
+ }
+
+ function snippet(d,tk){
+  var body=d.b||d.d||"",n=d._b||d._d||"",pos=-1,i,re,m;
+  for(i=0;i<tk.length&&pos<0;i++){
+   re=new RegExp("\\b"+pat(tk[i]));
+   m=re.exec(n); if(m)pos=m.index;
+  }
+  var start=pos<0?0:Math.max(0,pos-70),end=Math.min(body.length,start+250);
+  if(start>0){var sp=body.indexOf(" ",start);if(sp>0&&sp-start<25)start=sp+1;}
+  if(end<body.length){var sp2=body.lastIndexOf(" ",end);if(sp2>start+120)end=sp2;}
+  var txt=hEsc(body.slice(start,end).trim());
+  if(tk.length){
+   var alts=tk.map(pat).sort(function(a,b){return b.length-a.length;}).join("|");
+   txt=txt.replace(new RegExp("\\b("+alts+")","gi"),"<mark>$1</mark>");
+  }
+  return (start>0?"… ":"")+txt+(end<body.length?" …":"");
+ }
+
+ function human(iso){
+  if(!iso)return"";
+  var p=iso.split("-"); if(p.length!==3)return"";
+  return (+p[2])+" "+MONTHS[(+p[1])-1]+" "+p[0];
+ }
+
+ function drawChips(list){
+  var counts={},order=[],i,k;
+  for(i=0;i<list.length;i++){k=list[i].d.kl;if(!counts[k]){counts[k]=0;order.push(k);}counts[k]++;}
+  if(!list.length||order.length<2){chipsEl.hidden=true;chipsEl.innerHTML="";return;}
+  var h='<button type="button" data-k="" aria-pressed="'+(filter?"false":"true")+'">All '+list.length+"</button>";
+  for(i=0;i<order.length;i++){
+   k=order[i];
+   h+='<button type="button" data-k="'+hEsc(k)+'" aria-pressed="'+(filter===k?"true":"false")+'">'+hEsc(k)+" "+counts[k]+"</button>";
+  }
+  chipsEl.innerHTML=h; chipsEl.hidden=false;
+ }
+
+ function draw(){
+  var list=filter?lastHits.filter(function(x){return x.d.kl===filter;}):lastHits;
+  var tk=words(qEl.value),h="",i,d,shown=Math.min(list.length,MAX);
+  for(i=0;i<shown;i++){
+   d=list[i].d;
+   var meta=[d.s,human(d.p)].filter(Boolean).join(" · ");
+   h+='<li><p class="k">'+hEsc(d.kl)+(meta?' <span>· '+hEsc(meta)+"</span>":"")+"</p>"+
+      '<h2><a href="'+hEsc(d.u)+'">'+hEsc(d.t)+"</a></h2>"+
+      '<p class="sn">'+snippet(d,tk)+"</p>"+
+      '<p class="u">hsraep.org'+hEsc(d.u)+"</p></li>";
+  }
+  resEl.innerHTML=h;
+  var msg=list.length===0?"No matches for “"+qEl.value.trim()+"”. Try a single word, or a broader one.":
+          list.length+(list.length===1?" result":" results")+(list.length>shown?", showing the first "+shown:"");
+  stEl.textContent=msg; liveEl.textContent=msg;
+  startEl.hidden=!!qEl.value.trim();
+ }
+
+ function run(){
+  if(!ready)return;
+  var raw=qEl.value.trim();
+  if(raw===lastQ)return;
+  lastQ=raw;
+  if(!raw){lastHits=[];filter="";chipsEl.hidden=true;chipsEl.innerHTML="";resEl.innerHTML="";
+           stEl.textContent="Type to search "+DOCS.length+" pages.";liveEl.textContent="";startEl.hidden=false;return;}
+  lastHits=search(raw);
+  if(filter&&!lastHits.some(function(x){return x.d.kl===filter;}))filter="";
+  drawChips(lastHits);
+  draw();
+  var u=raw?"/search.html?q="+encodeURIComponent(raw):"/search.html";
+  try{history.replaceState(null,"",u);}catch(e){}
+ }
+
+ chipsEl.addEventListener("click",function(e){
+  var b=e.target.closest("button"); if(!b)return;
+  filter=b.getAttribute("data-k")||"";
+  drawChips(lastHits); draw();
+ });
+ qEl.addEventListener("input",function(){clearTimeout(timer);timer=setTimeout(run,110);});
+ formEl.addEventListener("submit",function(e){e.preventDefault();clearTimeout(timer);run();});
+
+ fetch("/assets/search-index.json",{credentials:"omit"})
+  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+  .then(function(j){
+   DOCS=j.docs.map(prep); ready=true;
+   var p=new URLSearchParams(location.search).get("q")||"";
+   if(p){qEl.value=p;run();}
+   else{stEl.textContent="Type to search "+DOCS.length+" pages.";}
+   if(!("ontouchstart"in window))qEl.focus();
+  })
+  .catch(function(){
+   stEl.innerHTML='The index did not load. Try the <a href="/articles.html">article library</a>, the <a href="/films.html">films</a> or the <a href="/season-1.html">Season 1 hub</a>.';
+  });
+})();
+</script><script src="/assets/analytics.js" defer></script></body></html>

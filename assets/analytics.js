@@ -69,6 +69,7 @@
  if (/about/.test(p)) return "about";
  if (/media/.test(p)) return "media";
  if (/methodology/.test(p)) return "methodology";
+ if (/search/.test(p)) return "search";
  if (/dashboard|bdot-demo/.test(p)) return "demo";
  if (/(privacy|terms|accessibility)/.test(p)) return "legal";
  if (p === "/" || /index\.html$/.test(p)) return "home";

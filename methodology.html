@@ -128,7 +128,7 @@
     .hero h1{font-size:31px}.defs{grid-template-columns:1fr}
     footer .fg{grid-template-columns:1fr 1fr}
   }
-</style>
+.hs-srch{display:inline-flex;align-items:center;gap:7px;font:600 14px "Inter",sans-serif;color:var(--navy2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 14px;white-space:nowrap;flex:0 0 auto;transition:color .15s,border-color .15s}.hs-srch svg{width:16px;height:16px;fill:currentColor;flex:none}.hs-srch:hover{color:var(--coral);border-color:var(--coral)}</style>
 <style id="hs-mob-polish">@media(max-width:600px){header.site img.logo{height:44px!important}.mth-secnav{top:69px!important}.focus,.fm-grid,.finds,.four,.endos{grid-template-columns:1fr!important}[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:.85fr 1.15fr"]{grid-template-columns:1fr!important}[data-acro="1"]{text-align:left!important}.fbot{flex-direction:column!important;align-items:flex-start!important;gap:5px!important}}</style>
 <style id="mth-secnav-css">.mth-secnav{position:sticky;top:105px;z-index:15;display:flex;align-items:center;gap:2px;background:rgba(246,247,249,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 22px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none}.mth-secnav::-webkit-scrollbar{display:none}.mth-secnav .sn-lab{flex:0 0 auto;margin-right:12px;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9AA4B0}.mth-secnav a{flex:0 0 auto;padding:12px 12px 11px;font-size:13px;font-weight:600;color:#5A6673;text-decoration:none;border-bottom:2px solid transparent;transition:color .16s,border-color .16s}.mth-secnav a:hover{color:var(--navy2)}.mth-secnav a.active{color:var(--navy);border-bottom-color:var(--coral)}.kicker{scroll-margin-top:150px}@media(max-width:640px){.mth-secnav .sn-lab{display:none}.mth-secnav{padding:0 14px;top:79px}header.site img.logo{height:62px}.mth-secnav{top:87px}}</style><style id="hs-grid-mobilefix">
 /* Responsive grid collapse: override inline repeat() that blocked the tablet breakpoint */
@@ -172,7 +172,7 @@
 <header class="site"><div class="wrap"><div class="row">
  <a href="index.html"><img class="logo" src="assets/logo-2212309f.svg" width="2700" height="940" alt="HSREP, Health System Resilience And Economic Protection"></a>
  <nav><a href="index.html">Home</a><a class="here" href="season-1.html">Season 1</a><a href="articles.html">Articles</a><a href="initiative.html">Initiative</a><a href="about.html">About</a></nav>
- <a class="btn accent" href="index.html#participate">Participate</a>
+ <a class="hs-srch" href="search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="btn accent" href="index.html#participate">Participate</a>
 </div></div></header><nav class="mth-secnav" aria-label="On this page"><span class="sn-lab">On this page</span><a href="#the-number">The number</a><a href="#definitions">What each counts</a><a href="#by-unit">By unit</a><a href="#reconciliation">Reconciliation</a><a href="#limits">Limitations</a><a href="#questions">Questions</a><a href="#download">Download</a></nav>
 
 <div class="hero"><div class="wrap">
@@ -372,5 +372,6 @@
  }
 })();
 </script>
+<style id="hs-srch-fit">@media(max-width:640px){.hs-srch span{display:none}.hs-srch{padding:8px 10px}header.site #hmenu-btn span{display:none}header.site #hmenu-btn{padding:8px 10px}}@media(max-width:400px){.hs-srch{padding:8px 9px}header.site #hmenu-btn{padding:8px 9px}}@media(max-width:340px){.hs-srch{padding:8px}header.site #hmenu-btn{padding:8px}}@media(max-width:640px){header.site .row{gap:10px}header.site img{height:42px!important}header.site .btn.accent{padding:9px 13px!important;font-size:.78rem}}@media(max-width:400px){header.site .row{gap:8px}header.site img{height:40px!important}header.site .btn.accent{padding:8px 11px!important;font-size:.75rem}}@media(max-width:340px){header.site .row{gap:6px}header.site img{height:34px!important}header.site .btn.accent{padding:8px 9px!important;font-size:.72rem}}@media(max-width:640px){header.site img.logo{height:42px!important}}@media(max-width:400px){header.site img.logo{height:40px!important}}@media(max-width:340px){header.site img.logo{height:34px!important}}</style>
 </body>
 </html>

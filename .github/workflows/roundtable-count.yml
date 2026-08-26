@@ -1,0 +1,37 @@
+name: Roundtable participation count (sync)
+
+# While a roundtable is open, this pulls the live submission count from Tally and
+# writes it into roundtables/rt-*.json so the private Roundtable Console shows a
+# near-live number. The Tally API key stays in Actions secrets and never reaches
+# the browser. It commits straight to main only when a count actually changes.
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"    # every 6 hours
+  workflow_dispatch: {}       # run on demand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync participation counts
+        env:
+          TALLY_API_KEY: ${{ secrets.TALLY_API_KEY }}
+        run: python scripts/roundtable_count.py
+
+      - name: Commit if the count changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Roundtable: sync participation count"
+          file_pattern: roundtables/*.json

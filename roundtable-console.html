@@ -1,0 +1,208 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Roundtable Console — HSREP (private)</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preheat" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Spectral:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1C2E4A;--navy-deep:#0F2036;--coral:#F26D5A;--coral-press:#E05A47;--coral-wash:#FDEEEA;
+  --ink:#28333F;--muted:#65717E;--hairline:#DCE3EA;--paper:#FBFCFD;--white:#fff;
+  --green:#267A69;--green-wash:#E7F3EF;--amber:#B26B00;--amber-wash:#FBF0DE;--grey:#65717E;
+  --font-sans:'Inter',system-ui,sans-serif;--font-serif:'Spectral',Georgia,serif;--font-mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+a{color:var(--coral);text-decoration:none}
+header.top{background:var(--navy);color:#fff;padding:26px 0 24px}
+header.top .wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:38px;width:auto;display:block}
+.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+header.top h1{font-family:var(--font-serif);font-weight:700;font-size:1.5rem;margin:4px 0 0;line-height:1.15}
+.priv{display:inline-block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:4px 10px;margin-top:10px}
+.refresh{background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--font-sans);font-weight:600;font-size:.85rem;padding:10px 16px;cursor:pointer;transition:background .15s}
+.refresh:hover{background:var(--coral-press)}
+.refresh .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff;margin-right:7px;vertical-align:middle;opacity:.9}
+main{padding:26px 0 60px}
+.legend{font-size:.82rem;color:var(--muted);line-height:1.6;margin:0 0 22px;padding:14px 16px;background:var(--white);border:1px solid var(--hairline);border-radius:10px}
+.legend b{color:var(--ink)}
+.card{background:var(--white);border:1px solid var(--hairline);border-radius:14px;padding:22px 22px 20px;margin:0 0 20px;box-shadow:0 1px 2px rgba(28,46,74,.04)}
+.card .rhead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.card h2{font-family:var(--font-serif);font-weight:700;font-size:1.25rem;margin:0;line-height:1.2}
+.card .q{color:var(--muted);font-size:.9rem;margin:5px 0 0;max-width:60ch;line-height:1.5}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.03em;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.badge .bdot{width:8px;height:8px;border-radius:50%}
+.b-sched{background:var(--coral-wash);color:var(--coral-press)}.b-sched .bdot{background:var(--coral)}
+.b-open{background:var(--green-wash);color:var(--green)}.b-open .bdot{background:var(--green)}
+.b-closed{background:#EEF1F4;color:var(--grey)}.b-closed .bdot{background:var(--grey)}
+.b-draft{background:var(--amber-wash);color:var(--amber)}.b-draft .bdot{background:var(--amber)}
+.b-pub{background:var(--navy);color:#fff}.b-pub .bdot{background:var(--coral)}
+.meta{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0 4px;padding:16px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.metric .k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.metric .v{font-family:var(--font-serif);font-weight:700;font-size:1.55rem;color:var(--navy);line-height:1.1;margin-top:3px}
+.metric .v small{font-size:.62rem;font-weight:500;color:var(--muted);font-family:var(--font-sans);letter-spacing:0}
+.win{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-sans);font-weight:600;font-size:.83rem;padding:10px 14px;border-radius:8px;border:1px solid var(--hairline);background:var(--white);color:var(--ink);cursor:pointer;transition:.14s}
+.btn:hover{border-color:var(--coral);color:var(--coral-press)}
+.btn.primary{background:var(--coral);border-color:var(--coral);color:#fff}
+.btn.primary:hover{background:var(--coral-press);color:#fff}
+.btn.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.dark:hover{background:var(--navy-deep);color:#fff}
+.synth{margin-top:18px;border-top:1px dashed var(--hairline);padding-top:16px}
+.synth .sh{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.synth .body{font-family:var(--font-serif);font-size:.98rem;line-height:1.65;color:var(--ink)}
+.synth .body p{margin:0 0 12px}.synth .body h3{font-family:var(--font-serif);font-size:1.05rem;margin:16px 0 6px}
+.synth .body ul{margin:0 0 12px;padding-left:20px}
+.synth .empty{color:var(--muted);font-style:italic;font-size:.92rem;line-height:1.6}
+.howto{margin-top:14px;font-size:.82rem;color:var(--muted);background:var(--amber-wash);border:1px solid #EBD9B8;border-radius:9px;padding:12px 14px;line-height:1.6}
+.howto b{color:var(--amber)}
+.howto code{font-family:var(--font-mono);font-size:.78rem;background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:1px 5px}
+.empty-state{text-align:center;color:var(--muted);padding:50px 20px;font-size:.95rem}
+.foot{margin-top:34px;font-size:.78rem;color:var(--muted);line-height:1.6;text-align:center}
+.foot code{font-family:var(--font-mono);font-size:.74rem}
+.updstamp{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:6px}
+@media(max-width:560px){.meta{gap:18px}.card h2{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">
+    <img src="/assets/logo-0eecf814.svg" alt="HSREP" onerror="this.style.display='none'">
+    <div>
+      <div class="eyebrow">Roundtable Console</div>
+      <h1>Participation &amp; synthesis, one view</h1>
+      <span class="priv">Private · not indexed · unlinked</span>
+    </div>
+  </div>
+  <button class="refresh" onclick="load()"><span class="dot"></span>Refresh</button>
+</div></header>
+
+<main><div class="wrap">
+  <p class="legend">
+    This page reads your live roundtable data and shows every roundtable's status in one place.
+    <b>Check participation</b> opens the response count on Tally (the live figure). <b>Synthesis PR</b> opens
+    the draft synthesis on GitHub for your review. When a synthesis is approved and merged, it appears here and
+    on the public roundtable page. Nothing on this page is public — it is <b>noindex</b> and linked from nowhere.
+    <span class="updstamp" id="stamp"></span>
+  </p>
+  <div id="list"><div class="empty-state">Loading roundtables…</div></div>
+  <p class="foot">
+    Auto-discovers <code>roundtables/rt-01.json</code>, <code>rt-02.json</code>, … in order.
+    New roundtables appear here automatically once their JSON exists.<br>
+    HSREP · Human in purpose · Systemic in method · Protective in outcome
+  </p>
+</div></main>
+
+<script>
+var REPO='shafaatalic-pixel/healthsystemresilience';
+var PR_URL='https://github.com/'+REPO+'/pulls';
+function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function pad(n){return n<10?'0'+n:''+n;}
+function days(a,b){return Math.max(0,Math.ceil((a-b)/86400000));}
+function fmt(d){var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return M[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
+function fmtStamp(iso){try{var d=new Date(iso);if(isNaN(d))return esc(iso);return d.toLocaleString();}catch(e){return esc(iso);}}
+// minimal markdown -> html for the synthesis body
+function md(t){
+  if(!t)return'';
+  var lines=String(t).split(/\r?\n/),out='',inList=false;
+  function inl(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>');}
+  for(var i=0;i<lines.length;i++){
+    var ln=lines[i];
+    if(/^\s*[-*]\s+/.test(ln)){ if(!inList){out+='<ul>';inList=true;} out+='<li>'+inl(ln.replace(/^\s*[-*]\s+/,''))+'</li>'; continue; }
+    if(inList){out+='</ul>';inList=false;}
+    if(/^#{1,3}\s+/.test(ln)){ out+='<h3>'+inl(ln.replace(/^#{1,3}\s+/,''))+'</h3>'; continue; }
+    if(ln.trim()==='')continue;
+    out+='<p>'+inl(ln)+'</p>';
+  }
+  if(inList)out+='</ul>';
+  return out;
+}
+
+function statusOf(cfg,now){
+  var open=new Date((cfg.open||'')+'T00:00:00'), close=new Date((cfg.close||'')+'T23:59:59');
+  if(cfg.approved && cfg.synthesis_md) return {key:'pub',cls:'b-pub',label:'Published · live on site',phase:'published',open:open,close:close};
+  if(cfg.synthesis_md)                return {key:'draft',cls:'b-draft',label:'Synthesis drafted · awaiting your approval',phase:'drafted',open:open,close:close};
+  if(now<open)   return {key:'sched',cls:'b-sched',label:'Scheduled · opens in '+days(open,now)+' d',phase:'scheduled',open:open,close:close};
+  if(now<=close) return {key:'open',cls:'b-open',label:'Open · closes in '+days(close,now)+' d',phase:'open',open:open,close:close};
+  return {key:'closed',cls:'b-closed',label:'Closed · synthesis pending',phase:'closed',open:open,close:close};
+}
+
+function card(cfg){
+  var now=new Date(), s=statusOf(cfg,now);
+  var form=cfg.tally_form_id||'';
+  var subUrl=form?'https://tally.so/forms/'+form+'/submissions':'https://tally.so/';
+  var formUrl=form?'https://tally.so/r/'+form:'https://tally.so/';
+  var rc=(typeof cfg.response_count==='number')?cfg.response_count:0;
+  var synced=cfg.count_synced||'';
+  var srcLbl=synced?'synced from Tally':'in site data';
+  var upd=cfg.updated?(' · data updated '+esc(cfg.updated)):'';
+
+  var h='<div class="card">';
+  h+='<div class="rhead"><div><h2>'+esc(cfg.title||cfg.id)+'</h2>';
+  if(cfg.question)h+='<p class="q">'+esc(cfg.question)+'</p>';
+  h+='</div><span class="badge '+s.cls+'"><span class="bdot"></span>'+esc(s.label)+'</span></div>';
+
+  // metrics
+  h+='<div class="meta">';
+  h+='<div class="metric"><div class="k">Responses</div><div class="v">'+rc+' <small>'+srcLbl+'</small></div></div>';
+  h+='<div class="metric"><div class="k">Window</div><div class="v" style="font-size:1rem;padding-top:8px"><span class="win">'+fmt(s.open)+' → '+fmt(s.close)+'</span></div></div>';
+  if(synced)h+='<div class="metric"><div class="k">Last sync</div><div class="v" style="font-size:.95rem;padding-top:9px"><span class="win">'+fmtStamp(synced)+'</span></div></div>';
+  h+='</div>';
+
+  // actions
+  h+='<div class="actions">';
+  h+='<a class="btn primary" href="'+subUrl+'" target="_blank" rel="noopener">Check participation on Tally →</a>';
+  h+='<a class="btn" href="'+formUrl+'" target="_blank" rel="noopener">View the form</a>';
+  if(s.phase==='drafted'||s.phase==='closed')
+    h+='<a class="btn dark" href="'+PR_URL+'" target="_blank" rel="noopener">Synthesis PR on GitHub →</a>';
+  h+='<a class="btn" href="/roundtable.html" target="_blank" rel="noopener">Public page</a>';
+  h+='</div>';
+
+  // synthesis panel
+  h+='<div class="synth"><div class="sh">Synthesis</div>';
+  if(cfg.synthesis_md){
+    h+='<div class="body">'+md(cfg.synthesis_md)+'</div>';
+    if(!cfg.approved){
+      h+='<div class="howto"><b>This is a draft — not yet public.</b> To publish it: review the text on the '
+        +'<a href="'+PR_URL+'" target="_blank" rel="noopener">synthesis PR</a>, edit if needed, set '
+        +'<code>"approved": true</code> in <code>roundtables/'+esc(cfg.id)+'.json</code>, and merge. '
+        +'It then renders on the public roundtable page.</div>';
+    }
+  }else if(s.phase==='closed'){
+    h+='<p class="empty">The window has closed. No synthesis has been written yet. Export the Tally responses and draft the synthesis, or run the automation, then it will show here.'+esc(upd)+'</p>';
+  }else if(s.phase==='open'){
+    h+='<p class="empty">This roundtable is open. Responses are being collected — use “Check participation” for the live count. The synthesis is drafted after it closes on '+fmt(s.close)+'.'+esc(upd)+'</p>';
+  }else{
+    h+='<p class="empty">Opens '+fmt(s.open)+'. The synthesis will appear here after the window closes.'+esc(upd)+'</p>';
+  }
+  h+='</div></div>';
+  return h;
+}
+
+function load(){
+  document.getElementById('stamp').textContent='Checked '+new Date().toLocaleString();
+  var listEl=document.getElementById('list'); listEl.innerHTML='<div class="empty-state">Loading roundtables…</div>';
+  var html='', i=1, found=0;
+  function next(){
+    var id='rt-'+pad(i);
+    fetch('/roundtables/'+id+'.json?ts='+Date.now(),{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(cfg){
+        if(cfg){ if(!cfg.id)cfg.id=id; html+=card(cfg); found++; i++; next(); }
+        else { done(); }
+      })
+      .catch(function(){ done(); });
+  }
+  function done(){
+    listEl.innerHTML = found ? html : '<div class="empty-state">No roundtables found yet. When you create <code>roundtables/rt-01.json</code>, it appears here.</div>';
+  }
+  next();
+}
+load();
+</script>
+</body></html>

@@ -143,6 +143,11 @@ section:target,div:target{animation:hsflash 1.8s ease 1}
 <div class="rt-campaign-copy"><div class="eyebrow">Current campaign · Open through August 25</div><h2 id="roundtable-campaign-title">Does the platform decide who hears the argument?</h2><p>Five minutes. Named professional contributions. Moderated exchange. Published synthesis.</p></div>
 <a class="btn accent" href="https://tally.so/r/VLBbYM" target="_blank" rel="noopener">Join Roundtable № 01 <span class="ar">→</span></a>
 </div></div></section>
+<!-- Campaign-window check runs HERE, inline, so the banner's final state is
+     settled before first paint. Do not move this to the end of <body>: that
+     un-hides a ~240px block after the page has painted and shifts everything
+     below it (CLS regression, Aug 18-25 2026). -->
+<script>(function(){var p=document.getElementById('roundtable-campaign');if(!p)return;var n=new Date(),o=new Date(p.dataset.open+'T00:00:00'),c=new Date(p.dataset.close+'T23:59:59');if(n>=o&&n<=c)p.hidden=false;})();</script>
 <!-- § 01 THE PUBLISHED RECORD — stats, methodology, and the feed -->
 <section id="season"><div class="wrap">
 <div class="shead rv"><div class="eyebrow"><span class="snum">§&nbsp;01</span> · Season 1 · The published record</div>
@@ -207,6 +212,16 @@ section:target,div:target{animation:hsflash 1.8s ease 1}
 <div class="anc">Anchored to Season 1&rsquo;s finding that <i>platform, not content, drove who saw a health argument</i></div>
 <div class="rm"><span><b>✓</b> Real name &amp; affiliation</span><span><b>✓</b> Moderated</span><span><b>✓</b> Best responses published</span></div>
 <div class="rf"><a class="btn accent" id="rt-cta1" href="roundtable.html">Take part <span class="ar">→</span></a></div></div>
+<!-- Roundtable state applied inline (before first paint) so the pill text and
+     CTA label never change after the page has rendered. See the note by the
+     campaign banner: end-of-body mutation here caused a CLS regression. -->
+<script>(function(){var p=document.getElementById('rt-pill');if(!p)return;
+var n=new Date(),o=new Date(p.dataset.open+'T00:00:00'),c=new Date(p.dataset.close+'T23:59:59');
+var a1=document.getElementById('rt-cta1'),AR=' <span class="ar">→</span>';
+function d(t){return Math.max(0,Math.ceil((t-n)/864e5));}
+if(n<o){p.innerHTML='<i></i>Opens in '+d(o)+' days';if(a1)a1.innerHTML='See the question'+AR;}
+else if(n<=c){p.innerHTML='<i></i>Open · closes in '+d(c)+' days';if(a1)a1.innerHTML='Take part'+AR;}
+else{p.innerHTML='<i></i>Closed · synthesis published';if(a1)a1.innerHTML='Read the record'+AR;}})();</script>
 <div class="rsteps rv"><h3>How a roundtable works</h3>
 <div class="rstep"><span class="n">01</span><div><b>Respond</b><span class="d">One question, five minutes, no account needed.</span></div></div>
 <div class="rstep"><span class="n">02</span><div><b>Moderated exchange</b><span class="d">Selected responses receive replies and follow-ups over the window.</span></div></div>
@@ -260,6 +275,11 @@ section:target,div:target{animation:hsflash 1.8s ease 1}
 <div class="top"><h2 class="sec">Choose the next step that fits.</h2><div class="lead">The current priority is Roundtable № 01. Partnership and newsletter options remain available without competing for attention.</div></div></div>
 <div class="paths priority-grid">
 <div class="path rv priority-main" id="discuss"><div class="picon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><div class="n">CURRENT CAMPAIGN · OPEN THROUGH AUGUST 25</div><h3>Join Roundtable № 01</h3><p>Answer one focused question with your name and affiliation. Selected responses enter a moderated, published synthesis.</p><a class="btn accent" id="rt-cta2" href="https://tally.so/r/VLBbYM" target="_blank" rel="noopener">Add your response <span class="ar">→</span></a></div>
+<script>(function(){var p=document.getElementById('rt-pill'),a2=document.getElementById('rt-cta2');if(!p||!a2)return;
+var n=new Date(),o=new Date(p.dataset.open+'T00:00:00'),c=new Date(p.dataset.close+'T23:59:59'),AR=' <span class="ar">→</span>';
+if(n<o)a2.innerHTML='Register your interest'+AR;
+else if(n<=c)a2.innerHTML='Respond now'+AR;
+else{a2.href='roundtable.html#synthesis';a2.removeAttribute('target');a2.innerHTML='Read the synthesis'+AR;}})();</script>
 <div class="path rv priority-secondary" id="partner" style="transition-delay:.08s"><div class="n">PARTNERSHIP · CONSIDERED ASK</div><h3>Could you host or evaluate the pilot?</h3><p>Start with a focused 30-minute presentation for your team. No commitment required.</p><a class="btn ghost" href="https://calendly.com/shafaat-alic/30min" target="_blank" rel="noopener">Request the presentation <span class="ar">→</span></a></div>
 <div class="path rv priority-fallback" id="subscribe" style="transition-delay:.12s"><div class="n">FOLLOW · QUIET FALLBACK</div><h3>Get the next opening by email</h3><p>Season 2, new roundtables, and initiative milestones—a few times a season.</p><form class="nlform lite" action="https://buttondown.com/api/emails/embed-subscribe/shafaat" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/shafaat','popupwindow');"><input type="email" name="email" placeholder="you@institution.org" aria-label="Email address" required><button type="submit">Subscribe →</button></form></div>
 </div>
@@ -505,20 +525,5 @@ html.hmenu-open #hmenu-panel{display:block}
 .btn.accent:hover,.sn-cta:hover{background:#A83722!important;border-color:#A83722!important}
 #secnav .sn-cta{display:none!important}
 </style>
-<script>(function(){var panel=document.getElementById('roundtable-campaign');if(!panel)return;var now=new Date(),op=new Date(panel.dataset.open+'T00:00:00'),cl=new Date(panel.dataset.close+'T23:59:59');if(now>=op&&now<=cl)panel.hidden=false;})();</script>
-<script>(function(){var p=document.getElementById('rt-pill');if(!p)return;
-var op=new Date(p.dataset.open+'T00:00:00'),cl=new Date(p.dataset.close+'T23:59:59'),now=new Date();
-var a1=document.getElementById('rt-cta1'),a2=document.getElementById('rt-cta2'),AR=' <span class="ar">\u2192</span>';
-function d(t){return Math.max(0,Math.ceil((t-now)/864e5));}
-if(now<op){p.innerHTML='<i></i>Opens in '+d(op)+' days';
- if(a1)a1.innerHTML='See the question'+AR;
- if(a2)a2.innerHTML='Register your interest'+AR;}
-else if(now<=cl){p.innerHTML='<i></i>Open \u00b7 closes in '+d(cl)+' days';
- if(a1)a1.innerHTML='Take part'+AR;
- if(a2)a2.innerHTML='Respond now'+AR;}
-else{p.innerHTML='<i></i>Closed \u00b7 synthesis published';
- if(a1)a1.innerHTML='Read the record'+AR;
- if(a2){a2.href='roundtable.html#synthesis';a2.removeAttribute('target');a2.innerHTML='Read the synthesis'+AR;}}
-})();</script>
 <style id="hs-srch-fit">@media(max-width:640px){.hs-srch span{display:none}.hs-srch{padding:8px 10px}header.site #hmenu-btn span{display:none}header.site #hmenu-btn{padding:8px 10px}}@media(max-width:400px){.hs-srch{padding:8px 9px}header.site #hmenu-btn{padding:8px 9px}}@media(max-width:340px){.hs-srch{padding:8px}header.site #hmenu-btn{padding:8px}}@media(max-width:640px){header.site .row{gap:10px}header.site img{height:42px!important}header.site .btn.accent{padding:9px 13px!important;font-size:.78rem}}@media(max-width:400px){header.site .row{gap:8px}header.site img{height:40px!important}header.site .btn.accent{padding:8px 11px!important;font-size:.75rem}}@media(max-width:340px){header.site .row{gap:6px}header.site img{height:34px!important}header.site .btn.accent{padding:8px 9px!important;font-size:.72rem}}</style>
 </body></html>

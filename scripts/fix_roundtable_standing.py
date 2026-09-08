@@ -213,7 +213,7 @@ edit("roundtable.html", [
     ('<div class="rd rv"><div class="rk">Window · 14 days</div><div><b>Respond</b>',
      '<div class="rd rv"><div class="rk">Any time</div><div><b>Respond</b>', 1),
     ('<div class="rd rv"><div class="rk">On close</div><div><b>Synthesis</b><p>When the window ends, responses are reviewed and a single published synthesis names consented contributors and the through-line.</p></div></div>',
-     '<div class="rd rv"><div class="rk">When there is enough</div><div><b>Synthesis</b><p>Once the question has drawn enough responses, they are reviewed and a single published synthesis names consented contributors and the through-line.</p></div></div>', 1),
+     '<div class="rd rv"><div class="rk">Once enough</div><div><b>Synthesis</b><p>Once the question has drawn enough responses, they are reviewed and a single published synthesis names consented contributors and the through-line.</p></div></div>', 1),
     # --- section 03: the honest record
     ('<div id="rtsynth" class="rich rv" style="max-width:76ch"><p class="big">The response window has closed. The moderated synthesis, naming consented contributors and the through-line, is in preparation and will be posted here.</p></div>',
      '<div id="rtsynth" class="rich rv" style="max-width:76ch">' + RECORD_HTML + '</div>', 1),

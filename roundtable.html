@@ -171,6 +171,8 @@ html.hmenu-open #hmenu-panel{display:block}
 .rd[data-state="next"] b{color:var(--muted)}
 .rd[data-state="next"] p{color:#8A939D}
 @media(min-width:721px){
+  /* the rail sits at 126px; keep kicker text clear of it */
+  .rk{max-width:112px}
   .road::before{content:"";position:absolute;left:126px;top:24px;bottom:24px;width:1px;background:var(--hairline)}
   .road .rdfill{position:absolute;left:126px;top:24px;width:1px;height:0;background:var(--coral);transition:height .95s var(--ease)}
   .road.in .rdfill{height:var(--rdh,0px)}
@@ -245,7 +247,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="shead rv"><div class="eyebrow"><span class="snum">§ 02</span> · How it works</div><div class="top"><h2 class="sec">Low friction to join. High standard for the record.</h2></div></div>
 <div class="road" id="rtroad">
 <div class="rd rv"><div class="rk">Any time</div><div><b>Respond</b><p>Answer with your real name and affiliation through one short form. A named moderator curates.</p></div></div>
-<div class="rd rv"><div class="rk">When there is enough</div><div><b>Synthesis</b><p>Once the question has drawn enough responses, they are reviewed and a single published synthesis names consented contributors and the through-line.</p></div></div>
+<div class="rd rv"><div class="rk">Once enough</div><div><b>Synthesis</b><p>Once the question has drawn enough responses, they are reviewed and a single published synthesis names consented contributors and the through-line.</p></div></div>
 <div class="rd rv"><div class="rk">After</div><div><b>The record</b><p>The question, the synthesis, and any resulting advocacy brief become a permanent, citable page.</p></div></div>
 </div>
 </div></section>

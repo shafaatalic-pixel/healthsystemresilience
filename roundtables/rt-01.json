@@ -2,14 +2,21 @@
   "id": "rt-01",
   "title": "Roundtable № 01",
   "question": "Does the platform decide who hears the argument?",
+  "state": "open-standing",
   "open": "2026-08-11",
-  "close": "2026-08-25",
+  "close": null,
+  "first_window": {
+    "open": "2026-08-11",
+    "close": "2026-08-25",
+    "response_count": 0
+  },
   "tally_form_id": "VLBbYM",
   "roundtable_engagement_label": "Join a roundtable discussion",
-  "status": "scheduled",
+  "status": "open",
   "approved": false,
   "synthesis_md": "",
   "contributors": [],
   "response_count": 0,
-  "updated": ""
+  "count_synced": false,
+  "updated": "2026-09-08"
 }

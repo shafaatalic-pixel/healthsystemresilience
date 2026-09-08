@@ -155,6 +155,10 @@
  }
 
  function campaignState(cfg) {
+ /* an explicit state in rt-01.json wins over anything inferred from dates */
+ if (cfg.state === "open" || cfg.state === "open-standing") return "roundtable";
+ if (cfg.state === "scheduled") return "upcoming";
+ if (cfg.state === "closed-pending" || cfg.state === "published") return "season2";
  var now = new Date();
  var open = new Date((cfg.open || "2026-08-11") + "T00:00:00");
  var close = new Date((cfg.close || "2026-08-25") + "T23:59:59");
@@ -205,8 +209,12 @@
  var openD = cfg.open || "2026-08-11", closeD = cfg.close || "2026-08-25";
  if (state === "roundtable") {
  mainHref = "https://tally.so/r/VLBbYM"; kicker = "Roundtable № 01";
- desktop = "Open through " + fmtDate(closeD, true) + ".";
- mobile = "Open through " + fmtDate(closeD) + "."; action = "Respond now →"; actionMobile = action;
+ if (cfg.state === "open-standing" || !cfg.close) {
+ desktop = "Open now, no closing date."; mobile = "Open now.";
+ } else {
+ desktop = "Open through " + fmtDate(closeD, true) + "."; mobile = "Open through " + fmtDate(closeD) + ".";
+ }
+ action = "Add your response →"; actionMobile = "Respond →";
  } else if (state === "upcoming") {
  mainHref = "/roundtable.html"; kicker = "Roundtable № 01";
  desktop = "Opens " + fmtDate(openD, true) + ".";
@@ -235,7 +243,7 @@
  (body{padding-top:45px}; html.hs-bar-on body, html.hs-nobar body {padding-top:0}).
  renderCampaign() inserts the fixed-height bar and adds hs-bar-on in the same frame.
  A page that lacks the reserve simply behaves as before. */
- var fallback = { open: "2026-08-11", close: "2026-08-25" };
+ var fallback = { state: "open-standing", open: "2026-08-11", close: null };
  renderCampaign(fallback);
  if (!window.fetch) return;
  fetch("/roundtables/rt-01.json", { cache: "no-store" })

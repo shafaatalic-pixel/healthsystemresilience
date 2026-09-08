@@ -158,7 +158,7 @@ def main():
     # keep the status field honest for the front-end even before close
     if today < cfg["open"]:
         cfg["status"] = "scheduled"; save_cfg(cfg); print("Not open yet."); return
-    if today <= cfg["close"]:
+    if not cfg.get("close") or today <= cfg["close"]:
         cfg["status"] = "open"; save_cfg(cfg); print("Window open — nothing to synthesize."); return
     if cfg.get("status") in ("drafted", "published") and cfg.get("synthesis_md"):
         print("Synthesis already drafted/published — skipping."); return

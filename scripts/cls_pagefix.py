@@ -10,8 +10,28 @@ RESERVE = ('<style id="hs-reserve">body{padding-top:45px}html.hs-bar-on body,htm
 FONT_FALLBACK_CSS = '@font-face{font-family:"Inter Fallback";font-weight:400;font-style:normal;src:local("Arial"),local("ArialMT");size-adjust:107.62%;ascent-override:90.01%;descent-override:22.41%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:500;font-style:normal;src:local("Arial"),local("ArialMT");size-adjust:108.75%;ascent-override:89.08%;descent-override:22.18%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:600;font-style:normal;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:101.46%;ascent-override:95.48%;descent-override:23.77%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:700;font-style:normal;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:102.49%;ascent-override:94.52%;descent-override:23.54%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:800;font-style:normal;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:103.75%;ascent-override:93.38%;descent-override:23.25%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:400;font-style:normal;src:local("Times New Roman"),local("TimesNewRomanPSMT");size-adjust:109.71%;ascent-override:96.52%;descent-override:42.20%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:400;font-style:italic;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT");size-adjust:100.60%;ascent-override:105.27%;descent-override:46.02%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:600;font-style:normal;src:local("Times New Roman Bold"),local("TimesNewRomanPS-BoldMT");size-adjust:106.03%;ascent-override:99.88%;descent-override:43.67%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:700;font-style:normal;src:local("Times New Roman Bold"),local("TimesNewRomanPS-BoldMT");size-adjust:107.64%;ascent-override:98.38%;descent-override:43.01%;line-gap-override:0.00%}@font-face{font-family:"IBM Plex Mono Fallback";font-weight:500;font-style:normal;src:local("Courier New"),local("CourierNewPSMT");size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0.00%}@font-face{font-family:"IBM Plex Mono Fallback";font-weight:600;font-style:normal;src:local("Courier New Bold"),local("CourierNewPS-BoldMT");size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0.00%}@font-face{font-family:"IBM Plex Mono Fallback";font-weight:700;font-style:normal;src:local("Courier New Bold"),local("CourierNewPS-BoldMT");size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0.00%}' + ':root{--font-body:"Inter","Inter Fallback",system-ui,sans-serif;--font-display:"Spectral","Spectral Fallback",Georgia,serif;--font-mono:"IBM Plex Mono","IBM Plex Mono Fallback",monospace}'
 SKIP = {'roundtable-console.html'}   # private console: no site header, no campaign bar
 today = datetime.date.today()
-open_d, close_d = datetime.date(2026, 8, 11), datetime.date(2026, 8, 25)   # rt-01 dates (fallback in analytics.js)
-state = 'roundtable' if open_d <= today <= close_d else ('season2' if today > close_d else 'upcoming')
+
+def campaign_state():
+    """Mirror analytics.js campaignState() so the baked header CTA matches what the
+    script would set, and nothing is relabelled after first paint."""
+    cfg = {}
+    try:
+        import json as _json
+        with open(os.path.join(root, 'roundtables', 'rt-01.json'), encoding='utf-8') as f:
+            cfg = _json.load(f)
+    except Exception:
+        pass
+    st = cfg.get('state')
+    if st in ('open', 'open-standing'): return 'roundtable'
+    if st == 'scheduled':               return 'upcoming'
+    if st in ('closed-pending', 'published'): return 'season2'
+    o = cfg.get('open') or '2026-08-11'
+    c = cfg.get('close') or '2026-08-25'
+    open_d = datetime.date(*[int(x) for x in o.split('-')])
+    close_d = datetime.date(*[int(x) for x in c.split('-')])
+    return 'roundtable' if open_d <= today <= close_d else ('season2' if today > close_d else 'upcoming')
+
+state = campaign_state()
 
 def group(rel):
     p = '/' + rel.replace(os.sep, '/')
@@ -53,7 +73,7 @@ for dp, dn, fn in os.walk(root):
         hdr = re.search(r'<header[^>]*class="[^"]*site[^"]*"[^>]*>.*?</header>', s, re.S)
         if hdr:
             h = hdr.group(0)
-            h2 = re.sub(r'<a class="(btn accent|cta|hs-hcta)"[^>]*>Participate</a>', sub_cta, h)
+            h2 = re.sub(r'<a class="(btn accent|cta|hs-hcta)"[^>]*>(?:Participate|Season 2 updates|Join Roundtable|Roundtable record|Add your response|Request presentation)</a>', sub_cta, h)
             s = s[:hdr.start()] + h2 + s[hdr.end():]
         # 3. static nav label analytics.js applies ("Season 1" -> "Evidence") inside the header nav / mobile panel
         if hdr:

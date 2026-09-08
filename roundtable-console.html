@@ -126,6 +126,7 @@ function md(t){
 function statusOf(cfg,now){
   var open=new Date((cfg.open||'')+'T00:00:00'), close=new Date((cfg.close||'')+'T23:59:59');
   if(cfg.approved && cfg.synthesis_md) return {key:'pub',cls:'b-pub',label:'Published · live on site',phase:'published',open:open,close:close};
+  if(cfg.state==='open-standing')      return {key:'open',cls:'b-open',label:'Open · no closing date',phase:'standing',open:open,close:null};
   if(cfg.synthesis_md)                return {key:'draft',cls:'b-draft',label:'Synthesis drafted · awaiting your approval',phase:'drafted',open:open,close:close};
   if(now<open)   return {key:'sched',cls:'b-sched',label:'Scheduled · opens in '+days(open,now)+' d',phase:'scheduled',open:open,close:close};
   if(now<=close) return {key:'open',cls:'b-open',label:'Open · closes in '+days(close,now)+' d',phase:'open',open:open,close:close};
@@ -150,7 +151,7 @@ function card(cfg){
   // metrics
   h+='<div class="meta">';
   h+='<div class="metric"><div class="k">Responses</div><div class="v">'+rc+' <small>'+srcLbl+'</small></div></div>';
-  h+='<div class="metric"><div class="k">Window</div><div class="v" style="font-size:1rem;padding-top:8px"><span class="win">'+fmt(s.open)+' → '+fmt(s.close)+'</span></div></div>';
+  h+='<div class="metric"><div class="k">Window</div><div class="v" style="font-size:1rem;padding-top:8px"><span class="win">'+fmt(s.open)+' → '+(s.close?fmt(s.close):'no closing date')+'</span></div></div>';
   if(synced)h+='<div class="metric"><div class="k">Last sync</div><div class="v" style="font-size:.95rem;padding-top:9px"><span class="win">'+fmtStamp(synced)+'</span></div></div>';
   h+='</div>';
 
@@ -175,6 +176,8 @@ function card(cfg){
     }
   }else if(s.phase==='closed'){
     h+='<p class="empty">The window has closed. No synthesis has been written yet. Export the Tally responses and draft the synthesis, or run the automation, then it will show here.'+esc(upd)+'</p>';
+  }else if(s.phase==='standing'){
+    h+='<p class="empty">This question is open with no closing date. Use “Check participation” for the live count, then draft the synthesis when there is enough on the record to be worth synthesising.'+esc(upd)+'</p>';
   }else if(s.phase==='open'){
     h+='<p class="empty">This roundtable is open. Responses are being collected — use “Check participation” for the live count. The synthesis is drafted after it closes on '+fmt(s.close)+'.'+esc(upd)+'</p>';
   }else{

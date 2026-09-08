@@ -121,10 +121,10 @@
  var s = document.createElement("style");
  s.id = "hsrep-campaign-css";
  s.textContent = [
- ".hs-campaign{position:relative;z-index:1200;background:#0F2036;color:#fff;border-bottom:1px solid rgba(255,255,255,.16);font-family:Inter,system-ui,sans-serif}",
- ".hs-campaign-inner{max-width:1180px;margin:0 auto;min-height:42px;padding:7px clamp(18px,4vw,34px);display:flex;align-items:center;justify-content:center;gap:12px}",
+ ".hs-campaign{position:relative;z-index:1200;box-sizing:border-box;height:45px;overflow:hidden;background:#0F2036;color:#fff;border-bottom:1px solid rgba(255,255,255,.16);font-family:Inter,system-ui,sans-serif}",
+ ".hs-campaign-inner{box-sizing:border-box;max-width:1180px;height:44px;margin:0 auto;padding:0 clamp(18px,4vw,34px);display:flex;align-items:center;justify-content:center;gap:12px}",
  ".hs-campaign-kicker{flex:0 0 auto;font:700 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase;color:#F26D5A}",
- ".hs-campaign-main{color:#fff;text-decoration:none;font-size:13.5px;line-height:1.35;font-weight:600}",
+ ".hs-campaign-main{color:#fff;text-decoration:none;font-size:13.5px;line-height:1.35;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}",
  ".hs-campaign-main:hover,.hs-campaign-main:focus-visible{text-decoration:underline;text-underline-offset:3px}",
  ".hs-campaign-main strong{color:#F7A594;font-weight:700;white-space:nowrap}",
  ".hs-campaign-close{flex:0 0 auto;margin-left:5px;width:30px;height:30px;border:0;border-radius:999px;background:transparent;color:#AFC0D2;font:400 22px/1 Arial,sans-serif;cursor:pointer}",
@@ -149,7 +149,7 @@
  ".engage .epaths.hs-prioritized .hs-engage-tertiary span,.engage .epaths.hs-prioritized .hs-engage-fallback span{font-size:11.5px!important}",
  "#secnav{scroll-padding-inline:24px;overscroll-behavior-inline:contain}",
  "#secnav a{scroll-margin-inline:18px}",
- "@media(max-width:720px){.hs-campaign-inner{justify-content:flex-start;gap:9px;min-height:44px;padding-right:10px}.hs-campaign-kicker,.hs-campaign-desktop{display:none}.hs-campaign-mobile{display:inline}.hs-campaign-main{font-size:12.5px;flex:1}.hs-campaign-close{margin-left:auto}.engage .epaths.hs-prioritized{grid-template-columns:1fr!important}.engage .epaths.hs-prioritized .hs-engage-primary{grid-row:auto}.hs-initiative-bridge{padding:20px}.hsib-actions{align-items:stretch;flex-direction:column}.hsib-primary,.hsib-secondary{width:100%}}"
+ "@media(max-width:720px){.hs-campaign-inner{justify-content:flex-start;gap:9px;padding-right:10px}.hs-campaign-kicker,.hs-campaign-desktop{display:none}.hs-campaign-mobile{display:inline}.hs-campaign-main{font-size:12.5px;flex:1}.hs-campaign-close{margin-left:auto}.engage .epaths.hs-prioritized{grid-template-columns:1fr!important}.engage .epaths.hs-prioritized .hs-engage-primary{grid-row:auto}.hs-initiative-bridge{padding:20px}.hsib-actions{align-items:stretch;flex-direction:column}.hsib-primary,.hsib-secondary{width:100%}}"
  ].join("");
  document.head.appendChild(s);
  }
@@ -180,48 +180,67 @@
  });
  }
 
+ var ROOT = document.documentElement;
+ function barShown() { ROOT.classList.add("hs-bar-on"); ROOT.classList.remove("hs-nobar"); }
+ function barHidden() { ROOT.classList.add("hs-nobar"); ROOT.classList.remove("hs-bar-on"); }
+ function fmtDate(iso, long) {
+ var d = new Date(iso + "T12:00:00");
+ if (isNaN(d)) return iso;
+ var m = ["January","February","March","April","May","June","July","August","September","October","November","December"][d.getMonth()];
+ return (long ? m : m.slice(0, 3)) + " " + d.getDate();
+ }
  function renderCampaign(cfg) {
  var state = campaignState(cfg);
  configureHeaderCta(state);
- if (document.querySelector(".hs-campaign")) document.querySelector(".hs-campaign").remove();
- try { if (sessionStorage.getItem("hsrep-campaign-dismissed-v2") === state) return; } catch (e) {}
+ var existing = document.querySelector(".hs-campaign");
+ if (existing && existing.getAttribute("data-state") === state) return; /* already rendered for this state: never remove + reinsert */
+ if (existing) existing.remove();
+ try { if (sessionStorage.getItem("hsrep-campaign-dismissed-v2") === state) { barHidden(); return; } } catch (e) {}
  var bar = document.createElement("div");
+ bar.setAttribute("data-state", state);
  bar.className = "hs-campaign";
  bar.setAttribute("role", "region");
  bar.setAttribute("aria-label", "Current HSREP campaign");
- var mainHref, kicker, desktop, mobile, action;
+ var mainHref, kicker, desktop, mobile, action, actionMobile;
+ var openD = cfg.open || "2026-08-11", closeD = cfg.close || "2026-08-25";
  if (state === "roundtable") {
  mainHref = "https://tally.so/r/VLBbYM"; kicker = "Roundtable № 01";
- desktop = "Open through August 25.";
- mobile = "Open through Aug 25."; action = "Respond now →";
+ desktop = "Open through " + fmtDate(closeD, true) + ".";
+ mobile = "Open through " + fmtDate(closeD) + "."; action = "Respond now →"; actionMobile = action;
  } else if (state === "upcoming") {
  mainHref = "/roundtable.html"; kicker = "Roundtable № 01";
- desktop = "Opens August 11.";
- mobile = "Opens Aug 11."; action = "View the question →";
+ desktop = "Opens " + fmtDate(openD, true) + ".";
+ mobile = "Opens " + fmtDate(openD) + "."; action = "View the question →"; actionMobile = action;
  } else {
  mainHref = "https://buttondown.com/shafaat"; kicker = "Next season";
  desktop = "Season 2 is in development.";
- mobile = "Season 2 is in development."; action = "Get notified when it opens →";
+ mobile = "Season 2 in development."; action = "Get notified when it opens →"; actionMobile = "Get notified →";
  }
  bar.innerHTML = '<div class="hs-campaign-inner"><span class="hs-campaign-kicker">' + kicker + '</span>' +
  '<a class="hs-campaign-main" href="' + mainHref + '"' + (mainHref.indexOf("http") === 0 ? ' target="_blank" rel="noopener"' : "") + '>' +
- '<span class="hs-campaign-desktop">' + desktop + ' </span><span class="hs-campaign-mobile">' + mobile + ' </span><strong>' + action + '</strong></a>' +
+ '<span class="hs-campaign-desktop">' + desktop + ' <strong>' + action + '</strong></span><span class="hs-campaign-mobile">' + mobile + ' <strong>' + actionMobile + '</strong></span></a>' +
  '<button class="hs-campaign-close" type="button" aria-label="Dismiss announcement">×</button></div>';
  var anchor = document.querySelector("header,.hs-sitehdr,#artnav,main");
  if (anchor) anchor.parentNode.insertBefore(bar, anchor); else document.body.insertBefore(bar, document.body.firstChild);
+ barShown(); /* same task as the insert: the 45px reserved by each page's head <style> is released in the same frame, so nothing below moves */
  bar.querySelector(".hs-campaign-close").addEventListener("click", function () {
  try { sessionStorage.setItem("hsrep-campaign-dismissed-v2", state); } catch (e) {}
  bar.remove();
+ barHidden();
  });
  }
 
  function installCampaign() {
+ /* Layout-shift contract: every page reserves 45px at the top of <body> in its <head>
+ (body{padding-top:45px}; html.hs-bar-on body, html.hs-nobar body {padding-top:0}).
+ renderCampaign() inserts the fixed-height bar and adds hs-bar-on in the same frame.
+ A page that lacks the reserve simply behaves as before. */
  var fallback = { open: "2026-08-11", close: "2026-08-25" };
  renderCampaign(fallback);
  if (!window.fetch) return;
  fetch("/roundtables/rt-01.json", { cache: "no-store" })
  .then(function (r) { return r.ok ? r.json() : fallback; })
- .then(function (cfg) { renderCampaign(cfg || fallback); })
+ .then(function (cfg) { renderCampaign(cfg || fallback); }) /* no-op unless the live dates change the state */
  .catch(function () {});
  }
 

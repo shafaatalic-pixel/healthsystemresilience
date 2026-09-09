@@ -7,3 +7,7 @@ _audit/
 _bak_fix/
 _hd/
 _to_delete/
+
+# Python bytecode from the scripts/ helpers
+__pycache__/
+*.pyc

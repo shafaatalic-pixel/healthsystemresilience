@@ -8,10 +8,14 @@ Everything lands between markers, in the markup, so the page is correct at first
 paint. No fetch, no client-side arithmetic, no layout shift. Re-run after
 scripts/impact_build.py and commit both files.
 """
+import datetime as dt
 import json
 import os
 import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import impact_copy                                    # noqa: E402
 
 ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
 MO = ["January", "February", "March", "April", "May", "June", "July",
@@ -74,7 +78,7 @@ def r_readers(d):
         '<div class="imp-note rv"><p>HSREP does not publish a visitor count.%s</p>'
         '<p>The figures above are Google Analytics engagement-time and scroll-depth '
         'buckets, which describe what someone did rather than that a request arrived. '
-        'They are smaller than a visitor count and they are the ones worth quoting.</p></div>'
+        'They are smaller than a visitor count, and they are the ones this page uses.</p></div>'
         % city_line)
     t.append('<div class="imp-list rv">'
              '<div><span>Pageviews</span><b>%s</b></div>'
@@ -107,9 +111,7 @@ def r_arrival(d):
     s1 = d["season1"]["by_platform"]
     b.append(
         '<div class="imp-note rv"><p>Season 1 carried %s impressions on Facebook and %s on '
-        'LinkedIn. Since launch this site has taken <b>%s</b> sessions from Facebook and '
-        '<b>%s</b> from LinkedIn. The two platforms rank in opposite orders depending on '
-        'whether you count who saw an argument or who followed it home.</p>'
+        'LinkedIn, against <b>%s</b> and <b>%s</b> sessions here since launch.</p>'
         '<p>The windows and the metrics differ, so this is not a conversion rate and is not '
         'written as one. The ordering is the finding.</p></div>'
         % (n(s1["facebook_views"]), n(s1["linkedin_impressions"]),
@@ -133,13 +135,13 @@ def r_machines(d):
                '</thead><tbody>%s</tbody></table>' % rows)
     out.append(
         '<div class="imp-note rv"><p>The two highlighted rows are the ones that represent a '
-        'person: an assistant fetching this site because someone asked it a question. Over '
-        'the same seven days Google search delivered <b>%s</b> click in total, at an average '
-        'position of %s.</p>'
+        'person: an assistant fetching this site because someone asked it a question. The '
+        'rest are building a corpus. Google&rsquo;s average position for this site is %s%s.</p>'
         '<p>Scale, for honesty: %s bot requests reached the site in that window against %s '
         'human visits. Most of that is ordinary crawling and probing. The AI share is what '
         'is new.</p></div>'
-        % (n(m["google_clicks"]), m["google_position"],
+        % (m["google_position"], "" if m.get("pages_indexed") is None
+           else ", across %s indexed pages" % n(m.get("pages_indexed", 0)),
            n(m["all_bot_requests"]), n(m["human_visits"])))
     return "".join(out)
 
@@ -206,27 +208,27 @@ def r_actions(d):
 
 
 def r_participation(d):
+    """What did not work. Zero is the finding here, so nothing is hidden."""
     p = d["participation"]
     fw = p["first_window"]
+    lost = n(p.get("form_clicks", 0))
     return (
-        '<div class="imp-tiles rv">%s%s%s</div>'
+        '<div class="imp-tiles rv">%s%s</div>'
         '<div class="imp-note rv">'
         '<p>Roundtable &#8470; 01 opened on %s for fourteen days and closed on %s with no '
-        'responses. <b>%s</b> people clicked through to the response form over the life of '
-        'the site and none submitted one.</p>'
-        '<p>Two causes, both now fixed. The question asked professionals to report on '
+        'responses at all.</p>'
+        '<p>Two causes, both now addressed. The question asked professionals to report on '
         'platform analytics most of them have no reason to have seen, so it was reframed on '
         '9 September and two further questions were opened beside it. And the form sat on '
-        'another domain, which is where the eleven were lost; it now sits on the roundtable '
+        'another domain, which is where the %s were lost; it now sits on the roundtable '
         'page itself.</p>'
         '<p>Whether that was the right diagnosis is not yet known. It will be visible here '
         'either way.</p></div>'
         '<p><a class="btn accent" href="roundtable.html#respond">Answer an open question '
         '&rarr;</a></p>'
-        % (tile(n(p["form_clicks"]), "clicks through to the response form"),
+        % (tile(lost, "clicks through to the response form"),
            tile(n(p["responses"]), "responses received", quiet=True),
-           tile("0", "of that first window's fourteen days produced one", quiet=True),
-           date(fw["from"]), date(fw["to"]), n(p["form_clicks"])))
+           date(fw["from"]), date(fw["to"]), lost))
 
 
 def r_season1(d):
@@ -266,10 +268,171 @@ def r_home(d):
     return t
 
 
+
+# --------------------------------------------------------------------------
+# The drop-off, the clock, and the machine/human split. Added 9 September 2026.
+# --------------------------------------------------------------------------
+
+def status():
+    """The nightly job's own record of itself. Absent is a legitimate state."""
+    try:
+        with open(os.path.join(ROOT, "data", "impact_status.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _parse(ts):
+    try:
+        return dt.datetime.fromisoformat((ts or "").replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+
+def r_clock(d):
+    """When the figures were last refreshed, and when the next one is due.
+
+    A countdown on its own would lie: if the 03:12 job fails it keeps ticking
+    toward a refresh that already did not happen. So the healthy state counts
+    down and the stale state says how old the figures are instead. Both are
+    written into the markup here, so the page is correct before any script runs.
+    """
+    st = status()
+    now = dt.datetime.now(dt.timezone.utc)
+    last = _parse(st.get("last_success")) or _parse(d.get("updated"))
+    # 07:12 UTC nightly, which is 03:12 ET on daylight time.
+    nxt = now.replace(hour=7, minute=12, second=0, microsecond=0)
+    if nxt <= now:
+        nxt += dt.timedelta(days=1)
+    grace = dt.timedelta(hours=26)
+    stale = (last is None) or (now - last > grace)
+
+    attrs = (' data-next="%s" data-last="%s" data-stale="%s"'
+             % (nxt.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                last.strftime("%Y-%m-%dT%H:%M:%SZ") if last else "",
+                "1" if stale else "0"))
+
+    if not st:
+        # No automated run has happened yet. Saying "refreshed nightly" here
+        # would be a promise the site is not yet keeping.
+        return ('<p class="imp-clock is-manual" data-stale="0"><span class="dt"></span>'
+                '<b>Refreshed by hand.</b> Last updated %s. The nightly job is built '
+                'but not yet switched on.</p>'
+                % date((d.get("updated") or "")[:10]))
+
+    if stale:
+        age = ""
+        if last:
+            days = max((now - last).days, 1)
+            age = " These figures are %d day%s old." % (days, "" if days == 1 else "s")
+        body = ('<b>Refreshed nightly at 03:12 ET.</b> The last run did not complete.%s'
+                % age)
+        if last:
+            body += " Last successful run %s." % date(last.date().isoformat())
+        cls = " is-stale"
+        cd = ""
+    else:
+        mins = int((nxt - now).total_seconds() // 60)
+        body = ('<b>Refreshed nightly at 03:12 ET.</b> Last run %s, from %s.'
+                % (date(last.date().isoformat()),
+                   ", ".join(k.upper() for k in sorted((st.get("sources") or {}).keys()))
+                   or "GA4, Cloudflare and Search Console"))
+        cls = ""
+        cd = ('<span class="cd">Next refresh in %dh %02dm.</span>'
+              % (mins // 60, mins % 60))
+    return ('<p class="imp-clock%s"%s><span class="dt"></span>%s %s</p>'
+            % (cls, attrs, body, cd))
+
+
+# The drop-off. One window, since launch, because mixing Season 1's campaign
+# impressions into this would claim a causal chain across a four-month gap
+# during which the site did not exist.
+def r_dropoff(d):
+    r, raw = d["readers"], d["raw"]
+    a, p = d["actions"], d["participation"]
+    plausible = max(raw.get("ga_users", 0) - raw.get("excluded_datacentre", 0), 0)
+    # Every step has to be a subset of the one above it or the percentages are
+    # meaningless. Depth measures like "past four minutes" are not subsets of
+    # anything below them, so they stay in "Who reads it" where they belong.
+    steps = [
+        (raw.get("ga_users", 0), "Counted as visitors",
+         "Google Analytics, since launch", ""),
+        (plausible, "Plausibly human",
+         "after %s resolving to datacentres are deducted"
+         % n(raw.get("excluded_datacentre", 0)), ""),
+        (r.get("s30", 0), "Read past thirty seconds", "engagement-time buckets", ""),
+        (a.get("cta_total", 0), "Clicked something", "recorded actions", ""),
+        (p.get("form_clicks", 0), "Reached the response form", "outbound clicks", ""),
+        (p.get("responses", 0), "Responded", "the record", "end"),
+    ]
+    top = max(steps[0][0], 1)
+    rows, prev = [], None
+    for value, label, note, kind in steps:
+        pct = (value / top * 100) if top else 0
+        drop = ""
+        if prev is not None and prev > 0 and value <= prev:
+            drop = "&minus;%d%%" % round((prev - value) / prev * 100)
+        rows.append(
+            '<li%s><span class="fk">%s<i>%s</i></span>'
+            '<span class="ft"><em style="width:%.2f%%"></em></span>'
+            '<b>%s</b><u>%s</u></li>'
+            % (' class="end"' if kind == "end" else "", esc(label), esc(note),
+               max(pct, 0.5) if value else 0, n(value), drop))
+        prev = value
+    return ('<ol class="fn rv">%s</ol>'
+            '<p class="fnnote">One window, one site, so the gap between any two lines is a '
+            'real loss rather than an artefact of comparing different things. The last three '
+            'lines count actions rather than people, which makes them an upper bound on how '
+            'many were involved &mdash; the true narrowing is at least this steep. Season '
+            '1&rsquo;s %s impressions are deliberately not here: that campaign ran four '
+            'months before this site existed and cannot have produced these visits.</p>'
+            % ("".join(rows), n(d["season1"]["impressions_sum"])))
+
+
+def r_split(d):
+    """Machines against people, the same seven days. The ratio is the finding, so
+    the bars stay linear; the near-invisible ones are the point, not a bug."""
+    m = d["machines"]
+    rows = [("All requests reaching the site", m.get("all_bot_requests", 0), "navy"),
+            ("Search-engine crawlers", m.get("search_crawlers", 0), "navy"),
+            ("AI agents", m.get("ai_fetches", 0), "coral"),
+            ("Asked for by a person", m.get("user_prompted", 0), "coral"),
+            ("Human visits", m.get("human_visits", 0), "navy")]
+    top = max(rows[0][1], 1)
+    out = ['<div class="sp rv">']
+    for label, value, tone in rows:
+        out.append('<div class="sp-r"><span class="sp-k">%s</span>'
+                   '<span class="sp-t"><i class="%s" style="width:%.2f%%"></i></span>'
+                   '<b>%s</b></div>'
+                   % (esc(label), tone, max(value / top * 100, 1.4) if value else 0,
+                      n(value)))
+    out.append("</div>")
+    out.append('<p class="fnnote">Two orders of magnitude. Most of it is ordinary crawling '
+               'and probing; the AI share is the part that is new, and the fourth line is '
+               'the only one where a person asked a question that brought an agent here.</p>')
+    return "".join(out)
+
+
+
+OPTIONAL = {"CLOCK", "DROPOFF", "SPLIT"}
+
 RENDER = {"UPDATED": r_updated, "READERS": r_readers, "ARRIVAL": r_arrival,
           "MACHINES": r_machines, "ACTIONS": r_actions,
           "PARTICIPATION": r_participation, "SEASON1": r_season1,
-          "HOME": r_home}
+          "HOME": r_home, "CLOCK": r_clock, "DROPOFF": r_dropoff, "SPLIT": r_split}
+
+# Regions that carry one of the approved sentences from scripts/impact_copy.py,
+# chosen by the numbers. The renderer selects; it never composes.
+SAYS = {"READERS": "readers", "MACHINES": "machines",
+        "PARTICIPATION": "participation", "ARRIVAL": "arrival"}
+
+
+def render(name, data):
+    body = RENDER[name](data)
+    say = impact_copy.pick(SAYS[name], data) if name in SAYS else ""
+    if say:
+        body = '<p class="imp-say">%s</p>' % say + body
+    return body
 
 
 def main():
@@ -282,10 +445,10 @@ def main():
         for name in names:
             pat = re.compile(r"(<!--IMPACT:%s:START-->).*?(<!--IMPACT:%s:END-->)" % (name, name), re.S)
             if not pat.search(s):
-                if page == "index.html":
-                    continue          # the snapshot has not been added yet
+                if page == "index.html" or name in OPTIONAL:
+                    continue          # not scaffolded onto the page yet
                 raise SystemExit("ABORT: no %s marker in %s" % (name, page))
-            s = pat.sub(lambda m: m.group(1) + RENDER[name](data) + m.group(2), s, count=1)
+            s = pat.sub(lambda m: m.group(1) + render(name, data) + m.group(2), s, count=1)
             hit += 1
         if s != o:
             open(p, "w", encoding="utf-8").write(s)

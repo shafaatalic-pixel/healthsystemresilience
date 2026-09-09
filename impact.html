@@ -230,6 +230,64 @@
   .imp-bar{grid-template-columns:112px 1fr 50px;font-size:13.5px}
   .imp-t b{font-size:29px}
 }
+</style><style id="hs-impact2">
+/* The refresh line. Fixed height, tabular figures and a reserved width on the
+   countdown, so the script that advances the minutes cannot move anything. */
+.imp-clock{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:0;
+  font-size:13.5px;line-height:1.5;color:var(--muted)}
+.imp-clock b{font-weight:600;color:var(--ink,#1C2E4A)}
+.imp-clock .dt{flex:none;width:7px;height:7px;border-radius:50%;background:#2E7D5B;
+  transform:translateY(-1px)}
+.imp-clock .cd{display:inline-block;min-width:15ch;font-variant-numeric:tabular-nums}
+.imp-clock.is-stale .dt{background:var(--coral,#E2603F)}
+.imp-clock.is-manual .dt{background:var(--muted,#6B7A8F)}
+.imp-clock.is-stale b{color:var(--coral,#E2603F)}
+
+/* One approved sentence, chosen by the numbers. Set apart from the prose it
+   leads, because it is the part that changes. */
+.imp-say{margin:2px 0 20px;max-width:64ch;font-family:var(--font-display);
+  font-size:19.5px;line-height:1.5;color:var(--navy,#1C2E4A)}
+@media(max-width:640px){.imp-say{font-size:18px}}
+
+.imp-sub{font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--muted);margin:34px 0 12px}
+
+/* The drop-off. Linear widths on purpose: the collapse is the finding, and a
+   log axis would flatter it. */
+.fn{list-style:none;margin:6px 0 0;padding:0}
+.fn li{display:grid;grid-template-columns:minmax(150px,1.15fr) minmax(90px,2fr) 62px 52px;
+  gap:14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line,#DCE3EA)}
+.fn li:last-child{border-bottom:0}
+.fn .fk{font-size:14.5px;line-height:1.3;color:var(--ink,#1C2E4A)}
+.fn .fk i{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:2px}
+.fn .ft{display:block;height:12px;background:var(--paper,#F6F7F9);border-radius:3px;
+  overflow:hidden}
+.fn .ft em{display:block;height:100%;background:var(--navy,#1C2E4A);border-radius:3px}
+.fn b{font-family:var(--font-display);font-size:20px;line-height:1;text-align:right;
+  color:var(--navy,#1C2E4A);font-variant-numeric:tabular-nums}
+.fn u{text-decoration:none;font-family:var(--font-mono);font-size:11.5px;text-align:right;
+  color:var(--muted);font-variant-numeric:tabular-nums}
+.fn li.end .ft em{background:var(--coral,#E2603F)}
+.fn li.end b,.fn li.end .fk{color:var(--coral,#E2603F)}
+.fnnote{margin:16px 0 0;max-width:72ch;font-size:14.5px;line-height:1.6;color:var(--muted)}
+@media(max-width:680px){
+  .fn li{grid-template-columns:1fr 58px 46px;gap:10px}
+  .fn .ft{grid-column:1/-1;order:3}
+  .fn b{font-size:18px}
+}
+
+/* Machines against people. Deliberately linear. */
+.sp{margin:6px 0 0}
+.sp-r{display:grid;grid-template-columns:minmax(150px,1fr) minmax(90px,2.2fr) 68px;gap:14px;
+  align-items:center;padding:8px 0}
+.sp-k{font-size:14.5px;color:var(--ink,#1C2E4A)}
+.sp-t{display:block;height:12px;background:var(--paper,#F6F7F9);border-radius:3px;overflow:hidden}
+.sp-t i{display:block;height:100%;border-radius:3px}
+.sp-t i.navy{background:var(--navy,#1C2E4A)}
+.sp-t i.coral{background:var(--coral,#E2603F)}
+.sp b{font-family:var(--font-mono);font-size:13.5px;text-align:right;color:var(--navy,#1C2E4A);
+  font-variant-numeric:tabular-nums}
+@media(max-width:680px){.sp-r{grid-template-columns:1fr 66px}.sp-t{grid-column:1/-1;order:3}}
 </style></head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -238,7 +296,7 @@
  <a href="index.html"><img class="logo" src="assets/logo-2212309f.svg" width="2700" height="940" alt="HSREP, Health System Resilience And Economic Protection"></a>
  <nav><a href="index.html">Home</a><a href="season-1.html">Evidence</a><a href="articles.html">Articles</a><a class="here" href="impact.html">Impact</a><a href="initiative.html">Initiative</a><a href="about.html">About</a></nav>
  <a class="hs-srch" href="search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="btn accent" href="/roundtable.html">Join Roundtable</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
-</div></div></header><nav class="mth-secnav" aria-label="On this page"><span class="sn-lab">On this page</span><a href="#who-reads">Who reads it</a><a href="#how-they-arrived">How they arrived</a><a href="#read-by-machines">Read by machines</a><a href="#what-people-did">What people did</a><a href="#what-did-not-work">What did not work</a><a href="#season-impact">Season impact</a><a href="#methods">Method</a></nav>
+</div></div></header><nav class="mth-secnav" aria-label="On this page"><span class="sn-lab">On this page</span><a href="#drop-off">The drop-off</a><a href="#who-reads">Who reads it</a><a href="#how-they-arrived">How they arrived</a><a href="#read-by-machines">Read by machines</a><a href="#what-people-did">What people did</a><a href="#what-did-not-work">What did not work</a><a href="#season-impact">Season impact</a><a href="#methods">Method</a></nav>
 
 <div class="hero"><div class="wrap">
  <div class="ey">The record</div>
@@ -250,24 +308,35 @@
 
 <section><div class="wrap">
 <p class="imp-updated"><!--IMPACT:UPDATED:START-->Since launch &middot; 22 July 2026 to 9 September 2026 &middot; refreshed 9 September 2026<!--IMPACT:UPDATED:END--></p>
+<!--IMPACT:CLOCK:START--><p class="imp-clock is-manual" data-stale="0"><span class="dt"></span><b>Refreshed by hand.</b> Last updated 9 September 2026. The nightly job is built but not yet switched on.</p><!--IMPACT:CLOCK:END-->
 </div></section>
+
+<section id="the-drop-off"><div class="wrap">
+<h2 class="sec" id="drop-off">The drop-off</h2>
+<p>Everything below happens in one window, on one site, since launch on 22 July. That
+is the only way the gap between any two lines means anything.</p>
+<!--IMPACT:DROPOFF:START--><ol class="fn rv"><li><span class="fk">Counted as visitors<i>Google Analytics, since launch</i></span><span class="ft"><em style="width:100.00%"></em></span><b>379</b><u></u></li><li><span class="fk">Plausibly human<i>after 104 resolving to datacentres are deducted</i></span><span class="ft"><em style="width:72.56%"></em></span><b>275</b><u>&minus;27%</u></li><li><span class="fk">Read past thirty seconds<i>engagement-time buckets</i></span><span class="ft"><em style="width:36.94%"></em></span><b>140</b><u>&minus;49%</u></li><li><span class="fk">Clicked something<i>recorded actions</i></span><span class="ft"><em style="width:20.84%"></em></span><b>79</b><u>&minus;44%</u></li><li><span class="fk">Reached the response form<i>outbound clicks</i></span><span class="ft"><em style="width:2.90%"></em></span><b>11</b><u>&minus;86%</u></li><li class="end"><span class="fk">Responded<i>the record</i></span><span class="ft"><em style="width:0.00%"></em></span><b>0</b><u>&minus;100%</u></li></ol><p class="fnnote">One window, one site, so the gap between any two lines is a real loss rather than an artefact of comparing different things. The last three lines count actions rather than people, which makes them an upper bound on how many were involved &mdash; the true narrowing is at least this steep. Season 1&rsquo;s 57,274 impressions are deliberately not here: that campaign ran four months before this site existed and cannot have produced these visits.</p><!--IMPACT:DROPOFF:END-->
+<h3 class="imp-sub">Machines against people, the last seven days</h3>
+<!--IMPACT:SPLIT:START--><div class="sp rv"><div class="sp-r"><span class="sp-k">All requests reaching the site</span><span class="sp-t"><i class="navy" style="width:100.00%"></i></span><b>6,841</b></div><div class="sp-r"><span class="sp-k">Search-engine crawlers</span><span class="sp-t"><i class="navy" style="width:4.84%"></i></span><b>331</b></div><div class="sp-r"><span class="sp-k">AI agents</span><span class="sp-t"><i class="coral" style="width:4.11%"></i></span><b>281</b></div><div class="sp-r"><span class="sp-k">Asked for by a person</span><span class="sp-t"><i class="coral" style="width:1.40%"></i></span><b>9</b></div><div class="sp-r"><span class="sp-k">Human visits</span><span class="sp-t"><i class="navy" style="width:1.40%"></i></span><b>29</b></div></div><p class="fnnote">Two orders of magnitude. Most of it is ordinary crawling and probing; the AI share is the part that is new, and the fourth line is the only one where a person asked a question that brought an agent here.</p><!--IMPACT:SPLIT:END-->
+</div></section>
+
 
 <section><div class="wrap">
 <h2 class="sec" id="who-reads">Who reads it</h2>
 <p>Analytics packages count visitors. Most of those visitors are neither people nor readers, so the figure HSREP publishes is the one that survives contact with that fact: how many stayed long enough to have read something.</p>
-<!--IMPACT:READERS:START--><div class="imp-tiles rv"><div class="imp-t"><b>140</b><span>read past thirty seconds</span></div><div class="imp-t"><b>70</b><span>past one minute</span></div><div class="imp-t"><b>37</b><span>past two minutes</span></div><div class="imp-t"><b>26</b><span>past four minutes</span></div><div class="imp-t"><b>97</b><span>reached the bottom of a page</span></div></div><div class="imp-note rv"><p>HSREP does not publish a visitor count. Of the 379 visitors Google Analytics reports over the same window, at least <b>104</b> resolve to Ashburn, Council Bluffs and Boardman &mdash; hyperscale datacentre locations, not readers. Only the largest cities are reported to us, so that deduction is a floor.</p><p>The figures above are Google Analytics engagement-time and scroll-depth buckets, which describe what someone did rather than that a request arrived. They are smaller than a visitor count and they are the ones worth quoting.</p></div><div class="imp-list rv"><div><span>Pageviews</span><b>785</b></div><div><span>Pages per session</span><b>1.9</b></div><div><span>Engagement rate</span><b>43%</b></div><div><span>Average engaged time</span><b>29s</b></div></div><!--IMPACT:READERS:END-->
+<!--IMPACT:READERS:START--><p class="imp-say">140 people stayed past thirty seconds and 26 past four minutes. The second number is the one worth quoting: it describes reading, not arriving.</p><div class="imp-tiles rv"><div class="imp-t"><b>140</b><span>read past thirty seconds</span></div><div class="imp-t"><b>70</b><span>past one minute</span></div><div class="imp-t"><b>37</b><span>past two minutes</span></div><div class="imp-t"><b>26</b><span>past four minutes</span></div><div class="imp-t"><b>97</b><span>reached the bottom of a page</span></div></div><div class="imp-note rv"><p>HSREP does not publish a visitor count. Of the 379 visitors Google Analytics reports over the same window, at least <b>104</b> resolve to Ashburn, Council Bluffs and Boardman &mdash; hyperscale datacentre locations, not readers. Only the largest cities are reported to us, so that deduction is a floor.</p><p>The figures above are Google Analytics engagement-time and scroll-depth buckets, which describe what someone did rather than that a request arrived. They are smaller than a visitor count, and they are the ones this page uses.</p></div><div class="imp-list rv"><div><span>Pageviews</span><b>785</b></div><div><span>Pages per session</span><b>1.9</b></div><div><span>Engagement rate</span><b>43%</b></div><div><span>Average engaged time</span><b>29s</b></div></div><!--IMPACT:READERS:END-->
 </div></section>
 
 <section><div class="wrap">
 <h2 class="sec" id="how-they-arrived">How they arrived</h2>
 <p>Where the visits came from since launch. The ordering is worth holding onto, because it does not match the ordering of impressions: the platform that showed the argument to the most people is not the platform that brought the most of them here.</p>
-<!--IMPACT:ARRIVAL:START--><div class="imp-bars rv"><div class="imp-bar "><span>Direct</span><i style="width:64.3%"></i><b>259</b></div><div class="imp-bar alt"><span>Organic social</span><i style="width:32.3%"></i><b>130</b></div><div class="imp-bar quiet"><span>Organic search</span><i style="width:3.0%"></i><b>12</b></div><div class="imp-bar quiet"><span>Referral</span><i style="width:0.6%"></i><b>2</b></div></div><h3 style="font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:26px 0 12px">Within social</h3><div class="imp-bars rv"><div class="imp-bar alt"><span>Facebook</span><i style="width:83.6%"></i><b>102</b></div><div class="imp-bar alt"><span>LinkedIn</span><i style="width:16.4%"></i><b>20</b></div></div><div class="imp-note rv"><p>Season 1 carried 36,997 impressions on Facebook and 13,054 on LinkedIn. Since launch this site has taken <b>102</b> sessions from Facebook and <b>20</b> from LinkedIn. The two platforms rank in opposite orders depending on whether you count who saw an argument or who followed it home.</p><p>The windows and the metrics differ, so this is not a conversion rate and is not written as one. The ordering is the finding.</p></div><!--IMPACT:ARRIVAL:END-->
+<!--IMPACT:ARRIVAL:START--><p class="imp-say">Facebook sends 102 sessions against LinkedIn's 20, which is the opposite of what the impressions data would predict. Impressions and arrivals rank the two platforms in opposite orders.</p><div class="imp-bars rv"><div class="imp-bar "><span>Direct</span><i style="width:64.3%"></i><b>259</b></div><div class="imp-bar alt"><span>Organic social</span><i style="width:32.3%"></i><b>130</b></div><div class="imp-bar quiet"><span>Organic search</span><i style="width:3.0%"></i><b>12</b></div><div class="imp-bar quiet"><span>Referral</span><i style="width:0.6%"></i><b>2</b></div></div><h3 style="font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:26px 0 12px">Within social</h3><div class="imp-bars rv"><div class="imp-bar alt"><span>Facebook</span><i style="width:83.6%"></i><b>102</b></div><div class="imp-bar alt"><span>LinkedIn</span><i style="width:16.4%"></i><b>20</b></div></div><div class="imp-note rv"><p>Season 1 carried 36,997 impressions on Facebook and 13,054 on LinkedIn, against <b>102</b> and <b>20</b> sessions here since launch.</p><p>The windows and the metrics differ, so this is not a conversion rate and is not written as one. The ordering is the finding.</p></div><!--IMPACT:ARRIVAL:END-->
 </div></section>
 
 <section><div class="wrap">
 <h2 class="sec" id="read-by-machines">Read by machines</h2>
 <p>The least expected finding on this page, and the one with the clearest implication for anyone publishing health evidence now. HSREP is read far more by AI systems than by search engines, and some of those fetches were triggered by a person asking an assistant a question.</p>
-<!--IMPACT:MACHINES:START--><div class="imp-tiles rv"><div class="imp-t"><b>281</b><span>AI fetches in 7 days</span></div><div class="imp-t"><b>9</b><span>of them triggered by a person asking an assistant</span></div><div class="imp-t is-quiet"><b>1</b><span>clicks from Google search, since launch</span></div><div class="imp-t is-quiet"><b>20</b><span>pages indexed</span></div></div><table class="imp-tab rv"><thead><tr><th>Agent</th><th>Fetches</th></tr></thead><tbody><tr><td>ClaudeBot</td><td class="n">153</td></tr><tr><td>OAI-SearchBot</td><td class="n">46</td></tr><tr><td>Amazonbot</td><td class="n">41</td></tr><tr><td>GPTBot</td><td class="n">31</td></tr><tr class="hi"><td>ChatGPT-User</td><td class="n">7</td></tr><tr class="hi"><td>Claude-User</td><td class="n">2</td></tr><tr><td>Meta-ExternalAgent</td><td class="n">1</td></tr></tbody></table><div class="imp-note rv"><p>The two highlighted rows are the ones that represent a person: an assistant fetching this site because someone asked it a question. Over the same seven days Google search delivered <b>1</b> click in total, at an average position of 16.2.</p><p>Scale, for honesty: 6,841 bot requests reached the site in that window against 29 human visits. Most of that is ordinary crawling and probing. The AI share is what is new.</p></div><!--IMPACT:MACHINES:END-->
+<!--IMPACT:MACHINES:START--><p class="imp-say">AI agents fetched this site 281 times in 7 days. Google search delivered 1 click over the whole life of the site. Retrieval is not a channel HSREP is preparing for; it is the channel HSREP already has.</p><div class="imp-tiles rv"><div class="imp-t"><b>281</b><span>AI fetches in 7 days</span></div><div class="imp-t"><b>9</b><span>of them triggered by a person asking an assistant</span></div><div class="imp-t is-quiet"><b>1</b><span>clicks from Google search, since launch</span></div><div class="imp-t is-quiet"><b>20</b><span>pages indexed</span></div></div><table class="imp-tab rv"><thead><tr><th>Agent</th><th>Fetches</th></tr></thead><tbody><tr><td>ClaudeBot</td><td class="n">153</td></tr><tr><td>OAI-SearchBot</td><td class="n">46</td></tr><tr><td>Amazonbot</td><td class="n">41</td></tr><tr><td>GPTBot</td><td class="n">31</td></tr><tr class="hi"><td>ChatGPT-User</td><td class="n">7</td></tr><tr class="hi"><td>Claude-User</td><td class="n">2</td></tr><tr><td>Meta-ExternalAgent</td><td class="n">1</td></tr></tbody></table><div class="imp-note rv"><p>The two highlighted rows are the ones that represent a person: an assistant fetching this site because someone asked it a question. The rest are building a corpus. Google&rsquo;s average position for this site is 16.2, across 20 indexed pages.</p><p>Scale, for honesty: 6,841 bot requests reached the site in that window against 29 human visits. Most of that is ordinary crawling and probing. The AI share is what is new.</p></div><!--IMPACT:MACHINES:END-->
 </div></section>
 
 <section><div class="wrap">
@@ -279,7 +348,7 @@
 <section><div class="wrap">
 <h2 class="sec" id="what-did-not-work">What did not work</h2>
 <p>An impact page that only reports what succeeded is a brochure. This is the section that makes the rest of the page worth believing.</p>
-<!--IMPACT:PARTICIPATION:START--><div class="imp-tiles rv"><div class="imp-t"><b>11</b><span>clicks through to the response form</span></div><div class="imp-t is-quiet"><b>0</b><span>responses received</span></div><div class="imp-t is-quiet"><b>0</b><span>of that first window's fourteen days produced one</span></div></div><div class="imp-note rv"><p>Roundtable &#8470; 01 opened on 11 August 2026 for fourteen days and closed on 25 August 2026 with no responses. <b>11</b> people clicked through to the response form over the life of the site and none submitted one.</p><p>Two causes, both now fixed. The question asked professionals to report on platform analytics most of them have no reason to have seen, so it was reframed on 9 September and two further questions were opened beside it. And the form sat on another domain, which is where the eleven were lost; it now sits on the roundtable page itself.</p><p>Whether that was the right diagnosis is not yet known. It will be visible here either way.</p></div><p><a class="btn accent" href="roundtable.html#respond">Answer an open question &rarr;</a></p><!--IMPACT:PARTICIPATION:END-->
+<!--IMPACT:PARTICIPATION:START--><p class="imp-say">11 people opened the response form and none submitted one. The form now sits on the page rather than behind a link on another domain. Whether that was the barrier is not yet proven, and it will be visible here either way.</p><div class="imp-tiles rv"><div class="imp-t"><b>11</b><span>clicks through to the response form</span></div><div class="imp-t is-quiet"><b>0</b><span>responses received</span></div></div><div class="imp-note rv"><p>Roundtable &#8470; 01 opened on 11 August 2026 for fourteen days and closed on 25 August 2026 with no responses at all.</p><p>Two causes, both now addressed. The question asked professionals to report on platform analytics most of them have no reason to have seen, so it was reframed on 9 September and two further questions were opened beside it. And the form sat on another domain, which is where the 11 were lost; it now sits on the roundtable page itself.</p><p>Whether that was the right diagnosis is not yet known. It will be visible here either way.</p></div><p><a class="btn accent" href="roundtable.html#respond">Answer an open question &rarr;</a></p><!--IMPACT:PARTICIPATION:END-->
 </div></section>
 
 <section><div class="wrap">
@@ -349,5 +418,22 @@
  }
 })();
 </script>
-</body>
+<script>
+/* Advances the minutes on the refresh line. The line is already correct in the
+   markup, so this only keeps it correct while the tab stays open; with scripting
+   off the page still says when it was last refreshed. */
+(function () {
+  var el = document.querySelector(".imp-clock"); if (!el) return;
+  var cd = el.querySelector(".cd"); if (!cd) return;
+  function tick() {
+    var next = new Date(el.getAttribute("data-next") || "");
+    if (isNaN(next)) return;
+    var mins = Math.floor((next - new Date()) / 60000);
+    if (mins < 0) { cd.textContent = "A refresh is due."; return; }
+    cd.textContent = "Next refresh in " + Math.floor(mins / 60) + "h " +
+      String(mins % 60).padStart(2, "0") + "m.";
+  }
+  tick(); setInterval(tick, 60000);
+})();
+</script></body>
 </html>

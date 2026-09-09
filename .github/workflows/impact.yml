@@ -1,0 +1,114 @@
+name: Impact figures (nightly)
+
+# Fetches the Impact page's figures from GA4, Cloudflare and Search Console,
+# renders them into the markup, commits only if a number actually changed, and
+# purges the edge cache so the change is visible immediately rather than in an
+# hour's time.
+#
+# 07:12 UTC is 03:12 ET while the US is on daylight time. Cron is UTC only, so
+# from early November this runs at 02:12 ET until the clocks change back. The
+# page prints the time of the run itself, not the schedule, so it stays honest.
+#
+# A failed fetch is not a failed job. data/impact_status.json is written and
+# committed either way, and the page reads it to say how old its figures are.
+
+on:
+  schedule:
+    - cron: "12 7 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: impact-figures
+  cancel-in-progress: false
+
+jobs:
+  figures:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the two libraries the fetcher needs
+        run: pip install --quiet google-auth requests
+
+      - name: Fetch the figures
+        id: fetch
+        continue-on-error: true
+        env:
+          GA4_SA_JSON: ${{ secrets.GA4_SA_JSON }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          GSC_SITE: ${{ vars.GSC_SITE || 'sc-domain:hsraep.org' }}
+        run: python3 scripts/impact_fetch.py
+
+      - name: Render the figures into the pages
+        run: python3 scripts/impact_render.py .
+
+      - name: Commit, but only if something changed
+        id: commit
+        run: |
+          git config user.name "hsrep-bot"
+          git config user.email "noreply@hsraep.org"
+          git add data/impact.json data/impact_status.json data/impact_history.json impact.html index.html 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No change. Nothing committed."
+          else
+            git commit -m "Impact: nightly figures $(date -u +%Y-%m-%d)
+
+          Automated by .github/workflows/impact.yml. Sources: GA4 Data API,
+          Cloudflare GraphQL, Search Console API. See data/impact_status.json
+          for which sources answered."
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Wait for Pages to build
+        if: steps.commit.outputs.changed == 'true'
+        run: sleep 90
+
+      - name: Purge the edge cache
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          CF_PURGE_TOKEN: ${{ secrets.CF_PURGE_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+        run: |
+          curl -sS -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_PURGE_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"files":["https://hsraep.org/impact.html","https://hsraep.org/","https://hsraep.org/data/impact.json"]}' \
+            | tee /tmp/purge.json
+          python3 -c "import json;d=json.load(open('/tmp/purge.json'));raise SystemExit(0 if d.get('success') else 'purge failed: %s'%d.get('errors'))"
+
+      - name: Report what the fetch did
+        run: |
+          echo "### Impact figures" >> "$GITHUB_STEP_SUMMARY"
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          try:
+              s = json.load(open("data/impact_status.json"))
+          except Exception:
+              print("No status file was written. The fetcher did not get that far.")
+              raise SystemExit(0)
+          print("- attempted: %s" % s.get("attempted"))
+          print("- last success: %s" % s.get("last_success"))
+          for k, v in (s.get("sources") or {}).items():
+              print("- **%s** - %s" % (k, v))
+          PY
+
+      - name: Fail the run if a source did not answer
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "The fetch step reported a failure. The status file is committed,"
+          echo "so the page will say how old its figures are."
+          exit 1

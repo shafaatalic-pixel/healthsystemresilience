@@ -36,12 +36,31 @@ fi
 # The Command Center writes this file when it refreshes. If it is older than a
 # day the figures about to be published are yesterday's, which is worth knowing
 # before they are committed rather than after.
-AGE_HOURS=$(( ( $(date +%s) - $(stat -f %m "$DASH" 2>/dev/null || stat -c %Y "$DASH") ) / 3600 ))
+# python3 rather than stat: BSD stat -f and GNU stat -f mean different things,
+# and the GNU one succeeds with text that breaks the arithmetic below.
+MTIME="$(python3 -c 'import os,sys;print(int(os.path.getmtime(sys.argv[1])))' "$DASH" 2>/dev/null || echo "")"
+if [ -n "$MTIME" ]; then
+  AGE_HOURS=$(( ( $(date +%s) - MTIME ) / 3600 ))
+else
+  AGE_HOURS=0
+fi
 say "Dashboard last written ${AGE_HOURS}h ago"
 if [ "$AGE_HOURS" -gt 26 ]; then
   printf 'That is more than a day old. Refresh the Command Center first? [y/N] '
   read -r ans
   case "$ans" in [Yy]*) ;; *) echo "Stopping. Nothing changed."; exit 0 ;; esac
+fi
+
+# Only three files are committed, and only the parts of them this script wrote.
+# If any of the three already had uncommitted edits, they would be swept into the
+# commit silently, which is how an unrelated half-finished change gets published.
+DIRTY="$(git status --porcelain -- data/impact.json impact.html index.html)"
+if [ -n "$DIRTY" ]; then
+  say "These files already had uncommitted changes"
+  echo "$DIRTY"
+  printf '\nThey will be committed along with the refreshed figures. Continue? [y/N] '
+  read -r ok
+  case "$ok" in [Yy]*) ;; *) echo "Stopping. Nothing changed."; exit 0 ;; esac
 fi
 
 say "Reading the dashboard"

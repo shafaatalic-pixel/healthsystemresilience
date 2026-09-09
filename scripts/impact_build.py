@@ -51,8 +51,13 @@ DEFAULT = os.path.expanduser(
 
 
 def block(src, name):
-    a = src.index("/*<<%s_START>>*/" % name) + len("/*<<%s_START>>*/" % name)
-    b = src.index("/*<<%s_END>>*/" % name)
+    start, end = "/*<<%s_START>>*/" % name, "/*<<%s_END>>*/" % name
+    if start not in src or end not in src:
+        raise SystemExit(
+            "That file does not carry the %s block, so it is not the Analytics\n"
+            "Command Center. Pass the artifact's index.html, or set HSREP_DASHBOARD." % name)
+    a = src.index(start) + len(start)
+    b = src.index(end)
     m = re.search(r"=\s*(\{.*\})\s*;?\s*$", src[a:b].strip(), re.S)
     if not m:
         raise SystemExit("could not parse the %s block" % name)

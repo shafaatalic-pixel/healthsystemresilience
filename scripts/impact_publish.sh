@@ -120,6 +120,9 @@ into the pages by scripts/impact_render.py. Published with
 scripts/impact_publish.sh.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>" || exit 1
+# hsrep-bot commits to main from GitHub Actions every night, so main here is
+# often behind. Rebase before pushing or the push is rejected.
+git pull --rebase -q origin main || { echo "Rebase failed. Nothing was pushed." >&2; exit 1; }
 git push -q origin main || { echo "Push failed. Nothing was purged." >&2; exit 1; }
 say "Pushed"
 

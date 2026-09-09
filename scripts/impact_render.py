@@ -205,7 +205,7 @@ def r_participation(d):
         '&rarr;</a></p>'
         % (tile(n(p["form_clicks"]), "clicks through to the response form"),
            tile(n(p["responses"]), "responses received", quiet=True),
-           tile("14", "days the first window ran", quiet=True),
+           tile("0", "of that first window's fourteen days produced one", quiet=True),
            date(fw["from"]), date(fw["to"]), n(p["form_clicks"])))
 
 
@@ -230,25 +230,48 @@ def r_season1(d):
            esc(s["note"]), esc(s["reconciliation"])))
 
 
+def r_home(d):
+    """The four figures the home page carries, and nothing more."""
+    r, m, p = d["readers"], d["machines"], d["participation"]
+    t = ('<div class="snap rv">'
+         '<div><b>%s</b><span>readers past thirty seconds</span></div>'
+         '<div><b>%s</b><span>past four minutes</span></div>'
+         '<div><b>%s</b><span>AI fetches a week</span></div>'
+         '<div><b>%s</b><span>clicks from Google search</span></div>'
+         '</div>' % (n(r["s30"]), n(r["s240"]), n(m["ai_fetches"]), n(m["google_clicks"])))
+    t += ('<p class="snapnote">Engaged readers rather than a visitor count, with datacentre '
+          'traffic deducted and named. The record also carries what did not work: %s people '
+          'clicked through to the response form and none submitted one.</p>' % n(p["form_clicks"]))
+    t += '<p><a class="btn accent" href="impact.html">What the record shows <span class="ar">&rarr;</span></a></p>'
+    return t
+
+
 RENDER = {"UPDATED": r_updated, "READERS": r_readers, "ARRIVAL": r_arrival,
           "MACHINES": r_machines, "ACTIONS": r_actions,
-          "PARTICIPATION": r_participation, "SEASON1": r_season1}
+          "PARTICIPATION": r_participation, "SEASON1": r_season1,
+          "HOME": r_home}
 
 
 def main():
     data = json.load(open(os.path.join(ROOT, "data", "impact.json"), encoding="utf-8"))
-    p = os.path.join(ROOT, "impact.html")
-    s = o = open(p, encoding="utf-8").read()
-    for name, fn in RENDER.items():
-        pat = re.compile(r"(<!--IMPACT:%s:START-->).*?(<!--IMPACT:%s:END-->)" % (name, name), re.S)
-        if not pat.search(s):
-            raise SystemExit("ABORT: no %s marker in impact.html" % name)
-        s = pat.sub(lambda m: m.group(1) + fn(data) + m.group(2), s, count=1)
-    if s != o:
-        open(p, "w", encoding="utf-8").write(s)
-        print("  rendered: impact.html (%d regions)" % len(RENDER))
-    else:
-        print("  already current: impact.html")
+    for page, names in (("impact.html", [k for k in RENDER if k != "HOME"]),
+                        ("index.html", ["HOME"])):
+        p = os.path.join(ROOT, page)
+        s = o = open(p, encoding="utf-8").read()
+        hit = 0
+        for name in names:
+            pat = re.compile(r"(<!--IMPACT:%s:START-->).*?(<!--IMPACT:%s:END-->)" % (name, name), re.S)
+            if not pat.search(s):
+                if page == "index.html":
+                    continue          # the snapshot has not been added yet
+                raise SystemExit("ABORT: no %s marker in %s" % (name, page))
+            s = pat.sub(lambda m: m.group(1) + RENDER[name](data) + m.group(2), s, count=1)
+            hit += 1
+        if s != o:
+            open(p, "w", encoding="utf-8").write(s)
+            print("  rendered: %s (%d region%s)" % (page, hit, "" if hit == 1 else "s"))
+        else:
+            print("  already current: %s" % page)
 
 
 if __name__ == "__main__":

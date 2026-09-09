@@ -180,6 +180,29 @@ html.hmenu-open #hmenu-panel{display:block}
 #impact-snapshot .snap span{display:block;margin-top:7px;font-size:13.5px;line-height:1.4;color:var(--muted)}
 #impact-snapshot .snapnote{font-size:14.5px;color:var(--muted);max-width:70ch;margin:0 0 16px}
 @media(max-width:640px){#impact-snapshot .snap b{font-size:27px}}
+</style><style id="hs-hero2">
+/* The watermark drifts. 26 seconds a cycle, 3% of opacity and 18px of travel:
+   the field stops being flat without anyone catching it in the act. */
+.hero .crest{animation:heroDrift 26s var(--ease) infinite alternate;will-change:transform}
+@keyframes heroDrift{
+  from{transform:translate(0,0) scale(1);opacity:.045}
+  to{transform:translate(-20px,-14px) scale(1.06);opacity:.075}}
+
+/* The doorway to the crest page, marked as one. */
+.hero .idline{position:relative;margin:24px 0 6px;padding:2px 0 2px 20px;
+  border-left:2px solid rgba(242,109,90,.6);color:#C8D5E4;font-size:15px;
+  line-height:1.62;max-width:56ch}
+.hero .idline a{display:inline-block;margin-top:8px;color:#fff;font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,.28);padding-bottom:2px;
+  transition:color .25s var(--ease),border-color .25s var(--ease),
+             letter-spacing .25s var(--ease)}
+.hero .idline a:hover,.hero .idline a:focus-visible{color:var(--coral);
+  border-bottom-color:var(--coral);letter-spacing:.012em}
+
+@media(prefers-reduced-motion:reduce){
+  .hero .crest{animation:none;opacity:.05}
+  .hero .idline a{transition:none}
+}
 </style></head><body><a href="#main" class="skip-link">Skip to content</a>
 
 <header class="site"><div class="wrap"><div class="row">

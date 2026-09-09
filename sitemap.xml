@@ -102,6 +102,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://hsraep.org/impact.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url>
     <loc>https://hsraep.org/methodology.html</loc>
     <lastmod>2026-08-03</lastmod>

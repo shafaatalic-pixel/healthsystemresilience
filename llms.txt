@@ -54,3 +54,7 @@ Eleven findings came out of the Season 1 data. These are the four that held acro
 ## Contact
 
 - Partnerships, media, and professional participation: via the platform's contact and roundtable pathways at https://hsraep.org/about.html
+
+## Impact
+https://hsraep.org/impact.html
+The platform's own record: readership (published as engaged readers, not raw visitor counts, with datacentre traffic deducted and named), how visitors arrive, AI-crawler retrieval against search, every recorded action, and the record of what did not work.

@@ -208,6 +208,9 @@ html.hmenu-open #hmenu-panel{display:block}
    This div was in the markup with no rule behind it: default 16px Inter,
    default block margins, sitting outside the card's 24px gutter. */
 .rtcard .rtcount{display:inline-flex;align-items:center;gap:7px;
+  /* .rtcard is a column flex container, so a block child stretches the full
+     gutter width. The chip has to opt out. */
+  align-self:flex-start;
   margin:16px 24px 0;padding:5px 12px;border-radius:999px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--coral);

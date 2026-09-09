@@ -211,7 +211,8 @@ def r_participation(d):
     """What did not work. Zero is the finding here, so nothing is hidden."""
     p = d["participation"]
     fw = p["first_window"]
-    lost = n(p.get("form_clicks", 0))
+    lost = n(p.get("form_people", p.get("form_clicks", 0)))
+    clicks = n(p.get("form_clicks", 0))
     return (
         '<div class="imp-tiles rv">%s%s</div>'
         '<div class="imp-note rv">'
@@ -226,7 +227,7 @@ def r_participation(d):
         'either way.</p></div>'
         '<p><a class="btn accent" href="roundtable.html#respond">Answer an open question '
         '&rarr;</a></p>'
-        % (tile(lost, "clicks through to the response form"),
+        % (tile(lost, "people reached the response form"),
            tile(n(p["responses"]), "responses received", quiet=True),
            date(fw["from"]), date(fw["to"]), lost))
 
@@ -348,12 +349,22 @@ def r_clock(d):
 # impressions into this would claim a causal chain across a four-month gap
 # during which the site did not exist.
 def r_dropoff(d):
+    """People, all the way down.
+
+    Every step has to be a subset of the one above it or the percentages are
+    meaningless, and every step has to be the same unit or they are worse than
+    meaningless. Until 9 September the click steps counted events while the
+    reader steps counted people, which made "clicked something" larger than
+    "read past thirty seconds" and produced a negative drop. Both now count
+    people. Depth measures like "past four minutes" are not subsets of anything
+    below them, so they stay in "Who reads it" where they belong.
+    """
     r, raw = d["readers"], d["raw"]
     a, p = d["actions"], d["participation"]
     plausible = max(raw.get("ga_users", 0) - raw.get("excluded_datacentre", 0), 0)
-    # Every step has to be a subset of the one above it or the percentages are
-    # meaningless. Depth measures like "past four minutes" are not subsets of
-    # anything below them, so they stay in "Who reads it" where they belong.
+    clicked = a.get("cta_people", a.get("cta_total", 0))
+    reached = p.get("form_people", p.get("form_clicks", 0))
+    people = "cta_people" in a and "form_people" in p
     steps = [
         (raw.get("ga_users", 0), "Counted as visitors",
          "Google Analytics, since launch", ""),
@@ -361,8 +372,10 @@ def r_dropoff(d):
          "after %s resolving to datacentres are deducted"
          % n(raw.get("excluded_datacentre", 0)), ""),
         (r.get("s30", 0), "Read past thirty seconds", "engagement-time buckets", ""),
-        (a.get("cta_total", 0), "Clicked something", "recorded actions", ""),
-        (p.get("form_clicks", 0), "Reached the response form", "outbound clicks", ""),
+        (clicked, "Clicked something",
+         "people, not clicks" if people else "recorded actions", ""),
+        (reached, "Reached the response form",
+         "people, not clicks" if people else "outbound clicks", ""),
         (p.get("responses", 0), "Responded", "the record", "end"),
     ]
     top = max(steps[0][0], 1)
@@ -379,14 +392,16 @@ def r_dropoff(d):
             % (' class="end"' if kind == "end" else "", esc(label), esc(note),
                max(pct, 0.5) if value else 0, n(value), drop))
         prev = value
+    unit = ("Every line counts people, so the gap between any two of them is a "
+            "real loss rather than an artefact of comparing different things."
+            if people else
+            "One window, one site. The lower lines count actions rather than "
+            "people, which makes them an upper bound.")
     return ('<ol class="fn rv">%s</ol>'
-            '<p class="fnnote">One window, one site, so the gap between any two lines is a '
-            'real loss rather than an artefact of comparing different things. The last three '
-            'lines count actions rather than people, which makes them an upper bound on how '
-            'many were involved &mdash; the true narrowing is at least this steep. Season '
-            '1&rsquo;s %s impressions are deliberately not here: that campaign ran four '
-            'months before this site existed and cannot have produced these visits.</p>'
-            % ("".join(rows), n(d["season1"]["impressions_sum"])))
+            '<p class="fnnote">%s Season 1&rsquo;s %s impressions are deliberately '
+            'not here: that campaign ran four months before this site existed and '
+            'cannot have produced these visits.</p>'
+            % ("".join(rows), unit, n(d["season1"]["impressions_sum"])))
 
 
 def r_split(d):

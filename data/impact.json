@@ -1,128 +1,140 @@
 {
-  "updated": "2026-09-09T00:57:05-04:00",
-  "source": "Analytics Command Center (GA4 G-7NQTBY7GPK + Cloudflare)",
-  "window": {
-    "from": "2026-07-22",
-    "to": "2026-09-09"
+ "updated": "2026-09-09T04:41:03-04:00",
+ "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
+ "window": {
+  "from": "2026-07-22",
+  "to": "2026-09-09"
+ },
+ "readers": {
+  "s30": 71,
+  "s60": 27,
+  "s120": 12,
+  "s240": 9,
+  "bottom": 33
+ },
+ "raw": {
+  "ga_users": 382,
+  "sessions": 411,
+  "pageviews": 791,
+  "engagement_rate": 43,
+  "avg_engaged_seconds": 32,
+  "excluded_datacentre": 104,
+  "excluded_cities": [
+   "Ashburn",
+   "Boardman",
+   "Council Bluffs"
+  ],
+  "excluded_is_floor": true
+ },
+ "arrival": {
+  "direct": 262,
+  "social": 130,
+  "search": 12,
+  "referral": 2,
+  "facebook": 102,
+  "linkedin": 20
+ },
+ "machines": {
+  "window_days": 7,
+  "ai_fetches": 281,
+  "user_prompted": 9,
+  "agents": [
+   [
+    "ClaudeBot",
+    153
+   ],
+   [
+    "OAI-SearchBot",
+    46
+   ],
+   [
+    "Amazonbot",
+    41
+   ],
+   [
+    "GPTBot",
+    31
+   ],
+   [
+    "ChatGPT-User",
+    7
+   ],
+   [
+    "Claude-User",
+    2
+   ],
+   [
+    "Meta-ExternalAgent",
+    1
+   ]
+  ],
+  "search_crawlers": 331,
+  "all_bot_requests": 6841,
+  "human_visits": 29,
+  "google_clicks": 1,
+  "google_impressions": 568,
+  "google_position": 16.2,
+  "pages_indexed": 20
+ },
+ "actions": {
+  "cta": {
+   "initiative": 20,
+   "article_open": 11,
+   "roundtable": 6,
+   "download_pdf": 5,
+   "respond": 4,
+   "season_open": 4,
+   "book_call": 3,
+   "newsletter": 3,
+   "founder_site": 2,
+   "partner": 2
   },
-  "readers": {
-    "s30": 140,
-    "s60": 70,
-    "s120": 37,
-    "s240": 26,
-    "bottom": 97
-  },
-  "raw": {
-    "ga_users": 379,
-    "sessions": 408,
-    "pageviews": 785,
-    "engagement_rate": 43,
-    "avg_engaged_seconds": 29,
-    "excluded_datacentre": 104,
-    "excluded_cities": [
-      "Ashburn",
-      "Council Bluffs",
-      "Boardman"
-    ],
-    "excluded_is_floor": true
-  },
-  "arrival": {
-    "direct": 259,
-    "social": 130,
-    "search": 12,
-    "referral": 2,
-    "facebook": 102,
-    "linkedin": 20
-  },
-  "machines": {
-    "window_days": 7,
-    "ai_fetches": 281,
-    "user_prompted": 9,
-    "agents": [
-      [
-        "ClaudeBot",
-        153
-      ],
-      [
-        "OAI-SearchBot",
-        46
-      ],
-      [
-        "Amazonbot",
-        41
-      ],
-      [
-        "GPTBot",
-        31
-      ],
-      [
-        "ChatGPT-User",
-        7
-      ],
-      [
-        "Claude-User",
-        2
-      ],
-      [
-        "Meta-ExternalAgent",
-        1
-      ]
-    ],
-    "search_crawlers": 331,
-    "all_bot_requests": 6841,
-    "human_visits": 29,
-    "google_clicks": 1,
-    "google_impressions": 568,
-    "google_position": 16.2,
-    "pages_indexed": 20
-  },
-  "actions": {
-    "cta": {},
-    "cta_total": 79,
-    "cta_labelled": 0,
-    "downloads": 7,
-    "film_plays": 16,
-    "shares": 7,
-    "outbound": {
-      "tally.so": 11,
-      "buttondown.com": 9,
-      "calendly.com": 6,
-      "easternecho.com": 6,
-      "shafaatalichoyon.com": 6,
-      "linkedin.com": 3,
-      "twitter.com": 1
-    }
-  },
-  "pages": {
-    "home": 866,
-    "initiative": 189,
-    "season": 89,
-    "about": 85,
-    "article": 70,
-    "media": 66,
-    "roundtable": 18,
-    "films": 5
-  },
-  "participation": {
-    "form_clicks": 11,
-    "responses": 0,
-    "first_window": {
-      "from": "2026-08-11",
-      "to": "2026-08-25",
-      "responses": 0
-    }
-  },
-  "season1": {
-    "impressions_sum": 57274,
-    "by_platform": {
-      "facebook_views": 36997,
-      "linkedin_impressions": 13054,
-      "instagram_native_views": 7223
-    },
-    "pieces": 9,
-    "countries": 2,
-    "paid": 0,
-    "reconciliation": "above 94% against full-campaign dashboard locks",
-    "note": "A sum of platform impressions. Not reach, not people."
+  "cta_total": 79,
+  "cta_people": 16,
+  "cta_labelled": 60,
+  "downloads": 7,
+  "film_plays": 16,
+  "shares": 7,
+  "form_submits": 0,
+  "outbound": {
+   "tally.so": 4,
+   "buttondown.com": 3,
+   "calendly.com": 3,
+   "shafaatalichoyon.com": 3,
+   "easternecho.com": 2
   }
+ },
+ "pages": {
+  "home": 871,
+  "initiative": 189,
+  "season": 89,
+  "about": 85,
+  "article": 72,
+  "media": 66,
+  "roundtable": 18,
+  "films": 5
+ },
+ "participation": {
+  "form_clicks": 4,
+  "responses": 0,
+  "first_window": {
+   "from": "2026-08-11",
+   "to": "2026-08-25",
+   "responses": 0
+  },
+  "form_people": 3
+ },
+ "season1": {
+  "impressions_sum": 57274,
+  "by_platform": {
+   "facebook_views": 36997,
+   "linkedin_impressions": 13054,
+   "instagram_native_views": 7223
+  },
+  "pieces": 9,
+  "countries": 2,
+  "paid": 0,
+  "reconciliation": "above 94% against full-campaign dashboard locks",
+  "note": "A sum of platform impressions. Not reach, not people."
+ }
 }

@@ -103,6 +103,22 @@ def pairs(rows):
     return {(d[0] or ""): as_int(m[0]) for d, m in rows}
 
 
+# Custom dimensions have to be registered in GA4 Admin before the Data API will
+# accept them, and an unregistered one is a hard 400 that aborts the whole
+# report sequence. Registered today: cta, seconds, link_domain, page_group,
+# percent, film, section. Anything optional goes through here so that a
+# dimension someone un-registers costs one figure rather than the whole page.
+DEGRADED = []
+
+
+def optional(label, fn, default=None):
+    try:
+        return fn()
+    except Exception as e:
+        DEGRADED.append("%s (%s)" % (label, str(e)[:90]))
+        return {} if default is None else default
+
+
 def fetch_ga4():
     prop = os.environ.get("GA4_PROPERTY_ID", "").strip()
     if not prop:
@@ -132,13 +148,21 @@ def fetch_ga4():
 
     events = pairs(ga_report(s, prop, ["eventName"], ["eventCount"], limit=100))
 
-    # engaged_time and scroll_depth fire with a parameter; both are registered
-    # custom dimensions. If they are ever un-registered GA4 returns "(not set)"
-    # rather than an error, so a bucket that disappears is dropped, not zeroed.
-    secs = pairs(ga_report(s, prop, ["customEvent:seconds"], ["activeUsers"],
-                           dim_filter="engaged_time", limit=20))
-    pct = pairs(ga_report(s, prop, ["customEvent:percent"], ["activeUsers"],
-                          dim_filter="scroll_depth", limit=20))
+    # activeUsers, not eventCount, and this matters more than it looks.
+    #
+    # engaged_time fires once per page, so a reader who opens two pages and
+    # stays thirty seconds on each fires the event twice. Measured 9 September
+    # 2026: the seconds=30 bucket is 142 events but 71 people. The Analytics
+    # Command Center had been reading eventCount and publishing it as "140
+    # people read past thirty seconds", which was an event count wearing a
+    # person's name. The page now publishes people. Do not change this back
+    # without reading scripts/impact_probe.py and the correction note.
+    secs = optional("engaged_time buckets", lambda: pairs(ga_report(
+        s, prop, ["customEvent:seconds"], ["activeUsers"],
+        dim_filter="engaged_time", limit=20)))
+    pct = optional("scroll_depth buckets", lambda: pairs(ga_report(
+        s, prop, ["customEvent:percent"], ["activeUsers"],
+        dim_filter="scroll_depth", limit=20)))
 
     def bucket(d, key):
         v = d.get(str(key))
@@ -149,20 +173,37 @@ def fetch_ga4():
         ("s120", bucket(secs, 120)), ("s240", bucket(secs, 240)),
         ("bottom", bucket(pct, 100))) if v is not None}
 
-    cta = {k: v for k, v in pairs(ga_report(
+    def real(d):
+        """Drop GA4's "(not set)" bucket, which is not a label."""
+        return {k: v for k, v in d.items() if k and k != "(not set)"}
+
+    cta = real(optional("cta labels", lambda: pairs(ga_report(
         s, prop, ["customEvent:cta"], ["eventCount"],
-        dim_filter="cta_click", limit=50)).items() if k and k != "(not set)"}
+        dim_filter="cta_click", limit=50))))
 
-    groups = {k: v for k, v in pairs(ga_report(
+    # The same events counted as people. The drop-off is only honest if every
+    # step is the same unit, and "clicked something" is a claim about people.
+    people = optional("people per event", lambda: {
+        d[0]: as_int(m[0]) for d, m in ga_report(
+            s, prop, ["eventName"], ["activeUsers"], limit=100)})
+    form_people = optional("people who reached the form", lambda: sum(
+        as_int(m[0]) for d, m in ga_report(
+            s, prop, ["customEvent:link_domain"], ["activeUsers"],
+            dim_filter="outbound_click", limit=200)
+        if d[0] == "tally.so"))
+
+    groups = real(optional("page groups", lambda: pairs(ga_report(
         s, prop, ["customEvent:page_group"], ["eventCount"],
-        dim_filter="section_view", limit=50)).items() if k and k != "(not set)"}
+        dim_filter="section_view", limit=50))))
 
+    # link_domain, not link_url: GA4 registers the domain, which is the only
+    # part this page publishes anyway.
     outbound = {}
-    for url, n in pairs(ga_report(s, prop, ["customEvent:link_url"], ["eventCount"],
-                                  dim_filter="outbound_click", limit=200)).items():
-        h = urllib.parse.urlparse(url).netloc.lower().replace("www.", "")
-        if h:
-            outbound[h] = outbound.get(h, 0) + n
+    for host_, n_ in real(optional("outbound domains", lambda: pairs(ga_report(
+            s, prop, ["customEvent:link_domain"], ["eventCount"],
+            dim_filter="outbound_click", limit=200)))).items():
+        h = host_.lower().replace("www.", "")
+        outbound[h] = outbound.get(h, 0) + n_
 
     return {
         "readers": readers,
@@ -178,6 +219,7 @@ def fetch_ga4():
                     "linkedin": host("linkedin.com", "lm.linkedin.com")},
         "actions": {"cta": cta,
                     "cta_total": events.get("cta_click", 0),
+                    "cta_people": people.get("cta_click", 0) if people else 0,
                     "cta_labelled": sum(cta.values()),
                     "downloads": events.get("file_download", 0),
                     "film_plays": events.get("film_play", 0),
@@ -185,6 +227,7 @@ def fetch_ga4():
                     "form_submits": events.get("form_submit", 0),
                     "outbound": outbound},
         "pages": groups,
+        "form_people": form_people if isinstance(form_people, int) else 0,
     }
 
 
@@ -352,7 +395,9 @@ def main():
         try:
             g = fetch_ga4()
             doc.update(g)
-            status["sources"]["ga4"] = "ok"
+            status["sources"]["ga4"] = (
+                "ok" if not DEGRADED
+                else "ok, without: " + "; ".join(DEGRADED))
         except Exception as e:
             status["sources"]["ga4"] = "failed: %s" % str(e)[:200]
             failures.append("ga4")
@@ -393,6 +438,8 @@ def main():
     doc.setdefault("participation", (prev or {}).get("participation", {}))
     if doc.get("actions", {}).get("outbound"):
         doc["participation"]["form_clicks"] = doc["actions"]["outbound"].get("tally.so", 0)
+    if "form_people" in doc:
+        doc["participation"]["form_people"] = doc.pop("form_people")
 
     doc["updated"] = dt.datetime.now().astimezone().isoformat(timespec="seconds")
     doc["source"] = "GA4 Data API, Cloudflare GraphQL, Search Console API"

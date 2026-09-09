@@ -120,7 +120,8 @@ def pick(section, d):
             if test(d):
                 local = dict(f)
                 if section == "participation":
-                    local["clicks"] = _n(d["participation"].get("form_clicks"))
+                    pn = d["participation"]
+                    local["clicks"] = _n(pn.get("form_people", pn.get("form_clicks")))
                 return text.format(**local)
         except Exception:
             continue

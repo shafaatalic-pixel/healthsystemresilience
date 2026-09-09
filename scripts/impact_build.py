@@ -89,6 +89,16 @@ def main():
     scroll = (x2.get("scrollpct") or {}).get("launch", {})
 
     # --- readers, the figure the site publishes ---------------------------
+    #
+    # WARNING, 9 September 2026. These buckets come from the Command Center,
+    # which counts engaged_time and scroll_depth as EVENT COUNTS. engaged_time
+    # fires once per page, so a reader who opens two pages and stays thirty
+    # seconds on each is counted twice. Measured against the GA4 Data API on
+    # the same window: 142 events but 71 people at the thirty-second bucket.
+    #
+    # scripts/impact_fetch.py reads activeUsers and is the correct path. Use
+    # this script only as a structural fallback, and never publish its reader
+    # figures as people. See scripts/impact_probe.py for the measurement.
     readers = {
         "s30": eng.get("30", 0),
         "s60": eng.get("60", 0),

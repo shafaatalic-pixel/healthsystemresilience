@@ -134,7 +134,7 @@ if [ -n "${CF_PURGE_TOKEN:-}" ] && [ -n "${CF_ZONE_ID:-}" ]; then
     "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
     -H "Authorization: Bearer ${CF_PURGE_TOKEN}" \
     -H "Content-Type: application/json" \
-    --data '{"files":["https://hsraep.org/impact.html","https://hsraep.org/"]}' \
+    --data '{"files":["https://hsraep.org/impact.html","https://hsraep.org/","https://hsraep.org/index.html"]}' \
     -o /tmp/hsrep_purge.json
   python3 -c "import json;d=json.load(open('/tmp/hsrep_purge.json'));print('  purged' if d.get('success') else '  PURGE FAILED: %s'%d.get('errors'))"
 else
@@ -142,6 +142,9 @@ else
   echo "  Cloudflare -> hsraep.org -> Caching -> Configuration -> Custom Purge -> URL"
   echo "  https://hsraep.org/impact.html"
   echo "  https://hsraep.org/"
+  # Cloudflare caches "/" and "/index.html" under separate keys. Purging only
+  # "/" left a stale index.html serving for 34 minutes on 9 September.
+  echo "  https://hsraep.org/index.html"
   echo
   echo "  To have this script do it: export CF_PURGE_TOKEN=... and CF_ZONE_ID=..."
 fi

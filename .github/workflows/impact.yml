@@ -100,7 +100,7 @@ jobs:
             "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
             -H "Authorization: Bearer ${CF_PURGE_TOKEN}" \
             -H "Content-Type: application/json" \
-            --data '{"files":["https://hsraep.org/impact.html","https://hsraep.org/","https://hsraep.org/data/impact.json"]}' \
+            --data '{"files":["https://hsraep.org/impact.html","https://hsraep.org/","https://hsraep.org/index.html","https://hsraep.org/data/impact.json"]}' \
             | tee /tmp/purge.json
           python3 -c "import json;d=json.load(open('/tmp/purge.json'));raise SystemExit(0 if d.get('success') else 'purge failed: %s'%d.get('errors'))"
 

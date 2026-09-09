@@ -58,7 +58,21 @@ jobs:
         run: |
           git config user.name "hsrep-bot"
           git config user.email "noreply@hsraep.org"
-          git add data/impact.json data/impact_status.json data/impact_history.json impact.html index.html 2>/dev/null || true
+          # One at a time, and only if it exists. `git add a b c` refuses the
+          # whole command when any single pathspec matches nothing, so listing
+          # data/impact_history.json - which is not created until there are
+          # weeks of runs to draw - staged NOTHING, every run, silently. The
+          # 2>/dev/null that was here hid it.
+          staged=0
+          for f in data/impact.json data/impact_status.json data/impact_history.json \
+                   impact.html index.html; do
+            if [ -f "$f" ]; then git add "$f"; staged=$((staged+1)); fi
+          done
+          echo "staged $staged file(s)"
+          if [ "$staged" -eq 0 ]; then
+            echo "::error::Nothing was staged. The fetcher or renderer did not write." >&2
+            exit 1
+          fi
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No change. Nothing committed."

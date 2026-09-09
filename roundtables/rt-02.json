@@ -1,0 +1,28 @@
+{
+  "state": "open-standing",
+  "close": null,
+  "tally_form_id": "VLBbYM",
+  "roundtable_engagement_label": "Join a roundtable discussion",
+  "status": "open",
+  "approved": false,
+  "synthesis_md": "",
+  "contributors": [],
+  "response_count": 0,
+  "count_synced": false,
+  "updated": "2026-09-09",
+  "id": "rt-02",
+  "title": "Roundtable № 02",
+  "featured": true,
+  "question": "Where does preventive care break down between recommended and completed in your setting?",
+  "for_whom": "FQHC leadership and quality staff, care coordinators, community health workers, clinicians and programme managers.",
+  "anchor": "Anchored to the Prevention Adoption Gap: colorectal screening reaches 44.89% at the average FQHC nationally and 48.74% in Michigan (CY2025 UDS), and 63.5% of U.S. adults against a Healthy People 2030 target of 72.8%.",
+  "tally_match": [
+    "№ 02",
+    "no. 02",
+    "prevention",
+    "preventive",
+    "screening",
+    "completion"
+  ],
+  "open": "2026-09-09"
+}

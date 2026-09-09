@@ -4,9 +4,19 @@ header CTA to the label analytics.js would apply, so the deferred script no long
 moves anything after first paint. Idempotent. Usage: pagefix.py <site root>"""
 import os, re, sys, datetime
 root = sys.argv[1]
-RESERVE = ('<style id="hs-reserve">body{padding-top:45px}html.hs-bar-on body,html.hs-nobar body{padding-top:0}'
-           'body:has(>.hs-campaign){padding-top:0}</style>'
-           '<script>try{if(sessionStorage.getItem("hsrep-campaign-dismissed-v2"))document.documentElement.classList.add("hs-nobar")}catch(e){}</script>')
+RESERVE_CSS = ('<style id="hs-reserve">body{padding-top:45px}html.hs-bar-on body,html.hs-nobar body{padding-top:0}'
+               'body:has(>.hs-campaign){padding-top:0}</style>')
+# The dismissal is per-campaign: analytics.js stores the campaign's state string and
+# only stays hidden while the stored value still equals the current state. The
+# pre-paint guard has to make the same comparison, or a reader who dismissed the
+# previous campaign gets hs-nobar before paint and then the new bar inserted after
+# it, which is a 45px shift. Bake the current state into the guard.
+GUARD_RE = re.compile(r'<script>try\{if\(sessionStorage\.getItem\("hsrep-campaign-dismissed-v2"\)'
+                      r'[^<]*?\)document\.documentElement\.classList\.add\("hs-nobar"\)\}catch\(e\)\{\}</script>')
+
+def guard(state):
+    return ('<script>try{if(sessionStorage.getItem("hsrep-campaign-dismissed-v2")==="%s")'
+            'document.documentElement.classList.add("hs-nobar")}catch(e){}</script>' % state)
 FONT_FALLBACK_CSS = '@font-face{font-family:"Inter Fallback";font-weight:400;font-style:normal;src:local("Arial"),local("ArialMT");size-adjust:107.62%;ascent-override:90.01%;descent-override:22.41%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:500;font-style:normal;src:local("Arial"),local("ArialMT");size-adjust:108.75%;ascent-override:89.08%;descent-override:22.18%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:600;font-style:normal;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:101.46%;ascent-override:95.48%;descent-override:23.77%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:700;font-style:normal;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:102.49%;ascent-override:94.52%;descent-override:23.54%;line-gap-override:0.00%}@font-face{font-family:"Inter Fallback";font-weight:800;font-style:normal;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:103.75%;ascent-override:93.38%;descent-override:23.25%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:400;font-style:normal;src:local("Times New Roman"),local("TimesNewRomanPSMT");size-adjust:109.71%;ascent-override:96.52%;descent-override:42.20%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:400;font-style:italic;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT");size-adjust:100.60%;ascent-override:105.27%;descent-override:46.02%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:600;font-style:normal;src:local("Times New Roman Bold"),local("TimesNewRomanPS-BoldMT");size-adjust:106.03%;ascent-override:99.88%;descent-override:43.67%;line-gap-override:0.00%}@font-face{font-family:"Spectral Fallback";font-weight:700;font-style:normal;src:local("Times New Roman Bold"),local("TimesNewRomanPS-BoldMT");size-adjust:107.64%;ascent-override:98.38%;descent-override:43.01%;line-gap-override:0.00%}@font-face{font-family:"IBM Plex Mono Fallback";font-weight:500;font-style:normal;src:local("Courier New"),local("CourierNewPSMT");size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0.00%}@font-face{font-family:"IBM Plex Mono Fallback";font-weight:600;font-style:normal;src:local("Courier New Bold"),local("CourierNewPS-BoldMT");size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0.00%}@font-face{font-family:"IBM Plex Mono Fallback";font-weight:700;font-style:normal;src:local("Courier New Bold"),local("CourierNewPS-BoldMT");size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0.00%}' + ':root{--font-body:"Inter","Inter Fallback",system-ui,sans-serif;--font-display:"Spectral","Spectral Fallback",Georgia,serif;--font-mono:"IBM Plex Mono","IBM Plex Mono Fallback",monospace}'
 SKIP = {'roundtable-console.html'}   # private console: no site header, no campaign bar
 today = datetime.date.today()
@@ -57,7 +67,10 @@ for dp, dn, fn in os.walk(root):
         if 'analytics.js' not in s or '<header' not in s: continue
         # 1. reserve the bar slot (once)
         if 'id="hs-reserve"' not in s:
-            s = s.replace('</head>', RESERVE + '</head>', 1)
+            s = s.replace('</head>', RESERVE_CSS + guard(state) + '</head>', 1)
+        else:
+            # keep the guard in step with the current campaign state
+            s = GUARD_RE.sub(guard(state), s, 1)
         # 2. static header CTA = what analytics.js sets for this page group
         href, label, ext = cta_for(group(rel))
         attrs = ' target="_blank" rel="noopener"' if ext else ''

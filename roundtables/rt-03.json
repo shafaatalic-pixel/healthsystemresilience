@@ -1,0 +1,28 @@
+{
+  "state": "open-standing",
+  "close": null,
+  "tally_form_id": "VLBbYM",
+  "roundtable_engagement_label": "Join a roundtable discussion",
+  "status": "open",
+  "approved": false,
+  "synthesis_md": "",
+  "contributors": [],
+  "response_count": 0,
+  "count_synced": false,
+  "updated": "2026-09-09",
+  "id": "rt-03",
+  "title": "Roundtable № 03",
+  "featured": false,
+  "question": "What does the cost of care do to the people you serve that never shows up in the record?",
+  "for_whom": "Clinicians, social workers, financial counsellors, health educators and public health practitioners who see the consequences before the data does.",
+  "anchor": "Anchored to Season 1, Chapter 2: 41% of U.S. adults carry medical or dental debt, and 64% of those with debt delayed or skipped care they needed (KFF, 2022).",
+  "tally_match": [
+    "№ 03",
+    "no. 03",
+    "cost of care",
+    "medical debt",
+    "debt",
+    "affordability"
+  ],
+  "open": "2026-09-09"
+}

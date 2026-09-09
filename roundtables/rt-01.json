@@ -1,15 +1,6 @@
 {
-  "id": "rt-01",
-  "title": "Roundtable № 01",
-  "question": "Does the platform decide who hears the argument?",
   "state": "open-standing",
-  "open": "2026-08-11",
   "close": null,
-  "first_window": {
-    "open": "2026-08-11",
-    "close": "2026-08-25",
-    "response_count": 0
-  },
   "tally_form_id": "VLBbYM",
   "roundtable_engagement_label": "Join a roundtable discussion",
   "status": "open",
@@ -18,5 +9,30 @@
   "contributors": [],
   "response_count": 0,
   "count_synced": false,
-  "updated": "2026-09-08"
+  "updated": "2026-09-09",
+  "id": "rt-01",
+  "title": "Roundtable № 01",
+  "featured": false,
+  "question": "When a health message has to reach a particular group, what actually works?",
+  "for_whom": "Health educators, community health workers, communications leads, clinicians and programme officers — anyone who has tried to get information to a specific group.",
+  "anchor": "Anchored to Season 1: the same piece, published the same day in the same words, routed to opposite audiences on Facebook and LinkedIn.",
+  "tally_match": [
+    "№ 01",
+    "no. 01",
+    "reaching",
+    "message",
+    "audience",
+    "platform"
+  ],
+  "open": "2026-08-11",
+  "first_window": {
+    "open": "2026-08-11",
+    "close": "2026-08-25",
+    "response_count": 0
+  },
+  "reframed": {
+    "date": "2026-09-09",
+    "from": "Does the platform decide who hears the argument?",
+    "why": "The original wording asked professionals to report on platform analytics most of them have no reason to have seen."
+  }
 }

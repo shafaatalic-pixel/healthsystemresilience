@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-09T04:41:03-04:00",
+ "updated": "2026-09-09T04:53:31-04:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
@@ -36,16 +36,16 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 281,
+  "ai_fetches": 299,
   "user_prompted": 9,
   "agents": [
    [
     "ClaudeBot",
-    153
+    157
    ],
    [
     "OAI-SearchBot",
-    46
+    45
    ],
    [
     "Amazonbot",
@@ -54,6 +54,10 @@
    [
     "GPTBot",
     31
+   ],
+   [
+    "Applebot",
+    15
    ],
    [
     "ChatGPT-User",
@@ -68,13 +72,19 @@
     1
    ]
   ],
-  "search_crawlers": 331,
-  "all_bot_requests": 6841,
-  "human_visits": 29,
+  "search_crawlers": 158,
+  "all_bot_requests": 7553,
+  "human_visits": 5,
   "google_clicks": 1,
   "google_impressions": 568,
   "google_position": 16.2,
-  "pages_indexed": 20
+  "pages_indexed": 20,
+  "all_requests": 7553,
+  "cached_requests": 604,
+  "unique_ips": 1281,
+  "agent_days": 7,
+  "pages_with_impressions": 23,
+  "gsc_through": "2026-09-06"
  },
  "actions": {
   "cta": {

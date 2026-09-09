@@ -66,9 +66,9 @@ def google_session():
 
 
 # ------------------------------------------------------------------- GA4
-def ga_report(sess, prop, dims, mets, dim_filter=None, limit=100):
+def ga_report(sess, prop, dims, mets, dim_filter=None, limit=100, start=None):
     body = {
-        "dateRanges": [{"startDate": LAUNCH, "endDate": "today"}],
+        "dateRanges": [{"startDate": start or LAUNCH, "endDate": "today"}],
         "dimensions": [{"name": d} for d in dims],
         "metrics": [{"name": m} for m in mets],
         "limit": limit,
@@ -205,7 +205,16 @@ def fetch_ga4():
         h = host_.lower().replace("www.", "")
         outbound[h] = outbound.get(h, 0) + n_
 
+    # Cloudflare's "uniques" counts unique IP addresses, crawlers included, and
+    # is not a human figure. The machines-against-people chart needs people over
+    # the same seven days, so GA4 is asked for exactly that.
+    week = optional("7-day people", lambda: ga_report(
+        s, prop, [], ["activeUsers"], limit=1,
+        start=(dt.date.today() - dt.timedelta(days=7)).isoformat()), default=[])
+    human_7d = as_int(week[0][1][0]) if week else 0
+
     return {
+        "human_visits_7d": human_7d,
         "readers": readers,
         "raw": {"ga_users": users, "sessions": sess_n, "pageviews": pv,
                 "engagement_rate": eng_rate, "avg_engaged_seconds": avg_eng,
@@ -244,17 +253,18 @@ query($zone:String!,$since:Date!,$until:Date!){
 """
 
 Q_AGENTS = """
-query($zone:String!,$since:Time!){
+query($zone:String!,$since:Time!,$until:Time!){
   viewer{ zones(filter:{zoneTag:$zone}){
-    httpRequestsAdaptiveGroups(limit:200, filter:{datetime_geq:$since},
-      orderBy:[count_DESC]){
+    httpRequestsAdaptiveGroups(limit:500,
+      filter:{datetime_geq:$since, datetime_lt:$until}, orderBy:[count_DESC]){
       count
       dimensions{ userAgent }
     }}}}
 """
 
-# Substrings that identify an agent in a user-agent string, and the name the page
-# uses for it. Order matters: the first match wins.
+# Substrings that identify an agent in a user-agent string, and the name the
+# page uses for it. Order matters: the first match wins, so the two that
+# represent a person asking a question sit above their crawler siblings.
 AI_AGENTS = [("ChatGPT-User", "ChatGPT-User"), ("Claude-User", "Claude-User"),
              ("ClaudeBot", "ClaudeBot"), ("OAI-SearchBot", "OAI-SearchBot"),
              ("GPTBot", "GPTBot"), ("PerplexityBot", "PerplexityBot"),
@@ -296,27 +306,44 @@ def fetch_cloudflare(days=7):
     groups = z.get("httpRequests1dGroups") or []
     out["all_requests"] = sum(g["sum"]["requests"] for g in groups)
     out["cached_requests"] = sum(g["sum"]["cachedRequests"] for g in groups)
-    out["human_visits"] = sum(g["uniq"]["uniques"] for g in groups)
+    # unique_ips, deliberately not "visitors". Cloudflare counts unique IP
+    # addresses and every crawler has one: 1,281 of them in a week against 382
+    # people GA4 has seen since launch. Naming it honestly is the whole job.
+    out["unique_ips"] = sum(g["uniq"]["uniques"] for g in groups)
 
     # The user-agent breakdown is a separate, narrower dataset and is not
     # available on every plan. Missing is a known state, not an error: the caller
     # carries the previous values forward and the status file says so.
+    # This dataset is capped at a one-day window on this plan, so the week is
+    # asked for one day at a time and summed. A day that fails is skipped and
+    # counted, because a partial week reported as a full one is a lie.
     try:
-        za = cf_post(token, Q_AGENTS,
-                     {"zone": zone,
-                      "since": (dt.datetime.utcnow() - dt.timedelta(days=days))
-                      .strftime("%Y-%m-%dT%H:%M:%SZ")})
-        counts, search_total = {}, 0
-        for row in za.get("httpRequestsAdaptiveGroups") or []:
-            ua = (row.get("dimensions") or {}).get("userAgent") or ""
-            n = row.get("count") or 0
-            for needle, name in AI_AGENTS:
-                if needle.lower() in ua.lower():
-                    counts[name] = counts.get(name, 0) + n
-                    break
-            else:
-                if any(x.lower() in ua.lower() for x in SEARCH_AGENTS):
-                    search_total += n
+        counts, search_total, got_days = {}, 0, 0
+        end = dt.datetime.utcnow().replace(microsecond=0)
+        for i in range(days):
+            hi = end - dt.timedelta(days=i)
+            lo = hi - dt.timedelta(days=1)
+            try:
+                za = cf_post(token, Q_AGENTS, {
+                    "zone": zone,
+                    "since": lo.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "until": hi.strftime("%Y-%m-%dT%H:%M:%SZ")})
+            except Exception:
+                continue
+            got_days += 1
+            for row in za.get("httpRequestsAdaptiveGroups") or []:
+                ua = (row.get("dimensions") or {}).get("userAgent") or ""
+                n = row.get("count") or 0
+                for needle, name in AI_AGENTS:
+                    if needle.lower() in ua.lower():
+                        counts[name] = counts.get(name, 0) + n
+                        break
+                else:
+                    if any(x.lower() in ua.lower() for x in SEARCH_AGENTS):
+                        search_total += n
+        if not got_days:
+            raise RuntimeError("no day in the window returned agent data")
+        out["agent_days"] = got_days
         agents = sorted(counts.items(), key=lambda kv: -kv[1])
         out["agents"] = [[k, v] for k, v in agents]
         out["ai_fetches"] = sum(counts.values())
@@ -387,8 +414,14 @@ def main():
 
     prev = load(a.out)
     doc = json.loads(json.dumps(prev)) if prev else {}
+    # Who ran this. A local run must not let the page claim a nightly job that
+    # does not exist yet: the clock reads this field, not the fact that a status
+    # file is present.
     status = {"attempted": dt.datetime.now(dt.timezone.utc)
-              .isoformat(timespec="seconds"), "sources": {}}
+              .isoformat(timespec="seconds"),
+              "runner": "github-actions" if os.environ.get("GITHUB_ACTIONS")
+                        else "manual",
+              "sources": {}}
     failures = []
 
     if "ga4" in want:
@@ -407,9 +440,12 @@ def main():
         try:
             c = fetch_cloudflare()
             machines["window_days"] = c["window_days"]
-            machines["all_bot_requests"] = c["all_requests"]
+            machines["all_requests"] = c["all_requests"]
+            machines["all_bot_requests"] = c["all_requests"]   # legacy key
             machines["cached_requests"] = c["cached_requests"]
-            machines["human_visits"] = c["human_visits"]
+            machines["unique_ips"] = c["unique_ips"]
+            if c.get("agent_days"):
+                machines["agent_days"] = c["agent_days"]
             if c.get("agents_available"):
                 machines["agents"] = c["agents"]
                 machines["ai_fetches"] = c["ai_fetches"]
@@ -430,6 +466,9 @@ def main():
         except Exception as e:
             status["sources"]["gsc"] = "failed: %s" % str(e)[:200]
             failures.append("search console")
+    # people, from GA4, over the same seven days the Cloudflare figures cover
+    if "human_visits_7d" in doc:
+        machines["human_visits"] = doc.pop("human_visits_7d")
     doc["machines"] = machines
 
     # Carried, not fetched: Season 1 is a locked historical record, and

@@ -125,7 +125,8 @@ def r_machines(d):
            tile(n(m["ai_fetches"]), "AI fetches in %d days" % m["window_days"]),
            tile(n(m["user_prompted"]), "of them triggered by a person asking an assistant"),
            tile(n(m["google_clicks"]), "clicks from Google search, since launch", quiet=True),
-           tile(n(m["pages_indexed"]), "pages indexed", quiet=True),
+           tile(n(m.get("pages_with_impressions", m.get("pages_indexed", 0))),
+                "pages that have appeared in a Google result", quiet=True),
            "</div>"]
     rows = "".join(
         '<tr%s><td>%s</td><td class="n">%s</td></tr>'
@@ -140,9 +141,12 @@ def r_machines(d):
         '<p>Scale, for honesty: %s bot requests reached the site in that window against %s '
         'human visits. Most of that is ordinary crawling and probing. The AI share is what '
         'is new.</p></div>'
-        % (m["google_position"], "" if m.get("pages_indexed") is None
-           else ", across %s indexed pages" % n(m.get("pages_indexed", 0)),
-           n(m["all_bot_requests"]), n(m["human_visits"])))
+        % (m["google_position"], "" if not (m.get("pages_with_impressions")
+                                            or m.get("pages_indexed"))
+           else ", across %s pages that have appeared in a result"
+           % n(m.get("pages_with_impressions", m.get("pages_indexed", 0))),
+           n(m.get("all_requests", m.get("all_bot_requests", 0))),
+           n(m.get("human_visits", 0))))
     return "".join(out)
 
 
@@ -313,13 +317,20 @@ def r_clock(d):
                 last.strftime("%Y-%m-%dT%H:%M:%SZ") if last else "",
                 "1" if stale else "0"))
 
-    if not st:
-        # No automated run has happened yet. Saying "refreshed nightly" here
-        # would be a promise the site is not yet keeping.
+    if not st or st.get("runner") != "github-actions":
+        # Nothing automated has run yet. A status file written by a local run
+        # proves the fetcher works, not that anything happens without a person,
+        # so saying "refreshed nightly" here would be a promise the site is not
+        # keeping. This flips itself the first time the Action succeeds.
+        src = ""
+        if st.get("sources"):
+            src = " Sources: %s." % ", ".join(
+                k.upper() for k, v in sorted(st["sources"].items())
+                if str(v).startswith("ok"))
         return ('<p class="imp-clock is-manual" data-stale="0"><span class="dt"></span>'
-                '<b>Refreshed by hand.</b> Last updated %s. The nightly job is built '
+                '<b>Refreshed by hand.</b> Last updated %s.%s The nightly job is built '
                 'but not yet switched on.</p>'
-                % date((d.get("updated") or "")[:10]))
+                % (date((d.get("updated") or "")[:10]), src))
 
     if stale:
         age = ""
@@ -408,11 +419,13 @@ def r_split(d):
     """Machines against people, the same seven days. The ratio is the finding, so
     the bars stay linear; the near-invisible ones are the point, not a bug."""
     m = d["machines"]
-    rows = [("All requests reaching the site", m.get("all_bot_requests", 0), "navy"),
+    rows = [("All requests reaching the site",
+             m.get("all_requests", m.get("all_bot_requests", 0)), "navy"),
+            ("Unique IP addresses", m.get("unique_ips", 0), "navy"),
             ("Search-engine crawlers", m.get("search_crawlers", 0), "navy"),
             ("AI agents", m.get("ai_fetches", 0), "coral"),
             ("Asked for by a person", m.get("user_prompted", 0), "coral"),
-            ("Human visits", m.get("human_visits", 0), "navy")]
+            ("People", m.get("human_visits", 0), "navy")]
     top = max(rows[0][1], 1)
     out = ['<div class="sp rv">']
     for label, value, tone in rows:
@@ -422,9 +435,12 @@ def r_split(d):
                    % (esc(label), tone, max(value / top * 100, 1.4) if value else 0,
                       n(value)))
     out.append("</div>")
-    out.append('<p class="fnnote">Two orders of magnitude. Most of it is ordinary crawling '
-               'and probing; the AI share is the part that is new, and the fourth line is '
-               'the only one where a person asked a question that brought an agent here.</p>')
+    out.append('<p class="fnnote">Two orders of magnitude. Unique IP addresses are counted '
+               'by Cloudflare and include every crawler, which is why they are not called '
+               'visitors; the last line is people, from Google Analytics, over the same '
+               'seven days. Most of the traffic is ordinary crawling and probing. The AI '
+               'share is the part that is new, and the line above the last is the only one '
+               'where a person asked a question that brought an agent here.</p>')
     return "".join(out)
 
 

@@ -1,0 +1,11 @@
+{
+ "attempted": "2026-09-09T08:53:26+00:00",
+ "sources": {
+  "ga4": "ok",
+  "cf": "ok",
+  "gsc": "ok"
+ },
+ "ok": true,
+ "failed": [],
+ "last_success": "2026-09-09T08:53:26+00:00"
+}

@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-08T23:10:58-04:00",
+  "updated": "2026-09-09T00:57:05-04:00",
   "source": "Analytics Command Center (GA4 G-7NQTBY7GPK + Cloudflare)",
   "window": {
     "from": "2026-07-22",
-    "to": "2026-09-08"
+    "to": "2026-09-09"
   },
   "readers": {
     "s30": 140,
@@ -36,7 +36,7 @@
   },
   "machines": {
     "window_days": 7,
-    "ai_fetches": 288,
+    "ai_fetches": 281,
     "user_prompted": 9,
     "agents": [
       [
@@ -45,15 +45,15 @@
       ],
       [
         "OAI-SearchBot",
-        47
+        46
       ],
       [
         "Amazonbot",
-        42
+        41
       ],
       [
         "GPTBot",
-        36
+        31
       ],
       [
         "ChatGPT-User",
@@ -68,8 +68,8 @@
         1
       ]
     ],
-    "search_crawlers": 330,
-    "all_bot_requests": 6854,
+    "search_crawlers": 331,
+    "all_bot_requests": 6841,
     "human_visits": 29,
     "google_clicks": 1,
     "google_impressions": 568,
@@ -77,20 +77,9 @@
     "pages_indexed": 20
   },
   "actions": {
-    "cta": {
-      "initiative": 20,
-      "article_open": 11,
-      "roundtable": 6,
-      "download_pdf": 5,
-      "respond": 4,
-      "season_open": 4,
-      "book_call": 3,
-      "newsletter": 3,
-      "founder_site": 2,
-      "partner": 2
-    },
+    "cta": {},
     "cta_total": 79,
-    "cta_labelled": 60,
+    "cta_labelled": 0,
     "downloads": 7,
     "film_plays": 16,
     "shares": 7,

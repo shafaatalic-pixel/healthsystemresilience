@@ -145,21 +145,33 @@ def r_machines(d):
 
 
 def r_actions(d):
+    """Every recorded action. A refresh sometimes returns the click total without
+    the per-control breakdown; when that happens the list is omitted and said to
+    be missing, rather than printing zeros that read as findings."""
     a, p = d["actions"], d["pages"]
     labels = {"initiative": "Open the initiative", "article_open": "Open an article",
               "roundtable": "Open the roundtable", "download_pdf": "Download a PDF",
               "respond": "Add a response", "season_open": "Open the season",
               "book_call": "Book a call", "newsletter": "Subscribe",
               "founder_site": "Founder's site", "partner": "Partnership"}
-    items = sorted(a["cta"].items(), key=lambda kv: -kv[1])
-    out = ['<div class="imp-list rv">']
-    out += ['<div><span>%s</span><b>%s</b></div>' % (esc(labels.get(k, k)), n(v))
-            for k, v in items]
-    out.append("</div>")
-    out.append('<p style="font-size:14px;color:var(--muted);max-width:70ch">%s recorded '
-               'clicks in total; %s of them carry a label and are listed above. The rest '
-               'fire from controls that do not name themselves.</p>'
-               % (n(a["cta_total"]), n(a["cta_labelled"])))
+    have_cta = bool(a.get("cta")) and a.get("cta_labelled", 0) > 0
+    out = []
+    if have_cta:
+        items = sorted(a["cta"].items(), key=lambda kv: -kv[1])
+        out.append('<div class="imp-list rv">')
+        out += ['<div><span>%s</span><b>%s</b></div>' % (esc(labels.get(k, k)), n(v))
+                for k, v in items]
+        out.append("</div>")
+        out.append('<p style="font-size:14px;color:var(--muted);max-width:70ch">%s recorded '
+                   'clicks in total; %s of them carry a label and are listed above. The rest '
+                   'fire from controls that do not name themselves.</p>'
+                   % (n(a["cta_total"]), n(a["cta_labelled"])))
+    else:
+        out.append('<div class="imp-list rv"><div><span>Recorded clicks</span><b>%s</b></div>'
+                   '</div>' % n(a.get("cta_total", 0)))
+        out.append('<p style="font-size:14px;color:var(--muted);max-width:70ch">The '
+                   'per-control breakdown was not returned by the most recent refresh, so it '
+                   'is left out rather than shown as zeros. It returns on the next one.</p>')
 
     ptot = max(sum(p.values()), 1)
     out.append('<h3 style="font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;'
@@ -169,14 +181,22 @@ def r_actions(d):
     out += [bar(k.title(), v, ptot, "alt" if k in ("initiative", "roundtable") else "")
             for k, v in order]
     out.append("</div>")
+
+    # the point stands on page views alone; the click figures are added only when
+    # the refresh actually carried them
+    clicks = ""
+    if have_cta:
+        clicks = (" and <b>%s</b> calls to action against the roundtable page&rsquo;s "
+                  "<b>%s</b> views and <b>%s</b>"
+                  % (n(a["cta"].get("initiative", 0)), n(p.get("roundtable", 0)),
+                     n(a["cta"].get("roundtable", 0))))
+    else:
+        clicks = " against the roundtable page&rsquo;s <b>%s</b>" % n(p.get("roundtable", 0))
     out.append(
-        '<div class="imp-note rv"><p>The initiative page drew <b>%s</b> section views and '
-        '<b>%s</b> calls to action against the roundtable page’s <b>%s</b> and <b>%s</b>. '
+        '<div class="imp-note rv"><p>The initiative page drew <b>%s</b> section views%s. '
         'That is the audience saying where its attention already is, and it is why the '
         'featured roundtable question is now the one that belongs to the Prevention '
-        'Adoption Gap.</p></div>'
-        % (n(p.get("initiative", 0)), n(a["cta"].get("initiative", 0)),
-           n(p.get("roundtable", 0)), n(a["cta"].get("roundtable", 0))))
+        'Adoption Gap.</p></div>' % (n(p.get("initiative", 0)), clicks))
     out.append('<div class="imp-list rv">'
                '<div><span>Film plays</span><b>%s</b></div>'
                '<div><span>Resource downloads</span><b>%s</b></div>'

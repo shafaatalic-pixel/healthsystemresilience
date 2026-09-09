@@ -1,0 +1,64 @@
+name: Roundtable responses (wall)
+
+# Pulls new roundtable submissions from Tally, applies the consent rules, and opens
+# a Pull Request adding them to the record as "pending". Nothing appears on the site
+# on its own: reviewing the PR is the moderation step.
+#
+# Without a TALLY_API_KEY secret this no-ops safely — the CSV path
+# (`python scripts/roundtable_responses.py --csv export.csv`) works on Tally's free
+# tier and is the intended route until the API is available.
+
+on:
+  schedule:
+    # Every six hours. A response should be on the record within a day.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}   # manual run from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  responses:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ingest new responses and render the wall
+        env:
+          TALLY_API_KEY: ${{ secrets.TALLY_API_KEY }}
+        run: python scripts/roundtable_responses.py
+
+      - name: Open a pull request for moderation
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Roundtable: new responses awaiting moderation"
+          branch: roundtable/responses
+          delete-branch: true
+          title: "Roundtable responses ready for review"
+          body: |
+            New roundtable responses were ingested from Tally. They are stored as
+            `"status": "pending"` and **do not appear on the site yet**.
+
+            To publish them:
+            1. Open `roundtables/responses/rt-01.json`.
+            2. For each pending entry set `"status"` to `"published"` or `"declined"`.
+               Trim for length if you need to, and record that in `"note"`
+               (for example `"Trimmed for length"`). Never change the meaning.
+            3. Run `python3 scripts/roundtable_responses.py --render-only` to
+               regenerate the wall, then commit.
+            4. Merge this pull request.
+
+            Consent is applied before anything is written to disk: responses marked
+            "No — keep it private" are never stored, only counted as withheld, and
+            "anonymous" responses arrive with no name or affiliation.
+          add-paths: |
+            roundtables/responses/*.json
+            roundtable.html
+            index.html

@@ -1,0 +1,13 @@
+{
+  "question_id": "rt-01",
+  "question": "Does the platform decide who hears the argument?",
+  "updated": "2026-09-09T00:02:30Z",
+  "counts": {
+    "received": 0,
+    "published": 0,
+    "pending": 0,
+    "declined": 0,
+    "withheld": 0
+  },
+  "responses": []
+}

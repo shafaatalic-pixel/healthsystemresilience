@@ -139,6 +139,7 @@ function card(cfg){
   var subUrl=form?'https://tally.so/forms/'+form+'/submissions':'https://tally.so/';
   var formUrl=form?'https://tally.so/r/'+form:'https://tally.so/';
   var rc=(typeof cfg.response_count==='number')?cfg.response_count:0;
+  var wc=(cfg._wall&&cfg._wall.counts)||null;
   var synced=cfg.count_synced||'';
   var srcLbl=synced?'synced from Tally':'in site data';
   var upd=cfg.updated?(' · data updated '+esc(cfg.updated)):'';
@@ -150,7 +151,14 @@ function card(cfg){
 
   // metrics
   h+='<div class="meta">';
-  h+='<div class="metric"><div class="k">Responses</div><div class="v">'+rc+' <small>'+srcLbl+'</small></div></div>';
+  /* the wall's own counts supersede the Tally sync figure; showing both invites
+     a contradiction on the one page whose job is to be unambiguous */
+  if(!wc)h+='<div class="metric"><div class="k">Responses</div><div class="v">'+rc+' <small>'+srcLbl+'</small></div></div>';
+  if(wc){
+    h+='<div class="metric"><div class="k">On the record</div><div class="v">'+(wc.published||0)+' <small>published</small></div></div>';
+    if(wc.pending)h+='<div class="metric"><div class="k">Awaiting you</div><div class="v">'+wc.pending+' <small>to moderate</small></div></div>';
+    if(wc.withheld)h+='<div class="metric"><div class="k">Withheld</div><div class="v">'+wc.withheld+' <small>not consented</small></div></div>';
+  }
   h+='<div class="metric"><div class="k">Window</div><div class="v" style="font-size:1rem;padding-top:8px"><span class="win">'+fmt(s.open)+' → '+(s.close?fmt(s.close):'no closing date')+'</span></div></div>';
   if(synced)h+='<div class="metric"><div class="k">Last sync</div><div class="v" style="font-size:.95rem;padding-top:9px"><span class="win">'+fmtStamp(synced)+'</span></div></div>';
   h+='</div>';
@@ -163,6 +171,14 @@ function card(cfg){
     h+='<a class="btn dark" href="'+PR_URL+'" target="_blank" rel="noopener">Synthesis PR on GitHub →</a>';
   h+='<a class="btn" href="/roundtable.html" target="_blank" rel="noopener">Public page</a>';
   h+='</div>';
+
+  if(wc&&wc.pending){
+    h+='<div class="howto"><b>'+wc.pending+' response'+(wc.pending===1?'':'s')+' awaiting moderation.</b> '
+      +'Open <code>roundtables/responses/'+esc(cfg.id)+'.json</code>, set each pending entry\'s '
+      +'<code>"status"</code> to <code>"published"</code> or <code>"declined"</code>, run '
+      +'<code>python3 scripts/roundtable_responses.py --render-only</code>, then commit. '
+      +'Nothing shows on the public page until you do.</div>';
+  }
 
   // synthesis panel
   h+='<div class="synth"><div class="sh">Synthesis</div>';
@@ -196,8 +212,13 @@ function load(){
     fetch('/roundtables/'+id+'.json?ts='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
       .then(function(cfg){
-        if(cfg){ if(!cfg.id)cfg.id=id; html+=card(cfg); found++; i++; next(); }
-        else { done(); }
+        if(!cfg){ done(); return; }
+        if(!cfg.id)cfg.id=id;
+        /* the wall's counts live beside the config, in responses/<id>.json */
+        fetch('/roundtables/responses/'+id+'.json?ts='+Date.now(),{cache:'no-store'})
+          .then(function(r){return r.ok?r.json():null;})
+          .catch(function(){return null;})
+          .then(function(w){ cfg._wall=w; html+=card(cfg); found++; i++; next(); });
       })
       .catch(function(){ done(); });
   }

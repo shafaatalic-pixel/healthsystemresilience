@@ -58,3 +58,7 @@ Eleven findings came out of the Season 1 data. These are the four that held acro
 ## Impact
 https://hsraep.org/impact.html
 The platform's own record: readership (published as engaged readers, not raw visitor counts, with datacentre traffic deducted and named), how visitors arrive, AI-crawler retrieval against search, every recorded action, and the record of what did not work.
+
+## The mark
+https://hsraep.org/identity.html
+The HSREP crest read one element at a time: an open arch, a rising foundation, three deliberately unalike figures, and one coral point, which is the person the structure exists to protect and the accent on every action on the site.

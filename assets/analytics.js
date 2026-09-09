@@ -208,17 +208,17 @@
  var mainHref, kicker, desktop, mobile, action, actionMobile;
  var openD = cfg.open || "2026-08-11", closeD = cfg.close || "2026-08-25";
  if (state === "roundtable") {
- mainHref = "https://tally.so/r/VLBbYM"; kicker = "Roundtable № 01";
+ mainHref = "/roundtable.html#respond"; kicker = "HSREP Roundtables";
  if (cfg.state === "open-standing" || !cfg.close) {
- desktop = "Open now, no closing date."; mobile = "Open now.";
+ desktop = "Three questions open, no closing date."; mobile = "Open now.";
  } else {
  desktop = "Open through " + fmtDate(closeD, true) + "."; mobile = "Open through " + fmtDate(closeD) + ".";
  }
  action = "Add your response →"; actionMobile = "Respond →";
  } else if (state === "upcoming") {
- mainHref = "/roundtable.html"; kicker = "Roundtable № 01";
+ mainHref = "/roundtable.html"; kicker = "HSREP Roundtables";
  desktop = "Opens " + fmtDate(openD, true) + ".";
- mobile = "Opens " + fmtDate(openD) + "."; action = "View the question →"; actionMobile = action;
+ mobile = "Opens " + fmtDate(openD) + "."; action = "View the questions →"; actionMobile = action;
  } else {
  mainHref = "https://buttondown.com/shafaat"; kicker = "Next season";
  desktop = "Season 2 is in development.";

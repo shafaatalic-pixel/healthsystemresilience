@@ -1,23 +1,23 @@
 {
- "updated": "2026-09-09T09:43:04+00:00",
+ "updated": "2026-09-10T08:47:17+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-09"
+  "to": "2026-09-10"
  },
  "readers": {
-  "s30": 71,
-  "s60": 27,
-  "s120": 12,
-  "s240": 9,
-  "bottom": 33
+  "s30": 73,
+  "s60": 30,
+  "s120": 13,
+  "s240": 10,
+  "bottom": 34
  },
  "raw": {
-  "ga_users": 382,
-  "sessions": 411,
-  "pageviews": 791,
-  "engagement_rate": 43,
-  "avg_engaged_seconds": 32,
+  "ga_users": 385,
+  "sessions": 416,
+  "pageviews": 825,
+  "engagement_rate": 44,
+  "avg_engaged_seconds": 36,
   "excluded_datacentre": 104,
   "excluded_cities": [
    "Ashburn",
@@ -27,25 +27,25 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 262,
-  "social": 130,
+  "direct": 264,
+  "social": 131,
   "search": 12,
   "referral": 2,
   "facebook": 102,
-  "linkedin": 20
+  "linkedin": 21
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 299,
-  "user_prompted": 9,
+  "ai_fetches": 300,
+  "user_prompted": 12,
   "agents": [
    [
     "ClaudeBot",
-    157
+    146
    ],
    [
     "OAI-SearchBot",
-    45
+    46
    ],
    [
     "Amazonbot",
@@ -53,75 +53,77 @@
    ],
    [
     "GPTBot",
-    31
+    36
    ],
    [
     "Applebot",
-    15
+    16
    ],
    [
     "ChatGPT-User",
-    7
+    10
+   ],
+   [
+    "Meta-ExternalAgent",
+    3
    ],
    [
     "Claude-User",
     2
-   ],
-   [
-    "Meta-ExternalAgent",
-    1
    ]
   ],
-  "search_crawlers": 159,
-  "all_bot_requests": 7574,
-  "human_visits": 5,
+  "search_crawlers": 167,
+  "all_bot_requests": 8133,
+  "human_visits": 6,
   "google_clicks": 1,
-  "google_impressions": 568,
-  "google_position": 16.2,
+  "google_impressions": 585,
+  "google_position": 15.9,
   "pages_indexed": 20,
-  "all_requests": 7574,
-  "cached_requests": 607,
-  "unique_ips": 1284,
+  "all_requests": 8133,
+  "cached_requests": 991,
+  "unique_ips": 1330,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-06"
+  "gsc_through": "2026-09-07"
  },
  "actions": {
   "cta": {
-   "initiative": 20,
-   "article_open": 11,
+   "initiative": 22,
+   "article_open": 12,
+   "download_pdf": 6,
    "roundtable": 6,
-   "download_pdf": 5,
+   "season_open": 6,
+   "newsletter": 5,
    "respond": 4,
-   "season_open": 4,
    "book_call": 3,
-   "newsletter": 3,
    "founder_site": 2,
    "partner": 2
   },
-  "cta_total": 79,
-  "cta_people": 16,
-  "cta_labelled": 60,
-  "downloads": 7,
+  "cta_total": 87,
+  "cta_people": 18,
+  "cta_labelled": 68,
+  "downloads": 10,
   "film_plays": 16,
-  "shares": 7,
+  "shares": 8,
   "form_submits": 0,
   "outbound": {
+   "buttondown.com": 5,
    "tally.so": 4,
-   "buttondown.com": 3,
    "calendly.com": 3,
    "shafaatalichoyon.com": 3,
-   "easternecho.com": 2
+   "easternecho.com": 2,
+   "thedailystar.net": 1
   }
  },
  "pages": {
-  "home": 871,
-  "initiative": 189,
-  "season": 89,
-  "about": 85,
-  "article": 72,
+  "home": 935,
+  "initiative": 205,
+  "season": 101,
+  "about": 93,
+  "article": 79,
   "media": 66,
   "roundtable": 18,
+  "other": 7,
   "films": 5
  },
  "participation": {

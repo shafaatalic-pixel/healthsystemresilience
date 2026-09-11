@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-11T08:09:24+00:00",
+ "updated": "2026-09-11T12:11:45+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
@@ -45,15 +45,15 @@
    ],
    [
     "OAI-SearchBot",
-    78
+    81
    ],
    [
     "Amazonbot",
-    76
+    74
    ],
    [
     "GPTBot",
-    64
+    63
    ],
    [
     "Claude-User",
@@ -84,16 +84,16 @@
     9
    ]
   ],
-  "search_crawlers": 158,
-  "all_bot_requests": 7758,
+  "search_crawlers": 161,
+  "all_bot_requests": 7894,
   "human_visits": 14,
   "google_clicks": 1,
   "google_impressions": 592,
   "google_position": 15.7,
   "pages_indexed": 20,
-  "all_requests": 7758,
-  "cached_requests": 1027,
-  "unique_ips": 1336,
+  "all_requests": 7894,
+  "cached_requests": 1071,
+  "unique_ips": 1357,
   "agent_days": 7,
   "pages_with_impressions": 23,
   "gsc_through": "2026-09-08"

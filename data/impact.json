@@ -1,9 +1,9 @@
 {
- "updated": "2026-09-11T12:11:45+00:00",
+ "updated": "2026-09-12T04:22:26+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-11"
+  "to": "2026-09-12"
  },
  "readers": {
   "s30": 75,
@@ -27,17 +27,17 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 272,
+  "direct": 273,
   "social": 132,
-  "search": 14,
+  "search": 15,
   "referral": 2,
   "facebook": 102,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 532,
-  "user_prompted": 76,
+  "ai_fetches": 545,
+  "user_prompted": 75,
   "agents": [
    [
     "ClaudeBot",
@@ -45,7 +45,7 @@
    ],
    [
     "OAI-SearchBot",
-    81
+    83
    ],
    [
     "Amazonbot",
@@ -53,7 +53,7 @@
    ],
    [
     "GPTBot",
-    63
+    64
    ],
    [
     "Claude-User",
@@ -61,19 +61,19 @@
    ],
    [
     "ChatGPT-User",
-    32
+    31
    ],
    [
     "Bytespider",
     31
    ],
    [
-    "Applebot",
-    25
+    "Meta-ExternalAgent",
+    28
    ],
    [
-    "Meta-ExternalAgent",
-    19
+    "Applebot",
+    27
    ],
    [
     "PerplexityBot",
@@ -84,19 +84,19 @@
     9
    ]
   ],
-  "search_crawlers": 161,
-  "all_bot_requests": 7894,
+  "search_crawlers": 156,
+  "all_bot_requests": 7079,
   "human_visits": 14,
-  "google_clicks": 1,
-  "google_impressions": 592,
-  "google_position": 15.7,
+  "google_clicks": 3,
+  "google_impressions": 618,
+  "google_position": 15.4,
   "pages_indexed": 20,
-  "all_requests": 7894,
-  "cached_requests": 1071,
-  "unique_ips": 1357,
+  "all_requests": 7079,
+  "cached_requests": 976,
+  "unique_ips": 1329,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-08"
+  "gsc_through": "2026-09-09"
  },
  "actions": {
   "cta": {
@@ -129,11 +129,11 @@
  },
  "pages": {
   "home": 942,
-  "initiative": 209,
+  "initiative": 211,
   "season": 109,
   "about": 95,
   "article": 82,
-  "media": 70,
+  "media": 72,
   "roundtable": 18,
   "other": 7,
   "films": 5

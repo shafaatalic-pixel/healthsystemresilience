@@ -56,36 +56,93 @@ jobs:
       - name: Commit, but only if something changed
         id: commit
         run: |
+          set -euo pipefail
           git config user.name "hsrep-bot"
           git config user.email "noreply@hsraep.org"
+
+          FILES="data/impact.json data/impact_status.json data/impact_history.json impact.html index.html"
+
+          commit_figures() {
+            git commit -q \
+              -m "Impact: nightly figures $(date -u +%Y-%m-%d)" \
+              -m "Automated by .github/workflows/impact.yml. Sources: GA4 Data API, Cloudflare GraphQL, Search Console API. See data/impact_status.json for which sources answered."
+          }
+
+          stage_figures() {
+            staged=0
+            for f in $FILES; do
+              if [ -f "$f" ]; then git add "$f"; staged=$((staged+1)); fi
+            done
+            echo "staged $staged file(s)"
+          }
+
           # One at a time, and only if it exists. `git add a b c` refuses the
           # whole command when any single pathspec matches nothing, so listing
           # data/impact_history.json - which is not created until there are
           # weeks of runs to draw - staged NOTHING, every run, silently. The
           # 2>/dev/null that was here hid it.
-          staged=0
-          for f in data/impact.json data/impact_status.json data/impact_history.json \
-                   impact.html index.html; do
-            if [ -f "$f" ]; then git add "$f"; staged=$((staged+1)); fi
-          done
-          echo "staged $staged file(s)"
+          stage_figures
           if [ "$staged" -eq 0 ]; then
             echo "::error::Nothing was staged. The fetcher or renderer did not write." >&2
             exit 1
           fi
+
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No change. Nothing committed."
-          else
-            git commit -m "Impact: nightly figures $(date -u +%Y-%m-%d)
-
-          Automated by .github/workflows/impact.yml. Sources: GA4 Data API,
-          Cloudflare GraphQL, Search Console API. See data/impact_status.json
-          for which sources answered."
-            git pull --rebase
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          commit_figures
+
+          # These five files are generated, never hand-authored, so there is
+          # nothing here to reconcile: whatever this run fetched is the newer
+          # truth by definition. If main moves while the job is running - the
+          # roundtable workflow, or a push from a laptop - the push is rejected,
+          # and both `git pull --rebase` and `git pull --no-rebase` then try to
+          # merge two machine-written JSON files line by line and fail on a
+          # conflict no one is awake to resolve. `-X ours` does not save it
+          # either: under a rebase the sides are inverted, so "ours" is the
+          # remote and the fresh figures are the side that gets discarded.
+          #
+          # So: do not merge. Take the new tip, set the generated files back on
+          # top of it, and commit that. Every other change on the tip survives
+          # untouched; the figures are simply the newest ones.
+          pushed=false
+          for attempt in 1 2 3; do
+            if git push; then pushed=true; break; fi
+
+            echo "Push rejected on attempt ${attempt}. main moved; rebuilding on the new tip."
+            keep="$(mktemp -d)"
+            for f in $FILES; do
+              if [ -f "$f" ]; then
+                mkdir -p "${keep}/$(dirname "$f")"
+                cp "$f" "${keep}/${f}"
+              fi
+            done
+
+            git fetch origin main
+            git reset --hard origin/main
+
+            for f in $FILES; do
+              if [ -f "${keep}/${f}" ]; then cp "${keep}/${f}" "$f"; fi
+            done
+            rm -rf "$keep"
+
+            stage_figures
+            if git diff --cached --quiet; then
+              echo "The new tip already carries these figures. Nothing left to push."
+              pushed=true
+              break
+            fi
+            commit_figures
+          done
+
+          if [ "$pushed" != true ]; then
+            echo "::error::Push still rejected after 3 attempts." >&2
+            exit 1
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Wait for Pages to build
         if: steps.commit.outputs.changed == 'true'

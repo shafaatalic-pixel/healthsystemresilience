@@ -82,7 +82,7 @@ jobs:
           Automated by .github/workflows/impact.yml. Sources: GA4 Data API,
           Cloudflare GraphQL, Search Console API. See data/impact_status.json
           for which sources answered."
-             git pull --rebase
+                git pull --no-rebase
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi

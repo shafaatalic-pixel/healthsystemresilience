@@ -1,9 +1,9 @@
 {
- "updated": "2026-09-12T08:11:05+00:00",
+ "updated": "2026-09-14T14:01:27+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-12"
+  "to": "2026-09-14"
  },
  "readers": {
   "s30": 75,
@@ -13,9 +13,9 @@
   "bottom": 34
  },
  "raw": {
-  "ga_users": 395,
-  "sessions": 428,
-  "pageviews": 849,
+  "ga_users": 397,
+  "sessions": 430,
+  "pageviews": 851,
   "engagement_rate": 43,
   "avg_engaged_seconds": 37,
   "excluded_datacentre": 107,
@@ -27,7 +27,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 273,
+  "direct": 275,
   "social": 132,
   "search": 15,
   "referral": 2,
@@ -36,8 +36,8 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 542,
-  "user_prompted": 77,
+  "ai_fetches": 543,
+  "user_prompted": 75,
   "agents": [
    [
     "ClaudeBot",
@@ -45,7 +45,7 @@
    ],
    [
     "OAI-SearchBot",
-    79
+    89
    ],
    [
     "Amazonbot",
@@ -53,15 +53,19 @@
    ],
    [
     "GPTBot",
-    63
+    51
    ],
    [
     "Claude-User",
     44
    ],
    [
+    "Applebot",
+    31
+   ],
+   [
     "ChatGPT-User",
-    33
+    31
    ],
    [
     "Bytespider",
@@ -69,11 +73,7 @@
    ],
    [
     "Meta-ExternalAgent",
-    28
-   ],
-   [
-    "Applebot",
-    27
+    29
    ],
    [
     "PerplexityBot",
@@ -84,19 +84,19 @@
     9
    ]
   ],
-  "search_crawlers": 153,
-  "all_bot_requests": 7132,
-  "human_visits": 14,
-  "google_clicks": 3,
-  "google_impressions": 618,
-  "google_position": 15.4,
+  "search_crawlers": 128,
+  "all_bot_requests": 6646,
+  "human_visits": 16,
+  "google_clicks": 4,
+  "google_impressions": 643,
+  "google_position": 15.0,
   "pages_indexed": 20,
-  "all_requests": 7132,
-  "cached_requests": 984,
-  "unique_ips": 1348,
+  "all_requests": 6646,
+  "cached_requests": 1088,
+  "unique_ips": 1413,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-09"
+  "gsc_through": "2026-09-11"
  },
  "actions": {
   "cta": {
@@ -128,7 +128,7 @@
   }
  },
  "pages": {
-  "home": 942,
+  "home": 951,
   "initiative": 211,
   "season": 109,
   "about": 95,

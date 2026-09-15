@@ -275,7 +275,7 @@ html.hmenu-open #hmenu-panel{display:block}
 #identity .dots button:hover::before{background:rgba(255,255,255,.42)}
 #identity .dots button.on::after{content:"";position:absolute;left:0;right:0;top:7px;height:2px;
   border-radius:2px;background:var(--coral);transform-origin:0 50%;transform:scaleX(0);
-  animation:beatfill 5.6s linear forwards}
+  animation:beatfill var(--beat,5.6s) linear forwards}
 #identity .dots.paused button.on::after{animation:none;transform:scaleX(1)}
 @keyframes beatfill{to{transform:scaleX(1)}}
 #identity .dots .hint{margin-left:auto;color:#7F93AB;font-size:10.5px;letter-spacing:.14em}
@@ -451,10 +451,19 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   const stage=sec.querySelector('.creststage');
   const parts=[...stage.querySelectorAll('.cp')];
   const order=['core','figs','arch','point']; // the order protection is built in
+  /* The chapters are cut to the theme's own phrasing, not to a round number.
+     Each value is the second, in the 34.000s track, where that chapter begins,
+     and every one of them lands on an onset in the music. One pass of the
+     story is one pass of the theme: the coral point arrives in the chapter
+     that carries the loudest bar, and the completed mark gets the resolution. */
+  const CUES=[0,5.98,11.25,17.25,22.91,27.17], TRACK=34.0;
+  const span=n=>+(((n===CUES.length-1?TRACK:CUES[n+1])-CUES[n]).toFixed(2));
+  const amb=document.getElementById('ambient');
+  const playing=()=>!!(amb&&!amb.paused&&!amb.ended);
   const dotsWrap=document.getElementById('dots');
   sec.classList.remove('js-off'); sec.classList.add('js-anim');
   parts.forEach(p=>p.classList.add('is-off'));
-  const dots=beats.map((b,i)=>{const d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Chapter '+(i+1));d.addEventListener('click',()=>{stop();go(i);});dotsWrap.appendChild(d);return d;});
+  const dots=beats.map((b,i)=>{const d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Chapter '+(i+1));d.style.setProperty('--beat',span(i)+'s');d.addEventListener('click',()=>{if(playing()){amb.currentTime=CUES[i]+0.01;go(i);}else{stop();go(i);}});dotsWrap.appendChild(d);return d;});
   dotsWrap.insertAdjacentHTML('beforeend','<span class="hint" id="authint">Auto</span>');
   const groupsOf=spec=>spec==='all'?new Set(order):new Set(spec.split(/\s+/));
   const idxIn=p=>parts.filter(q=>q.dataset.g===p.dataset.g).indexOf(p);
@@ -472,14 +481,29 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   function setHot(h,built){setState(groupsOf(built||'all'),groupsOf(h||'all'));}
   let i=0,timer=null;
   function go(n){i=(n+beats.length)%beats.length;beats.forEach((b,j)=>b.classList.toggle('active',j===i));dots.forEach((d,j)=>d.classList.toggle('on',j===i));setHot(beats[i].dataset.hot,beats[i].dataset.built);const c=document.getElementById('ctr');if(c)c.textContent=String(i+1).padStart(2,'0')+' / '+String(beats.length).padStart(2,'0');}
-  function start(){stop();const h=document.getElementById('authint');if(h)h.textContent='Playing';dotsWrap.classList.remove('paused');timer=setInterval(()=>go(i+1),5600);}
-  function stop(){if(timer){clearInterval(timer);timer=null;}const h=document.getElementById('authint');if(h)h.textContent='Paused';dotsWrap.classList.add('paused');}
+  let clock=null;
+  const hint=t=>{const h=document.getElementById('authint');if(h)h.textContent=t;};
+  function tick(){timer=setTimeout(()=>{go(i+1);tick();},span(i)*1000);}
+  /* With the theme playing the music is the clock, read every frame, so the
+     story can never drift away from it however long the tab has been open. */
+  function lockToAudio(){const step=()=>{
+      if(!playing()){clock=null;start();return;}      // music stopped: hand back to the timer
+      const p=amb.currentTime%TRACK; let n=0;
+      for(let k=CUES.length-1;k>=0;k--){if(p>=CUES[k]){n=k;break;}}
+      if(n!==i)go(n);
+      clock=requestAnimationFrame(step);};
+    clock=requestAnimationFrame(step);}
+  function start(){stop();hint('Playing');dotsWrap.classList.remove('paused');if(playing())lockToAudio();else tick();}
+  function stop(){if(timer){clearTimeout(timer);timer=null;}if(clock){cancelAnimationFrame(clock);clock=null;}hint('Paused');dotsWrap.classList.add('paused');}
+  // the toggle needs to tell the story where the music now is, and vice versa
+  sec.__cueFor=()=>CUES[i]; sec.__resync=()=>start();
   // the overture: the mark builds itself in story order while chapter one is read
   function assemble(cb){let k=0;(function nx(){if(k>=order.length){cb&&cb();return;}const g=order[k];parts.filter(p=>p.dataset.g===g).forEach((p,j)=>{setTimeout(()=>{p.classList.remove('is-off');p.classList.add('is-on');},j*110);});k++;setTimeout(nx,g==='figs'?700:520);})();}
   // pause only while the reader hovers/focuses the BEATS TEXT, not the whole section,
   // so the ambient-music button (which lives in the label row) never pauses the story.
   const hz=sec.querySelector('#beats');
-  if(hz){hz.addEventListener('mouseenter',stop);hz.addEventListener('mouseleave',start);hz.addEventListener('focusin',stop);hz.addEventListener('focusout',start);
+  if(hz){const hold=()=>{if(!playing())stop();},release=()=>{if(!playing())start();};
+    hz.addEventListener('mouseenter',hold);hz.addEventListener('mouseleave',release);hz.addEventListener('focusin',hold);hz.addEventListener('focusout',release);
     // size the stage to the tallest chapter, so the rail never moves and the box is never taller than it must be
     const fit=()=>{let m=0;beats.forEach(b=>{const bk=b.querySelector('.bk'),bt=b.querySelector('.bt');m=Math.max(m,(bk?bk.offsetHeight:0)+16+(bt?bt.offsetHeight:0));});if(m)hz.style.minHeight=(m+6)+'px';};fit();addEventListener('resize',fit);}
   dots[0].classList.add('on');dotsWrap.classList.add('paused');
@@ -493,7 +517,10 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   function set(txt,state){btn.innerHTML='<span class="ico"></span>'+txt;btn.classList.toggle('on',state);btn.setAttribute('aria-pressed',state);}
   btn.addEventListener('click',()=>{
     clearInterval(fade);
-    if(!on){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){});}catch(e){}}a.volume=0;a.play().then(()=>{on=true;set('Ambient on',true);fade=setInterval(()=>{a.volume=Math.min(0.6,a.volume+0.04);if(a.volume>=0.6)clearInterval(fade);},60);}).catch(()=>{});}
+    if(!on){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){});}catch(e){}}a.volume=0;a.play().then(()=>{on=true;set('Ambient on',true);
+      var _sec=document.getElementById('identity');
+      if(_sec&&_sec.__cueFor){try{a.currentTime=_sec.__cueFor()+0.01;}catch(e){}_sec.__resync&&_sec.__resync();}
+      fade=setInterval(()=>{a.volume=Math.min(0.6,a.volume+0.04);if(a.volume>=0.6)clearInterval(fade);},60);}).catch(()=>{});}
     else{fade=setInterval(()=>{a.volume=Math.max(0,a.volume-0.06);if(a.volume<=0){a.pause();clearInterval(fade);}},50);on=false;set('Ambient off',false);}
   });
 })();

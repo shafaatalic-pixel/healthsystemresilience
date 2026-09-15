@@ -189,39 +189,74 @@ html.hmenu-open #hmenu-panel{display:block}
                   to{opacity:1;transform:translate(-52%,-48%) scale(1.06)}}
 #identity .wrap{position:relative;z-index:1}
 
-/* ---- the crest, unboxed and lit --------------------------------------- */
+/* ---- the crest: a plate, not a haze ----------------------------------- */
 #identity .crestwrap{background:transparent;border:0;box-shadow:none;padding:0;
-  display:flex;flex-direction:column;justify-content:center}
-/* The mark keeps its own navy, so on a navy stage it needs something to sit
-   on. A light disc rather than an inverted crest: this page exists to show the
-   real mark, not a version of it. */
-#identity .crestwrap::before{inset:auto;left:50%;top:calc(50% - 26px);
-  transform:translate(-50%,-50%);width:min(720px,124%);aspect-ratio:1;
-  border-radius:50%;z-index:0;
-  background:radial-gradient(closest-side,#FFFFFF 0%,#FFFFFF 34%,#EFF4FA 52%,
-    rgba(228,237,247,.42) 68%,rgba(228,237,247,.12) 78%,rgba(228,237,247,0) 88%)}
-#identity .creststage{position:relative;z-index:1}
-#identity .creststage{max-width:min(392px,70%);
-  filter:drop-shadow(0 26px 60px rgba(0,0,0,.45))}
-#identity .crestcap{color:#8FA1B8;margin-top:22px}
-#identity .crestcap b{color:#fff}
+  overflow:visible;display:flex;flex-direction:column;justify-content:center;align-items:center}
+/* The mark keeps its own navy, so on a navy stage it needs a light ground.
+   A bounded plate sized to the mark, rather than a glow that bleeds into the
+   stage and gets clipped by the column: the crest sits on it the way a seal
+   sits on paper. The real mark, not an inverted one. */
+#identity .crestwrap::before{content:"";position:absolute;inset:auto;left:50%;top:calc(50% - 26px);
+  transform:translate(-50%,-50%);width:min(456px,84%);aspect-ratio:1;border-radius:50%;z-index:0;
+  background:radial-gradient(closest-side,#FFFFFF 0%,#F8FAFC 56%,#E7EDF4 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),
+             0 0 0 16px rgba(255,255,255,.035),
+             0 34px 80px -22px rgba(0,0,0,.65),
+             inset 0 -22px 44px rgba(28,46,74,.09)}
+#identity .creststage{position:relative;z-index:1;max-width:min(392px,70%);
+  filter:drop-shadow(0 10px 22px rgba(8,18,32,.38))}
+#identity .crestcap{color:#7F93AB;margin-top:38px;letter-spacing:.16em;font-size:10.5px}
+#identity .crestcap b{color:#EAF0F7;font-weight:600}
 
 /* the highlighted element lifts out of the stage rather than just brightening */
 #identity .creststage .cp{transition:opacity .55s var(--ease),filter .45s var(--ease),
   transform .55s var(--ease)}
 .js-anim #identity .creststage .cp.hi,#identity .creststage .cp.hi{
-  filter:drop-shadow(0 0 18px rgba(255,255,255,.28))}
+  filter:drop-shadow(0 0 14px rgba(255,255,255,.22))}
 
-/* ---- the chapters ------------------------------------------------------ */
-#identity .beatbox .lbl{margin-bottom:20px}
-#identity .beat .bt{color:#D3DFEC;font-size:1.02rem;line-height:1.68}
-#identity .beat .bt b{color:#fff}
-#identity .beat.big .bt,#identity .beats .beat .bt{max-width:54ch}
-#identity .musicbtn{color:#8FA1B8;border-color:rgba(255,255,255,.22)}
-#identity .musicbtn:hover{border-color:var(--coral);color:var(--coral)}
-#identity .dots button{background:rgba(255,255,255,.22)}
-#identity .dots button:hover{background:rgba(255,255,255,.45)}
-#identity .dots button[aria-current="true"],#identity .dots button.on{background:var(--coral)}
+/* ---- the chapters: a number, a title, then the reading ------------------ */
+#identity .beatbox .lbl{margin-bottom:clamp(24px,3.2vw,38px);gap:14px;letter-spacing:.16em}
+#identity .beatbox .lbl .ctr{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;
+  color:#7F93AB;font-variant-numeric:tabular-nums;padding-left:14px;
+  border-left:1px solid rgba(255,255,255,.14)}
+#identity .beatbox .lbl .aut{display:none}
+#identity .beats{min-height:240px;counter-reset:beat}
+#identity .beats .beat{display:block;counter-increment:beat}
+#identity .beat .bk{font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.65rem, 1.15rem + 1.4vw, 2.3rem);line-height:1.12;letter-spacing:-.012em;
+  color:#fff;text-transform:none;margin:0 0 16px;max-width:20ch}
+#identity .beat .bk::before{content:counter(beat,decimal-leading-zero);display:block;
+  font-family:var(--font-mono);font-weight:500;font-size:11px;letter-spacing:.2em;
+  color:var(--coral);margin-bottom:14px}
+#identity .beat .bt,#identity .beats .beat .bt{font-family:var(--font-display);color:#C4D1E0;
+  font-size:1.08rem;line-height:1.72;max-width:46ch}
+#identity .beat .bt b{color:#fff;font-weight:600}
+
+/* ---- the ambient toggle: quiet at rest, warm when on -------------------- */
+#identity .musicbtn{color:#8FA1B8;border-color:transparent;background:rgba(255,255,255,.05);
+  padding:6px 12px 6px 10px;gap:8px;letter-spacing:.12em}
+#identity .musicbtn .ico{width:7px;height:7px;box-shadow:0 0 0 3px rgba(255,255,255,.08)}
+#identity .musicbtn:hover{border-color:rgba(255,255,255,.2);color:#DCE5EF;background:rgba(255,255,255,.07)}
+#identity .musicbtn.on{color:var(--coral);border-color:transparent}
+#identity .musicbtn.on .ico{box-shadow:0 0 0 3px rgba(242,109,90,.22)}
+#identity .musicbtn:focus-visible{outline:1.5px solid var(--coral);outline-offset:3px}
+
+/* ---- the rail: progress you can read ------------------------------------ */
+/* Six thin bars instead of dots. The current bar fills over the chapter's
+   5.6 seconds, so the auto-play is visible without a word saying "auto". */
+#identity .dots{margin-top:clamp(26px,3.4vw,40px);padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.10);gap:8px}
+#identity .dots button,#identity .dots button.on{width:32px;height:16px;border-radius:0;
+  background:transparent;position:relative;padding:0}
+#identity .dots button::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;
+  border-radius:2px;background:rgba(255,255,255,.18);transition:background .25s var(--ease)}
+#identity .dots button:hover::before{background:rgba(255,255,255,.42)}
+#identity .dots button.on::after{content:"";position:absolute;left:0;right:0;top:7px;height:2px;
+  border-radius:2px;background:var(--coral);transform-origin:0 50%;transform:scaleX(0);
+  animation:beatfill 5.6s linear forwards}
+#identity .dots.paused button.on::after{animation:none;transform:scaleX(1)}
+@keyframes beatfill{to{transform:scaleX(1)}}
+#identity .dots .hint{margin-left:auto;color:#7F93AB;font-size:10.5px;letter-spacing:.14em}
 
 /* ---- the close: what the mark commits us to ---------------------------- */
 .idsys{background:var(--paper)}
@@ -266,6 +301,7 @@ html.hmenu-open #hmenu-panel{display:block}
 }
 @media(prefers-reduced-motion:reduce){
   #identity::after{animation:none}
+  #identity .dots button.on::after{animation:none;transform:scaleX(1)}
   .pcard,.pcard::after{transition:none}
 }
 </style></head><body><a href="#main" class="skip-link">Skip to content</a>
@@ -290,7 +326,7 @@ html.hmenu-open #hmenu-panel{display:block}
  </g>
  </g></svg><div class="crestcap"><b>The Humanist Crest</b> · HSREP</div></div>
 <div class="beatbox rv" style="transition-delay:.08s">
-<div class="lbl">Our identity, beat by beat <span class="aut">· auto-plays · tap a dot</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Ambient off</button></div>
+<div class="lbl"><span>Our identity</span><span class="ctr" id="ctr" aria-label="Chapter">01 / 06</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Ambient off</button></div>
 <audio id="ambient" loop preload="none"><source src="assets/hsrep-theme.mp3" type="audio/mpeg"></audio>
 <audio id="ambientsting" preload="none"><source src="assets/hsrep-sting.mp3" type="audio/mpeg"></audio>
 <div class="beats" id="beats">
@@ -401,15 +437,17 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   function activeSet(h){if(h==='all')return new Set(order);if(h==='figs')return new Set(['figs','core']);if(h==='core')return new Set(['core','point']);return new Set([h]);}
   function setHot(h){const on=activeSet(h);parts.forEach(p=>{const a=on.has(p.dataset.g);p.style.opacity=a?'1':'0.24';p.classList.toggle('hi',a);});}
   let i=0,timer=null;
-  function go(n){i=(n+beats.length)%beats.length;beats.forEach((b,j)=>b.classList.toggle('active',j===i));dots.forEach((d,j)=>d.classList.toggle('on',j===i));setHot(beats[i].dataset.hot);}
-  function start(){stop();const h=document.getElementById('authint');if(h)h.textContent='Auto';timer=setInterval(()=>go(i+1),5600);}
-  function stop(){if(timer){clearInterval(timer);timer=null;}const h=document.getElementById('authint');if(h)h.textContent='Paused';}
+  function go(n){i=(n+beats.length)%beats.length;beats.forEach((b,j)=>b.classList.toggle('active',j===i));dots.forEach((d,j)=>d.classList.toggle('on',j===i));setHot(beats[i].dataset.hot);const c=document.getElementById('ctr');if(c)c.textContent=String(i+1).padStart(2,'0')+' / '+String(beats.length).padStart(2,'0');}
+  function start(){stop();const h=document.getElementById('authint');if(h)h.textContent='Playing';dotsWrap.classList.remove('paused');timer=setInterval(()=>go(i+1),5600);}
+  function stop(){if(timer){clearInterval(timer);timer=null;}const h=document.getElementById('authint');if(h)h.textContent='Paused';dotsWrap.classList.add('paused');}
   function assemble(cb){let k=0;(function nx(){if(k>=order.length){cb&&cb();return;}const g=order[k];parts.forEach(p=>{if(p.dataset.g===g)p.style.opacity='1';});k++;setTimeout(nx,430);})();}
   // pause only while the reader hovers/focuses the BEATS TEXT, not the whole section,
   // so the ambient-music button (which lives in the label row) never pauses the story.
   const hz=sec.querySelector('#beats');
-  if(hz){hz.addEventListener('mouseenter',stop);hz.addEventListener('mouseleave',start);hz.addEventListener('focusin',stop);hz.addEventListener('focusout',start);}
-  dots[0].classList.add('on');
+  if(hz){hz.addEventListener('mouseenter',stop);hz.addEventListener('mouseleave',start);hz.addEventListener('focusin',stop);hz.addEventListener('focusout',start);
+    // size the stage to the tallest chapter, so the rail never moves and the box is never taller than it must be
+    const fit=()=>{let m=0;beats.forEach(b=>{const bk=b.querySelector('.bk'),bt=b.querySelector('.bt');m=Math.max(m,(bk?bk.offsetHeight:0)+16+(bt?bt.offsetHeight:0));});if(m)hz.style.minHeight=(m+6)+'px';};fit();addEventListener('resize',fit);}
+  dots[0].classList.add('on');dotsWrap.classList.add('paused');
   const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){obs.disconnect();beats.forEach((b,j)=>b.classList.toggle('active',j===0));(function(){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){window.__hsStung=false;});}catch(e){window.__hsStung=false;}}})();assemble(()=>{setHot('all');start();});}}),{threshold:.32});
   obs.observe(sec);
 })();

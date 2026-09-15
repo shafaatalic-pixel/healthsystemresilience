@@ -196,17 +196,27 @@ html.hmenu-open #hmenu-panel{display:block}
    A bounded plate sized to the mark, rather than a glow that bleeds into the
    stage and gets clipped by the column: the crest sits on it the way a seal
    sits on paper. The real mark, not an inverted one. */
-#identity .crestwrap::before{content:"";position:absolute;inset:auto;left:50%;top:calc(50% - 26px);
-  transform:translate(-50%,-50%);width:min(456px,84%);aspect-ratio:1;border-radius:50%;z-index:0;
+#identity .crestwrap::before{content:none}
+#identity .plate{position:relative;width:min(392px,70%);margin:0 auto}
+#identity .plate::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:118%;aspect-ratio:1;border-radius:50%;z-index:0;
   background:radial-gradient(closest-side,#FFFFFF 0%,#F8FAFC 56%,#E7EDF4 100%);
   box-shadow:0 0 0 1px rgba(255,255,255,.12),
              0 0 0 16px rgba(255,255,255,.035),
              0 34px 80px -22px rgba(0,0,0,.65),
              inset 0 -22px 44px rgba(28,46,74,.09)}
-#identity .creststage{position:relative;z-index:1;max-width:min(392px,70%);
+#identity .creststage{position:relative;z-index:1;width:100%;max-width:100%;
   filter:drop-shadow(0 10px 22px rgba(8,18,32,.38))}
-#identity .crestcap{color:#7F93AB;margin-top:38px;letter-spacing:.16em;font-size:10.5px}
-#identity .crestcap b{color:#EAF0F7;font-weight:600}
+/* the caption: a museum label under the plate, not a line of mono */
+#identity .crestcap{margin-top:50px;color:#8FA1B8;letter-spacing:0;text-transform:none;font-size:inherit}
+#identity .crestcap b{display:block;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.15rem, 1rem + .5vw, 1.4rem);line-height:1.2;letter-spacing:.005em;
+  color:#F3F6FA;text-transform:none}
+#identity .crestcap .sub{display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-top:10px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:#8FA1B8}
+#identity .crestcap .sub::before,#identity .crestcap .sub::after{content:"";width:34px;height:1px;
+  background:rgba(255,255,255,.18)}
 
 /* the highlighted element lifts out of the stage rather than just brightening */
 #identity .creststage .cp{transition:opacity .55s var(--ease),filter .45s var(--ease),
@@ -297,7 +307,7 @@ html.hmenu-open #hmenu-panel{display:block}
 @media(max-width:860px){
   .pgrid{grid-template-columns:1fr}
   .specs{grid-template-columns:1fr}
-  #identity .creststage{max-width:min(340px,72%)}
+  #identity .plate{width:min(340px,72%)}
 }
 @media(prefers-reduced-motion:reduce){
   #identity::after{animation:none}
@@ -316,7 +326,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="shead rv"><div class="eyebrow">Identity</div>
 <div class="top"><h1 class="sec">The mark, and what it carries.</h1><div class="lead">Most platforms open with a logo. Ours opens with a promise, read the crest, one element at a time.</div></div></div>
 <div class="idstage">
-<div class="crestwrap rv"><svg class="creststage" xmlns="http://www.w3.org/2000/svg" viewBox="70 55 800 830" role="img" aria-label="The HSREP Humanist Crest"><g transform="translate(18 0) scale(.91)">
+<div class="crestwrap rv"><div class="plate"><svg class="creststage" xmlns="http://www.w3.org/2000/svg" viewBox="70 55 800 830" role="img" aria-label="The HSREP Humanist Crest"><g transform="translate(18 0) scale(.91)">
  <g transform="translate(100 72)">
  <g transform="scale(2.614)">
  <g transform="translate(-65 -73)">
@@ -324,7 +334,7 @@ html.hmenu-open #hmenu-panel{display:block}
  </g>
  </g>
  </g>
- </g></svg><div class="crestcap"><b>The Humanist Crest</b> · HSREP</div></div>
+ </g></svg></div><div class="crestcap"><b>The Humanist Crest</b><span class="sub">HSREP</span></div></div>
 <div class="beatbox rv" style="transition-delay:.08s">
 <div class="lbl"><span>Our identity</span><span class="ctr" id="ctr" aria-label="Chapter">01 / 06</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Ambient off</button></div>
 <audio id="ambient" loop preload="none"><source src="assets/hsrep-theme.mp3" type="audio/mpeg"></audio>

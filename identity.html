@@ -455,8 +455,10 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
      Each value is the second, in the 34.000s track, where that chapter begins,
      and every one of them lands on an onset in the music. One pass of the
      story is one pass of the theme: the coral point arrives in the chapter
-     that carries the loudest bar, and the completed mark gets the resolution. */
-  const CUES=[0,5.98,11.25,17.25,22.91,27.17], TRACK=34.0;
+     that carries the loudest bar, and the completed mark gets the resolution.
+     The brief the theme was composed to asked for the resolving chord at
+     28.0s; the onset search found it at 28.61, and the two agree. */
+  const CUES=[0,5.98,11.25,17.25,22.91,28.61], TRACK=34.0;
   const span=n=>+(((n===CUES.length-1?TRACK:CUES[n+1])-CUES[n]).toFixed(2));
   const amb=document.getElementById('ambient');
   const playing=()=>!!(amb&&!amb.paused&&!amb.ended);

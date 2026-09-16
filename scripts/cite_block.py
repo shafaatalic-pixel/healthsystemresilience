@@ -13,7 +13,8 @@ import glob, html as H, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from citation_meta import article_meta, ROOT  # noqa: E402
-from record_sheet import apa_date, initials, AUTHOR  # noqa: E402
+from record_sheet import apa_date  # noqa: E402
+import people  # noqa: E402
 
 DOIS = os.path.join(ROOT, "data", "dois.json")
 CHECK = "--check" in sys.argv
@@ -41,8 +42,9 @@ def block(m, doi):
     rid = doi.rsplit(".", 1)[-1]
     venue = m["outlet"] or "HSREP, Health System Resilience &amp; Economic Protection"
     url = "https://doi.org/" + doi
+    names = people.reference_names(m["authors"] or ["Md Shafaat Ali Choyon"])
     cite = ('%s (%s). %s. <i>%s</i>. <a href="%s">%s</a>' %
-            (H.escape(initials(AUTHOR)), apa_date(m["date"]), H.escape(m["title"]), venue, url, url))
+            (H.escape(names), apa_date(m["date"]), H.escape(m["title"]), venue, url, url))
     return ("<!--CITEBLOCK:START--><style id=\"hs-cite\">%s</style>"
             "<div class=\"citebox\"><div class=\"ck\">Cite this piece</div>"
             "<p class=\"cref\">%s</p><div class=\"citerow\">"

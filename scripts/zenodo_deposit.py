@@ -29,7 +29,9 @@ import json, os, re, subprocess, sys, urllib.request, urllib.error
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from citation_meta import article_meta, ROOT  # noqa: E402
-import record_sheet  # noqa: E402
+import record_sheet, people  # noqa: E402
+
+COMMUNITY = "hsrep"  # zenodo.org/communities/hsrep
 
 DRY = "--dry-run" in sys.argv
 SANDBOX = "--sandbox" in sys.argv
@@ -41,7 +43,7 @@ DOIS = os.path.join(ROOT, "data", "dois.json")
 SUBJECTS = ["health system resilience", "economic protection", "public health", "health policy"]
 COUNTRY = {"The Daily Star": "Bangladesh", "The Eastern Echo": "United States", "": "Bangladesh"}
 
-def api(method, path, data=None, raw=None, ctype="application/json"):
+def api(method, path, data=None, raw=None, ctype="application/json", soft=False):
     req = urllib.request.Request(BASE + path, method=method)
     req.add_header("Authorization", "Bearer " + TOKEN)
     req.add_header("Accept", "application/vnd.inveniordm.v1+json")
@@ -55,14 +57,36 @@ def api(method, path, data=None, raw=None, ctype="application/json"):
             t = r.read().decode()
             return json.loads(t) if t else {}
     except urllib.error.HTTPError as e:
+        if soft:
+            return {"_error": e.code, "_body": e.read().decode()[:300]}
         sys.exit("%s %s -> HTTP %s\n%s" % (method, path, e.code, e.read().decode()[:1500]))
+
+def community_submit(rid):
+    """Put the published record in the HSREP community.
+
+    Submitting creates an inclusion request; accepting it needs the account that
+    owns the community. If the token cannot accept, the request is left open and
+    waits at zenodo.org/me/requests, so nothing is lost either way.
+    """
+    r = api("POST", "/records/%s/communities" % rid, {"communities": [{"id": COMMUNITY}]}, soft=True)
+    if r.get("_error"):
+        print("       community: not submitted (%s) — add it at zenodo.org/communities/%s" % (r["_error"], COMMUNITY))
+        return
+    ids = [(p.get("request") or {}).get("id") for p in (r.get("processed") or []) if isinstance(p, dict)]
+    for q in [x for x in ids if x]:
+        a = api("POST", "/requests/%s/actions/accept" % q, {}, soft=True)
+        if a.get("_error"):
+            print("       community: request open, accept it at zenodo.org/me/requests")
+        else:
+            print("       community: accepted into %s" % COMMUNITY)
 
 def record_for(m):
     with_file = not m["outlet"]  # HSREP's own piece: deposit the PDF
-    creator = {"person_or_org": {"type": "personal", "given_name": "Md Shafaat Ali", "family_name": "Choyon"},
-               "affiliations": [{"name": "HSREP, Health System Resilience & Economic Protection"}]}
-    if ORCID:
-        creator["person_or_org"]["identifiers"] = [{"scheme": "orcid", "identifier": ORCID}]
+    names = m["authors"] or ["Md Shafaat Ali Choyon"]
+    creators = people.creators(names, fallback_orcid=ORCID)
+    missing = [n for n in names if not people.person(n)["orcid"]] if not ORCID else []
+    if missing:
+        print("      warning: no ORCID on file for %s — add them to data/authors.json" % ", ".join(missing))
     desc = "<p>%s</p>" % m["desc"]
     if m["outlet"]:
         desc += ("<p>First published by %s on %s. The HSREP page holds the argument as an advocacy package: "
@@ -85,7 +109,7 @@ def record_for(m):
         # own long-form is Report.
         "resource_type": {"id": "publication-report" if with_file else "publication-other"},
         "title": m["title"],
-        "creators": [creator],
+        "creators": creators,
         "publication_date": m["date"],
         "publisher": m["outlet"] or "HSREP",
         "description": desc,
@@ -135,6 +159,7 @@ for path in sorted(glob.glob(os.path.join(ROOT, "articles", "*", "*.html"))):
     dois[m["slug"]] = doi
     os.makedirs(os.path.dirname(DOIS), exist_ok=True)
     json.dump(dois, open(DOIS, "w"), indent=2); print("      ", doi, "->", pub.get("links", {}).get("self_html", ""))
+    community_submit(rid)
 
 if not DRY:
     subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "citation_meta.py")], check=True)

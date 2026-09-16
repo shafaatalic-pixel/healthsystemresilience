@@ -18,13 +18,12 @@ import glob, html as H, os, re, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from citation_meta import article_meta, ROOT  # noqa: E402
+import people  # noqa: E402
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 OUT = os.path.join(ROOT, "build", "record-sheets")
 MONTHS = ("January February March April May June July August September "
           "October November December").split()
-AUTHOR = "Md Shafaat Ali Choyon"
-CREDS = "MBA, MCIM, MPH, CHES&reg;"
 
 
 def pretty(d):
@@ -43,11 +42,7 @@ def apa_date(d):
         return d
 
 
-def initials(name):
-    parts = name.split()
-    if len(parts) < 2:
-        return name
-    return "%s, %s" % (parts[-1], " ".join(p[0] + "." for p in parts[:-1]))
+initials = people.initials  # kept for importers
 
 
 def inbrief(s):
@@ -72,10 +67,25 @@ def deck(s):
     return H.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", m.group(1))).strip()) if m else ""
 
 
+def by_html(names):
+    """Name in bold, credentials plain, role in grey — one line per byline."""
+    out = []
+    for n in names:
+        p = people.person(n)
+        s = "<b>%s</b>" % H.escape(p["name"])
+        if p["credentials"]:
+            s += ", " + H.escape(p["credentials"])
+        if p["role"]:
+            s += ' <span>&middot; %s</span>' % H.escape(p["role"])
+        out.append(s)
+    return " &nbsp; ".join(out)
+
+
 def sheet_html(m, items, read, doi, kick=""):
     a = ROOT + "/assets"
-    cite = "%s (%s). %s. %s." % (initials(AUTHOR), apa_date(m["date"]), m["title"],
-                                 m["outlet"] or "HSREP, Health System Resilience & Economic Protection")
+    names = m["authors"] or ["Md Shafaat Ali Choyon"]
+    cite = "%s (%s). %s. %s." % (people.reference_names(names), apa_date(m["date"]), m["title"],
+                                 m["outlet"] or people.HSREP)
     if doi:
         cite += " https://doi.org/%s" % doi
     first = ("%s, %s" % (m["outlet"], pretty(m["date"]))) if m["outlet"] else \
@@ -137,7 +147,7 @@ tr+tr th,tr+tr td{border-top:.5pt solid #EDF1F5}
 <div class="top"><img src="%(a)s/crest.png" alt=""><div class="wm">HSREP<small>Health System Resilience &amp; Economic Protection</small></div><div class="kind">Record sheet</div></div>
 %(kick)s<h1>%(title)s</h1>
 %(deck)s
-<div class="by"><b>%(author)s</b>, %(creds)s <span>&middot; Founder and Editor, HSREP</span></div>
+<div class="by">%(by)s</div>
 <h2>In brief</h2>
 <ul>%(bullets)s</ul>
 <h2>The record</h2>
@@ -150,7 +160,7 @@ tr+tr th,tr+tr td{border-top:.5pt solid #EDF1F5}
         kick=('<div class="kick">%s</div>' % H.escape(kick)) if kick else "",
         title=H.escape(m["title"]),
         deck=('<p class="deck">%s</p>' % H.escape(m["desc"])) if m["desc"] else "",
-        author=AUTHOR, creds=CREDS, bullets=bullets, meta=meta, cite=H.escape(cite),
+        by=by_html(names), bullets=bullets, meta=meta, cite=H.escape(cite),
         note=("This record sheet is HSREP's own summary of the piece, published under CC BY 4.0. "
               "It does not reproduce the article. The version of record is the publisher's, at the link above."
               if m["outlet"] else

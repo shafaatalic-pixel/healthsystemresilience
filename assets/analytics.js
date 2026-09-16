@@ -256,7 +256,7 @@
  var fallback = { state: "open-standing", open: "2026-08-11", close: null };
  renderCampaign(fallback);
  if (!window.fetch) return;
- fetch("/roundtables/rt-01.json", { cache: "no-store" })
+ fetch("/roundtables/rt-01.json", { cache: "no-store", priority: "low" })
  .then(function (r) { return r.ok ? r.json() : fallback; })
  .then(function (cfg) { renderCampaign(cfg || fallback); }) /* no-op unless the live dates change the state */
  .catch(function () {});

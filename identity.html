@@ -253,6 +253,22 @@ html.hmenu-open #hmenu-panel{display:block}
 #identity .beat .bt,#identity .beats .beat .bt{font-family:var(--font-display);color:#C4D1E0;
   font-size:1.08rem;line-height:1.72;max-width:46ch}
 #identity .beat .bt b{color:#fff;font-weight:600}
+/* the sung line for this chapter, set as an epigraph */
+#identity .beat .ly{font-family:var(--font-display);font-style:italic;font-size:1.04rem;line-height:1.5;
+  color:#9FB0C4;margin:0 0 18px;padding-left:14px;border-left:2px solid rgba(242,109,90,.55);max-width:40ch}
+#identity .beat .ly::before{content:"\201C"}
+#identity .beat .ly::after{content:"\201D"}
+/* beats size to their own text; a script sets .beats min-height to the tallest one */
+.js-anim #identity .beats .beat{bottom:auto}
+@media(max-width:860px){
+  #identity .beatbox .lbl .musicbtn{display:none}
+  #identity .beatbox .lbl .ctr{margin-left:auto}
+  #identity .beatbox .lbl{margin-bottom:22px}
+  #identity .beat .bk{margin-bottom:12px}
+  #identity .beat .ly{font-size:1rem;margin-bottom:14px}
+  #identity .beat .bt{font-size:1.02rem;line-height:1.66}
+  #identity .dots{margin-top:26px;padding-top:18px}
+}
 
 /* ---- the sound cue under the crest: the invitation nobody had ------------ */
 #identity .soundcue{display:inline-grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:14px;row-gap:3px;
@@ -364,17 +380,17 @@ html.hmenu-open #hmenu-panel{display:block}
  </g>
  </g>
  </g>
- </g></svg></div><div class="crestcap"><b>The Humanist Crest</b><span class="sub">HSREP</span></div><button class="soundcue" id="soundcue" type="button" aria-pressed="false" aria-controls="ambient"><span class="disc" aria-hidden="true"><span class="tri"></span></span><span class="t">Play the theme</span><span class="s">34 seconds, scored to the story</span></button></div>
+ </g></svg></div><div class="crestcap"><b>The Humanist Crest</b><span class="sub">HSREP</span></div><button class="soundcue" id="soundcue" type="button" aria-pressed="false" aria-controls="ambient"><span class="disc" aria-hidden="true"><span class="tri"></span></span><span class="t">Play the theme</span><span class="s">34 seconds, in six chapters</span></button></div>
 <div class="beatbox rv" style="transition-delay:.08s">
 <div class="lbl"><span>Our identity</span><span class="ctr" id="ctr" aria-label="Chapter">01 / 06</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Play the theme</button></div>
 <audio id="ambient" loop preload="none"><source src="assets/hsrep-theme-bd79fd50.mp3" type="audio/mpeg"></audio>
 <div class="beats" id="beats">
-<div class="beat active" data-built="all" data-hot="all"><div class="bk">The promise</div><p class="bt">Every mark makes a promise. Ours is a <b>Humanist Crest</b>: health protection drawn as infrastructure, with people, not systems, at its centre. Read it the way it was built, one element at a time.</p></div>
-<div class="beat" data-built="core" data-hot="core"><div class="bk">The foundation</div><p class="bt">Nothing stands without something underneath it. The base rises and becomes the central figure, so protection and the person are one piece, built to bear load. That is the argument in one shape. A health system is not a cost sitting above people's lives. It is what holds them up.</p></div>
-<div class="beat" data-built="core figs" data-hot="figs"><div class="bk">Three figures, not the same</div><p class="bt">Look closely: they differ in height and in tone, and that is deliberate. People do not stand in the same place, different circumstances, different needs, different odds. A system worthy of the name has to <b>hold all of them</b>, not only the ones who fit.</p></div>
-<div class="beat" data-built="core figs arch" data-hot="arch"><div class="bk">The open arch</div><p class="bt">Then the structure rises around them, and it is open. An arch that shelters without sealing, with two deliberate gaps at its sides, so people can enter, leave, and come back. Protection that closes becomes a wall. This one does not.</p></div>
-<div class="beat" data-built="all" data-hot="point"><div class="bk">The point of life</div><p class="bt">And last, above everything, a single coral point. The human spark the whole structure exists to protect. It is the one warm note against the institutional navy, and the same colour marks every action you can take here.</p></div>
-<div class="beat" data-built="all" data-hot="all"><div class="bk">The mark, in full</div><p class="bt">A foundation that bears load. People of different circumstances, held at the centre. A structure that shelters and admits. One point of life above them all. That is the promise. Every page here is an attempt to keep it.</p></div>
+<div class="beat active" data-built="all" data-hot="all"><div class="bk">The promise</div><p class="ly">We said we would not look away.</p><p class="bt">Every mark makes a promise. Ours is a <b>Humanist Crest</b>: health protection drawn as infrastructure, with people, not systems, at its centre. Read it the way it was built, one element at a time.</p></div>
+<div class="beat" data-built="core" data-hot="core"><div class="bk">The foundation</div><p class="ly">The ground we built has learned to hold.</p><p class="bt">Nothing stands without something underneath it. The base rises and becomes the central figure, so protection and the person are one piece, built to bear load. That is the argument in one shape. A health system is not a cost sitting above people's lives. It is what holds them up.</p></div>
+<div class="beat" data-built="core figs" data-hot="figs"><div class="bk">Three figures, not the same</div><p class="ly">Three of us, and none the same.</p><p class="bt">Look closely: they differ in height and in tone, and that is deliberate. People do not stand in the same place, different circumstances, different needs, different odds. A system worthy of the name has to <b>hold all of them</b>, not only the ones who fit.</p></div>
+<div class="beat" data-built="core figs arch" data-hot="arch"><div class="bk">The open arch</div><p class="ly">An arch that never shuts.</p><p class="bt">Then the structure rises around them, and it is open. An arch that shelters without sealing, with two deliberate gaps at its sides, so people can enter, leave, and come back. Protection that closes becomes a wall. This one does not.</p></div>
+<div class="beat" data-built="all" data-hot="point"><div class="bk">The point of life</div><p class="ly">Alive.</p><p class="bt">And last, above everything, a single coral point. The human spark the whole structure exists to protect. It is the one warm note against the institutional navy, and the same colour marks every action you can take here.</p></div>
+<div class="beat" data-built="all" data-hot="all"><div class="bk">The mark, in full</div><p class="ly">And this is how we keep each other.</p><p class="bt">A foundation that bears load. People of different circumstances, held at the centre. A structure that shelters and admits. One point of life above them all. That is the promise. Every page here is an attempt to keep it.</p></div>
 </div>
 <div class="dots" id="dots" aria-label="Story chapters"></div>
 </div>
@@ -529,12 +545,16 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){obs.disconnect();beats.forEach((b,j)=>b.classList.toggle('active',j===0));assemble(()=>{setHot('all','all');start();});}}),{threshold:.32});
   obs.observe(sec);
 })();
+// the chapter box is as tall as its tallest chapter, no taller
+(function(){const bx=document.querySelector('#identity .beats');if(!bx)return;const bs=[].slice.call(bx.querySelectorAll('.beat'));
+  function fit(){let h=0;bs.forEach(function(b){h=Math.max(h,b.offsetHeight);});if(h)bx.style.minHeight=h+'px';}
+  fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);setTimeout(fit,1200);})();
 // ambient music toggle (muted by default; gentle fade)
 (function(){
   const a=document.getElementById('ambient'),btn=document.getElementById('ambtoggle');
   if(!a||!btn) return; let on=false,fade=null;
   var cue=document.getElementById('soundcue');if(cue)cue.addEventListener('click',function(){btn.click();});
-  function set(txt,state){btn.innerHTML='<span class="ico"></span>'+txt;btn.classList.toggle('on',state);btn.setAttribute('aria-pressed',state);var c=document.getElementById('soundcue');if(c){c.classList.toggle('on',state);c.classList.add('used');c.setAttribute('aria-pressed',state);c.querySelector('.t').textContent=txt;c.querySelector('.s').textContent=state?'Chapters now follow the music':'34 seconds, scored to the story';}}
+  function set(txt,state){btn.innerHTML='<span class="ico"></span>'+txt;btn.classList.toggle('on',state);btn.setAttribute('aria-pressed',state);var c=document.getElementById('soundcue');if(c){c.classList.toggle('on',state);c.classList.add('used');c.setAttribute('aria-pressed',state);c.querySelector('.t').textContent=txt;c.querySelector('.s').textContent=state?'The chapters now follow the music':'34 seconds, in six chapters';}}
   btn.addEventListener('click',()=>{
     clearInterval(fade);
     if(!on){a.volume=0;a.play().then(()=>{on=true;set('Theme playing',true);

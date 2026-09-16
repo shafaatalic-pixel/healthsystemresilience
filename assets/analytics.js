@@ -55,11 +55,21 @@
 
  /* ---------- Cloudflare Web Analytics ---------- */
  if (CF_ON) {
+ /* Same rule as the GA tag: fetch the beacon after the page has painted. It
+    reads the Navigation Timing API, so it loses nothing by arriving late. */
+ var loadCf = function () {
  var c = document.createElement("script");
  c.defer = true;
  c.src = "https://static.cloudflareinsights.com/beacon.min.js";
  c.setAttribute("data-cf-beacon", '{"token":"' + CF_TOKEN + '"}');
  document.head.appendChild(c);
+ };
+ var cfAfterPaint = function () {
+ if ("requestIdleCallback" in window) requestIdleCallback(loadCf, { timeout: 2500 });
+ else setTimeout(loadCf, 800);
+ };
+ if (document.readyState === "complete") cfAfterPaint();
+ else window.addEventListener("load", cfAfterPaint, { once: true });
  }
 
  /* ---------- event helper ---------- */

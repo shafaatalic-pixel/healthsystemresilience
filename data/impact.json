@@ -1,21 +1,21 @@
 {
- "updated": "2026-09-15T12:39:48+00:00",
+ "updated": "2026-09-16T09:03:43+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-15"
+  "to": "2026-09-16"
  },
  "readers": {
-  "s30": 76,
-  "s60": 30,
-  "s120": 14,
-  "s240": 10,
-  "bottom": 35
+  "s30": 78,
+  "s60": 31,
+  "s120": 15,
+  "s240": 11,
+  "bottom": 36
  },
  "raw": {
-  "ga_users": 397,
-  "sessions": 432,
-  "pageviews": 864,
+  "ga_users": 400,
+  "sessions": 436,
+  "pageviews": 868,
   "engagement_rate": 43,
   "avg_engaged_seconds": 37,
   "excluded_datacentre": 107,
@@ -27,53 +27,53 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 276,
+  "direct": 277,
   "social": 132,
-  "search": 15,
+  "search": 16,
   "referral": 2,
   "facebook": 102,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 446,
-  "user_prompted": 75,
+  "ai_fetches": 439,
+  "user_prompted": 76,
   "agents": [
    [
     "OAI-SearchBot",
-    84
+    85
    ],
    [
     "Amazonbot",
-    73
-   ],
-   [
-    "ClaudeBot",
-    56
+    75
    ],
    [
     "GPTBot",
-    51
+    50
    ],
    [
     "Claude-User",
     44
    ],
    [
+    "Applebot",
+    39
+   ],
+   [
+    "ClaudeBot",
+    34
+   ],
+   [
     "ChatGPT-User",
-    31
+    32
    ],
    [
     "Bytespider",
     31
    ],
    [
-    "Applebot",
-    29
-   ],
-   [
     "Meta-ExternalAgent",
-    28
+    30
    ],
    [
     "PerplexityBot",
@@ -84,19 +84,19 @@
     9
    ]
   ],
-  "search_crawlers": 133,
-  "all_bot_requests": 6905,
-  "human_visits": 17,
+  "search_crawlers": 177,
+  "all_bot_requests": 10840,
+  "human_visits": 20,
   "google_clicks": 4,
-  "google_impressions": 652,
+  "google_impressions": 659,
   "google_position": 14.8,
   "pages_indexed": 20,
-  "all_requests": 6905,
-  "cached_requests": 1109,
-  "unique_ips": 1255,
+  "all_requests": 10840,
+  "cached_requests": 2793,
+  "unique_ips": 1358,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-12"
+  "gsc_through": "2026-09-13"
  },
  "actions": {
   "cta": {
@@ -128,14 +128,14 @@
   }
  },
  "pages": {
-  "home": 971,
+  "home": 981,
   "initiative": 211,
   "season": 110,
   "about": 104,
   "article": 82,
   "media": 72,
   "roundtable": 18,
-  "other": 7,
+  "other": 8,
   "films": 5
  },
  "participation": {

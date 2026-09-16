@@ -35,12 +35,22 @@
  function gtag() { dataLayer.push(arguments); }
  window.gtag = window.gtag || gtag;
  if (GA_ON) {
+ /* Queue config now; fetch the 170 KB tag only after the page has painted,
+    so it never competes with fonts and CSS for the first render. */
+ gtag("js", new Date());
+ gtag("config", GA_ID, { anonymize_ip: true });
+ var loadGa = function () {
  var g = document.createElement("script");
  g.async = true;
  g.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
  document.head.appendChild(g);
- gtag("js", new Date());
- gtag("config", GA_ID, { anonymize_ip: true });
+ };
+ var afterPaint = function () {
+ if ("requestIdleCallback" in window) requestIdleCallback(loadGa, { timeout: 2500 });
+ else setTimeout(loadGa, 800);
+ };
+ if (document.readyState === "complete") afterPaint();
+ else window.addEventListener("load", afterPaint, { once: true });
  }
 
  /* ---------- Cloudflare Web Analytics ---------- */

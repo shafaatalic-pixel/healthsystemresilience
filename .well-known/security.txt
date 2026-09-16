@@ -1,0 +1,5 @@
+Contact: mailto:contact@hsraep.org
+Expires: 2027-09-16T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://hsraep.org/.well-known/security.txt
+Policy: https://hsraep.org/privacy.html

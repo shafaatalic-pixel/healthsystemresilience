@@ -11,3 +11,8 @@ _to_delete/
 # Python bytecode from the scripts/ helpers
 __pycache__/
 *.pyc
+
+# Record sheets rendered for the Zenodo deposits; the published copies are on
+# Zenodo under each DOI, and scripts/record_sheet.py rebuilds them from source.
+build/
+.sheet-*.html

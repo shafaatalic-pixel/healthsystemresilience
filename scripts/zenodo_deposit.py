@@ -12,11 +12,16 @@ scopes, exported by the person who owns the account (never pasted here):
   python3 scripts/zenodo_deposit.py                    # mint for real
   python3 scripts/zenodo_deposit.py --only when-the-ground-shakes
 
-Rights rule, deliberately conservative: only the Special Report (HSREP's own,
-cleared for full reproduction) is deposited with its PDF, under CC BY 4.0.
-Pieces first published by The Daily Star or The Eastern Echo are deposited as
-metadata-only records that point to the HSREP page and to the outlet, so the
-DOI is real and citable without redistributing another publisher's text.
+Rights rule, deliberately conservative. Zenodo does not accept metadata-only
+records ("A record must always have as minimum one file associated with it" -
+support.zenodo.org/help/en-gb/1-upload-deposit/36), so every deposit carries a
+file. The Special Report, HSREP's own and cleared for full reproduction, is
+deposited with its full-text PDF. Pieces first published by The Daily Star or
+The Eastern Echo are deposited with an HSREP record sheet instead: one page of
+HSREP's own summary, both links and the citation, which does not reproduce the
+publisher's text. Both under CC BY 4.0, which covers what is deposited, not the
+publisher's version of record. Each DOI is reserved before the sheet is built,
+so the sheet prints its own DOI.
 Records already listed in data/dois.json are skipped, so the script is safe to
 re-run.
 """
@@ -24,6 +29,7 @@ import json, os, re, subprocess, sys, urllib.request, urllib.error
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from citation_meta import article_meta, ROOT  # noqa: E402
+import record_sheet  # noqa: E402
 
 DRY = "--dry-run" in sys.argv
 SANDBOX = "--sandbox" in sys.argv
@@ -38,6 +44,7 @@ COUNTRY = {"The Daily Star": "Bangladesh", "The Eastern Echo": "United States", 
 def api(method, path, data=None, raw=None, ctype="application/json"):
     req = urllib.request.Request(BASE + path, method=method)
     req.add_header("Authorization", "Bearer " + TOKEN)
+    req.add_header("Accept", "application/vnd.inveniordm.v1+json")
     body = None
     if data is not None:
         body = json.dumps(data).encode(); req.add_header("Content-Type", ctype)
@@ -60,7 +67,9 @@ def record_for(m):
     if m["outlet"]:
         desc += ("<p>First published by %s on %s. The HSREP page holds the argument as an advocacy package: "
                  "summary, sources, media and the professional discussion under it. This record identifies that "
-                 "package; the publisher's version of record is at the outlet link below.</p>") % (m["outlet"], m["date"])
+                 "package; the publisher's version of record is at the outlet link below. The file deposited here "
+                 "is HSREP's one-page record sheet, not the article: title, byline, where it first appeared, the "
+                 "published summary, both links and the citation.</p>") % (m["outlet"], m["date"])
     else:
         desc += "<p>An HSREP Special Report, cleared for full reproduction with attribution.</p>"
     related = [{"identifier": m["url"], "scheme": "url", "relation_type": {"id": "isidenticalto"},
@@ -80,9 +89,8 @@ def record_for(m):
         "related_identifiers": related,
         "version": "1.0",
     }
-    if with_file:
-        meta["rights"] = [{"id": "cc-by-4.0"}]
-    return {"access": {"record": "public", "files": "public"}, "files": {"enabled": with_file}, "metadata": meta}, with_file
+    meta["rights"] = [{"id": "cc-by-4.0"}]
+    return {"access": {"record": "public", "files": "public"}, "files": {"enabled": True}, "metadata": meta}, with_file
 
 dois = json.load(open(DOIS)) if os.path.exists(DOIS) else {}
 if not DRY and not TOKEN:
@@ -97,16 +105,24 @@ for path in sorted(glob.glob(os.path.join(ROOT, "articles", "*", "*.html"))):
         print("skip  ", m["slug"], "already", dois[m["slug"]]); continue
     rec, with_file = record_for(m)
     pdf_local = os.path.join(os.path.dirname(path), os.path.basename(m["pdf"]))
-    print(("DRY   " if DRY else "mint  ") + m["slug"], "| file" if with_file else "| metadata-only", "|", m["outlet"] or "HSREP")
+    print(("DRY   " if DRY else "mint  ") + m["slug"], "| full text" if with_file else "| record sheet", "|", m["outlet"] or "HSREP")
     if DRY:
         print(json.dumps(rec["metadata"], indent=1, ensure_ascii=False)[:900], "\n"); continue
     draft = api("POST", "/records", rec)
     rid = draft["id"]
+    # Zenodo has no metadata-only records, so every deposit carries a file. The
+    # DOI is reserved first so the record sheet can print its own DOI.
+    reserved = api("POST", "/records/%s/draft/pids/doi" % rid)
+    doi_pre = reserved.get("pids", {}).get("doi", {}).get("identifier", "")
     if with_file:
-        key = os.path.basename(pdf_local)
-        api("POST", "/records/%s/draft/files" % rid, [{"key": key}])
-        api("PUT", "/records/%s/draft/files/%s/content" % (rid, key), raw=open(pdf_local, "rb").read())
-        api("POST", "/records/%s/draft/files/%s/commit" % (rid, key))
+        upload = pdf_local                       # HSREP's own piece: the full text
+    else:
+        record_sheet.build(m["slug"], doi_pre, quiet=True)
+        upload = os.path.join(record_sheet.OUT, "%s--record.pdf" % m["slug"])
+    key = os.path.basename(upload)
+    api("POST", "/records/%s/draft/files" % rid, [{"key": key}])
+    api("PUT", "/records/%s/draft/files/%s/content" % (rid, key), raw=open(upload, "rb").read())
+    api("POST", "/records/%s/draft/files/%s/commit" % (rid, key))
     pub = api("POST", "/records/%s/draft/actions/publish" % rid)
     doi = pub.get("pids", {}).get("doi", {}).get("identifier") or pub.get("doi")
     if not doi:

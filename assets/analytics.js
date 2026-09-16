@@ -112,7 +112,9 @@
  "#hs-consent .no:hover{border-color:#fff;color:#fff}",
  "#hs-consent .st{margin-left:auto;font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em;color:#8FA1B8}",
  "#hs-consent button:focus-visible,#hs-consent a:focus-visible{outline:2px solid #F26D5A;outline-offset:2px}",
- ".hs-privacy-link{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}",
+ ".hs-privacy-wrap{display:inline-block;margin-left:14px;font:500 11px/1.4 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:inherit;opacity:.85}",
+ ".hs-privacy-link,.hs-privacy-link:visited{color:inherit!important;background:none!important;border:0!important;padding:0!important;text-decoration:underline;text-underline-offset:3px;cursor:pointer}",
+ ".hs-privacy-link:hover{opacity:1;color:#F26D5A!important}",
  "@media(max-width:480px){#hs-consent{left:10px;right:10px;bottom:10px;padding:16px}}",
  "@media(prefers-reduced-motion:no-preference){#hs-consent{animation:hsConsentIn .35s cubic-bezier(.2,.7,.2,1) both}@keyframes hsConsentIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}}"
  ].join("");
@@ -160,16 +162,21 @@
  }
 
  function installPrivacyLink() {
- var foot = document.querySelector("footer .fbot") || document.querySelector("footer .wrap") || document.querySelector("footer");
- if (!foot || document.getElementById("hs-privacy-choices")) return;
- var b = document.createElement("button");
- b.type = "button"; b.id = "hs-privacy-choices"; b.className = "hs-privacy-link";
- b.textContent = "Privacy choices";
- b.addEventListener("click", function () { showConsent("manage"); });
+ if (document.getElementById("hs-privacy-choices")) return;
+ addConsentStyles();
+ var fbots = document.querySelectorAll("footer .fbot");
+ var foot = fbots.length ? fbots[fbots.length - 1] : null;
+ var folw = !foot ? document.querySelector("footer .folw") : null; /* article packages: the small paper footer */
+ var host = foot || (folw && folw.parentNode) || document.querySelector("footer .wrap") || document.querySelector("footer");
+ if (!host) return;
+ var a = document.createElement("a");
+ a.href = "#privacy-choices"; a.id = "hs-privacy-choices"; a.className = "hs-privacy-link";
+ a.textContent = "Privacy choices";
+ a.addEventListener("click", function (e) { e.preventDefault(); showConsent("manage"); });
  var wrap = document.createElement("span");
- wrap.style.cssText = "margin-left:14px;font-size:12px;color:inherit";
- wrap.appendChild(b);
- foot.appendChild(wrap);
+ wrap.className = "hs-privacy-wrap";
+ wrap.appendChild(a);
+ if (folw) folw.insertAdjacentElement("afterend", wrap); else host.appendChild(wrap);
  }
  window.hsPrivacyChoices = function () { showConsent("manage"); };
 

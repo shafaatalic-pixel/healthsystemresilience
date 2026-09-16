@@ -30,28 +30,150 @@
  /* status object the Analytics Command Center reads */
  window.HS_ANALYTICS = { ga: GA_ON, cf: CF_ON, gaId: GA_ON ? GA_ID : null };
 
- /* ---------- Google Analytics 4 (gtag.js) ---------- */
+ /* ---------- Consent, then Google Analytics 4 (gtag.js) ----------
+    Opt-in where the law asks for it (EEA, UK, Switzerland), on by default
+    with a real opt-out everywhere else, and the browser's Global Privacy
+    Control / Do Not Track signal honoured everywhere. Cloudflare Web
+    Analytics is cookieless and runs regardless. The choice lives in this
+    browser only (localStorage) and is asked again after twelve months. */
  window.dataLayer = window.dataLayer || [];
  function gtag() { dataLayer.push(arguments); }
  window.gtag = window.gtag || gtag;
- if (GA_ON) {
- /* Queue config now; fetch the 170 KB tag only after the page has painted,
-    so it never competes with fonts and CSS for the first render. */
+
+ var CONSENT_KEY = "hsrep-consent-v1";
+ var STRICT = /^(AT|BE|BG|HR|CY|CZ|DK|EE|FI|FR|DE|GR|HU|IE|IT|LV|LT|LU|MT|NL|PL|PT|RO|SK|SI|ES|SE|IS|LI|NO|GB|CH)$/;
+ var SIGNAL = navigator.globalPrivacyControl === true || navigator.doNotTrack === "1" || window.doNotTrack === "1";
+ var gaLoaded = false, consent = null;
+ window.HS_ANALYTICS.consent = null;
+
+ function readConsent() {
+ try { var v = JSON.parse(localStorage.getItem(CONSENT_KEY) || "null");
+ if (!v || !v.choice) return null;
+ if (Date.now() - Date.parse(v.at || 0) > 365 * 864e5) return null;
+ return v; } catch (e) { return null; }
+ }
+ function writeConsent(choice, how) {
+ try { localStorage.setItem(CONSENT_KEY, JSON.stringify({ choice: choice, how: how, at: new Date().toISOString() })); } catch (e) {}
+ }
+ function afterPaint(fn) {
+ var go = function () { if ("requestIdleCallback" in window) requestIdleCallback(fn, { timeout: 2500 }); else setTimeout(fn, 800); };
+ if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once: true });
+ }
+ function loadGa() {
+ if (gaLoaded || !GA_ON || consent !== "granted") return;
+ gaLoaded = true;
+ window["ga-disable-" + GA_ID] = false;
  gtag("js", new Date());
  gtag("config", GA_ID, { anonymize_ip: true });
- var loadGa = function () {
  var g = document.createElement("script");
  g.async = true;
  g.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
  document.head.appendChild(g);
- };
- var afterPaint = function () {
- if ("requestIdleCallback" in window) requestIdleCallback(loadGa, { timeout: 2500 });
- else setTimeout(loadGa, 800);
- };
- if (document.readyState === "complete") afterPaint();
- else window.addEventListener("load", afterPaint, { once: true });
  }
+ function stopGa() {
+ window["ga-disable-" + GA_ID] = true;
+ try {
+ var host = location.hostname.replace(/^www\./, "");
+ document.cookie.split(";").forEach(function (c) {
+ var n = c.split("=")[0].trim();
+ if (/^_ga(_|$)|^_gid$|^_gat/.test(n)) {
+ [host, "." + host, location.hostname].forEach(function (d) {
+ document.cookie = n + "=; Max-Age=0; path=/; domain=" + d;
+ });
+ document.cookie = n + "=; Max-Age=0; path=/";
+ }
+ });
+ } catch (e) {}
+ }
+ function applyConsent(choice, how, store) {
+ consent = choice;
+ window.HS_ANALYTICS.consent = choice;
+ window.HS_ANALYTICS.consentHow = how;
+ if (store) writeConsent(choice, how);
+ if (choice === "granted") { window["ga-disable-" + GA_ID] = false; afterPaint(loadGa); } else stopGa();
+ var b = document.getElementById("hs-consent"); if (b) b.remove();
+ }
+
+ function addConsentStyles() {
+ if (document.getElementById("hsrep-consent-css")) return;
+ var s = document.createElement("style");
+ s.id = "hsrep-consent-css";
+ s.textContent = [
+ "#hs-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1300;max-width:560px;margin:0 auto;box-sizing:border-box;padding:18px 20px 16px;border-radius:14px;background:#0F2036;color:#DCE5EF;border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 50px rgba(6,14,28,.45);font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.55}",
+ "#hs-consent .k{font:600 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#F26D5A;margin:0 0 8px}",
+ "#hs-consent p{margin:0 0 12px;color:#DCE5EF}",
+ "#hs-consent p b{color:#fff;font-weight:600}",
+ "#hs-consent a{color:#fff;text-decoration:underline;text-underline-offset:3px}",
+ "#hs-consent .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}",
+ "#hs-consent button{font:600 13px/1 Inter,system-ui,sans-serif;padding:10px 16px;border-radius:999px;border:1px solid transparent;cursor:pointer}",
+ "#hs-consent .yes{background:#F26D5A;color:#0F1E2E}",
+ "#hs-consent .yes:hover{background:#F58370}",
+ "#hs-consent .no{background:transparent;color:#DCE5EF;border-color:rgba(255,255,255,.28)}",
+ "#hs-consent .no:hover{border-color:#fff;color:#fff}",
+ "#hs-consent .st{margin-left:auto;font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em;color:#8FA1B8}",
+ "#hs-consent button:focus-visible,#hs-consent a:focus-visible{outline:2px solid #F26D5A;outline-offset:2px}",
+ ".hs-privacy-link{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}",
+ "@media(max-width:480px){#hs-consent{left:10px;right:10px;bottom:10px;padding:16px}}",
+ "@media(prefers-reduced-motion:no-preference){#hs-consent{animation:hsConsentIn .35s cubic-bezier(.2,.7,.2,1) both}@keyframes hsConsentIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}}"
+ ].join("");
+ document.head.appendChild(s);
+ }
+
+ function showConsent(mode) {
+ addConsentStyles();
+ var old = document.getElementById("hs-consent"); if (old) old.remove();
+ var box = document.createElement("section");
+ box.id = "hs-consent";
+ box.setAttribute("role", "region");
+ box.setAttribute("aria-label", "Privacy choice");
+ var state = consent === "granted" ? "Analytics is on in this browser." : consent === "denied" ? "Analytics is off in this browser." : "";
+ box.innerHTML =
+ '<p class="k">Privacy choice</p>' +
+ '<p>HSREP uses Google Analytics to see which arguments travel and how far people read. <b>No advertising, and nothing is sold.</b> Cloudflare’s cookieless count runs either way. May we set the analytics cookie? <a href="/privacy.html#analytics">How we handle data</a></p>' +
+ '<div class="row"><button type="button" class="yes">Yes, that’s fine</button><button type="button" class="no">No thanks</button>' +
+ (state ? '<span class="st">' + state + '</span>' : "") + '</div>';
+ document.body.appendChild(box);
+ box.querySelector(".yes").addEventListener("click", function () { applyConsent("granted", mode === "manage" ? "manage" : "banner", true); });
+ box.querySelector(".no").addEventListener("click", function () { applyConsent("denied", mode === "manage" ? "manage" : "banner", true); });
+ if (mode === "manage") box.querySelector(".yes").focus();
+ }
+
+ function decideConsent() {
+ if (!GA_ON) return;
+ var test = /[?&]hsc=([A-Z]{2})/.exec(location.search); /* ?hsc=GB previews the banner without storing */
+ if (SIGNAL && !test) { applyConsent("denied", "signal", false); return; }
+ var stored = readConsent();
+ if (stored && !test) { applyConsent(stored.choice, stored.how, false); return; }
+ var settled = false;
+ function region(loc) {
+ if (settled) return; settled = true;
+ if (!loc || STRICT.test(loc)) ready(function () { showConsent("ask"); });
+ else applyConsent("granted", "implied:" + loc, true);
+ }
+ if (test) { region(test[1]); return; }
+ var timer = setTimeout(function () { region(""); }, 2000);
+ if (!window.fetch) { clearTimeout(timer); region(""); return; }
+ fetch("/cdn-cgi/trace", { cache: "no-store" })
+ .then(function (r) { return r.text(); })
+ .then(function (t) { clearTimeout(timer); var m = /(?:^|\n)loc=([A-Z]{2})/.exec(t); region(m ? m[1] : ""); })
+ .catch(function () { clearTimeout(timer); region(""); });
+ }
+
+ function installPrivacyLink() {
+ var foot = document.querySelector("footer .fbot") || document.querySelector("footer .wrap") || document.querySelector("footer");
+ if (!foot || document.getElementById("hs-privacy-choices")) return;
+ var b = document.createElement("button");
+ b.type = "button"; b.id = "hs-privacy-choices"; b.className = "hs-privacy-link";
+ b.textContent = "Privacy choices";
+ b.addEventListener("click", function () { showConsent("manage"); });
+ var wrap = document.createElement("span");
+ wrap.style.cssText = "margin-left:14px;font-size:12px;color:inherit";
+ wrap.appendChild(b);
+ foot.appendChild(wrap);
+ }
+ window.hsPrivacyChoices = function () { showConsent("manage"); };
+
+ decideConsent();
 
  /* ---------- Cloudflare Web Analytics ---------- */
  if (CF_ON) {
@@ -320,7 +442,7 @@
  }
 
  ready(function () {
-
+ installPrivacyLink();
  addCampaignStyles();
  improveSiteIA();
  installCampaign();

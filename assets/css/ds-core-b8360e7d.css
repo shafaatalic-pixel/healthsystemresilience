@@ -141,7 +141,7 @@ section.dark .lead{color:#A9B7C6}
 .fcard .tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:11px}
 .fcard h3{font-size:1.12rem;line-height:1.3;margin-bottom:8px}
 .fcard .m{font-size:.82rem;color:var(--muted);margin-bottom:15px}
-.fcard .go{margin-top:auto;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--heading);display:flex;align-items:center;gap:7px}
+.fcard .go{margin-top:auto;font-family:var(--font-body);font-size:13.5px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--heading);display:flex;align-items:center;gap:7px}
 .fcard:hover .go{color:var(--coral)}
 /* findings, claim/evidence/interpretation */
 .finds{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px}
@@ -203,7 +203,7 @@ section.dark .lead{color:#A9B7C6}
 /* initiative */
 .initcard{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center;margin-top:8px}
 @media(max-width:900px){.initcard{grid-template-columns:1fr}}
-.statuschip{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);border:1px solid rgba(242,109,90,.4);border-radius:999px;padding:5px 13px;margin-bottom:18px}
+.statuschip{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#F7A594;border:1px solid rgba(242,109,90,.4);border-radius:999px;padding:5px 13px;margin-bottom:18px}
 .statuschip i{width:7px;height:7px;border-radius:50%;background:var(--coral)}
 .initcard h2{font-size:clamp(1.9rem,1.3rem+1.8vw,2.6rem);line-height:1.1;margin-bottom:16px;color:#fff;max-width:16ch}
 .initcard p{color:#A9B7C6;font-size:1rem;margin:0 0 22px;max-width:52ch}
@@ -378,3 +378,14 @@ footer{background:var(--navy-deep);color:#B7C4D4;padding:56px 0 30px}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .hs-srch{display:inline-flex;align-items:center;gap:7px;font:600 .9rem "Inter",sans-serif;color:var(--heading);text-decoration:none;border:1px solid var(--hairline);border-radius:999px;padding:9px 14px;white-space:nowrap;flex:0 0 auto;transition:color .15s,border-color .15s}.hs-srch svg{width:16px;height:16px;fill:currentColor;flex:none}.hs-srch:hover{color:var(--coral);border-color:var(--coral)}
 @media(max-width:480px){.fg{grid-template-columns:1fr 1fr;gap:22px 26px}.fg>*:first-child{grid-column:1/-1}}
+
+/* ---- brand polish, 16 Sep 2026: one rule per job ----------------------------
+   Coral #F26D5A is for fills, dots, hairlines and display text. As small text it
+   is #C43C25 on light and #F7A594 on dark, both AA. Links inside prose are
+   underlined so they can be found without hunting; one focus ring everywhere. */
+main p a:not(.btn):not(.hero-alt),main li a:not(.btn),.rich a:not(.btn),.bt a,.lead a,.cnf a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(242,109,90,.55)}
+main p a:not(.btn):hover,main li a:not(.btn):hover,.rich a:not(.btn):hover{text-decoration-color:currentColor}
+footer .flegal a{color:#F7A594;text-decoration:underline;text-underline-offset:3px}
+footer .flegal a:hover{color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #F26D5A;outline-offset:3px;border-radius:3px}
+::selection{background:rgba(242,109,90,.28)}

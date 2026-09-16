@@ -350,7 +350,6 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="beatbox rv" style="transition-delay:.08s">
 <div class="lbl"><span>Our identity</span><span class="ctr" id="ctr" aria-label="Chapter">01 / 06</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Ambient off</button></div>
 <audio id="ambient" loop preload="none"><source src="assets/hsrep-theme-1df6c078.mp3" type="audio/mpeg"></audio>
-<audio id="ambientsting" preload="none"><source src="assets/hsrep-sting-95aa1bb2.mp3" type="audio/mpeg"></audio>
 <div class="beats" id="beats">
 <div class="beat active" data-built="all" data-hot="all"><div class="bk">The promise</div><p class="bt">Every mark makes a promise. Ours is a <b>Humanist Crest</b>: health protection drawn as infrastructure, with people, not systems, at its centre. Read it the way it was built, one element at a time.</p></div>
 <div class="beat" data-built="core" data-hot="core"><div class="bk">The foundation</div><p class="bt">Nothing stands without something underneath it. The base rises and becomes the central figure, so protection and the person are one piece, built to bear load. That is the argument in one shape. A health system is not a cost sitting above people's lives. It is what holds them up.</p></div>
@@ -509,7 +508,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
     // size the stage to the tallest chapter, so the rail never moves and the box is never taller than it must be
     const fit=()=>{let m=0;beats.forEach(b=>{const bk=b.querySelector('.bk'),bt=b.querySelector('.bt');m=Math.max(m,(bk?bk.offsetHeight:0)+16+(bt?bt.offsetHeight:0));});if(m)hz.style.minHeight=(m+6)+'px';};fit();addEventListener('resize',fit);}
   dots[0].classList.add('on');dotsWrap.classList.add('paused');
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){obs.disconnect();beats.forEach((b,j)=>b.classList.toggle('active',j===0));(function(){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){window.__hsStung=false;});}catch(e){window.__hsStung=false;}}})();assemble(()=>{setHot('all','all');start();});}}),{threshold:.32});
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){obs.disconnect();beats.forEach((b,j)=>b.classList.toggle('active',j===0));assemble(()=>{setHot('all','all');start();});}}),{threshold:.32});
   obs.observe(sec);
 })();
 // ambient music toggle (muted by default; gentle fade)
@@ -519,7 +518,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   function set(txt,state){btn.innerHTML='<span class="ico"></span>'+txt;btn.classList.toggle('on',state);btn.setAttribute('aria-pressed',state);}
   btn.addEventListener('click',()=>{
     clearInterval(fade);
-    if(!on){var _st=document.getElementById('ambientsting');if(_st&&!window.__hsStung){window.__hsStung=true;try{_st.currentTime=0;_st.volume=0.7;_st.play().catch(function(){});}catch(e){}}a.volume=0;a.play().then(()=>{on=true;set('Ambient on',true);
+    if(!on){a.volume=0;a.play().then(()=>{on=true;set('Ambient on',true);
       var _sec=document.getElementById('identity');
       if(_sec&&_sec.__cueFor){try{a.currentTime=_sec.__cueFor()+0.01;}catch(e){}_sec.__resync&&_sec.__resync();}
       fade=setInterval(()=>{a.volume=Math.min(0.6,a.volume+0.04);if(a.volume>=0.6)clearInterval(fade);},60);}).catch(()=>{});}

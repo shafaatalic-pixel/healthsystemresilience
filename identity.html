@@ -367,7 +367,7 @@ html.hmenu-open #hmenu-panel{display:block}
  </g></svg></div><div class="crestcap"><b>The Humanist Crest</b><span class="sub">HSREP</span></div><button class="soundcue" id="soundcue" type="button" aria-pressed="false" aria-controls="ambient"><span class="disc" aria-hidden="true"><span class="tri"></span></span><span class="t">Play the theme</span><span class="s">34 seconds, scored to the story</span></button></div>
 <div class="beatbox rv" style="transition-delay:.08s">
 <div class="lbl"><span>Our identity</span><span class="ctr" id="ctr" aria-label="Chapter">01 / 06</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Play the theme</button></div>
-<audio id="ambient" loop preload="none"><source src="assets/hsrep-theme-1df6c078.mp3" type="audio/mpeg"></audio>
+<audio id="ambient" loop preload="none"><source src="assets/hsrep-theme-bd79fd50.mp3" type="audio/mpeg"></audio>
 <div class="beats" id="beats">
 <div class="beat active" data-built="all" data-hot="all"><div class="bk">The promise</div><p class="bt">Every mark makes a promise. Ours is a <b>Humanist Crest</b>: health protection drawn as infrastructure, with people, not systems, at its centre. Read it the way it was built, one element at a time.</p></div>
 <div class="beat" data-built="core" data-hot="core"><div class="bk">The foundation</div><p class="bt">Nothing stands without something underneath it. The base rises and becomes the central figure, so protection and the person are one piece, built to bear load. That is the argument in one shape. A health system is not a cost sitting above people's lives. It is what holds them up.</p></div>
@@ -475,7 +475,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
      that carries the loudest bar, and the completed mark gets the resolution.
      The brief the theme was composed to asked for the resolving chord at
      28.0s; the onset search found it at 28.61, and the two agree. */
-  const CUES=[0,5.98,11.25,17.25,22.91,28.61], TRACK=34.0;
+  const CUES=[0,5.31,12.00,17.58,22.48,25.66], TRACK=34.0; // 'We Said We Would Not Look Away' (2026-09-16). Previous: hsrep-theme-1df6c078.mp3 with [0,5.98,11.25,17.25,22.91,28.61]
   const span=n=>+(((n===CUES.length-1?TRACK:CUES[n+1])-CUES[n]).toFixed(2));
   const amb=document.getElementById('ambient');
   const playing=()=>!!(amb&&!amb.paused&&!amb.ended);

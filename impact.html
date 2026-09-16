@@ -311,7 +311,7 @@
 
 <section><div class="wrap">
 <p class="imp-updated"><!--IMPACT:UPDATED:START-->Since launch &middot; 22 July 2026 to 15 September 2026 &middot; refreshed 15 September 2026<!--IMPACT:UPDATED:END--></p>
-<!--IMPACT:CLOCK:START--><p class="imp-clock" data-next="2026-09-16T07:12:00Z" data-last="2026-09-15T12:39:35Z" data-stale="0"><span class="dt"></span><b>Refreshed nightly at 03:12 ET.</b> Last run 15 September 2026, from CF, GA4, GSC. <span class="cd">Next refresh in 18h 32m.</span></p><!--IMPACT:CLOCK:END-->
+<!--IMPACT:CLOCK:START--><p class="imp-clock" data-next="2026-09-17T04:12:00Z" data-last="2026-09-15T12:39:35Z" data-stale="0"><span class="dt"></span><b>Refreshed daily.</b> Last run 15 September 2026, from CF, GA4, GSC. <span class="cd">Today’s run is queued; GitHub starts it when its scheduler allows, usually before noon Eastern.</span></p><!--IMPACT:CLOCK:END-->
 </div></section>
 
 <section id="the-drop-off"><div class="wrap">
@@ -422,19 +422,24 @@ is the only way the gap between any two lines means anything.</p>
 })();
 </script>
 <script>
-/* Advances the minutes on the refresh line. The line is already correct in the
-   markup, so this only keeps it correct while the tab stays open; with scripting
-   off the page still says when it was last refreshed. */
+/* Keeps the refresh line honest while the tab stays open. The line is already
+   correct in the markup; this only re-words it as the day moves on. The job is
+   scheduled for early morning US Eastern and GitHub starts it when its queue
+   allows, so there is no countdown: a countdown that expires reads as a failure
+   when the run is merely late. */
 (function () {
   var el = document.querySelector(".imp-clock"); if (!el) return;
   var cd = el.querySelector(".cd"); if (!cd) return;
   function tick() {
     var next = new Date(el.getAttribute("data-next") || "");
-    if (isNaN(next)) return;
-    var mins = Math.floor((next - new Date()) / 60000);
-    if (mins < 0) { cd.textContent = "A refresh is due."; return; }
-    cd.textContent = "Next refresh in " + Math.floor(mins / 60) + "h " +
-      String(mins % 60).padStart(2, "0") + "m.";
+    var last = new Date(el.getAttribute("data-last") || "");
+    if (isNaN(next) || isNaN(last)) return;
+    var now = new Date();
+    var sameDay = last.toISOString().slice(0, 10) === now.toISOString().slice(0, 10);
+    if (sameDay) { cd.textContent = "Next run tomorrow morning, US Eastern."; return; }
+    if (now < next) { cd.textContent = "Next run this morning, US Eastern."; return; }
+    if (now - last > 36 * 3600000) { cd.textContent = "The scheduled run is overdue."; el.classList.add("is-stale"); return; }
+    cd.textContent = "Today\u2019s run is queued; GitHub starts it when its scheduler allows, usually before noon Eastern.";
   }
   tick(); setInterval(tick, 60000);
 })();

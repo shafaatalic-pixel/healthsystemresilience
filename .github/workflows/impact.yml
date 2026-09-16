@@ -14,7 +14,7 @@ name: Impact figures (nightly)
 
 on:
   schedule:
-    - cron: "12 7 * * *"
+    - cron: "12 4 * * *"   # 00:12 ET in daylight time; GitHub has started this 4-7 h late, so the page promises no clock time
   workflow_dispatch: {}
 
 permissions:

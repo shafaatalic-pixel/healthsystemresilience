@@ -297,7 +297,7 @@ def _parse(ts):
 def r_clock(d):
     """When the figures were last refreshed, and when the next one is due.
 
-    A countdown on its own would lie: if the 03:12 job fails it keeps ticking
+    A countdown on its own would lie: if the scheduled job fails it keeps ticking
     toward a refresh that already did not happen. So the healthy state counts
     down and the stale state says how old the figures are instead. Both are
     written into the markup here, so the page is correct before any script runs.
@@ -305,11 +305,15 @@ def r_clock(d):
     st = status()
     now = dt.datetime.now(dt.timezone.utc)
     last = _parse(st.get("last_success")) or _parse(d.get("updated"))
-    # 07:12 UTC nightly, which is 03:12 ET on daylight time.
-    nxt = now.replace(hour=7, minute=12, second=0, microsecond=0)
+    # Cron is 04:12 UTC (00:12 ET on daylight time). GitHub starts scheduled
+    # jobs when its queue allows, and for this repository that has meant four
+    # to seven hours late, so the page never promises a clock time. data-next
+    # is the scheduled instant; the script below turns it into "this morning"
+    # or "queued" rather than a countdown that expires and reads as a failure.
+    nxt = now.replace(hour=4, minute=12, second=0, microsecond=0)
     if nxt <= now:
         nxt += dt.timedelta(days=1)
-    grace = dt.timedelta(hours=26)
+    grace = dt.timedelta(hours=36)
     stale = (last is None) or (now - last > grace)
 
     attrs = (' data-next="%s" data-last="%s" data-stale="%s"'
@@ -337,7 +341,7 @@ def r_clock(d):
         if last:
             days = max((now - last).days, 1)
             age = " These figures are %d day%s old." % (days, "" if days == 1 else "s")
-        body = ('<b>Refreshed nightly at 03:12 ET.</b> The last run did not complete.%s'
+        body = ('<b>Refreshed daily.</b> The last scheduled run did not complete.%s'
                 % age)
         if last:
             body += " Last successful run %s." % date(last.date().isoformat())
@@ -345,13 +349,19 @@ def r_clock(d):
         cd = ""
     else:
         mins = int((nxt - now).total_seconds() // 60)
-        body = ('<b>Refreshed nightly at 03:12 ET.</b> Last run %s, from %s.'
+        body = ('<b>Refreshed daily.</b> Last run %s, from %s.'
                 % (date(last.date().isoformat()),
                    ", ".join(k.upper() for k in sorted((st.get("sources") or {}).keys()))
                    or "GA4, Cloudflare and Search Console"))
         cls = ""
-        cd = ('<span class="cd">Next refresh in %dh %02dm.</span>'
-              % (mins // 60, mins % 60))
+        # The scheduled job runs early morning US Eastern; the hour is GitHub's.
+        if last and last.date() == now.date():
+            cd = '<span class="cd">Next run tomorrow morning, US Eastern.</span>'
+        elif nxt > now and nxt.date() == now.date():
+            cd = '<span class="cd">Next run this morning, US Eastern.</span>'
+        else:
+            cd = ('<span class="cd">Today\u2019s run is queued; GitHub starts it when '
+                  'its scheduler allows, usually before noon Eastern.</span>')
     return ('<p class="imp-clock%s"%s><span class="dt"></span>%s %s</p>'
             % (cls, attrs, body, cd))
 

@@ -253,13 +253,17 @@ html.hmenu-open #hmenu-panel{display:block}
 #identity .beat .bt,#identity .beats .beat .bt{font-family:var(--font-display);color:#C4D1E0;
   font-size:1.08rem;line-height:1.72;max-width:46ch}
 #identity .beat .bt b{color:#fff;font-weight:600}
+#identity .beat .bt .ln{display:block;margin:0 0 .42em}
+#identity .beat .bt .ln:last-child{margin-bottom:0}
+#identity .beat .bt{line-height:1.58;font-size:1.1rem;max-width:44ch}
+#identity .beats{padding-bottom:10px}
 /* the sung line for this chapter, set as an epigraph */
 #identity .beat .ly{font-family:var(--font-display);font-style:italic;font-size:1.04rem;line-height:1.5;
   color:#9FB0C4;margin:0 0 18px;padding-left:14px;border-left:2px solid rgba(242,109,90,.55);max-width:40ch}
 #identity .beat .ly::before{content:"\201C"}
 #identity .beat .ly::after{content:"\201D"}
 /* beats size to their own text; a script sets .beats min-height to the tallest one */
-.js-anim #identity .beats .beat{bottom:auto}
+#identity.js-anim .beats .beat{bottom:auto}
 @media(max-width:860px){
   #identity .beatbox .lbl .musicbtn{display:none}
   #identity .beatbox .lbl .ctr{margin-left:auto}
@@ -267,7 +271,7 @@ html.hmenu-open #hmenu-panel{display:block}
   #identity .beat .bk{margin-bottom:12px}
   #identity .beat .ly{font-size:1rem;margin-bottom:14px}
   #identity .beat .bt{font-size:1.02rem;line-height:1.66}
-  #identity .dots{margin-top:26px;padding-top:18px}
+  #identity .dots{margin-top:30px;padding-top:18px}
 }
 
 /* ---- the sound cue under the crest: the invitation nobody had ------------ */
@@ -300,7 +304,7 @@ html.hmenu-open #hmenu-panel{display:block}
 /* ---- the rail: progress you can read ------------------------------------ */
 /* Six thin bars instead of dots. The current bar fills over the chapter's
    5.6 seconds, so the auto-play is visible without a word saying "auto". */
-#identity .dots{margin-top:clamp(26px,3.4vw,40px);padding-top:22px;
+#identity .dots{margin-top:clamp(30px,3.6vw,44px);padding-top:22px;
   border-top:1px solid rgba(255,255,255,.10);gap:8px}
 #identity .dots button,#identity .dots button.on{width:32px;height:16px;border-radius:0;
   background:transparent;position:relative;padding:0}
@@ -385,12 +389,12 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="lbl"><span>Our identity</span><span class="ctr" id="ctr" aria-label="Chapter">01 / 06</span><button class="musicbtn" id="ambtoggle" aria-pressed="false" type="button"><span class="ico"></span>Play the theme</button></div>
 <audio id="ambient" loop preload="none"><source src="assets/hsrep-theme-bd79fd50.mp3" type="audio/mpeg"></audio>
 <div class="beats" id="beats">
-<div class="beat active" data-built="all" data-hot="all"><div class="bk">The promise</div><p class="ly">We said we would not look away.</p><p class="bt">Every mark makes a promise. Ours is the <b>Humanist Crest</b>: protection built as a structure, with people at its centre.</p></div>
-<div class="beat" data-built="core" data-hot="core"><div class="bk">The foundation</div><p class="ly">The ground we built has learned to hold.</p><p class="bt">The base rises into the central figure. Protection and the person are one piece, built to bear load. A health system is what holds people up.</p></div>
-<div class="beat" data-built="core figs" data-hot="figs"><div class="bk">Three figures, not the same</div><p class="ly">Three of us, and none the same.</p><p class="bt">Different heights, different tones, on purpose. People do not start from the same place. A real system <b>holds all of them</b>, not only the ones who fit.</p></div>
-<div class="beat" data-built="core figs arch" data-hot="arch"><div class="bk">The open arch</div><p class="ly">An arch that never shuts.</p><p class="bt">The structure rises around them and stays open. Two gaps, so people can enter, leave and return. Protection that closes becomes a wall.</p></div>
-<div class="beat" data-built="all" data-hot="point"><div class="bk">The point of life</div><p class="ly">Alive.</p><p class="bt">Above everything, one coral point: the human spark the whole structure exists to protect.</p></div>
-<div class="beat" data-built="all" data-hot="all"><div class="bk">The mark, in full</div><p class="ly">And this is how we keep each other.</p><p class="bt">A foundation that bears load. People of every circumstance, held at the centre. Shelter that admits. One life above them all. <b>That is the promise</b>, and every page here is an attempt to keep it.</p></div>
+<div class="beat active" data-built="all" data-hot="all"><div class="bk">The promise</div><p class="ly">We said we would not look away.</p><p class="bt"><span class="ln">Every mark makes a promise.</span><span class="ln">Ours is the <b>Humanist Crest</b>: protection built as a structure, with people at its centre.</span></p></div>
+<div class="beat" data-built="core" data-hot="core"><div class="bk">The foundation</div><p class="ly">The ground we built has learned to hold.</p><p class="bt"><span class="ln">The base rises into the central figure.</span><span class="ln">Protection and the person are one piece, built to bear load.</span><span class="ln">A health system is what holds people up.</span></p></div>
+<div class="beat" data-built="core figs" data-hot="figs"><div class="bk">Three figures, not the same</div><p class="ly">Three of us, and none the same.</p><p class="bt"><span class="ln">Different heights, different tones, on purpose.</span><span class="ln">People do not start from the same place.</span><span class="ln">A real system <b>holds all of them</b>, not only the ones who fit.</span></p></div>
+<div class="beat" data-built="core figs arch" data-hot="arch"><div class="bk">The open arch</div><p class="ly">An arch that never shuts.</p><p class="bt"><span class="ln">The structure rises around them and stays open.</span><span class="ln">Two gaps, so people can enter, leave and return.</span><span class="ln">Protection that closes becomes a wall.</span></p></div>
+<div class="beat" data-built="all" data-hot="point"><div class="bk">The point of life</div><p class="ly">Alive.</p><p class="bt"><span class="ln">Above everything, one coral point:</span><span class="ln">the human spark the whole structure exists to protect.</span></p></div>
+<div class="beat" data-built="all" data-hot="all"><div class="bk">The mark, in full</div><p class="ly">And this is how we keep each other.</p><p class="bt"><span class="ln">A foundation that bears load.</span><span class="ln">People of every circumstance, held at the centre.</span><span class="ln">Shelter that admits. One life above them all.</span><span class="ln"><b>That is the promise</b>, and every page here is an attempt to keep it.</span></p></div>
 </div>
 <div class="dots" id="dots" aria-label="Story chapters"></div>
 </div>
@@ -548,7 +552,9 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 // the chapter box is as tall as its tallest chapter, no taller
 (function(){const bx=document.querySelector('#identity .beats');if(!bx)return;const bs=[].slice.call(bx.querySelectorAll('.beat'));
   function fit(){let h=0;bs.forEach(function(b){h=Math.max(h,b.offsetHeight);});if(h)bx.style.minHeight=h+'px';}
-  fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);setTimeout(fit,1200);})();
+  fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);setTimeout(fit,1200);setTimeout(fit,3000);
+  if(window.ResizeObserver){const ro=new ResizeObserver(fit);bs.forEach(function(b){ro.observe(b);});ro.observe(bx.parentNode);}
+  if(document.fonts&&document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',fit);})();
 // ambient music toggle (muted by default; gentle fade)
 (function(){
   const a=document.getElementById('ambient'),btn=document.getElementById('ambtoggle');

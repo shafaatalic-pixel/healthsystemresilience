@@ -1,0 +1,56 @@
+name: Site numbers (counts that must not drift)
+
+# Counts stated in prose go stale the moment a piece is published. "The six
+# outlet chapters" was still on the rights page after Season 1 had grown to
+# eight. scripts/site_numbers.py computes every such count from the pieces
+# themselves and writes it between the <!--N:key--> markers in the pages.
+#
+# This runs whenever an article, the library, or a page carrying a marker
+# changes, rewrites any stale number, and commits only if something actually
+# moved. The final --check fails the run if a marker names a key that does not
+# exist, which is the one case the fixer cannot resolve by itself.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "articles/**"
+      - "data/dois.json"
+      - "*.html"
+      - "advocacy/**"
+      - "initiative/**"
+      - "scripts/site_numbers.py"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-numbers
+  cancel-in-progress: false
+
+jobs:
+  numbers:
+    runs-on: ubuntu-latest
+    # Do not react to the bot's own commit.
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Recompute the counts
+        run: python scripts/site_numbers.py
+
+      - name: Commit if a number changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Site numbers: recomputed from the published pieces"
+          file_pattern: "*.html advocacy/*.html initiative/*.html articles/*/*.html"
+
+      - name: Fail if any marker is unresolvable
+        run: python scripts/site_numbers.py --check

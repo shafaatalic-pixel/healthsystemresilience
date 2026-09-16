@@ -69,16 +69,21 @@ def record_for(m):
                  "summary, sources, media and the professional discussion under it. This record identifies that "
                  "package; the publisher's version of record is at the outlet link below. The file deposited here "
                  "is HSREP's one-page record sheet, not the article: title, byline, where it first appeared, the "
-                 "published summary, both links and the citation.</p>") % (m["outlet"], m["date"])
+                 "published summary, both links and the citation.</p>"
+                 "<p>Published commentary, not a peer-reviewed article.</p>") % (m["outlet"], m["date"])
     else:
         desc += "<p>An HSREP Special Report, cleared for full reproduction with attribution.</p>"
+    rel_type = {"id": "publication-report" if not m["outlet"] else "publication-other"}
     related = [{"identifier": m["url"], "scheme": "url", "relation_type": {"id": "isidenticalto"},
-                "resource_type": {"id": "publication-article"}}]
+                "resource_type": rel_type}]
     if m["outlet_url"]:
         related.append({"identifier": m["outlet_url"], "scheme": "url", "relation_type": {"id": "ispublishedin"},
-                        "resource_type": {"id": "publication-article"}})
+                        "resource_type": rel_type})
     meta = {
-        "resource_type": {"id": "publication-article"},
+        # Not "publication-article": Zenodo renders that as "Journal article",
+        # and none of this is peer reviewed. Outlet commentary is Other; HSREP's
+        # own long-form is Report.
+        "resource_type": {"id": "publication-report" if with_file else "publication-other"},
         "title": m["title"],
         "creators": [creator],
         "publication_date": m["date"],

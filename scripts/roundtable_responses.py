@@ -31,7 +31,7 @@ USAGE
   python3 scripts/roundtable_responses.py --csv export.csv   # ingest a Tally CSV export (works on the free tier)
   python3 scripts/roundtable_responses.py --render-only      # regenerate the HTML from the JSON, after moderating
 """
-import argparse, csv, datetime, glob, hashlib, html, json, os, re, sys, urllib.request, urllib.error
+import argparse, csv, datetime, glob, hashlib, html, json, os, re, sys, urllib.request, urllib.error, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RT_DIR = os.path.join(ROOT, "roundtables")
@@ -204,6 +204,14 @@ def render_questions(questions):
         bits.append('<div class="qfoot"><span class="qcount">%s</span>'
                     % ("%d on the record" % n if n else "No responses yet"))
         bits.append('<a class="btn accent" href="#respond">Answer this &rarr;</a></div>')
+        # the one-minute route: reply by email, three sentences, published under your name
+        subj = "Roundtable response, %s" % q["id"]
+        body = ("Question: %s\n\nMy response (three sentences is enough):\n\n\n"
+                "Name and affiliation as they should appear:\n\n"
+                "Publish this under my name: yes / no / anonymously\n") % q.get("question", "")
+        bits.append('<p class="qmail">Prefer email? <a href="mailto:contact@hsraep.org?subject=%s&amp;body=%s">Send three sentences</a> '
+                    'and say whether to publish them under your name. It goes on the record the same way.</p>'
+                    % (esc(urllib.parse.quote(subj)), esc(urllib.parse.quote(body))))
         bits.append("</article>")
     bits.append("</div></div></section>")
     return "".join(bits)

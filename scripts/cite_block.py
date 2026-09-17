@@ -25,6 +25,7 @@ CSS = (
     "letter-spacing:.16em;text-transform:uppercase;color:var(--coral,#C43C25);margin-bottom:10px}"
     ".citebox p{margin:0;font-size:15px;line-height:1.62}"
     ".citebox p a{color:inherit;text-decoration:underline;text-underline-offset:2px}"
+    ".citebox .clic{margin-top:9px;font-size:13px;line-height:1.55;color:#5F6B78}"
     ".citerow{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}"
     ".citerow a,.citerow button{font:500 12px/1 'IBM Plex Mono','IBM Plex Mono Fallback',monospace;"
     "letter-spacing:.07em;text-transform:uppercase;color:#1C2E4A;background:#F4F7FA;"
@@ -45,14 +46,20 @@ def block(m, doi):
     names = people.reference_names(m["authors"] or ["Md Shafaat Ali Choyon"])
     cite = ('%s (%s). %s. <i>%s</i>. <a href="%s">%s</a>' %
             (H.escape(names), apa_date(m["date"]), H.escape(m["title"]), venue, url, url))
+    # HSREP's own pieces carry an open licence; outlet pieces do not (their
+    # publisher holds those rights), so the line only appears where it is true.
+    lic = ("" if m["outlet"] else
+           '<p class="clic">Licence: <a href="https://creativecommons.org/licenses/by/4.0/" '
+           'target="_blank" rel="noopener license">CC BY 4.0</a> &mdash; copy, translate, adapt and '
+           'reuse it, including commercially, with attribution and a note of any changes.</p>')
     return ("<!--CITEBLOCK:START--><style id=\"hs-cite\">%s</style>"
             "<div class=\"citebox\"><div class=\"ck\">Cite this piece</div>"
-            "<p class=\"cref\">%s</p><div class=\"citerow\">"
+            "<p class=\"cref\">%s</p>%s<div class=\"citerow\">"
             "<button type=\"button\" onclick=\"%s\">Copy citation</button>"
             "<a href=\"%s\" target=\"_blank\" rel=\"noopener\">View the DOI record &#8599;</a>"
             "<a href=\"https://zenodo.org/records/%s/export/bibtex\" target=\"_blank\" rel=\"noopener\">BibTeX</a>"
             "<a href=\"https://zenodo.org/records/%s/export/csl\" target=\"_blank\" rel=\"noopener\">RIS / CSL</a>"
-            "</div></div><!--CITEBLOCK:END-->") % (CSS, cite, JS, url, rid, rid)
+            "</div></div><!--CITEBLOCK:END-->") % (CSS, cite, lic, JS, url, rid, rid)
 
 
 def main():

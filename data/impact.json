@@ -1,9 +1,9 @@
 {
- "updated": "2026-09-16T09:03:43+00:00",
+ "updated": "2026-09-17T09:24:31+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-16"
+  "to": "2026-09-17"
  },
  "readers": {
   "s30": 78,
@@ -13,12 +13,12 @@
   "bottom": 36
  },
  "raw": {
-  "ga_users": 400,
-  "sessions": 436,
-  "pageviews": 868,
+  "ga_users": 409,
+  "sessions": 445,
+  "pageviews": 879,
   "engagement_rate": 43,
-  "avg_engaged_seconds": 37,
-  "excluded_datacentre": 107,
+  "avg_engaged_seconds": 36,
+  "excluded_datacentre": 116,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,29 +27,29 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 277,
-  "social": 132,
+  "direct": 286,
+  "social": 133,
   "search": 16,
   "referral": 2,
-  "facebook": 102,
+  "facebook": 103,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 439,
-  "user_prompted": 76,
+  "ai_fetches": 438,
+  "user_prompted": 72,
   "agents": [
    [
     "OAI-SearchBot",
-    85
+    87
    ],
    [
     "Amazonbot",
-    75
+    76
    ],
    [
     "GPTBot",
-    50
+    61
    ],
    [
     "Claude-User",
@@ -57,15 +57,7 @@
    ],
    [
     "Applebot",
-    39
-   ],
-   [
-    "ClaudeBot",
-    34
-   ],
-   [
-    "ChatGPT-User",
-    32
+    40
    ],
    [
     "Bytespider",
@@ -73,7 +65,15 @@
    ],
    [
     "Meta-ExternalAgent",
-    30
+    29
+   ],
+   [
+    "ChatGPT-User",
+    28
+   ],
+   [
+    "ClaudeBot",
+    23
    ],
    [
     "PerplexityBot",
@@ -84,19 +84,19 @@
     9
    ]
   ],
-  "search_crawlers": 177,
-  "all_bot_requests": 10840,
-  "human_visits": 20,
+  "search_crawlers": 154,
+  "all_bot_requests": 10589,
+  "human_visits": 25,
   "google_clicks": 4,
-  "google_impressions": 659,
-  "google_position": 14.8,
+  "google_impressions": 674,
+  "google_position": 14.6,
   "pages_indexed": 20,
-  "all_requests": 10840,
-  "cached_requests": 2793,
-  "unique_ips": 1358,
+  "all_requests": 10589,
+  "cached_requests": 2657,
+  "unique_ips": 1322,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-13"
+  "gsc_through": "2026-09-14"
  },
  "actions": {
   "cta": {
@@ -128,9 +128,9 @@
   }
  },
  "pages": {
-  "home": 981,
+  "home": 1001,
   "initiative": 211,
-  "season": 110,
+  "season": 112,
   "about": 104,
   "article": 82,
   "media": 72,

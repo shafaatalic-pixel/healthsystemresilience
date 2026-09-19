@@ -49,7 +49,7 @@ def card(x):
     doi = f'<span class="doi">DOI {html.escape(x["doi"])}</span>' if x['doi'] else ''
     return (f'<a class="hn-card" data-country="{html.escape(x["country"])}" data-type="{html.escape(x["type"])}" href="{x["url"]}">'
             f'<div class="th"><img src="{x["thumb"]}" width="680" height="680" alt="" loading="lazy" decoding="async"></div>'
-            f'<div class="b"><div class="mr"><span class="ct {ct}">{html.escape(x["type"])}</span><span>{html.escape(x["read"])}</span><span>{html.escape(x["outlet"].replace(" · ", " · "))}</span></div>'
+            f'<div class="b"><div class="mr"><span class="ct {ct}">{html.escape(x["type"])}</span><span>{html.escape(x["read"])}</span></div><div class="mr mr2">{html.escape(x["outlet"])}</div>'
             f'<h3>{html.escape(x["title"])}</h3><p class="ib">{ib}</p>'
             f'<div class="ft">{doi}<span class="go">Read &rarr;</span></div></div></a>')
 order = sorted(out, key=lambda x: (x['type'] != 'Special report', x['type'] == 'Foundations', x['title']))

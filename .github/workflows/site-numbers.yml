@@ -20,6 +20,7 @@ on:
       - "advocacy/**"
       - "initiative/**"
       - "scripts/site_numbers.py"
+      - "scripts/record_index.py"
   workflow_dispatch: {}
 
 permissions:
@@ -46,11 +47,17 @@ jobs:
       - name: Recompute the counts
         run: python scripts/site_numbers.py
 
+      # The home page's "Ask the record" box and its library cards are built
+      # from the In Brief of every published piece, so a new piece appears on
+      # the home page without anyone editing it.
+      - name: Rebuild the record index and the library front
+        run: python scripts/record_index.py
+
       - name: Commit if a number changed
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Site numbers: recomputed from the published pieces"
-          file_pattern: "*.html advocacy/*.html initiative/*.html articles/*/*.html"
+          file_pattern: "*.html advocacy/*.html initiative/*.html articles/*/*.html data/record.json"
 
       - name: Fail if any marker is unresolvable
         run: python scripts/site_numbers.py --check

@@ -392,6 +392,8 @@
  (body{padding-top:45px}; html.hs-bar-on body, html.hs-nobar body {padding-top:0}).
  renderCampaign() inserts the fixed-height bar and adds hs-bar-on in the same frame.
  A page that lacks the reserve simply behaves as before. */
+ /* a page can opt out of the bar with data-no-campaign on <html>; the header CTA still follows the live state */
+ if (ROOT.hasAttribute("data-no-campaign")) { barHidden(); return; }
  var fallback = { state: "open-standing", open: "2026-08-11", close: null };
  renderCampaign(fallback);
  if (!window.fetch) return;

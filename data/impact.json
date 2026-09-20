@@ -1,24 +1,24 @@
 {
- "updated": "2026-09-19T08:46:06+00:00",
+ "updated": "2026-09-20T09:15:12+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-19"
+  "to": "2026-09-20"
  },
  "readers": {
-  "s30": 78,
-  "s60": 31,
-  "s120": 15,
-  "s240": 11,
+  "s30": 79,
+  "s60": 32,
+  "s120": 16,
+  "s240": 12,
   "bottom": 36
  },
  "raw": {
-  "ga_users": 414,
-  "sessions": 450,
-  "pageviews": 883,
+  "ga_users": 417,
+  "sessions": 453,
+  "pageviews": 888,
   "engagement_rate": 43,
   "avg_engaged_seconds": 36,
-  "excluded_datacentre": 120,
+  "excluded_datacentre": 121,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,7 +27,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 292,
+  "direct": 294,
   "social": 133,
   "search": 17,
   "referral": 2,
@@ -36,7 +36,7 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 176,
+  "ai_fetches": 177,
   "user_prompted": 5,
   "agents": [
    [
@@ -48,11 +48,11 @@
     42
    ],
    [
-    "Applebot",
-    35
+    "GPTBot",
+    36
    ],
    [
-    "GPTBot",
+    "Applebot",
     35
    ],
    [
@@ -68,19 +68,19 @@
     2
    ]
   ],
-  "search_crawlers": 152,
-  "all_bot_requests": 11069,
-  "human_visits": 20,
+  "search_crawlers": 137,
+  "all_bot_requests": 11145,
+  "human_visits": 22,
   "google_clicks": 7,
-  "google_impressions": 698,
-  "google_position": 14.6,
+  "google_impressions": 709,
+  "google_position": 14.4,
   "pages_indexed": 20,
-  "all_requests": 11069,
-  "cached_requests": 2549,
-  "unique_ips": 1224,
+  "all_requests": 11145,
+  "cached_requests": 2561,
+  "unique_ips": 1254,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-16"
+  "gsc_through": "2026-09-17"
  },
  "actions": {
   "cta": {
@@ -112,7 +112,7 @@
   }
  },
  "pages": {
-  "home": 1005,
+  "home": 1014,
   "initiative": 211,
   "season": 112,
   "about": 104,

@@ -1,24 +1,24 @@
 {
- "updated": "2026-09-21T09:52:51+00:00",
+ "updated": "2026-09-22T09:16:24+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-21"
+  "to": "2026-09-22"
  },
  "readers": {
-  "s30": 79,
+  "s30": 80,
   "s60": 32,
   "s120": 16,
   "s240": 12,
-  "bottom": 36
+  "bottom": 37
  },
  "raw": {
-  "ga_users": 420,
-  "sessions": 456,
-  "pageviews": 890,
+  "ga_users": 426,
+  "sessions": 464,
+  "pageviews": 904,
   "engagement_rate": 42,
   "avg_engaged_seconds": 36,
-  "excluded_datacentre": 121,
+  "excluded_datacentre": 122,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,7 +27,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 297,
+  "direct": 305,
   "social": 133,
   "search": 17,
   "referral": 2,
@@ -36,12 +36,12 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 182,
-  "user_prompted": 7,
+  "ai_fetches": 193,
+  "user_prompted": 6,
   "agents": [
    [
     "OAI-SearchBot",
-    57
+    64
    ],
    [
     "Amazonbot",
@@ -49,44 +49,44 @@
    ],
    [
     "Applebot",
-    36
+    41
    ],
    [
     "GPTBot",
-    36
-   ],
-   [
-    "ChatGPT-User",
-    4
+    35
    ],
    [
     "Meta-ExternalAgent",
-    4
+    5
+   ],
+   [
+    "ChatGPT-User",
+    3
    ],
    [
     "Claude-User",
     3
    ]
   ],
-  "search_crawlers": 135,
-  "all_bot_requests": 13471,
-  "human_visits": 25,
+  "search_crawlers": 123,
+  "all_bot_requests": 12904,
+  "human_visits": 30,
   "google_clicks": 7,
-  "google_impressions": 714,
-  "google_position": 14.3,
+  "google_impressions": 724,
+  "google_position": 14.1,
   "pages_indexed": 20,
-  "all_requests": 13471,
-  "cached_requests": 2599,
-  "unique_ips": 1335,
+  "all_requests": 12904,
+  "cached_requests": 2646,
+  "unique_ips": 1313,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-18"
+  "gsc_through": "2026-09-19"
  },
  "actions": {
   "cta": {
    "initiative": 22,
    "article_open": 12,
-   "roundtable": 8,
+   "roundtable": 11,
    "download_pdf": 6,
    "season_open": 6,
    "newsletter": 5,
@@ -95,9 +95,9 @@
    "founder_site": 2,
    "partner": 2
   },
-  "cta_total": 89,
-  "cta_people": 20,
-  "cta_labelled": 70,
+  "cta_total": 92,
+  "cta_people": 21,
+  "cta_labelled": 73,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
@@ -112,14 +112,14 @@
   }
  },
  "pages": {
-  "home": 1014,
+  "home": 1031,
   "initiative": 211,
   "season": 112,
-  "about": 104,
+  "about": 107,
   "article": 82,
   "media": 72,
-  "roundtable": 18,
-  "other": 8,
+  "roundtable": 25,
+  "other": 9,
   "films": 5
  },
  "participation": {

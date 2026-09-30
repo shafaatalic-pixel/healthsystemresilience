@@ -1,0 +1,75 @@
+/* HSREP page top: one header and one "On this page" band on every page.
+   Loaded last in <head> so it wins over each page's older inline header CSS.
+   Measurements match the main pages as of Sep 2026: 105px header, 80px logo,
+   42px band that sticks under the header. */
+
+html body header.site.hs-top{position:sticky!important;top:0!important;z-index:50!important;background:rgba(251,252,253,.88)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid #DCE3EA!important;margin:0!important;padding:0!important;height:auto!important;box-shadow:none!important}
+html body header.site.hs-top .hs-top-in{max-width:1180px!important;margin:0 auto!important;padding:0 24px!important;box-sizing:border-box}
+html body header.site.hs-top .hs-top-row{display:flex!important;align-items:center!important;gap:26px!important;padding:12px 0!important;min-height:0!important;height:auto!important;flex-wrap:nowrap!important}
+html body header.site.hs-top .hs-top-logo{display:block;margin-right:auto!important;line-height:0;flex:0 0 auto}
+html body header.site.hs-top .hs-top-logo img{display:block!important;height:80px!important;width:auto!important;max-width:none!important;margin:0!important}
+html body header.site.hs-top .hs-top-nav{display:flex!important;align-items:center!important;gap:20px!important;margin:0!important;padding:0!important;background:none!important;border:0!important;position:static!important}
+html body header.site.hs-top .hs-top-nav a{font-family:'Inter','Inter Fallback',system-ui,sans-serif!important;font-size:.9rem!important;font-weight:600!important;color:#1C2E4A!important;text-decoration:none!important;padding:0 0 2px!important;margin:0!important;border:0!important;border-bottom:2px solid transparent!important;background:none!important;line-height:1.5!important;letter-spacing:0!important;text-transform:none!important}
+html body header.site.hs-top .hs-top-nav a:hover{color:#C43C25!important}
+html body header.site.hs-top .hs-top-nav a.here,html body header.site.hs-top .hs-top-nav a[aria-current="page"]{color:#C43C25!important;border-bottom-color:#C43C25!important}
+html body header.site.hs-top .hs-srch{display:inline-flex!important;align-items:center!important;gap:7px!important;font:600 .9rem 'Inter','Inter Fallback',sans-serif!important;color:#1C2E4A!important;text-decoration:none!important;border:1px solid #DCE3EA!important;border-radius:999px!important;padding:9px 14px!important;white-space:nowrap!important;flex:0 0 auto!important;background:transparent!important;margin:0!important}
+html body header.site.hs-top .hs-srch svg{width:16px!important;height:16px!important;fill:currentColor!important;flex:none!important}
+html body header.site.hs-top .hs-srch:hover{color:#C43C25!important;border-color:#C43C25!important}
+html body header.site.hs-top .hs-top-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;font-family:'Inter','Inter Fallback',system-ui,sans-serif!important;font-size:.95rem!important;font-weight:600!important;line-height:1.6!important;color:#fff!important;background:#C43C25!important;border:1px solid #C43C25!important;border-radius:6px!important;padding:10px 18px!important;text-decoration:none!important;white-space:nowrap!important;flex:0 0 auto!important;margin:0!important;box-shadow:none!important}
+html body header.site.hs-top .hs-top-cta:hover{background:#A8321F!important;border-color:#A8321F!important;color:#fff!important}
+html body header.site.hs-top #hmenu-btn{display:none!important}
+html body header.site.hs-top a:focus-visible,html body header.site.hs-top button:focus-visible{outline:3px solid #F26D5A!important;outline-offset:2px!important}
+
+/* hidden overflow on html/body turns body into a scroll box and breaks sticky; clip does not */
+html,html body{overflow-x:clip!important}
+
+/* the band */
+html body #secnav.hs-band{display:flex!important;align-items:center!important;gap:2px!important;position:sticky!important;top:var(--hdr,105px)!important;left:0!important;right:0!important;width:auto!important;height:42px!important;max-height:none!important;box-sizing:border-box!important;z-index:45!important;margin:0!important;padding:0 max(20px,calc((100% - 1180px)/2 + 24px))!important;background:#FBFCFD!important;border:0!important;border-top:1px solid rgba(28,46,74,.06)!important;border-bottom:1px solid #DCE3EA!important;border-radius:0!important;box-shadow:none!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;scrollbar-width:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+html body #secnav.hs-band::-webkit-scrollbar{display:none}
+html body #secnav.hs-band .sn-label{display:block!important;flex:0 0 auto!important;margin:0 12px 0 0!important;padding:0!important;font-family:'Inter','Inter Fallback',sans-serif!important;font-size:10.5px!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#9AA4B0!important;border:0!important;background:none!important}
+html body #secnav.hs-band a{flex:0 0 auto!important;display:inline-block!important;margin:0!important;padding:13px 12px 12px!important;font-family:'Inter','Inter Fallback',sans-serif!important;font-size:13px!important;line-height:1!important;font-weight:600!important;color:#5A6673!important;text-decoration:none!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;background:none!important}
+html body #secnav.hs-band a:hover{color:#1C2E4A!important}
+html body #secnav.hs-band a.active,html body #secnav.hs-band a[aria-current="page"],html body #secnav.hs-band a[aria-current="true"]{color:#0F2036!important;border-bottom-color:#C43C25!important;font-weight:700!important}
+html body #secnav.hs-band .sn-cta{display:none!important}
+html body #secnav.hs-band.static{position:static!important}
+html.has-secbar [id]{scroll-margin-top:calc(var(--hdr,105px) + 56px)}
+
+/* phone menu panel (built by each page's header script from the nav) */
+html body #hmenu-panel{display:none!important}
+@media(max-width:1060px){
+ html.hmenu-open body #hmenu-panel{display:block!important;position:fixed!important;top:var(--hdr,65px)!important;left:0!important;right:0!important;z-index:70!important;background:#FBFCFD!important;border-bottom:1px solid #DCE3EA!important;box-shadow:0 14px 34px rgba(15,32,54,.14)!important;padding:6px clamp(18px,4vw,34px) 14px!important;margin:0!important}
+ html body #hmenu-panel a{display:block!important;padding:13px 4px!important;font:600 15.5px 'Inter','Inter Fallback',sans-serif!important;color:#1C2E4A!important;text-decoration:none!important;border:0!important;border-bottom:1px solid rgba(28,46,74,.07)!important;background:none!important}
+ html body #hmenu-panel a:last-child{border-bottom:0!important}
+ html body #hmenu-panel a.here{color:#C43C25!important}
+}
+
+@media(max-width:1060px){
+ html body header.site.hs-top .hs-top-nav{display:none!important}
+ html body header.site.hs-top #hmenu-btn{display:inline-flex!important;align-items:center!important;gap:6px!important;background:transparent!important;border:1px solid #DCE3EA!important;border-radius:9px!important;padding:8px 12px!important;font:700 13px 'Inter','Inter Fallback',sans-serif!important;color:#1C2E4A!important;cursor:pointer!important;margin:0!important}
+ html body header.site.hs-top #hmenu-btn svg{width:16px!important;height:16px!important;stroke:currentColor!important;stroke-width:2.2!important;fill:none!important}
+ html body #secnav.hs-band{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+}
+@media(max-width:640px){
+ html body header.site.hs-top .hs-top-row{gap:10px!important}
+ html body header.site.hs-top .hs-top-logo img{height:40px!important}
+ html body header.site.hs-top .hs-srch span,html body header.site.hs-top #hmenu-btn span{display:none!important}
+ html body header.site.hs-top .hs-srch{padding:8px 10px!important}
+ html body header.site.hs-top #hmenu-btn{padding:8px 10px!important}
+ html body header.site.hs-top .hs-top-cta{padding:9px 13px!important;font-size:.78rem!important}
+ html body #secnav.hs-band{top:var(--hdr,65px)!important;height:40px!important;padding:0 14px!important}
+ html body #secnav.hs-band .sn-label{display:none!important}
+ html body #secnav.hs-band a{font-size:12.5px!important;padding:12px 10px 11px!important}
+}
+@media(max-width:400px){
+ html body header.site.hs-top .hs-top-in{padding:0 14px!important}
+ html body header.site.hs-top .hs-top-row{gap:8px!important}
+ html body header.site.hs-top .hs-top-logo img{height:40px!important}
+ html body header.site.hs-top .hs-srch,html body header.site.hs-top #hmenu-btn{padding:8px 9px!important}
+ html body header.site.hs-top .hs-top-cta{padding:8px 11px!important;font-size:.75rem!important}
+}
+@media(max-width:340px){
+ html body header.site.hs-top .hs-top-row{gap:6px!important}
+ html body header.site.hs-top .hs-top-logo img{height:34px!important}
+ html body header.site.hs-top .hs-srch,html body header.site.hs-top #hmenu-btn{padding:8px!important}
+ html body header.site.hs-top .hs-top-cta{padding:8px 9px!important;font-size:.72rem!important}
+}

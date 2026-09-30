@@ -60,7 +60,7 @@
 .pai-path .fn{margin:16px 0 0;font-size:12px;line-height:1.5;color:var(--muted)}
 
 /* role card (also the #host anchor) */
-.pai-role{position:relative;z-index:2;background:#fff;border:1px solid var(--pai-line);border-radius:14px;box-shadow:0 10px 30px rgba(28,46,74,.08);padding:24px 28px;scroll-margin-top:90px}
+.pai-role{position:relative;z-index:2;background:#fff;border:1px solid var(--pai-line);border-radius:14px;box-shadow:0 10px 30px rgba(28,46,74,.08);padding:24px 28px;scroll-margin-top:calc(var(--hdr,105px) + 60px)}
 .pai-role .rh{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:16px}
 .pai-role .rh h2{margin:0;font-family:var(--font-mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--heading)}
 .pai-role .rh p{margin:0;font-size:14px;color:var(--muted)}
@@ -80,12 +80,12 @@
 
 /* body with left rail */
 .pai-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding:48px 0 72px}
-.pai-rail{position:sticky;top:96px;align-self:start;display:flex;flex-direction:column;border-left:2px solid var(--pai-line)}
+.pai-rail{position:sticky;top:calc(var(--hdr,105px) + 66px);align-self:start;display:flex;flex-direction:column;border-left:2px solid var(--pai-line)}
 .pai-rail .mono{font-size:10px;color:var(--muted);padding:0 0 10px 16px}
 .pai-rail a{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 16px;border-left:2px solid transparent;margin-left:-2px}
 .pai-rail a:hover{color:var(--heading)}
 .pai-rail a.on{color:var(--heading);font-weight:600;border-left-color:var(--pai-coral-text)}
-.pai-card{background:#fff;border:1px solid var(--pai-line);border-radius:14px;padding:44px 44px 40px;margin-bottom:28px;scroll-margin-top:96px}
+.pai-card{background:#fff;border:1px solid var(--pai-line);border-radius:14px;padding:44px 44px 40px;margin-bottom:28px;scroll-margin-top:calc(var(--hdr,105px) + 60px)}
 .pai-card.plain{background:transparent;border-color:transparent;padding-left:0;padding-right:0}
 .pai-card>.mono{color:var(--pai-coral-text);display:block;margin-bottom:10px}
 .pai-card h2{margin:0 0 10px;font-size:clamp(1.7rem,1.3rem + 1vw,2.3rem);font-weight:600;line-height:1.15}
@@ -155,7 +155,7 @@
 .pai-resp .mono{display:block;color:var(--muted);font-size:10.5px;margin-bottom:8px}
 .pai-resp h3{margin:0 0 8px;font-size:1.25rem;font-weight:600}
 .pai-resp p{margin:0;font-size:14.5px;line-height:1.6}
-.pai-terms{margin-top:28px;border-top:1px solid var(--pai-line);padding-top:24px;scroll-margin-top:96px}
+.pai-terms{margin-top:28px;border-top:1px solid var(--pai-line);padding-top:24px;scroll-margin-top:calc(var(--hdr,105px) + 60px)}
 .pai-terms h3{margin:0 0 14px;font-size:1.3rem;font-weight:600}
 .pai-terms dl{display:grid;grid-template-columns:minmax(150px,210px) 1fr;margin:0}
 .pai-terms dt,.pai-terms dd{padding:11px 0;border-top:1px solid var(--pai-soft);margin:0}
@@ -186,7 +186,7 @@
 .pai-acc .body table{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 12px}
 .pai-acc .body th,.pai-acc .body td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--pai-soft);vertical-align:top}
 .pai-acc .body th{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.pai-lim{background:var(--pai-coral-wash);border-radius:12px;padding:22px 24px;position:sticky;top:96px}
+.pai-lim{background:var(--pai-coral-wash);border-radius:12px;padding:22px 24px;position:sticky;top:calc(var(--hdr,105px) + 66px)}
 .pai-lim .mono{color:var(--pai-coral-text);display:block;margin-bottom:10px}
 .pai-lim p{margin:0 0 10px;font-size:14px;line-height:1.6}
 .pai-lim p:last-child{margin:0}
@@ -253,7 +253,7 @@
 .pai-track .line{width:2px;flex-grow:1;background:repeating-linear-gradient(180deg,#A3ADB8 0 6px,transparent 6px 12px)}
 .pai-track li:first-child .line{background:var(--heading)}
 .pai-track li:last-child .line{display:none}
-.pai-track .stage{padding:14px 0 30px;min-width:0;scroll-margin-top:90px}
+.pai-track .stage{padding:14px 0 30px;min-width:0;scroll-margin-top:calc(var(--hdr,105px) + 60px)}
 .pstage{border-radius:12px;padding:22px 26px}
 .pstage.prop{background:var(--heading);color:#fff;display:grid;grid-template-columns:200px minmax(0,1fr) auto;gap:24px;align-items:center}
 .pstage.prop h2{color:#fff;margin:0;font-size:1.45rem}

@@ -367,14 +367,9 @@ html.hmenu-open #hmenu-panel{display:block}
   #identity .dots button.on::after{animation:none;transform:scaleX(1)}
   .pcard,.pcard::after{transition:none}
 }
-</style></head><body><a href="#main" class="skip-link">Skip to content</a>
+</style><link rel="stylesheet" href="/assets/css/top-1.css"></head><body><a href="#main" class="skip-link">Skip to content</a>
 
-<header class="site"><div class="wrap"><div class="row">
-<a href="#top"><img class="logo-lite" src="assets/logo-da7e214a.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"><img class="logo-drk" src="assets/logo-eeb0dc47.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a>
-<nav><a href="index.html">Home</a><a href="season-1.html">Evidence</a><a href="articles.html">Articles</a><a href="impact.html">Impact</a><a href="initiative.html">Initiative</a><a href="about.html">About</a></nav>
-
-<a class="hs-srch" href="search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="btn accent" style="padding:10px 18px" href="/roundtable.html">Join Roundtable</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
-</div></div></header><nav id="secnav"><div class="sn-label">On this page</div></nav><main id="main" tabindex="-1">
+<header class="site hs-top"><div class="hs-top-in"><div class="hs-top-row"><a class="hs-top-logo" href="/index.html" aria-label="HSREP home"><img src="/assets/logo-da7e214a.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a><nav class="hs-top-nav" aria-label="Main"><a href="/index.html">Home</a><a href="/season-1.html">Evidence</a><a href="/articles.html">Articles</a><a href="/impact.html">Impact</a><a href="/initiative.html">Initiative</a><a class="here" aria-current="page" href="/about.html">About</a></nav><a class="hs-srch" href="/search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="hs-top-cta" href="/roundtable.html">Join Roundtable</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button></div></div></header><nav id="secnav" class="hs-band"><div class="sn-label">On this page</div></nav><main id="main" tabindex="-1">
 <section class="band idstory js-off" id="identity"><div class="wrap">
 <div class="shead rv"><div class="eyebrow">Identity</div>
 <div class="top"><h1 class="sec">The mark, and what it carries.</h1><div class="lead">Most platforms open with a logo. Ours opens with a promise, read the crest, one element at a time.</div></div></div>
@@ -593,7 +588,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 <script>
 (function(){
  if(location.hash){try{var t=document.getElementById(location.hash.slice(1));if(t){setTimeout(function(){t.scrollIntoView({behavior:'smooth',block:'start'});},80);}}catch(e){}}
- var secs=[].slice.call(document.querySelectorAll('section[id]')).filter(function(s){return !s.hidden&&(s.querySelector('.shead .eyebrow')||s.id==='top');});
+ var secs=[].slice.call(document.querySelectorAll('section[id]')).filter(function(s){return !s.hidden&&(s.querySelector('.shead .eyebrow')&&s.id!=='mark');});
  var nav=document.getElementById('secnav'); if(!nav||secs.length<3) return;
  var links=[];
  secs.forEach(function(sec){
@@ -603,7 +598,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   if(/copy link/i.test(t))t=t.replace(/copy link/ig,'').trim();
   var a=document.createElement('a');a.href='#'+sec.id;a.textContent=t.charAt(0).toUpperCase()+t.slice(1);nav.appendChild(a);links.push(a);
  });
- var cta=document.createElement('a');cta.className='sn-cta';cta.href='#participate';cta.textContent='Participate \u2192';nav.appendChild(cta);
+ 
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-15% 0px -75% 0px'});
  secs.forEach(function(s){io.observe(s);});
 })();

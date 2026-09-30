@@ -112,7 +112,7 @@
 .pai-rec>div{position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#fff,#FBFCFD);transition:transform .3s var(--pai-ease),box-shadow .3s var(--pai-ease)}
 .pai-rec>div::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--pai-navy),var(--pai-coral-text))}
 .pai-rec>div:hover{transform:translateY(-3px);box-shadow:var(--pai-shadow)}
-.pai-rec .n{font-family:var(--font-display);font-size:2.1rem;font-weight:700;letter-spacing:-.01em;line-height:1;margin-bottom:10px;background:linear-gradient(90deg,var(--pai-navy-deep),#34507A);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.pai-rec .n{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.01em;line-height:1;margin-bottom:10px;background:linear-gradient(90deg,var(--pai-navy-deep),#34507A);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
 
 /* evidence */
 .pai-acc summary{transition:color .2s}
@@ -224,7 +224,6 @@ html.pai-motion .pai-close::after{animation:pai-drift 18s ease-in-out infinite a
 @media(max-width:720px){
   .pai-card{padding:30px 20px 26px;border-radius:16px}
   .pai-path{padding:22px 18px;border-radius:14px}
-  .pai-rec .n{font-size:1.8rem}
   .pai-tl{padding-top:0}.pai-tl::before{display:none}
   .pai-tl .s,.pai-tl .d,.pai-tl .p,.pai-tl .f{border-radius:10px}
   .pai-hero::after{display:none}

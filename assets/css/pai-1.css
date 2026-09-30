@@ -285,3 +285,14 @@
 .pai-caveat{font-size:13.5px;color:var(--muted);margin:14px 0 0}
 @media(max-width:900px){.pstage.prop{grid-template-columns:1fr;gap:8px}.gcrit,.pcaps,.cview{grid-template-columns:1fr}}
 @media(max-width:720px){.pai-track>li{grid-template-columns:26px minmax(0,1fr);column-gap:12px}.pai-track .node{width:16px;height:16px}.pai-track .node.gate{width:16px;height:16px}.pstage{padding:18px 16px}.pai-legend span.st{width:130px}}
+
+/* Type scale matched to the main pages (About, Evidence, Roundtable), Sep 2026:
+   page title 32px, section heading 24px, card title ~18px, intro 18.9px, body 16px. */
+.pai-hero h1{font-size:2rem;font-weight:600;line-height:1.06;letter-spacing:0}
+.pai-hero .dek{font-size:1.18rem}
+.pai-card h2,.pstage h2,.pstage.prop h2{font-size:1.5rem;line-height:1.14}
+.pai-card .lede{font-size:1rem}
+.pai-resp h3,.pai-rec h3,.pai-terms h3,.pcap h3{font-size:1.12rem}
+.pai-tabs [role="tab"] b,.pai-why b,.pai-demo b,.pai-close b{font-size:1.12rem}
+.pai-loop [role="tab"] b{font-size:1.2rem}
+@media(max-width:720px){.pai-loop [role="tab"] b{font-size:1rem}}

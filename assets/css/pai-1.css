@@ -140,6 +140,8 @@
 .pai-tl>div{padding:18px}
 .pai-tl .s{background:var(--panel);border-radius:8px 0 0 8px}
 .pai-tl .p{background:var(--heading);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.pai-tl .f{background:#DCE6EF;display:flex;flex-direction:column;justify-content:space-between}
+.pai-tl .f .ms{color:var(--heading)}.pai-tl .f .ms span{color:var(--pai-coral-text);border-left:2px solid var(--pai-coral-text);padding-left:8px}
 .pai-tl .d{background:var(--pai-coral-wash);border-radius:0 8px 8px 0}
 .pai-tl .mono{display:block;font-size:10.5px;margin-bottom:6px;color:var(--muted)}
 .pai-tl .p .mono{color:#AEBCCE}.pai-tl .d .mono{color:var(--pai-coral-text)}
@@ -223,7 +225,8 @@
   .pai-demo{grid-template-columns:1fr}
   .pai-tl{grid-template-columns:1fr}
   .pai-tl .s,.pai-tl .d{border-radius:8px}
-  .pai-tl .p{border-radius:8px}
+  .pai-tl .p,.pai-tl .f{border-radius:8px}
+  .pai-tl[style]{grid-template-columns:1fr!important}
   .pai-terms dl{grid-template-columns:1fr}
   .pai-terms dd{border-top:0;padding-top:0}
   .pai-path{padding:20px 18px}

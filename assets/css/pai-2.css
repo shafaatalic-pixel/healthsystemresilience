@@ -228,3 +228,24 @@ html.pai-motion .pai-close::after{animation:pai-drift 18s ease-in-out infinite a
   .pai-tl .s,.pai-tl .d,.pai-tl .p,.pai-tl .f{border-radius:10px}
   .pai-hero::after{display:none}
 }
+
+/* ---------- roundtable-card style (from the home page § 03 card) ----------
+   Coral marks what a reader can act on, so this style goes only on the
+   action boxes: the open question, the role card and the demo link. */
+.pai .rtask,.pai-role,.pai-demo{position:relative;overflow:hidden;border:1px solid #E7B4A8;
+  background:#fff linear-gradient(155deg,rgba(242,109,90,0) 38%,rgba(242,109,90,.075) 100%);
+  transition:transform .2s var(--pai-ease),box-shadow .2s var(--pai-ease),border-color .2s var(--pai-ease)}
+.pai .rtask::before,.pai-role::before,.pai-demo::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
+  background:linear-gradient(90deg,var(--coral,#F26D5A),#f59277)}
+.pai .rtask:hover,.pai-demo:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(242,109,90,.18);border-color:#F6C7BD}
+.pai-role{box-shadow:0 10px 30px rgba(28,46,74,.08)}
+.pai-role:hover{box-shadow:0 18px 44px rgba(242,109,90,.18);border-color:#F6C7BD}
+/* the open question: header strip like the home card */
+.pai .rtask{max-width:none;border-radius:16px;padding:0 0 26px;box-shadow:0 8px 26px rgba(15,32,54,.06)}
+.pai .rtask .k{margin:0 0 20px;padding:16px 28px;background:rgba(255,255,255,.55);border-bottom:1px solid #F1D3CA;color:var(--heading)}
+.pai .rtask>:not(.k){margin-left:28px;margin-right:28px}
+.pai .rtask h2{font-size:1.35rem;line-height:1.35}
+.pai-demo img{border-color:#F1D3CA}
+@media(max-width:720px){.pai .rtask .k{padding:14px 20px}.pai .rtask>:not(.k){margin-left:20px;margin-right:20px}}
+@media(prefers-reduced-motion:reduce){.pai .rtask:hover,.pai-demo:hover{transform:none}}
+html.pai-motion .pai .rtask.rv,html.pai-motion .pai-demo.rv{transition:opacity .75s var(--pai-ease),transform .45s var(--pai-ease),box-shadow .2s var(--pai-ease),border-color .2s var(--pai-ease)}

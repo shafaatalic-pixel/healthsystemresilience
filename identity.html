@@ -369,7 +369,7 @@ html.hmenu-open #hmenu-panel{display:block}
 }
 </style><link rel="stylesheet" href="/assets/css/top-1.css"></head><body><a href="#main" class="skip-link">Skip to content</a>
 
-<header class="site hs-top"><div class="hs-top-in"><div class="hs-top-row"><a class="hs-top-logo" href="/index.html" aria-label="HSREP home"><img src="/assets/logo-da7e214a.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a><nav class="hs-top-nav" aria-label="Main"><a href="/index.html">Home</a><a href="/season-1.html">Evidence</a><a href="/articles.html">Articles</a><a href="/impact.html">Impact</a><a href="/initiative.html">Initiative</a><a class="here" aria-current="page" href="/about.html">About</a></nav><a class="hs-srch" href="/search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="hs-top-cta" href="/roundtable.html">Join Roundtable</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button></div></div></header><nav id="secnav" class="hs-band"><div class="sn-label">On this page</div></nav><main id="main" tabindex="-1">
+<header class="site hs-top"><div class="hs-top-in"><div class="hs-top-row"><a class="hs-top-logo" href="/index.html" aria-label="HSREP home"><img src="/assets/logo-da7e214a.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a><nav class="hs-top-nav" aria-label="Main"><a href="/index.html">Home</a><a href="/season-1.html">Evidence</a><a href="/articles.html">Articles</a><a href="/impact.html">Impact</a><a href="/initiative.html">Initiative</a><a class="here" aria-current="page" href="/about.html">About</a></nav><a class="hs-srch" href="/search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="hs-top-cta" href="/roundtable.html">Join Roundtable</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button></div></div></header><nav id="secnav" class="hs-band" aria-label="On this page"><div class="sn-label">On this page</div><a href="#identity">The mark</a><a href="#principles">Three principles</a><a href="#colour-and-type">Colour and type</a></nav><main id="main" tabindex="-1">
 <section class="band idstory js-off" id="identity"><div class="wrap">
 <div class="shead rv"><div class="eyebrow">Identity</div>
 <div class="top"><h1 class="sec">The mark, and what it carries.</h1><div class="lead">Most platforms open with a logo. Ours opens with a promise, read the crest, one element at a time.</div></div></div>
@@ -408,7 +408,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="lead">Three principles, and the short list of colours and letterforms that
 carry them across everything HSREP publishes.</div></div></div>
 
-<div class="pgrid rv">
+<div class="pgrid rv" id="principles">
 <div class="pcard"><span class="pn">01</span><h3>Human in purpose</h3>
 <p>The coral point sits above the structure because the person is the reason the
 structure exists. Every figure on this site is checked against whether it describes
@@ -423,7 +423,7 @@ are one form. Work that never reaches a clinic is a hobby; the initiative exists
 to close that gap.</p></div>
 </div>
 
-<div class="specs rv">
+<div class="specs rv" id="colour-and-type">
 <div class="spec"><div class="slbl">Colour</div>
 <div class="swatches">
 <div class="sw" style="--c:#0F2036"><span></span><b>Navy deep</b><i>#0F2036</i></div>
@@ -635,4 +635,4 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
  }
 })();
 </script>
-</body></html>
+<script id="band-spy">(function(){var n=document.getElementById("secnav");if(!n||!("IntersectionObserver" in window))return;var m={};[].slice.call(n.querySelectorAll('a[href^="#"]')).forEach(function(a){var t=document.getElementById(a.getAttribute("href").slice(1));if(t)m[t.id]=a;});var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Object.keys(m).forEach(function(k){m[k].classList.toggle("active",k===e.target.id);});}});},{rootMargin:"-20% 0px -70% 0px"});Object.keys(m).forEach(function(k){io.observe(document.getElementById(k));});})();</script></body></html>

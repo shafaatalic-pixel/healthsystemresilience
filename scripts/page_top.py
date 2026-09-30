@@ -54,6 +54,43 @@ def pai_band(cur):
             f'<div class="sn-label">Prevention Adoption Initiative</div>{links}</nav>')
 
 
+# Pages with too few sections for the automatic band get a written one.
+# Articles and films share a "Season 1 library" band, the way the initiative
+# pages share theirs. (label, links, anchors to add: [(old, new)])
+LIB = 'Season 1 library'
+STATIC = {
+    'articles.html': (LIB, [('Articles', '/articles.html', 'page'), ('Short films', '/films.html#short-films', ''),
+                            ('Explainers', '/films.html#explainers', '')], []),
+    'films.html': (LIB, [('Articles', '/articles.html', ''), ('Short films', '#short-films', ''),
+                         ('Explainers', '#explainers', '')], []),
+    'identity.html': ('On this page', [('The mark', '#identity', ''), ('Three principles', '#principles', ''),
+                                       ('Colour and type', '#colour-and-type', '')],
+                      [('<div class="pgrid rv">', '<div class="pgrid rv" id="principles">'),
+                       ('<div class="specs rv">', '<div class="specs rv" id="colour-and-type">')]),
+}
+SPY = ('<script id="band-spy">(function(){var n=document.getElementById("secnav");if(!n||!("IntersectionObserver" in window))return;'
+       'var m={};[].slice.call(n.querySelectorAll(\'a[href^="#"]\')).forEach(function(a){var t=document.getElementById(a.getAttribute("href").slice(1));if(t)m[t.id]=a;});'
+       'var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Object.keys(m).forEach(function(k){m[k].classList.toggle("active",k===e.target.id);});}});},{rootMargin:"-20% 0px -70% 0px"});'
+       'Object.keys(m).forEach(function(k){io.observe(document.getElementById(k));});})();</script>')
+
+
+def static_band(name, s):
+    if name not in STATIC:
+        return s
+    label, links, ids = STATIC[name]
+    html = ''.join(f'<a href="{h}"{" aria-current=" + chr(34) + "page" + chr(34) if c else ""}>{t}</a>'
+                   for t, h, c in links)
+    s = re.sub(r'<nav id="secnav" class="hs-band"[^>]*>[\s\S]*?</nav>',
+               f'<nav id="secnav" class="hs-band" aria-label="{label}"><div class="sn-label">{label}</div>{html}</nav>',
+               s, count=1)
+    for old, new in ids:
+        if new not in s:
+            s = s.replace(old, new, 1)
+    if 'id="band-spy"' not in s:
+        s = s.replace('</body>', SPY + '</body>', 1)
+    return s
+
+
 def run(path):
     name = path.split('/')[-1]
     s = open(path, encoding='utf-8').read()
@@ -86,6 +123,8 @@ def run(path):
     s = s.replace("||s.id==='top'", "&&s.id!=='mark'")
     s = s.replace("var cta=document.createElement('a');cta.className='sn-cta';cta.href='#participate';"
                   "cta.textContent='Participate \\u2192';nav.appendChild(cta);", '')
+
+    s = static_band(name, s)
 
     if s != o:
         open(path, 'w', encoding='utf-8').write(s)

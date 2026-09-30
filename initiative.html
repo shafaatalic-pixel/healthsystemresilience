@@ -462,7 +462,7 @@ html.hmenu-open #hmenu-panel{display:block}
 .rtask p{margin:0 0 16px;font-size:15.5px;line-height:1.62;color:var(--ink)}
 .rtask .rf{margin-top:20px}
 @media(max-width:720px){.rtask{padding:24px 22px}}
-</style><link rel="stylesheet" href="assets/css/pai-1.css">
+</style><link rel="stylesheet" href="assets/css/pai-1.css"><script>(function(){try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("pai-motion");}catch(e){}})();</script><link rel="stylesheet" href="assets/css/pai-2.css">
 <link rel="stylesheet" href="/assets/css/top-1.css"></head><body><a href="#main" class="skip-link">Skip to content</a>
 <header class="site hs-top"><div class="hs-top-in"><div class="hs-top-row"><a class="hs-top-logo" href="/index.html" aria-label="HSREP home"><img src="/assets/logo-da7e214a.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a><nav class="hs-top-nav" aria-label="Main"><a href="/index.html">Home</a><a href="/season-1.html">Evidence</a><a href="/articles.html">Articles</a><a href="/impact.html">Impact</a><a class="here" aria-current="page" href="/initiative.html">Initiative</a><a href="/about.html">About</a></nav><a class="hs-srch" href="/search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="hs-top-cta" href="/roundtable.html">Join Roundtable</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button></div></div></header><nav id="secnav" class="hs-band" aria-label="Prevention Adoption Initiative"><div class="sn-label">Prevention Adoption Initiative</div><a href="/initiative.html" aria-current="page">Overview</a><a href="/dashboard-demo.html">Explore the demo</a><a href="/initiative-next.html">Future roadmap</a></nav><main id="main" tabindex="-1" class="pai">
 
@@ -799,6 +799,31 @@ apply();})();
   if(!('IntersectionObserver' in window)){el.classList.add('in');return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.3});
   io.observe(el);
+})();
+</script>
+<script id="pai-motion-js">
+(function(){
+ var H=document.documentElement;if(!H.classList.contains('pai-motion'))return;
+ var $=function(q,r){return [].slice.call((r||document).querySelectorAll(q));};
+ /* what reveals on scroll */
+ $('.pai-card').forEach(function(e){e.classList.add('rv');});
+ $('.pai-panel,.pai-why,.pai-loop,.pai-demo,.pai-terms,.pai-ev,.pai-close,.pai-tlnote,.pai-by,.pai-dl,.pai-small').forEach(function(e){e.classList.add('rv');});
+ $('.pai-pillars,.pai-resp,.pai-rec,.pai-tl').forEach(function(e){e.classList.add('rvs');});
+ var seen=[];
+ function count(el){
+  var t=el.textContent,m=/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/.exec(t);if(!m)return;
+  var pre=m[1],num=m[2],post=m[3],dec=(num.split('.')[1]||'').length,comma=num.indexOf(',')>-1,to=parseFloat(num.replace(/,/g,''));
+  if(isNaN(to))return;var t0=null,dur=1400;
+  function fmt(v){var s=v.toFixed(dec);if(comma)s=s.replace(/\B(?=(\d{3})+(?!\d))/g,',');return pre+s+post;}
+  function step(ts){if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/dur);k=1-Math.pow(1-k,3);el.textContent=fmt(to*k);if(k<1)requestAnimationFrame(step);else el.textContent=t;}
+  el.textContent=fmt(0);requestAnimationFrame(step);
+ }
+ if(!('IntersectionObserver' in window)){$('.rv,.rvs').forEach(function(e){e.classList.add('in');});return;}
+ var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var e=en.target;e.classList.add('in');io.unobserve(e);
+  if(e.classList.contains('pai-panel'))$('.gbar .lb b',e).forEach(count);
+  if(e.classList.contains('pai-rec'))$('.n',e).forEach(count);
+ });},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+ $('.rv,.rvs').forEach(function(e){io.observe(e);});
 })();
 </script>
 </body>

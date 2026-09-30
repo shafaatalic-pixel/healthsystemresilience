@@ -106,10 +106,10 @@ US = dict(
   sub="A partnership brief on closing the gap between the preventive care that is recommended and the preventive care that actually gets finished — in the safety-net settings where the gap is widest.",
   pitch=[
     ("Problem", "U.S. colorectal-cancer screening sits at <b>63.5% against a 72.8% target</b> — and 44.89% in Federally Qualified Health Centers (CY2025 UDS; Michigan 48.74%). The services work; <b>completion</b> is what fails."),
-    ("Solution", "A proposed <b>disease-agnostic completion engine</b>: it finds who is overdue, removes friction, and drives follow-through, run weekly on a fidelity dashboard. A predictive, explainable model is on the roadmap — not in the first pilot."),
-    ("Evidence", "Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16.1pp, reminders +15.3pp, navigation +13.6pp). Honest caveat: real-world gains depend on <b>implementation fidelity</b> — STOP CRC averaged ~3.4pp — which this design exists to protect."),
-    ("Cost", "<b>~$90</b> per additional person screened (Pignone et al., JGIM 2021 benchmark)."),
-    ("The ask", "One clinic to run a pre-registered <b>12-month pilot</b>; partners to scale it. Step one is a 30-minute conversation."),
+    ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly dashboard. A predictive model is on the roadmap — not in the first pilot."),
+    ("Evidence", "Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16.1pp, reminders +15.3pp, navigation +13.6pp). Honest caveat: real-world gains depend on <b>how well each step is carried out</b> — STOP CRC averaged ~3.4pp — which this design exists to protect."),
+    ("Cost", "No fee to the site for the first three months. Published benchmark: <b>~$90</b> per additional person screened by mailed-FIT outreach (Pignone et al., JGIM 2021) — not the pilot's cost."),
+    ("The ask", "One clinic to run a <b>12-month pilot</b>: a <b>3-month feasibility phase at no fee</b>, then a funded pilot to month 12 if it works. Step one is a 30-minute conversation."),
   ],
   stats=[
     ("~8%", "of U.S. adults 35+ receive all 15 high-priority preventive services (Borsky, <i>Health Affairs</i> 2018)."),
@@ -117,12 +117,12 @@ US = dict(
     ("44.89%", "CRC screening in Federally Qualified Health Centers, CY2025 UDS (Michigan 48.74%) — the gap concentrates here."),
   ],
   cards=[
-    ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot — raise a UDS/HEDIS measure you already report, inside your existing staffing, with the fidelity discipline that makes outreach reliably land."),
-    ("Funders / partners", "Fund a cost-effective, scalable model", "A disease-agnostic engine at ~$90 per additional person screened, with an equity-stratified design and a path from one site to a network."),
-    ("Researchers", "Co-design a publishable pilot", "A pre-registered stepped-wedge / RE-AIM evaluation with a protocol-first publication — rigor built in, co-authorship on the table. Principal investigator: to be confirmed."),
+    ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot — raise a UDS/HEDIS measure you already report, inside your existing staffing. The first three months carry no fee, and you decide at month three whether to go on."),
+    ("Funders / partners", "Fund a cost-effective, scalable model", "Fund months 4–12 once the feasibility phase shows the routine can run. Equity-stratified design, criteria agreed before results, and a path from one site to a network."),
+    ("Researchers", "Co-design a publishable pilot", "An independent evaluation: before and after against the site's own trend, with a comparison clinic where possible, reported with RE-AIM. Plan published first; co-authorship on the table. Principal investigator: to be confirmed."),
   ],
-  demo_h="A proposed 12-month colorectal-cancer completion pilot.",
-  demo_p="One Southeast Michigan FQHC below the UDS benchmark, with an outreach function and a quality-improvement sponsor. The site keeps its workflow and its data; HSREP is implementation lead (training, fidelity dashboard, weekly measurement, coordination); an academic partner owns the evaluation independently. Evaluated with RE-AIM against the site's own baseline, pre-registering a benchmarked target above the ~3.4-point STOP CRC average, with a comparison clinic where feasible, a named post-grant sustainability path, and guaranteed diagnostic follow-up. First readout after one full screening cycle (about month six); results published whichever way they go. Disease-agnostic by design — the same loop extends to cervical and breast screening, hypertension, and immunizations.",
+  demo_h="A proposed 12-month colorectal-cancer completion pilot — the first three months at no fee.",
+  demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3: feasibility, no fee</b> — kits sent and returned, positive tests navigated and booked, days to a booked colonoscopy, staff hours, data completeness. <b>Month 3: decision</b> — the site funds the rest, a funder is found, or it stops. <b>Months 4–12: funded pilot.</b> The site keeps its workflow and its data; HSREP is implementation lead (about 30 hours a week); an academic partner evaluates independently, before and after against the site's own trend with a comparison clinic where possible and a target published in advance. First readout about month six; results published whichever way they go.",
   sources="Borsky et al., Health Affairs 2018 · Healthy People 2030 C-07 (2023 baseline) · HRSA Uniform Data System CY2025, national and Michigan, accessed Aug 2026 · CDC Community Guide (median effects) · Coronado et al., STOP CRC, JAMA Internal Medicine 2018 · Pignone et al., JGIM 2021 (mailed-FIT cost).",
 )
 
@@ -131,8 +131,8 @@ BD = dict(
   h1="The screening exists. Completion is what's missing.",
   sub="A partnership brief on closing the gap between preventive care that is offered and preventive care that is actually completed — across Bangladesh's community-clinic screening system.",
   pitch=[
-    ("Problem", "Bangladesh's national screening programme has reach and a registry — yet its own evaluation found that only <b>40.4% of VIA-positive women attended for colposcopy</b> (January 2018 – May 2023; Nessa et al., 2025). That is a completion-and-fidelity gap, not a science gap."),
-    ("Solution", "A proposed <b>disease-agnostic completion engine</b>: it finds who is overdue, removes friction, and drives follow-through, run weekly on a fidelity dashboard. A predictive, explainable model is on the roadmap — not in the first pilot."),
+    ("Problem", "Bangladesh's national screening programme has reach and a registry — yet its own evaluation found that only <b>40.4% of VIA-positive women attended for colposcopy</b> (January 2018 – May 2023; Nessa et al., 2025). That is a completion gap, not a science gap."),
+    ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly dashboard. A predictive model is on the roadmap — not in the first pilot."),
     ("The model", "<b>Embed, don't build</b> — the engine plugs into existing clinics and the national registry. In Bangladesh, friction reduction means the barriers that actually stop completion: transparent bundled pricing, literacy-tailored urgency communication, and one-visit / home-collection logistics."),
     ("Evidence", "Each mechanism carries quantified effect sizes from the CDC Community Guide; the programme's own evaluation identifies the uptake and follow-up gaps the loop is designed to close."),
     ("The ask", "A first <b>private-network partner</b> to run the loop commercially — then a donor-supported public-programme pilot in a few upazilas to prove it at national scale. Step one is a 30-minute conversation."),

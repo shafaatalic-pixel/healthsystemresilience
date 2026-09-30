@@ -473,52 +473,87 @@ html.hmenu-open #hmenu-panel{display:block}
 .nextnote{margin-top:26px;font-size:.95rem;color:var(--muted);max-width:66ch}
 [id]{scroll-margin-top:130px}
 @media(max-width:720px){.rolegrid{grid-template-columns:1fr}.rolecard{padding:18px 16px}}
-</style></head><body><a href="#main" class="skip-link">Skip to content</a>
+</style><link rel="stylesheet" href="assets/css/pai-1.css">
+</head><body><a href="#main" class="skip-link">Skip to content</a>
 <header class="site"><div class="wrap"><div class="row">
 <a href="index.html"><img class="logo-lite" src="assets/logo-da7e214a.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"><img class="logo-drk" src="assets/logo-eeb0dc47.svg" width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a>
 <nav><a href="index.html">Home</a><a href="season-1.html">Evidence</a><a href="articles.html">Articles</a><a href="impact.html">Impact</a><a class="here" href="initiative.html">Initiative</a><a href="about.html">About</a></nav>
 
 <a class="hs-srch" href="search.html" aria-label="Search HSREP"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3a7.5 7.5 0 1 0 4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg><span>Search</span></a><a class="btn accent" style="padding:10px 18px" href="#host">Request presentation</a><button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hmenu-panel"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
-</div></div></header><nav id="secnav"><div class="sn-label">On this page</div></nav><main id="main" tabindex="-1">
-<section class="phero"><img class="crest" src="assets/crest-0ee1fd55.webp" width="640" height="640" alt="">
-<div class="wrap">
-<span class="statuschip"><i></i>Future direction &middot; Not in the first pilot</span>
-<h1>Where it goes next.</h1>
-<p class="dek">The Prevention Adoption Initiative starts with one colorectal cancer screening pilot in a Michigan health center. This page holds what could follow if that pilot works: a model layer, more kinds of partners, and other health systems. <em>None of it runs in the first pilot.</em></p>
-<div class="cta"><a class="btn accent" href="initiative.html">Back to the pilot <span class="ar">&rarr;</span></a><a class="btn ghost on-dark" href="initiative.html#host">Talk to me about hosting <span class="ar">&rarr;</span></a></div>
-</div></section>
+</div></div></header><main id="main" tabindex="-1" class="pai">
+<nav class="pai-sub" aria-label="Prevention Adoption Initiative"><div class="wrap">
+<span class="lbl">Prevention Adoption Initiative</span>
+<a href="initiative.html">Overview</a>
+<a href="dashboard-demo.html">Explore the demo</a>
+<a href="initiative-next.html" aria-current="page">Future roadmap</a>
+</div></nav>
 
-<section class="dark" id="roadmap"><div class="wrap">
-<div class="shead rv"><div class="eyebrow on-dark"><span class="snum" style="color:var(--coral)">§ 01</span> · The roadmap</div>
-<div class="top"><h2 class="sec">Three pillars that come only after a validated pilot.</h2>
-<div class="lead">The first site runs the loop on transparent rules and its own staff. These three are what the toolkit could grow into once the pilot has been evaluated, and only if they do better than what the pilot already does.</div></div></div>
-<div class="grid3" style="grid-template-columns:repeat(3,1fr)">
-<details class="gcard dark rv pillacc" style="transition-delay:.12s" open><summary><span class="n">ROADMAP 01 <i>&middot; Rank</i></span><h3>Predictive AI, explainable</h3><span class="pillchev" aria-hidden="true"></span></summary><p>After a validated pilot. A proposed model layer that flags who is most likely to fall out of the loop and prioritizes outreach accordingly, explainable and fairness-audited, human-in-the-loop, never a black box.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.18s" open><summary><span class="n">ROADMAP 02 <i>&middot; Act</i></span><h3>Agentic &amp; conversational outreach</h3><span class="pillchev" aria-hidden="true"></span></summary><p>After a validated pilot, and only under the site&rsquo;s consent process and a BAA. Generative-AI patient navigation: multilingual, two-way reminders over SMS and messaging that shepherd each patient through scheduling and at-home testing, culturally tailored, and always handing off to a human when it matters.</p></details>
-<details class="gcard dark rv pillacc" style="transition-delay:.24s" open><summary><span class="n">ROADMAP 03 <i>&middot; Close</i></span><h3>Algorithmic equity &amp; governance</h3><span class="pillchev" aria-hidden="true"></span></summary><p>After a validated pilot. Continuous bias and fairness auditing, SDOH-aware targeting, and privacy-by-design under a human review board, so the model narrows disparities in who completes care rather than widening them.</p></details>
+<section class="pai-hero"><div class="wrap">
+<div class="copy">
+<span class="pai-chip" style="align-self:flex-start">Future direction · not part of the first pilot</span>
+<h1>What could follow, and what has to be true first.</h1>
+<p class="dek">The Prevention Adoption Initiative starts with one colorectal cancer screening pilot in a Michigan health center. Every later stage waits on that pilot&rsquo;s evaluation. Nothing here has a date, because none of it has a credible schedule yet.</p>
+<div class="pai-cta"><a class="btn pai-primary" href="initiative.html#host">Talk to me about hosting <span class="ar">&rarr;</span></a><a class="btn pai-secondary" href="initiative.html">Back to the pilot <span class="ar">&rarr;</span></a></div>
+</div>
+<div class="pai-legend" aria-label="Status labels used on this page">
+<div><span class="st prop">Proposed</span>What the first pilot would do</div>
+<div><span class="st req">Requires evaluation</span>Only if the gate is passed</div>
+<div><span class="st fut">Future possibility</span>Ideas with their own conditions</div>
 </div>
 </div></section>
 
-<section class="band" id="partners"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 02</span> · Other partners</div>
-<div class="top"><h2 class="sec">If you are not a health center, a researcher or a funder.</h2>
-<div class="lead">The main page speaks to the three partners the first pilot needs. These are the others who could matter once it works, each in their own terms.</div></div></div>
+<div class="wrap" style="padding-bottom:56px">
+<ol class="pai-track">
+<li><div class="rail"><span class="node prop" aria-hidden="true"></span><span class="line"></span></div>
+<div class="stage" id="pilot-stage"><div class="pstage prop"><span class="st prop" style="border:1px solid #5A6E88;justify-self:start">Stage 1 · Proposed</span><div><h2>The first pilot</h2><p>One health center, three transparent ranking rules, the site&rsquo;s own staff, twelve months.</p></div><a href="initiative.html#pilot">See the pilot &rarr;</a></div></div></li>
+
+<li><div class="rail"><span class="node gate" aria-hidden="true"></span><span class="line"></span></div>
+<div class="stage" id="gate"><div class="pstage gate"><div class="hd"><div><span class="mono" style="color:var(--pai-coral-text)">Gate · decision point</span><h2>Go further only if the pilot shows&hellip;</h2></div><small>Proposed criteria, not agreed thresholds</small></div>
+<div class="gcrit">
+<div><b>Benefit</b>Against the site&rsquo;s own trend</div>
+<div><b>Feasibility</b>Staff can run it week to week</div>
+<div><b>Staff burden</b>No extra load that cannot last</div>
+<div><b>Data quality</b>The nightly file arrives complete and on time</div>
+<div><b>Equity</b>The gap between language groups does not widen</div>
+<div><b>Resources</b>A lasting way to pay for staff time</div>
+</div></div></div></li>
+
+<li><div class="rail"><span class="node req" aria-hidden="true"></span><span class="line"></span></div>
+<div class="stage" id="expansion"><div class="pstage req"><span class="st req">Stage 2 · Requires evaluation</span><h2>Possible expansion</h2>
+<div class="pcaps" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+<div class="pcap" style="border-style:solid;border-color:var(--pai-coral-line)"><h3>A second clinic</h3><div><span class="mono">What would change</span><p>The same routine at another health center.</p></div><div><span class="mono">Problem it would solve</span><p>One site cannot show that the result travels.</p></div><div class="first"><span class="mono">Must be true first</span><p>The gate passed, plus a host and an evaluator for the second site.</p></div></div>
+<div class="pcap" style="border-style:solid;border-color:var(--pai-coral-line)"><h3>Deeper EHR integration</h3><div><span class="mono">What would change</span><p>A direct EHR connection in place of the nightly coded file.</p></div><div><span class="mono">Problem it would solve</span><p>Manual exports and a one-day lag.</p></div><div class="first"><span class="mono">Must be true first</span><p>A business associate agreement, a HIPAA-eligible setup, and the site&rsquo;s IT sign-off.</p></div></div>
+</div></div></div></li>
+
+<li><div class="rail"><span class="node fut" aria-hidden="true"></span><span class="line"></span></div>
+<div class="stage" id="roadmap"><div class="pstage fut"><span class="st fut">Stage 3 · Future possibility</span><h2>Possible advanced capabilities, each with its own conditions</h2>
+<div class="pcaps">
+<div class="pcap"><h3>Predictive prioritization</h3><div><span class="mono">What would change</span><p>A model suggests who is least likely to finish, next to the rules.</p></div><div><span class="mono">Problem it would solve</span><p>Some patients at risk of not finishing do not stand out on days overdue alone.</p></div><div class="first"><span class="mono">Must be true first</span><p>The rules evaluated, enough outcome data, a fairness audit, staff still deciding, and a model that beats the rules.</p></div></div>
+<div class="pcap"><h3>Conversational outreach</h3><div><span class="mono">What would change</span><p>Two-way text reminders in the patient&rsquo;s language that help book the test.</p></div><div><span class="mono">Problem it would solve</span><p>Staff time spent on routine reminders instead of the hard cases.</p></div><div class="first"><span class="mono">Must be true first</span><p>The site&rsquo;s consent process, a BAA, and a tested hand-off to a person. Nothing automated before then.</p></div></div>
+<div class="pcap"><h3>Equity monitoring</h3><div><span class="mono">What would change</span><p>Regular checks that outreach is not reaching easier patients first.</p></div><div><span class="mono">Problem it would solve</span><p>Automation can widen the gap between language or payer groups.</p></div><div class="first"><span class="mono">Must be true first</span><p>A review board, agreed measures, and enough patients in each group to read.</p></div></div>
+</div></div></div></li>
+
+<li><div class="rail"><span class="node fut" aria-hidden="true"></span><span class="line"></span></div>
+<div class="stage" id="partners"><div class="pstage fut"><span class="st fut">Stage 4 · Future possibility</span><h2>Local adaptation: other screenings, other health systems</h2>
+<p style="margin:0 0 6px;font-size:15px;line-height:1.6;max-width:62ch">The same routine could run on cervical and breast screening, hypertension and diabetes follow-up, and in other health systems. Each would need its own local design and validation.</p>
+<div class="pai-ctabs" id="global">
+<div role="tablist" aria-label="Setting">
+<button type="button" role="tab" id="tab-us" aria-controls="pan-us" aria-selected="true">United States</button>
+<button type="button" role="tab" id="tab-bd" aria-controls="pan-bd" aria-selected="false" tabindex="-1">Bangladesh</button>
+</div>
+<div role="tabpanel" id="pan-us" aria-labelledby="tab-us">
+<div class="cview"><div><span class="mono">Where it would run</span><p>More health centers after the Michigan pilot, through health-center networks and professional bodies.</p></div><div><span class="mono">Status</span><p><b style="color:var(--heading)">After the pilot is evaluated.</b></p></div></div>
+<span class="mono" style="display:block;color:var(--muted);font-size:10px;margin-bottom:10px">Partners who could matter · prospective, none confirmed</span>
 <div class="rolegrid">
-<article class="rolecard rv" id="for-system"><div class="rk">Health system / Pop. health · U.S.</div><h3>Move a system measure with a fidelity-first loop</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Your population-health team owns HEDIS COL and value-based targets, and soon, follow-up-after-positive completion.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop instruments execution (who was reached, what closed) not just outcomes, so gains hold across sites.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Pilot in one clinic; scale through the system <span class="ar">&rarr;</span></a></div></article>
-<article class="rolecard rv" id="for-plan"><div class="rk">Health plan / MCO · U.S.</div><h3>Move the measure you're already paid on</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Colorectal cancer screening (COL) has been in the CMS Medicaid Adult Core Set since 2022, and managed-care contracts commonly tie Core Set performance to a quality withhold or incentive payment. NCQA has proposed the follow-up measure itself (COF-E, HEDIS MY2027: colonoscopy within 180 days of a positive test).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A published mailed-FIT cost benchmark, $54.83 direct per patient screened (Pignone 2021), equity-stratified, run inside your network's clinics.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Sponsor a network-clinic pilot <span class="ar">&rarr;</span></a></div></article>
-<article class="rolecard rv" id="for-association"><div class="rk">Association / Coalition</div><h3>Bring a measurable completion model to your members</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Your member sites report these measures, and most face the same completion gap.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A turnkey, evidence-based package members run inside existing staffing, with the fidelity discipline included.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Introduce one member site; replicate what works <span class="ar">&rarr;</span></a></div></article>
-<article class="rolecard rv" id="for-community"><div class="rk">Community member</div><h3>For patients: care that actually reaches you</h3><div class="pr"><span class="pl">Why you</span><span class="pv">This work exists so recommended care actually reaches people, with dignity, in plain language.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Your data is not sold or exploited, decisions can be explained, and the limits are stated plainly.</span></div><div class="wayrow"><a class="pbtn" href="https://buttondown.com/shafaat">Follow the work, join the newsletter <span class="ar">&rarr;</span></a></div></article>
-<article class="rolecard rv" id="for-private"><div class="rk">Private network · Bangladesh</div><h3>Finish the tests you already start</h3><div class="pr"><span class="pl">Why you</span><span class="pv">You already run entry-level test campaigns. The leak is conversion: price shock at the next step, urgency that never lands, and second-visit logistics.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop attacks all three: transparent bundled next-step pricing, literacy-tailored urgency communication, one-visit and home-collection logistics. An operational lesson from inside a private network: coverage alone doesn't complete care; a designed loop does.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Pilot in one facility <span class="ar">&rarr;</span></a></div></article>
-<article class="rolecard rv" id="for-publicbd"><div class="rk">Public program · Bangladesh</div><h3>Strengthen a program that already exists</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Bangladesh's national screening program has reach and a registry (roughly 14,000 community clinics on e-HIS as of 2019) yet its own evaluation found only 40.4% of VIA-positive women attended for colposcopy between January 2018 and May 2023 (Nessa et al., <i>BMC Global and Public Health</i> 2025;3:34).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Embed, don't build: the completion loop plugs into the registry and clinics you already run, DGHS NCDC, NCCBCST, and the Community Clinic Health Support Trust, piloted in a few upazilas.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Pilot the loop in a few upazilas <span class="ar">&rarr;</span></a></div></article>
+<article class="rolecard" id="for-system"><div class="rk">Health system / Pop. health · U.S.</div><h3>Move a system measure with a weekly routine</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Your population-health team owns HEDIS COL and value-based targets, and soon, follow-up-after-positive completion.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop instruments execution (who was reached, what closed) not just outcomes, so gains hold across sites.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Pilot in one clinic; scale through the system <span class="ar">&rarr;</span></a></div></article>
+<article class="rolecard" id="for-plan"><div class="rk">Health plan / MCO · U.S.</div><h3>Move the measure you're already paid on</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Colorectal cancer screening (COL) has been in the CMS Medicaid Adult Core Set since 2022, and managed-care contracts commonly tie Core Set performance to a quality withhold or incentive payment. NCQA has proposed the follow-up measure itself (COF-E, HEDIS MY2027: colonoscopy within 180 days of a positive test).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A published mailed-FIT cost benchmark, $54.83 direct per patient screened (Pignone 2021), equity-stratified, run inside your network's clinics.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Sponsor a network-clinic pilot <span class="ar">&rarr;</span></a></div></article>
+<article class="rolecard" id="for-association"><div class="rk">Association / Coalition</div><h3>Bring a measurable completion model to your members</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Your member sites report these measures, and most face the same completion gap.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">A turnkey, evidence-based package members run inside existing staffing, with the weekly checks included.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Introduce one member site; replicate what works <span class="ar">&rarr;</span></a></div></article>
+<article class="rolecard" id="for-community"><div class="rk">Community member</div><h3>For patients: care that actually reaches you</h3><div class="pr"><span class="pl">Why you</span><span class="pv">This work exists so recommended care actually reaches people, with dignity, in plain language.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Your data is not sold or exploited, decisions can be explained, and the limits are stated plainly.</span></div><div class="wayrow"><a class="pbtn" href="https://buttondown.com/shafaat">Follow the work, join the newsletter <span class="ar">&rarr;</span></a></div></article>
 </div>
-</div></section>
-
-<section id="global"><div class="wrap">
-<div class="shead rv"><div class="eyebrow"><span class="snum">§ 03</span> · Global by design</div>
-<div class="top"><h2 class="sec">One engine, many diseases, and not only in the U.S.</h2>
-<div class="lead">Colorectal cancer is the first proof, not the scope. The completion gap is the same wherever recommended care stalls before it is finished.</div></div></div>
-<div class="rich rv"><p>The loop does not care which disease it runs on. The same registry-plus-outreach mechanism applies to cervical and breast screening, hypertension, diabetes follow-up, and immunizations. It travels across health systems too. The table below sets the U.S. pilot beside the health system I know best.</p></div>
-<div class="sysp fx rv">
+</div>
+<div role="tabpanel" id="pan-bd" aria-labelledby="tab-bd" hidden>
+<div class="cview"><div><span class="mono">Where it would run</span><p>Community clinics under the national cervical and breast screening program, and private diagnostic networks.</p></div><div><span class="mono">Status</span><p><b style="color:var(--heading)">A future direction, in development.</b></p></div></div>
+<div class="sysp">
 <div class="sysp-bar"><span class="sysp-fill"></span><b>The same four stages, either way</b><em>Find &rarr; Rank &rarr; Act &rarr; Close</em></div>
 <div class="sysp-grid">
 <div class="sysp-lab"></div><div class="sysp-hd">United States</div><div class="sysp-hd">Bangladesh</div>
@@ -527,22 +562,28 @@ html.hmenu-open #hmenu-panel{display:block}
 <div class="sysp-lab">Where it leaks</div><div class="sysp-c" data-s="United States">Screening gets counted, but a positive test is not always followed to colonoscopy.</div><div class="sysp-c" data-s="Bangladesh">Low uptake and loss to follow-up, reported by the program&rsquo;s own evaluation.</div>
 <div class="sysp-lab">Status</div><div class="sysp-c" data-s="United States"><b>The first pilot, on the <a href="initiative.html#pilot">main page</a>.</b></div><div class="sysp-c" data-s="Bangladesh"><b>A future direction, in development.</b></div>
 </div></div>
-<div class="rich rv" style="margin-top:26px"><p>Where the work begins abroad is where I already have standing and screening-service experience. That is a reason to start there, not evidence that it will work there. The current work is the U.S. pilot.</p></div>
 
-<div class="shead rv" id="bangladesh" style="margin-top:52px"><div class="eyebrow"><span class="snum">§ 03b</span> · Bangladesh, the engagement models</div>
-<div class="top"><h2 class="sec" style="font-size:clamp(1.4rem,1.1rem+1vw,1.9rem)">Different partners, different value, same completion engine.</h2></div></div>
-<div class="grid3 rv">
+<h3 id="bangladesh" style="margin:30px 0 14px;font-size:1.35rem;font-weight:600;scroll-margin-top:90px">Different partners, different value, same routine</h3>
+<span class="mono" style="display:block;color:var(--muted);font-size:10px;margin-bottom:10px">Organizations named here are prospective. None is a confirmed partner.</span>
+<div class="grid3">
 <div class="gcard"><div class="n">PRIVATE HEALTHCARE</div><h3>Where completion is also good business</h3><p>For a private network, a natural first partner, higher completion compounds commercially: more screenings lead to more diagnostics, more appropriate downstream care, stronger patient retention, and better-positioned corporate-wellness and payer contracts. The initiative raises the completion rate the business is already working to grow, advancing patient health and commercial performance together.</p></div>
 <div class="gcard" style="transition-delay:.06s"><div class="n">GOVERNMENT</div><h3>Strengthening a program that already exists</h3><p>For the DGHS Non-Communicable Disease Control Programme (NCDC), the national cervical &amp; breast screening leadership, and the Community Clinic Health Support Trust, the completion loop embeds into the existing network of roughly 14,000 community clinics as of 2019 and the national electronic registry, closing the uptake and follow-up gaps the program&rsquo;s own evaluation identifies, piloted in a few upazilas and aligned to the national strategy.</p></div>
 <div class="gcard" style="transition-delay:.12s"><div class="n">RESEARCH &amp; NGO</div><h3>Reach, rigor, and credibility</h3><p>BRAC and Marie Stopes bring community reach; icddr,b, BSMMU, and NICRH bring evaluation and clinical authority. Together, these partners can turn a pilot into publishable, scalable evidence, and open pathways to both government and donor funding.</p></div>
 </div>
-<div class="rv" style="margin-top:26px"><a class="btn ghost" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>Bangladesh brief (PDF)</a></div>
-</div></section>
+<div class="rolegrid" style="margin-top:18px">
+<article class="rolecard" id="for-private"><div class="rk">Private network · Bangladesh</div><h3>Finish the tests you already start</h3><div class="pr"><span class="pl">Why you</span><span class="pv">You already run entry-level test campaigns. The leak is conversion: price shock at the next step, urgency that never lands, and second-visit logistics.</span></div><div class="pr"><span class="pl">Different</span><span class="pv">The loop attacks all three: transparent bundled next-step pricing, literacy-tailored urgency communication, one-visit and home-collection logistics. An operational lesson from inside a private network: coverage alone doesn't complete care; a designed loop does.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Pilot in one facility <span class="ar">&rarr;</span></a></div></article>
+<article class="rolecard" id="for-publicbd"><div class="rk">Public program · Bangladesh</div><h3>Strengthen a program that already exists</h3><div class="pr"><span class="pl">Why you</span><span class="pv">Bangladesh's national screening program has reach and a registry (roughly 14,000 community clinics on e-HIS as of 2019) yet its own evaluation found only 40.4% of VIA-positive women attended for colposcopy between January 2018 and May 2023 (Nessa et al., <i>BMC Global and Public Health</i> 2025;3:34).</span></div><div class="pr"><span class="pl">Different</span><span class="pv">Embed, don't build: the completion loop plugs into the registry and clinics you already run, DGHS NCDC, NCCBCST, and the Community Clinic Health Support Trust, piloted in a few upazilas.</span></div><div class="wayrow"><a class="pbtn" href="initiative.html#host">Pilot the loop in a few upazilas <span class="ar">&rarr;</span></a></div></article>
+</div>
+<div style="margin-top:20px"><a class="btn ghost" href="assets/HSREP_Prevention_Adoption_Initiative_Brief_Bangladesh.pdf" download>Bangladesh brief (PDF)</a></div>
+</div>
+<p class="pai-caveat">Experience in one setting does not show that the routine will work in another. Where the work could begin abroad is where I already have standing and screening-service experience; that is a reason to start there, not evidence that it will work there.</p>
+</div>
+</div></div></li>
+</ol>
 
-<section class="band"><div class="wrap">
-<div class="callout rv"><div class="t" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap"><span><b>All of this depends on the first pilot.</b> If your organization could host it, that is the conversation to have first.</span><a class="btn accent" href="https://calendly.com/shafaat-alic/30min">Book 30 min <span class="ar">&rarr;</span></a></div></div>
-<p class="nextnote rv">An HSREP initiative in development. Everything on this page is future direction and illustrative; no patient data has been collected.</p>
-</div></section>
+<div class="pai-close"><p><b>All of this depends on the first pilot.</b><br>If your organization could host it, that is the conversation to have first.</p><a class="btn pai-primary" href="https://calendly.com/shafaat-alic/30min">Book 30 min <span class="ar">&rarr;</span></a></div>
+<p class="pai-small">An HSREP initiative in development. Everything on this page is future direction and illustrative; no patient data has been collected.</p>
+</div>
 </main><footer><div class="wrap">
 <div class="fnl"><div class="fnl-copy"><strong>Get the record as it grows.</strong> Season 2 publications, roundtable openings and syntheses, and initiative milestones, a few times a season.</div><form class="nlform" action="https://buttondown.com/api/emails/embed-subscribe/shafaat" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/shafaat','popupwindow');"><input type="email" name="email" placeholder="you@institution.org" aria-label="Email address" required><button type="submit">Subscribe →</button></form></div>
 
@@ -586,26 +627,13 @@ apply();})();
 <script>
 (function(){
  var pb=document.getElementById('rprog');
- function upd(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop||0;var mx=h.scrollHeight-h.clientHeight;pb.style.width=(mx>0?(sc/mx*100):0)+'%';}
+ function upd(){if(!pb)return;var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop||0;var mx=h.scrollHeight-h.clientHeight;pb.style.width=(mx>0?(sc/mx*100):0)+'%';}
  document.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
- var chips=[].slice.call(document.querySelectorAll('.er-chip'));var panels=[].slice.call(document.querySelectorAll('.er-panel'));
- var roles=chips.map(function(c){return c.getAttribute('data-role');});
- var MOVED={'system':1,'plan':1,'private':1,'publicbd':1,'association':1,'community':1};var hh0=(location.hash||'').replace('#','');if(hh0.indexOf('for-')===0&&MOVED[hh0.slice(4)]){location.replace('initiative-next.html#'+hh0);return;}if(hh0==='global-by-design'){location.replace('initiative-next.html#global');return;}
- function pick(r,push){chips.forEach(function(c){var on=c.getAttribute('data-role')===r;c.classList.toggle('on',on);c.setAttribute('aria-pressed',on?'true':'false');});panels.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-role')===r);});
-  var nw=document.getElementById('erNow');if(nw){var sel=chips.filter(function(c){return c.getAttribute('data-role')===r;})[0];nw.textContent=sel?'\u00b7 '+sel.textContent:'';}
-  if(push&&window.history&&history.replaceState){history.replaceState(null,'','#for-'+r);}}
- chips.forEach(function(c){c.addEventListener('click',function(){pick(c.getAttribute('data-role'),true);});});
- var h=(location.hash||'').replace('#','');var pre=null;
- if(h.indexOf('for-')===0&&roles.indexOf(h.slice(4))>=0)pre=h.slice(4);
- pick(pre||roles[0],false);
- if(pre){var el=document.querySelector('.exec-layer');if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth'});},150);}
-(function(){var L=document.querySelector('.exec-layer');if(!L)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(!('IntersectionObserver' in window))return;L.classList.add('anim');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){L.classList.add('go');io.disconnect();}});},{threshold:.12});io.observe(L);})();
-(function(){var ns=document.querySelectorAll('.fx');if(!ns.length)return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target);}});},{threshold:.18});Array.prototype.forEach.call(ns,function(n){n.classList.add('anim');io.observe(n);});})();
- var LMAP=[['only after','The roadmap'],['not a health center','Other partners'],['many diseases','Other diseases'],['Different partners','Bangladesh']];
- function labelFor(t){for(var i=0;i<LMAP.length;i++){if(t.indexOf(LMAP[i][0])>=0)return LMAP[i][1];}return t.split(/\s+/).slice(0,3).join(' ');}
- var hs=[].slice.call(document.querySelectorAll('h2.sec'));var nav=document.getElementById('secnav');var links=[];
- hs.forEach(function(h,i){if(!h.id)h.id='isec'+i;var a=document.createElement('a');a.href='#'+h.id;a.textContent=labelFor(h.textContent||'');nav.appendChild(a);links.push(a);});
- if(hs.length){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-15% 0px -75% 0px'});hs.forEach(function(h){io.observe(h);});}
+ var ts=[].slice.call(document.querySelectorAll('.pai-ctabs [role="tab"]'));
+ function sel(t,focus){ts.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));if(p)p.hidden=!on;});if(focus)t.focus();}
+ ts.forEach(function(t,i){t.addEventListener('click',function(){sel(t,false);});t.addEventListener('keydown',function(e){var j=-1;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%ts.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+ts.length)%ts.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=ts.length-1;if(j>=0){e.preventDefault();sel(ts[j],true);}});});
+ function route(){var h=(location.hash||'').replace('#','');if(!h)return;var el=document.getElementById(h);if(!el)return;var pan=el.closest('[role="tabpanel"]');if(pan&&pan.hidden){var t=document.getElementById(pan.getAttribute('aria-labelledby'));if(t)sel(t,false);}setTimeout(function(){el.scrollIntoView();},60);}
+ route();window.addEventListener('hashchange',route);
 })();
 </script>
 <script>

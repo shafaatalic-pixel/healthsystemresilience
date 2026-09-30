@@ -69,7 +69,7 @@ PILLARS = """
   <div class="cols">
     <div><div class="lab">Core · what the first site runs</div>
       <ul><li>Service redesign &amp; friction reduction</li>
-          <li>Interoperable data infrastructure <small>— one nightly de-identified 19-column file for the pilot</small></li>
+          <li>Interoperable data infrastructure <small>— one nightly coded 19-column file for the pilot, dates as day counts, key kept at the site</small></li>
           <li>Implementation enablement <small>— training so the site runs and sustains it</small></li></ul></div>
     <div><div class="lab rm">Roadmap · after a validated pilot, not in the first pilot</div>
       <ul><li>Predictive AI, explainable</li>

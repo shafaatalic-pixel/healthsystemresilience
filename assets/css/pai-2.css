@@ -330,3 +330,7 @@ html.pai-motion .ytrack.in .split i::before{width:var(--w)}
 .pai-fine a{color:var(--pai-coral-text);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
 html.pai-motion .pai-hero .copy>:nth-child(7){animation-delay:.76s}
 html.pai-motion .pai-hero .copy>:nth-child(8){animation-delay:.88s}
+.pai-lead{margin:-4px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink);max-width:60ch}
+.pai-lead b{color:var(--heading);font-weight:600}
+.pai-lead a{color:var(--pai-coral-text);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;white-space:nowrap}
+.pai-fine{margin-top:-8px}

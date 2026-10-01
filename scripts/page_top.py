@@ -29,7 +29,11 @@ SKIP = {'roundtable-console.html', 'dashboard-demo.html'}  # private console; de
 LINK = '<link rel="stylesheet" href="/assets/css/top-1.css">'
 
 
-def header(here):
+# pages whose main action is not the roundtable get their own header button
+CTA = {'initiative.html': ('Host the pilot', '#host')}
+
+
+def header(here, cta=('Join Roundtable', '/roundtable.html')):
     nav = ''.join(
         f'<a class="here" aria-current="page" href="{h}">{t}</a>' if t == here else f'<a href="{h}">{t}</a>'
         for t, h in NAV)
@@ -38,7 +42,7 @@ def header(here):
             'width="2700" height="940" alt="HSREP, Health System Resilience &amp; Economic Protection"></a>'
             f'<nav class="hs-top-nav" aria-label="Main">{nav}</nav>'
             f'<a class="hs-srch" href="/search.html" aria-label="Search HSREP">{SEARCH_SVG}<span>Search</span></a>'
-            '<a class="hs-top-cta" href="/roundtable.html">Join Roundtable</a>'
+            f'<a class="hs-top-cta" href="{cta[1]}">{cta[0]}</a>'
             '<button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" '
             f'aria-controls="hmenu-panel">{MENU_SVG}<span>Menu</span></button>'
             '</div></div></header>')
@@ -100,7 +104,7 @@ def run(path):
 
     if name != 'dashboard-demo.html':
         here = 'Articles' if path.startswith('articles/') else HERE.get(name)
-        s = re.sub(r'<header\b[\s\S]*?</header>', lambda m: header(here), s, count=1)
+        s = re.sub(r'<header\b[\s\S]*?</header>', lambda m: header(here, CTA.get(name, ('Join Roundtable', '/roundtable.html'))), s, count=1)
 
     if LINK not in s:
         s = s.replace('</head>', LINK + '</head>', 1)

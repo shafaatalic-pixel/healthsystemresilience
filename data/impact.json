@@ -1,24 +1,24 @@
 {
- "updated": "2026-09-30T10:27:06+00:00",
+ "updated": "2026-10-01T10:54:17+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-09-30"
+  "to": "2026-10-01"
  },
  "readers": {
-  "s30": 83,
-  "s60": 34,
-  "s120": 18,
-  "s240": 14,
-  "bottom": 38
+  "s30": 85,
+  "s60": 36,
+  "s120": 20,
+  "s240": 16,
+  "bottom": 39
  },
  "raw": {
-  "ga_users": 434,
-  "sessions": 480,
-  "pageviews": 925,
+  "ga_users": 437,
+  "sessions": 484,
+  "pageviews": 941,
   "engagement_rate": 42,
-  "avg_engaged_seconds": 38,
-  "excluded_datacentre": 125,
+  "avg_engaged_seconds": 40,
+  "excluded_datacentre": 126,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,20 +27,24 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 316,
+  "direct": 319,
   "social": 133,
-  "search": 19,
+  "search": 20,
   "referral": 2,
   "facebook": 103,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 449,
+  "ai_fetches": 485,
   "user_prompted": 45,
   "agents": [
    [
     "OAI-SearchBot",
+    75
+   ],
+   [
+    "Meta-ExternalAgent",
     74
    ],
    [
@@ -52,16 +56,16 @@
     60
    ],
    [
-    "Meta-ExternalAgent",
-    54
-   ],
-   [
     "GPTBot",
     51
    ],
    [
     "ClaudeBot",
     30
+   ],
+   [
+    "Applebot",
+    26
    ],
    [
     "Bytespider",
@@ -82,29 +86,25 @@
    [
     "Google-Extended",
     12
-   ],
-   [
-    "Applebot",
-    11
    ]
   ],
-  "search_crawlers": 191,
-  "all_bot_requests": 14447,
-  "human_visits": 7,
+  "search_crawlers": 194,
+  "all_bot_requests": 15458,
+  "human_visits": 9,
   "google_clicks": 8,
-  "google_impressions": 783,
-  "google_position": 13.5,
+  "google_impressions": 790,
+  "google_position": 13.4,
   "pages_indexed": 20,
-  "all_requests": 14447,
-  "cached_requests": 5305,
-  "unique_ips": 1232,
+  "all_requests": 15458,
+  "cached_requests": 5933,
+  "unique_ips": 1247,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-27"
+  "gsc_through": "2026-09-28"
  },
  "actions": {
   "cta": {
-   "initiative": 22,
+   "initiative": 24,
    "article_open": 12,
    "roundtable": 11,
    "download_pdf": 6,
@@ -115,9 +115,9 @@
    "founder_site": 2,
    "partner": 2
   },
-  "cta_total": 92,
-  "cta_people": 21,
-  "cta_labelled": 73,
+  "cta_total": 94,
+  "cta_people": 22,
+  "cta_labelled": 75,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
@@ -133,13 +133,13 @@
  },
  "pages": {
   "home": 1040,
-  "initiative": 215,
+  "initiative": 218,
   "about": 115,
   "season": 112,
-  "article": 82,
+  "article": 84,
   "media": 72,
   "roundtable": 25,
-  "other": 9,
+  "other": 11,
   "films": 5
  },
  "participation": {

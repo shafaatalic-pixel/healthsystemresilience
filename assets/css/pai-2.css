@@ -321,3 +321,12 @@ html.pai-motion .ytrack.in .split i::before{width:var(--w)}
 .ytrack.sm>li.y3::before{background:var(--pai-navy);border:0}
 @media(max-width:900px){.ytrack.sm{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.ytrack.sm{grid-template-columns:1fr}}
+
+/* hero fine print: who leads, and what "no fee" means (1 Oct 2026) */
+.pai-fine{margin:-6px 0 0;max-width:62ch;border-left:2px solid var(--pai-line);padding-left:14px}
+.pai-fine p{margin:0 0 6px;font-size:13px;line-height:1.55;color:var(--muted)}
+.pai-fine p:last-child{margin:0}
+.pai-fine b{color:var(--heading);font-weight:600}
+.pai-fine a{color:var(--pai-coral-text);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+html.pai-motion .pai-hero .copy>:nth-child(7){animation-delay:.76s}
+html.pai-motion .pai-hero .copy>:nth-child(8){animation-delay:.88s}

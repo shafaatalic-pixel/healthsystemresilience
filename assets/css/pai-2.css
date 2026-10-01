@@ -265,3 +265,13 @@ html.pai-motion .pai .rtask.rv,html.pai-motion .pai-demo.rv{transition:opacity .
 .pai-me-grid p{margin:0;font-size:14.5px;line-height:1.6}
 .pai-me .pai-by{margin-top:20px}
 @media(max-width:900px){.pai-me-grid{grid-template-columns:1fr}}
+
+/* ---------- who does what (1 Oct 2026) ---------- */
+.pai-who{margin:-4px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 22px;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.pai-who span{position:relative;padding-left:14px}
+.pai-who span::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--pai-coral-text)}
+.pai-who b{color:var(--heading);font-weight:600}
+.pai-loop .ex .who{margin:14px 0 0;padding:10px 0 0;border-top:1px solid var(--pai-soft);font-size:14px;line-height:1.5;color:var(--heading)}
+.pai-loop .ex .who .mono.k{display:inline-block;margin:0 10px 0 0;color:var(--pai-coral-text)}
+.pai-tl .d small.hand{display:block;margin-top:10px;font-size:12.5px;line-height:1.45;color:var(--ink)}
+@media(max-width:720px){.pai-who{grid-template-columns:1fr;gap:8px}}

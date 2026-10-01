@@ -334,3 +334,13 @@ html.pai-motion .pai-hero .copy>:nth-child(8){animation-delay:.88s}
 .pai-lead b{color:var(--heading);font-weight:600}
 .pai-lead a{color:var(--pai-coral-text);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;white-space:nowrap}
 .pai-fine{margin-top:-8px}
+
+/* tighter opening so the buttons sit in the first screen on a laptop (1 Oct 2026) */
+.pai-hero{padding:30px 0 56px}
+.pai-hero .copy{gap:12px}
+.pai-hero .wrap>.pai-chip{margin-bottom:-2px}
+.pai-lead{margin-top:0}
+.pai-cta{margin-top:2px}
+.pai-scope{margin-top:2px}
+.pai-fine{margin-top:0}
+@media(max-width:720px){.pai-hero{padding:28px 0 36px}}

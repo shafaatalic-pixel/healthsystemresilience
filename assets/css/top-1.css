@@ -73,3 +73,7 @@ html body #hmenu-panel{display:none!important}
  html body header.site.hs-top .hs-srch,html body header.site.hs-top #hmenu-btn{padding:8px!important}
  html body header.site.hs-top .hs-top-cta{padding:8px 9px!important;font-size:.72rem!important}
 }
+
+/* the founder's name links to his own site (1 Oct 2026) */
+a.me{color:inherit!important;text-decoration:none!important;border-bottom:1px solid rgba(28,46,74,.28);transition:color .15s,border-color .15s}
+a.me:hover,a.me:focus-visible{color:#C43C25!important;border-bottom-color:currentColor}

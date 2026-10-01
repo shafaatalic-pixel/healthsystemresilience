@@ -26,7 +26,7 @@ HERE = {
     'about.html': 'About', 'media.html': 'About', 'identity.html': 'About',
 }
 SKIP = {'roundtable-console.html', 'dashboard-demo.html'}  # private console; demo keeps its app header
-LINK = '<link rel="stylesheet" href="/assets/css/top-1.css">'
+LINK = '<link rel="stylesheet" href="/assets/css/top-1.css?v=20261001me">'
 
 
 # pages whose main action is not the roundtable get their own header button

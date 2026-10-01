@@ -308,3 +308,16 @@ html.pai-motion .ytrack .split i::before{width:0}
 html.pai-motion .ytrack.in .split i::before{width:var(--w)}
 @media(max-width:900px){.ytrack{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}.ytrack::before{display:none}.ytrack>li{padding-top:0;border-top:2px solid var(--pai-line);padding-top:14px}.ytrack>li::before{top:-7px}.ydays{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.pai-year{padding:20px 16px 18px}.ytrack{grid-template-columns:1fr}.ydays{grid-template-columns:1fr}}
+
+/* your year, per role (inside the role card panels) */
+.pai-role .ryear{grid-column:1 / -1;margin-top:6px;padding-top:20px;border-top:1px solid var(--pai-line)}
+.pai-role .ryear>.mono{display:block;color:var(--pai-coral-text);margin-bottom:14px;font-size:10.5px}
+.ytrack.sm{gap:12px}
+.ytrack.sm>li{padding-top:14px}
+.ytrack.sm>li>.mono{font-size:10px}
+.ytrack.sm>li>b{font-size:1rem;margin-bottom:8px}
+.ytrack.sm ul li{font-size:13.5px;line-height:1.45;margin-bottom:6px}
+.ytrack.sm>li.y2::before{background:var(--pai-coral-text);border:0}
+.ytrack.sm>li.y3::before{background:var(--pai-navy);border:0}
+@media(max-width:900px){.ytrack.sm{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.ytrack.sm{grid-template-columns:1fr}}

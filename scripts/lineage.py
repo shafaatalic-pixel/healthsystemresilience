@@ -8,7 +8,7 @@ replaced in full each time, so edit STEPS or PAGES here, never the HTML.
 """
 import re
 
-CSS = '<link rel="stylesheet" href="/assets/css/lineage-1.css?v=20261002c">'
+CSS = '<link rel="stylesheet" href="/assets/css/lineage-1.css?v=20261002d">'
 START, END = '<!--LINEAGE:START-->', '<!--LINEAGE:END-->'
 
 # Chronological. (verb, title, href, meta)
@@ -24,6 +24,8 @@ STEPS = [
      '/roundtable.html#rt-02', 'Open since 9 Sep 2026 &middot; moderated, on the record'),
     ('Next', 'Colorectal Cancer Screening Completion Pilot', '/initiative.html#host',
      '<b>One host clinic sought</b> &middot; 12 months &middot; no HSREP fee for the first 3 months'),
+    ('Then', 'The same routine, five other completion gaps', '/initiative-next.html#other-gaps',
+     'Roadmap, <b>not scheduled</b> &middot; blood pressure, diabetic eye exam, kidney test, two follow-ups'),
 ]
 
 FOOT = ('Every step is dated and links to the record. The initiative is proposed, not running: '
@@ -63,7 +65,7 @@ SPY = ('<script id="thr-js">(function(){var h=document.documentElement;h.classLi
 def block(kicker, heading, lead, here, wrapper):
     items = []
     for i, (v, t, h, m) in enumerate(STEPS, 1):
-        cls = 'here' if i == here else ('next' if i == len(STEPS) else ('done' if i < len(STEPS) else ''))
+        cls = 'here' if i == here else ('then' if i == len(STEPS) else ('next' if i == len(STEPS) - 1 else 'done'))
         this = ' <span class="thr-this">this page</span>' if i == here else ''
         items.append(f'<li class="{cls}"><div class="thr-v">{v}{this}</div>'
                      f'<h3 class="thr-t"><a href="{h}">{t}</a></h3><p class="thr-m">{m}</p></li>')

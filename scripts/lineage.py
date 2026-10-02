@@ -8,7 +8,7 @@ replaced in full each time, so edit STEPS or PAGES here, never the HTML.
 """
 import re
 
-CSS = '<link rel="stylesheet" href="/assets/css/lineage-1.css?v=20261002d">'
+CSS = '<link rel="stylesheet" href="/assets/css/lineage-1.css?v=20261002e">'
 START, END = '<!--LINEAGE:START-->', '<!--LINEAGE:END-->'
 
 # Chronological. (verb, title, href, meta)
@@ -19,7 +19,7 @@ STEPS = [
     ('Measured', 'Season 1: <!--N:total_word-->nine<!--/N--> pieces, two countries', '/season-1.html',
      '<b>57,274 impressions</b>, $0 paid &middot; 21 Feb &ndash; 12 Apr 2026'),
     ('Proposed', 'Prevention Adoption Initiative', '/initiative.html',
-     'Published July 2026 &middot; <b>in development</b>, nothing deployed'),
+     'Published July 2026 with a working <a href="/dashboard-demo.html">worklist demo</a> &middot; <b>in development</b>, nothing deployed'),
     ('Put to peers', 'Roundtable &#8470; 02: where does preventive care break down?',
      '/roundtable.html#rt-02', 'Open since 9 Sep 2026 &middot; moderated, on the record'),
     ('Next', 'Colorectal Cancer Screening Completion Pilot', '/initiative.html#host',

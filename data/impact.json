@@ -1,24 +1,24 @@
 {
- "updated": "2026-10-02T10:28:02+00:00",
+ "updated": "2026-10-03T09:49:47+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-02"
+  "to": "2026-10-03"
  },
  "readers": {
   "s30": 86,
   "s60": 37,
   "s120": 21,
   "s240": 17,
-  "bottom": 39
+  "bottom": 40
  },
  "raw": {
-  "ga_users": 444,
-  "sessions": 491,
-  "pageviews": 949,
+  "ga_users": 446,
+  "sessions": 495,
+  "pageviews": 958,
   "engagement_rate": 42,
   "avg_engaged_seconds": 40,
-  "excluded_datacentre": 129,
+  "excluded_datacentre": 130,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,7 +27,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 322,
+  "direct": 325,
   "social": 134,
   "search": 23,
   "referral": 2,
@@ -36,75 +36,67 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 465,
-  "user_prompted": 47,
+  "ai_fetches": 339,
+  "user_prompted": 15,
   "agents": [
    [
-    "Meta-ExternalAgent",
-    74
+    "Amazonbot",
+    63
    ],
    [
     "OAI-SearchBot",
-    73
+    49
    ],
    [
     "PerplexityBot",
-    65
-   ],
-   [
-    "Amazonbot",
-    62
+    46
    ],
    [
     "GPTBot",
-    35
+    44
    ],
    [
-    "ClaudeBot",
-    30
+    "Meta-ExternalAgent",
+    38
+   ],
+   [
+    "Applebot",
+    31
    ],
    [
     "Bytespider",
     26
    ],
    [
-    "Claude-User",
-    24
-   ],
-   [
-    "ChatGPT-User",
-    23
-   ],
-   [
     "CCBot",
     21
    ],
    [
-    "Applebot",
-    20
+    "ChatGPT-User",
+    15
    ],
    [
-    "Google-Extended",
-    12
+    "ClaudeBot",
+    6
    ]
   ],
-  "search_crawlers": 211,
-  "all_bot_requests": 15249,
-  "human_visits": 15,
+  "search_crawlers": 212,
+  "all_bot_requests": 15314,
+  "human_visits": 17,
   "google_clicks": 8,
   "google_impressions": 794,
   "google_position": 13.4,
   "pages_indexed": 20,
-  "all_requests": 15249,
-  "cached_requests": 6242,
-  "unique_ips": 1265,
+  "all_requests": 15314,
+  "cached_requests": 6299,
+  "unique_ips": 1293,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-09-29"
+  "gsc_through": "2026-09-30"
  },
  "actions": {
   "cta": {
-   "initiative": 24,
+   "initiative": 27,
    "article_open": 12,
    "roundtable": 11,
    "download_pdf": 6,
@@ -115,9 +107,9 @@
    "founder_site": 2,
    "partner": 2
   },
-  "cta_total": 94,
-  "cta_people": 22,
-  "cta_labelled": 75,
+  "cta_total": 97,
+  "cta_people": 23,
+  "cta_labelled": 78,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
@@ -132,8 +124,8 @@
   }
  },
  "pages": {
-  "home": 1041,
-  "initiative": 219,
+  "home": 1042,
+  "initiative": 225,
   "about": 115,
   "season": 112,
   "article": 84,

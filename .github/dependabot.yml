@@ -1,0 +1,13 @@
+# Keeps the pinned versions current. Actions are pinned to commit SHAs and the
+# nightly fetcher's Python libraries are pinned with hashes, so nothing changes
+# silently; Dependabot proposes each update as a pull request to review.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+  - package-ecosystem: pip
+    directory: /scripts
+    schedule:
+      interval: monthly

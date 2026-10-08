@@ -29,15 +29,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the site
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
 
-      - name: Install the two libraries the fetcher needs
-        run: pip install --quiet google-auth requests
+      # Exact versions with hashes: this job holds the GA4 and Cloudflare
+      # secrets, so it must not pick up whatever was published overnight.
+      # Edit scripts/requirements-impact.in and re-run pip-compile to change.
+      - name: Install the fetcher's libraries (pinned, hash-checked)
+        run: pip install --quiet --require-hashes -r scripts/requirements-impact.txt
 
       - name: Fetch the figures
         id: fetch

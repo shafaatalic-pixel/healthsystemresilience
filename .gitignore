@@ -16,3 +16,7 @@ __pycache__/
 # Zenodo under each DOI, and scripts/record_sheet.py rebuilds them from source.
 build/
 .sheet-*.html
+
+# Roundtable moderation queue: pending and declined responses, names and text.
+# The repository is public; this folder must never be committed.
+roundtables/private/

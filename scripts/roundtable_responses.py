@@ -15,16 +15,26 @@ WHAT IT DOES
      featured question.
   3. Applies the same consent rules as the synthesis engine: "No" is never stored,
      "anonymous" is stripped of name and affiliation before it touches disk.
-  4. Merges into roundtables/responses/<id>.json, assigning stable ids and never
-     overwriting a moderator's edits to entries that already exist.
+  4. Merges into the moderation queue, assigning stable ids and never overwriting a
+     moderator's edits to entries that already exist. The queue (every entry, with
+     its status) lives in roundtables/private/<id>.json, which is git-ignored and
+     stays on the moderator's machine. Only "published" entries are written to the
+     public roundtables/responses/<id>.json, together with the counts.
   5. Renders, as STATIC HTML between markers, the open-questions cards and the record
      grouped by question, so the pages need no fetch, work with JS off, and shift
      nothing after first paint.
 
-NOTHING PUBLISHES AUTOMATICALLY. New entries land as "status": "pending". The GitHub
-Action opens a pull request; reviewing that PR is the moderation step. To publish an
-entry, change its "status" to "published" (or "declined"), re-run with --render-only,
-and merge.
+NOTHING PUBLISHES AUTOMATICALLY, AND NOTHING UNMODERATED IS COMMITTED. The repository
+is public, so a pending or declined response must never enter git: not on main, not on
+a branch, not in a pull request. Moderation happens on your own machine:
+  1. Run this script (Tally API or a CSV export). New entries land in
+     roundtables/private/<id>.json as "status": "pending".
+  2. In that private file set each entry to "published" or "declined". Trim for length
+     if needed and say so in "note"; never change the meaning.
+  3. Re-run with --render-only, then commit roundtables/responses/*.json,
+     roundtable.html and index.html. Only published entries are in them.
+Seed files (hand-written invitations) belong in roundtables/private/<id>.seed.json for
+the same reason; the old location roundtables/responses/<id>.seed.json is still read.
 
 USAGE
   python3 scripts/roundtable_responses.py                    # Tally API (needs TALLY_API_KEY) + seeds, then render
@@ -35,7 +45,8 @@ import argparse, csv, datetime, glob, hashlib, html, json, os, re, sys, urllib.r
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RT_DIR = os.path.join(ROOT, "roundtables")
-RESP_DIR = os.path.join(RT_DIR, "responses")
+RESP_DIR = os.path.join(RT_DIR, "responses")      # public: published entries + counts
+PRIV_DIR = os.path.join(RT_DIR, "private")         # git-ignored: the full moderation queue
 RT_HTML = os.path.join(ROOT, "roundtable.html")
 INDEX_HTML = os.path.join(ROOT, "index.html")
 TALLY_KEY = os.environ.get("TALLY_API_KEY", "")
@@ -328,11 +339,27 @@ def main():
             continue
         cfg["_path"] = path
         cfg["_resp_path"] = os.path.join(RESP_DIR, os.path.basename(path))
-        cfg["_resp"] = load_json(cfg["_resp_path"], {
+        cfg["_priv_path"] = os.path.join(PRIV_DIR, os.path.basename(path))
+        empty = {
             "question_id": cfg.get("id"), "question": cfg.get("question", ""), "updated": "",
             "counts": {"received": 0, "published": 0, "pending": 0, "declined": 0, "withheld": 0},
             "responses": [],
-        })
+        }
+        public = load_json(cfg["_resp_path"], json.loads(json.dumps(empty)))
+        private = load_json(cfg["_priv_path"], None)
+        cfg["_has_private"] = private is not None
+        if private is None:
+            cfg["_resp"] = public
+        else:
+            # the private queue is the moderator's working copy and wins on every
+            # entry it holds; a published entry only present in the public file
+            # (e.g. on a fresh machine) is kept rather than lost
+            known = {r.get("key") for r in private.get("responses", [])}
+            for r in public.get("responses", []):
+                if r.get("key") not in known:
+                    private.setdefault("responses", []).append(r)
+            private.setdefault("counts", public.get("counts", empty["counts"]))
+            cfg["_resp"] = private
         cfg["_resp"]["question"] = cfg.get("question", "")
         questions.append(cfg)
 
@@ -391,7 +418,8 @@ def main():
 
         # hand-written invitations: people asked directly, who consented in writing
         for q in questions:
-            seeds = load_json(os.path.join(RESP_DIR, q["id"] + ".seed.json"), [])
+            seeds = (load_json(os.path.join(PRIV_DIR, q["id"] + ".seed.json"), None)
+                     or load_json(os.path.join(RESP_DIR, q["id"] + ".seed.json"), []))
             n = 0
             for s in seeds:
                 k = key_for(s.get("name", ""), s.get("affiliation", ""), s.get("text", ""))
@@ -425,15 +453,23 @@ def main():
                 highest += 1
                 r["id"] = "r-%03d" % highest
         st = [r.get("status") for r in data["responses"]]
-        data["counts"].update({
-            "published": st.count("published"), "pending": st.count("pending"),
-            "declined": st.count("declined"),
-            "received": len(data["responses"]) + data["counts"].get("withheld", 0),
-        })
-        data["updated"] = datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z"
-        save_json(q["_resp_path"], {k: v for k, v in data.items()})
+        if q["_has_private"] or any(s != "published" for s in st):
+            # the full queue is here, so the counts can be recomputed from it
+            data["counts"].update({
+                "published": st.count("published"), "pending": st.count("pending"),
+                "declined": st.count("declined"),
+                "received": len(data["responses"]) + data["counts"].get("withheld", 0),
+            })
+            data["updated"] = datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z"
+            save_json(q["_priv_path"], {k: v for k, v in data.items()})
+        else:
+            # no private queue on this machine: only the published count can be known
+            data["counts"]["published"] = st.count("published")
+        public = {k: v for k, v in data.items() if k != "responses"}
+        public["responses"] = [r for r in data["responses"] if r.get("status") == "published"]
+        save_json(q["_resp_path"], public)
         print("  saved: roundtables/responses/%s.json  (%d published, %d pending, %d withheld)"
-              % (q["id"], data["counts"]["published"], data["counts"]["pending"], data["counts"]["withheld"]))
+              % (q["id"], data["counts"]["published"], data["counts"].get("pending", 0), data["counts"]["withheld"]))
 
     splice(RT_HTML, "questions", render_questions(questions))
     splice(RT_HTML, "wall", render_wall(questions))
@@ -441,8 +477,9 @@ def main():
 
     pending = sum(q["_resp"]["counts"]["pending"] for q in questions)
     if pending:
-        print("\n  %d response(s) awaiting your decision. In roundtables/responses/rt-NN.json set each" % pending)
-        print("  \"status\" to \"published\" or \"declined\", then re-run with --render-only and merge.")
+        print("\n  %d response(s) awaiting your decision. In roundtables/private/rt-NN.json set each" % pending)
+        print("  \"status\" to \"published\" or \"declined\", then re-run with --render-only and commit")
+        print("  roundtables/responses/*.json, roundtable.html and index.html. The private folder is never committed.")
 
 
 if __name__ == "__main__":

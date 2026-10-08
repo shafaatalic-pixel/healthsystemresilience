@@ -31,7 +31,50 @@ import datetime as dt
 import json
 import os
 import sys
+import re
 import urllib.parse
+
+
+# ------------------------------------------------------------ safe errors
+# data/impact_status.json is public, and so are the Actions logs of a public
+# repository. An API's error body can name the service account, the Cloud
+# project, the GA4 property or the Cloudflare zone, so it never goes into
+# either. What is recorded is the service, the HTTP code and the provider's
+# error *category* (e.g. PERMISSION_DENIED), which is enough to know which
+# credential to fix. Set IMPACT_DEBUG=1 on your own machine to print the full
+# body to stderr while diagnosing; it is ignored inside GitHub Actions.
+class SafeError(RuntimeError):
+    """An error whose message we wrote ourselves and is safe to publish."""
+
+
+DEBUG = os.environ.get("IMPACT_DEBUG") == "1" and not os.environ.get("GITHUB_ACTIONS")
+
+
+def api_error(service, r):
+    category = ""
+    try:
+        j = r.json()
+        err = j.get("error") if isinstance(j, dict) else None
+        if isinstance(err, dict):
+            category = str(err.get("status") or err.get("code") or "")
+        elif isinstance(j, dict) and j.get("errors"):
+            codes = [str(e.get("code")) for e in j["errors"] if isinstance(e, dict) and e.get("code")]
+            category = "codes " + ",".join(codes[:3]) if codes else ""
+    except Exception:
+        pass
+    if DEBUG:
+        print("[debug] %s %s: %s" % (service, r.status_code, r.text[:600]), file=sys.stderr)
+    category = re.sub(r"[^A-Za-z0-9_ ,.-]", "", category)[:40]
+    return SafeError(("%s HTTP %s %s" % (service, r.status_code, category)).strip())
+
+
+def safe(e):
+    """Text that may be published about an exception."""
+    if isinstance(e, SafeError):
+        return str(e)[:120]
+    if DEBUG:
+        print("[debug] %s: %s" % (type(e).__name__, e), file=sys.stderr)
+    return type(e).__name__
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data", "impact.json")
@@ -59,7 +102,7 @@ def google_session():
     from google.auth.transport.requests import AuthorizedSession
     raw = os.environ.get("GA4_SA_JSON", "").strip()
     if not raw:
-        raise RuntimeError("GA4_SA_JSON is not set")
+        raise SafeError("GA4_SA_JSON is not set")
     info = json.loads(raw)
     creds = service_account.Credentials.from_service_account_info(info, scopes=GA_SCOPES)
     return AuthorizedSession(creds)
@@ -82,7 +125,7 @@ def ga_report(sess, prop, dims, mets, dim_filter=None, limit=100, start=None):
         "https://analyticsdata.googleapis.com/v1beta/properties/%s:runReport" % prop,
         json=body, timeout=60)
     if r.status_code != 200:
-        raise RuntimeError("GA4 %s: %s" % (r.status_code, r.text[:300]))
+        raise api_error("GA4", r)
     d = r.json()
     rows = []
     for row in d.get("rows", []):
@@ -115,14 +158,14 @@ def optional(label, fn, default=None):
     try:
         return fn()
     except Exception as e:
-        DEGRADED.append("%s (%s)" % (label, str(e)[:90]))
+        DEGRADED.append("%s (%s)" % (label, safe(e)))
         return {} if default is None else default
 
 
 def fetch_ga4():
     prop = os.environ.get("GA4_PROPERTY_ID", "").strip()
     if not prop:
-        raise RuntimeError("GA4_PROPERTY_ID is not set")
+        raise SafeError("GA4_PROPERTY_ID is not set")
     s = google_session()
 
     tot = ga_report(s, prop, [], ["activeUsers", "sessions", "screenPageViews",
@@ -281,13 +324,13 @@ def cf_post(token, query, variables):
                                "Content-Type": "application/json"},
                       json={"query": query, "variables": variables})
     if r.status_code != 200:
-        raise RuntimeError("Cloudflare %s: %s" % (r.status_code, r.text[:300]))
+        raise api_error("Cloudflare", r)
     d = r.json()
     if d.get("errors"):
-        raise RuntimeError("Cloudflare: %s" % json.dumps(d["errors"])[:300])
+        raise api_error("Cloudflare GraphQL", r)
     z = d["data"]["viewer"]["zones"]
     if not z:
-        raise RuntimeError("Cloudflare returned no zone; check CF_ZONE_ID")
+        raise SafeError("Cloudflare returned no zone; check CF_ZONE_ID")
     return z[0]
 
 
@@ -295,7 +338,7 @@ def fetch_cloudflare(days=7):
     token = os.environ.get("CF_ANALYTICS_TOKEN", "").strip()
     zone = os.environ.get("CF_ZONE_ID", "").strip()
     if not token or not zone:
-        raise RuntimeError("CF_ANALYTICS_TOKEN or CF_ZONE_ID is not set")
+        raise SafeError("CF_ANALYTICS_TOKEN or CF_ZONE_ID is not set")
 
     until = dt.date.today()
     since = until - dt.timedelta(days=days)
@@ -342,7 +385,7 @@ def fetch_cloudflare(days=7):
                     if any(x.lower() in ua.lower() for x in SEARCH_AGENTS):
                         search_total += n
         if not got_days:
-            raise RuntimeError("no day in the window returned agent data")
+            raise SafeError("no day in the window returned agent data")
         out["agent_days"] = got_days
         agents = sorted(counts.items(), key=lambda kv: -kv[1])
         out["agents"] = [[k, v] for k, v in agents]
@@ -352,7 +395,7 @@ def fetch_cloudflare(days=7):
         out["agents_available"] = True
     except Exception as e:
         out["agents_available"] = False
-        out["agents_error"] = str(e)[:200]
+        out["agents_error"] = safe(e)
     return out
 
 
@@ -368,7 +411,7 @@ def fetch_gsc():
     body = {"startDate": LAUNCH, "endDate": end.isoformat(), "rowLimit": 1}
     r = s.post(url, json=body, timeout=60)
     if r.status_code != 200:
-        raise RuntimeError("Search Console %s: %s" % (r.status_code, r.text[:300]))
+        raise api_error("Search Console", r)
     rows = r.json().get("rows") or [{}]
     row = rows[0]
     body["dimensions"] = ["page"]
@@ -432,7 +475,7 @@ def main():
                 "ok" if not DEGRADED
                 else "ok, without: " + "; ".join(DEGRADED))
         except Exception as e:
-            status["sources"]["ga4"] = "failed: %s" % str(e)[:200]
+            status["sources"]["ga4"] = "failed: %s" % safe(e)
             failures.append("ga4")
 
     machines = dict(doc.get("machines") or {})
@@ -456,7 +499,7 @@ def main():
                 status["sources"]["cf"] = ("ok, without the agent breakdown: %s"
                                            % c.get("agents_error", ""))
         except Exception as e:
-            status["sources"]["cf"] = "failed: %s" % str(e)[:200]
+            status["sources"]["cf"] = "failed: %s" % safe(e)
             failures.append("cloudflare")
 
     if "gsc" in want:
@@ -464,7 +507,7 @@ def main():
             machines.update(fetch_gsc())
             status["sources"]["gsc"] = "ok"
         except Exception as e:
-            status["sources"]["gsc"] = "failed: %s" % str(e)[:200]
+            status["sources"]["gsc"] = "failed: %s" % safe(e)
             failures.append("search console")
     # people, from GA4, over the same seven days the Cloudflare figures cover
     if "human_visits_7d" in doc:
@@ -518,4 +561,5 @@ def main():
     return 0 if not failures else 1
 
 
-sys.exit(main())
+if __name__ == "__main__":
+    sys.exit(main())

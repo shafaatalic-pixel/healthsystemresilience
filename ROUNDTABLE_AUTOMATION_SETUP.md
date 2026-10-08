@@ -139,3 +139,31 @@ not a dependency.
 - No response data is stored anywhere except your own repo, and only consented
   responses ever leave Tally.
 - Nothing is ever published without a human merge.
+
+## Moderating the response wall (on your machine, never in git)
+
+The repository is public, so anything committed, pushed to a branch or put in a
+pull request can be read by anyone and stays in the history. Responses therefore
+reach the site in one direction only: moderated on your machine, and only the
+published ones committed. (Until 8 October 2026 a scheduled workflow opened a
+public pull request with pending responses in it. It has been removed.)
+
+1. Fetch new submissions:
+   `TALLY_API_KEY=... python3 scripts/roundtable_responses.py`
+   or, on Tally's free tier, export the CSV and run
+   `python3 scripts/roundtable_responses.py --csv export.csv`.
+   New entries go to `roundtables/private/rt-NN.json` with `"status": "pending"`.
+   That folder is git-ignored. Keep it backed up locally; it is the only copy of
+   your moderation decisions.
+2. In `roundtables/private/rt-NN.json`, set each entry to `"published"` or
+   `"declined"`. Trim for length if you must and record it in `"note"`.
+3. `python3 scripts/roundtable_responses.py --render-only`
+4. Commit `roundtables/responses/*.json`, `roundtable.html` and `index.html`.
+   They contain published entries and counts only.
+
+Hand-written seed responses go in `roundtables/private/rt-NN.seed.json` for the
+same reason.
+
+The synthesis workflow above still opens a public pull request with its draft.
+The draft is built only from responses whose authors consented to publication,
+but it has not been through moderation yet, so read it as soon as it arrives.

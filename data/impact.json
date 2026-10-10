@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-09T11:17:25+00:00",
+ "updated": "2026-10-10T10:33:58+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-09"
+  "to": "2026-10-10"
  },
  "readers": {
   "s30": 86,
@@ -13,12 +13,12 @@
   "bottom": 41
  },
  "raw": {
-  "ga_users": 450,
-  "sessions": 500,
-  "pageviews": 963,
-  "engagement_rate": 42,
+  "ga_users": 451,
+  "sessions": 502,
+  "pageviews": 964,
+  "engagement_rate": 41,
   "avg_engaged_seconds": 39,
-  "excluded_datacentre": 132,
+  "excluded_datacentre": 133,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,7 +27,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 330,
+  "direct": 332,
   "social": 134,
   "search": 23,
   "referral": 2,
@@ -37,18 +37,18 @@
  "machines": {
   "window_days": 7,
   "ai_fetches": 324,
-  "user_prompted": 20,
+  "user_prompted": 11,
   "agents": [
    [
     "ClaudeBot",
-    93
-   ],
-   [
-    "Applebot",
-    63
+    115
    ],
    [
     "OAI-SearchBot",
+    59
+   ],
+   [
+    "Applebot",
     55
    ],
    [
@@ -57,11 +57,11 @@
    ],
    [
     "GPTBot",
-    35
+    25
    ],
    [
     "ChatGPT-User",
-    20
+    11
    ],
    [
     "PerplexityBot",
@@ -69,26 +69,26 @@
    ],
    [
     "Meta-ExternalAgent",
-    5
+    6
    ],
    [
     "CCBot",
     4
    ]
   ],
-  "search_crawlers": 189,
-  "all_bot_requests": 5793,
-  "human_visits": 9,
+  "search_crawlers": 231,
+  "all_bot_requests": 5797,
+  "human_visits": 6,
   "google_clicks": 9,
   "google_impressions": 852,
   "google_position": 12.8,
   "pages_indexed": 20,
-  "all_requests": 5793,
-  "cached_requests": 405,
-  "unique_ips": 1457,
+  "all_requests": 5797,
+  "cached_requests": 352,
+  "unique_ips": 1516,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-10-06"
+  "gsc_through": "2026-10-07"
  },
  "actions": {
   "cta": {
@@ -120,7 +120,7 @@
   }
  },
  "pages": {
-  "home": 1052,
+  "home": 1053,
   "initiative": 225,
   "about": 115,
   "season": 112,

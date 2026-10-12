@@ -89,7 +89,7 @@ MAIN = """<main id="main">
 
 <section><div class="wrap">
 <h2 class="sec" id="how-they-arrived">How they arrived</h2>
-<p>Where the visits came from since launch. The ordering is worth holding onto, because it does not match the ordering of impressions: the platform that showed the argument to the most people is not the platform that brought the most of them here.</p>
+<p>Where the visits came from since launch. Sessions are counted since this site launched; the Season 1 impressions came four months earlier, so the two are compared for order, never added.</p>
 <!--IMPACT:ARRIVAL:START--><!--IMPACT:ARRIVAL:END-->
 </div></section>
 

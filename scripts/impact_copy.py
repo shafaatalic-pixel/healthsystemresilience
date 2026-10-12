@@ -87,13 +87,14 @@ RULES = {
          "Search now brings more people here than social does. That is the first "
          "sign of an audience that finds HSREP rather than one that is handed it."),
         (lambda d: d["arrival"].get("facebook", 0) > d["arrival"].get("linkedin", 0),
-         "Facebook sends {fb} sessions against LinkedIn's {li}, which is the "
-         "opposite of what the impressions data would predict. Impressions and "
-         "arrivals rank the two platforms in opposite orders."),
+         "Facebook sends {fb} sessions against LinkedIn's {li}. That is the same "
+         "order as the Season 1 impressions: the platform that showed the argument "
+         "to the most people is also the one that brings the most of them here."),
         (lambda d: True,
-         "LinkedIn sends {li} sessions against Facebook's {fb}, which matches "
-         "what a professional audience would suggest and did not hold in "
-         "Season 1."),
+         "LinkedIn sends {li} sessions against Facebook's {fb}, the reverse of the "
+         "Season 1 impressions, where Facebook showed the argument to the most "
+         "people. The platform that reaches the most is not the one that brings "
+         "the most here."),
     ],
 }
 

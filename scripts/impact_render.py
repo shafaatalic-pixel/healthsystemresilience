@@ -413,8 +413,9 @@ def r_dropoff(d):
             % (' class="end"' if kind == "end" else "", esc(label), esc(note),
                max(pct, 0.5) if value else 0, n(value), drop))
         prev = value
-    unit = ("Every line counts people, so the gap between any two of them is a "
-            "real loss rather than an artefact of comparing different things."
+    unit = ("Every line counts people rather than clicks or views, but each comes "
+            "from its own Google Analytics report, so the lines are independent "
+            "counts, not one group narrowing step by step."
             if people else
             "One window, one site. The lower lines count actions rather than "
             "people, which makes them an upper bound.")

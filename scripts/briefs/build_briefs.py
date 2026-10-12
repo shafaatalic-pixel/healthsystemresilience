@@ -63,13 +63,13 @@ h2{font-family:'Spectral',serif;font-weight:700;font-size:14px;color:var(--navy)
 .foot .src{font-family:'IBM Plex Mono',monospace;font-size:7.2px;color:var(--muted);margin:7px 0 .28in;line-height:1.45}
 """
 
-PILLARS = """
+PILLARS_T = """
 <div class="eyebrow">The pilot loop — three core pillars, and a three-pillar roadmap</div>
 <div class="band">
   <div class="cols">
     <div><div class="lab">Core · what the first site runs</div>
       <ul><li>Service redesign &amp; friction reduction</li>
-          <li>Interoperable data infrastructure <small>— one nightly coded 19-column file for the pilot, dates as day counts, key kept at the site</small></li>
+          <li>Interoperable data infrastructure <small>— {data}</small></li>
           <li>Implementation enablement <small>— training so the site runs and sustains it</small></li></ul></div>
     <div><div class="lab rm">Roadmap · after a validated pilot, not in the first pilot</div>
       <ul><li>Predictive AI, explainable</li>
@@ -92,7 +92,7 @@ def page(d):
 <div class="pitch"><div class="ph"><span>The pitch in 30 seconds</span><span class="st">Proposed · In development</span></div>{rows}</div>
 <div class="eyebrow">The problem — adoption, not science</div><div class="grid3">{stats}</div>
 <div class="eyebrow">Which one are you? — different partners, different value, same engine</div><div class="grid3">{cards}</div>
-{PILLARS}
+{PILLARS_T.replace("{data}", d["data"])}
 <div class="eyebrow">The demonstration</div><div class="demo"><h2>{d['demo_h']}</h2><p>{d['demo_p']}</p></div>
 <div class="foot"><div class="cols">
 <div class="l"><b>Md Shafaat Ali Choyon</b> — Founder, HSREP · MBA, MCIM, MPH, CHES®<br>hsraep.org/initiative · Book 30 min: calendly.com/shafaat-alic/30min<br>LinkedIn: /in/sacgrowthspecialist</div>
@@ -108,7 +108,7 @@ US = dict(
     ("Problem", "U.S. colorectal-cancer screening sits at <b>63.5% against a 72.8% target</b> — and 44.89% in Federally Qualified Health Centers (CY2025 UDS; Michigan 48.74%). The services work; <b>completion</b> is what fails."),
     ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly dashboard. A predictive model is on the roadmap — not in the first pilot."),
     ("Evidence", "Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16.1pp, reminders +15.3pp, navigation +13.6pp). Honest caveat: real-world gains depend on <b>how well each step is carried out</b> — STOP CRC averaged ~3.4pp — which this design exists to protect."),
-    ("Cost", "No fee to the site for the first three months. Published benchmark: <b>~$90</b> per additional person screened by mailed-FIT outreach (Pignone et al., JGIM 2021) — not the pilot's cost."),
+    ("Cost", "No fee to the site for the first three months. Published benchmark: <b>~$90</b> per additional person screened by mailed-FIT outreach (Pignone et al., JGIM 2021; total cost net of background screening, 2019 dollars; $54.83 direct per person screened in the same study) — not the pilot's cost, which the feasibility phase measures."),
     ("The ask", "One clinic to run a <b>12-month pilot</b>: a <b>3-month feasibility phase at no fee</b>, then a funded pilot to month 12 if it works. Step one is a 30-minute conversation."),
   ],
   stats=[
@@ -119,8 +119,9 @@ US = dict(
   cards=[
     ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot — raise a UDS/HEDIS measure you already report, inside your existing staffing. The first three months carry no fee, and you decide at month three whether to go on."),
     ("Funders / partners", "Fund a cost-effective, scalable model", "Fund months 4–12 once the feasibility phase shows the routine can run. Equity-stratified design, criteria agreed before results, and a path from one site to a network."),
-    ("Researchers", "Co-design a publishable pilot", "An independent evaluation: before and after against the site's own trend, with a comparison clinic where possible, reported with RE-AIM. Plan published first; co-authorship on the table. Principal investigator: to be confirmed."),
+    ("Researchers", "Co-design a publishable pilot", "An independent evaluation: before and after against the site's own trend, with a comparison clinic where possible, reported with RE-AIM. Plan published first; authorship by contribution. Principal investigator: to be confirmed."),
   ],
+  data="one nightly coded 19-column file for the pilot, dates as day counts, key kept at the site",
   demo_h="A proposed 12-month colorectal-cancer completion pilot — the first three months at no fee.",
   demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3: feasibility, no fee</b> — kits sent and returned, positive tests navigated and booked, days to a booked colonoscopy, staff hours, data completeness. <b>Month 3: decision</b> — the site funds the rest, a funder is found, or it stops. <b>Months 4–12: funded pilot.</b> The site keeps its workflow and its data; HSREP is implementation lead (about 30 hours a week); an academic partner evaluates independently, before and after against the site's own trend with a comparison clinic where possible and a target published in advance. First readout about month six; results published whichever way they go.",
   sources="Borsky et al., Health Affairs 2018 · Healthy People 2030 C-07 (2023 baseline) · HRSA Uniform Data System CY2025, national and Michigan, accessed Aug 2026 · CDC Community Guide (median effects) · Coronado et al., STOP CRC, JAMA Internal Medicine 2018 · Pignone et al., JGIM 2021 (mailed-FIT cost).",
@@ -135,7 +136,7 @@ BD = dict(
     ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly dashboard. A predictive model is on the roadmap — not in the first pilot."),
     ("The model", "<b>Embed, don't build</b> — the engine plugs into existing clinics and the national registry. In Bangladesh, friction reduction means the barriers that actually stop completion: transparent bundled pricing, literacy-tailored urgency communication, and one-visit / home-collection logistics."),
     ("Evidence", "Each mechanism carries quantified effect sizes from the CDC Community Guide; the programme's own evaluation identifies the uptake and follow-up gaps the loop is designed to close."),
-    ("The ask", "A first <b>private-network partner</b> to run the loop commercially — then a donor-supported public-programme pilot in a few upazilas to prove it at national scale. Step one is a 30-minute conversation."),
+    ("The ask", "Once the Michigan colorectal pilot has been evaluated: a first <b>private-network partner</b> to run the loop commercially, then a donor-supported public-programme pilot in a few upazilas to test feasibility and transferability. Step one, now, is a 30-minute conversation."),
   ],
   stats=[
     ("69%", "of health spending is out-of-pocket (WHO, 2025) — one hospitalization can push a household into poverty."),
@@ -147,6 +148,7 @@ BD = dict(
     ("Government", "Strengthen a programme that exists", "DGHS NCDC, the national cervical &amp; breast screening leadership, and the Community Clinic Health Support Trust — piloted in a few upazilas, closing gaps the programme's own evaluation identifies."),
     ("Research &amp; NGO", "Reach, rigor, and credibility", "icddr,b, BSMMU, BRAC, Marie Stopes — publishable, scalable evidence that opens donor funding. Ethics via BMRC or BSMMU; evaluation partner to be confirmed."),
   ],
+  data="a coded extract designed with the programme, drawn from its own registry; the key stays with DGHS",
   demo_h="Embed the completion loop into a programme that already exists.",
   demo_p="Rather than build something new, the engine embeds into the existing network of roughly 14,000 community clinics and the national electronic registry — piloted in a few upazilas, aligned to the national NCD and screening strategy — to close the uptake and follow-up gaps the programme's own evaluation identifies. Data stays within the programme's registry and DGHS control; HSREP is implementation lead; an independent academic partner evaluates. Disease-agnostic by design: the same loop applies to cervical and breast screening, hypertension, and immunizations.",
   sources="WHO Global Health Expenditure (2025) · World Bank health-financing indicators (2021) · Nessa et al., BMC Global and Public Health 2025;3:34 (colposcopy attendance among VIA-positive women, 2018–2023) · DGHS NCDC / NCCBCST national screening programme · e-HIS/DHIS2 evaluations, BMC Public Health &amp; PLOS Glob. Public Health (2025) · CDC Community Guide (mechanism effect sizes).",

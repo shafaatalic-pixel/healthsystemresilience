@@ -20,3 +20,6 @@ build/
 # Roundtable moderation queue: pending and declined responses, names and text.
 # The repository is public; this folder must never be committed.
 roundtables/private/
+
+# brief fonts are installed locally (npm i @fontsource/...), never committed
+scripts/briefs/fonts/

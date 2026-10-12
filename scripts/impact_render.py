@@ -403,8 +403,10 @@ def r_dropoff(d):
     rows, prev = [], None
     for value, label, note, kind in steps:
         pct = (value / top * 100) if top else 0
+        # Only the datacentre deduction is a true subset of the line above; the
+        # other lines are independent reports, so no loss percentage is shown.
         drop = ""
-        if prev is not None and prev > 0 and value <= prev:
+        if label == "Plausibly human" and prev and value <= prev:
             drop = "&minus;%d%%" % round((prev - value) / prev * 100)
         rows.append(
             '<li%s><span class="fk">%s<i>%s</i></span>'

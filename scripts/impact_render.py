@@ -351,8 +351,8 @@ def r_clock(d):
         mins = int((nxt - now).total_seconds() // 60)
         body = ('<b>Refreshed daily.</b> Last run %s, from %s.'
                 % (date(last.date().isoformat()),
-                   ", ".join(k.upper() for k in sorted((st.get("sources") or {}).keys()))
-                   or "GA4, Cloudflare and Search Console"))
+                   ", ".join(SOURCE_NAMES.get(k, k) for k in sorted((st.get("sources") or {}).keys()))
+                   or "Google Analytics, Cloudflare and Google Search Console"))
         cls = ""
         # The scheduled job runs early morning US Eastern; the hour is GitHub's.
         if last and last.date() == now.date():
@@ -428,6 +428,25 @@ def r_dropoff(d):
             % ("".join(rows), unit, n(d["season1"]["impressions_sum"])))
 
 
+SOURCE_NAMES = {"cf": "Cloudflare", "ga4": "Google Analytics", "gsc": "Google Search Console"}
+
+
+def r_plain(d):
+    """One paragraph in plain words, for the reader who stops after a sentence.
+    Same fields as the drop-off; no interpretation."""
+    r, raw, a, p = d["readers"], d["raw"], d["actions"], d["participation"]
+    visitors = raw.get("ga_users", 0)
+    plausible = max(visitors - raw.get("excluded_datacentre", 0), 0)
+    reached = p.get("form_people", p.get("form_clicks", 0))
+    responses = p.get("responses", 0)
+    return ('<p class="imp-plain"><b>In plain words.</b> Since this site launched, %s visits have been '
+            'counted, about %s of them from people rather than datacentres. %s people stayed long '
+            'enough to read something. %s reached the response form, and %s %s. '
+            'Each number below says where it comes from.</p>'
+            % (n(visitors), n(plausible), n(r.get("s30", 0)), n(reached), n(responses),
+               "responded" if responses != 1 else "responded"))
+
+
 def r_split(d):
     """Machines against people, the same seven days. The ratio is the finding, so
     the bars stay linear; the near-invisible ones are the point, not a bug."""
@@ -436,11 +455,11 @@ def r_split(d):
              m.get("all_requests", m.get("all_bot_requests", 0)), "navy"),
             ("Unique IP addresses", m.get("unique_ips", 0), "navy"),
             ("Search-engine crawlers", m.get("search_crawlers", 0), "navy"),
-            ("AI agents", m.get("ai_fetches", 0), "coral"),
-            ("Asked for by a person", m.get("user_prompted", 0), "coral"),
+            ("AI tools reading the site", m.get("ai_fetches", 0), "coral"),
+            ("AI tools sent by a person\u2019s question", m.get("user_prompted", 0), "coral"),
             ("People", m.get("human_visits", 0), "navy")]
     top = max(rows[0][1], 1)
-    out = ['<div class="sp rv">']
+    out = ['<p class="imp-say" style="font-size:15px;color:var(--muted)">Of everything that requested a page in the last seven days, how much was a person. A different window from the figures above, so the counts are not comparable.</p>','<div class="sp rv">']
     for label, value, tone in rows:
         out.append('<div class="sp-r"><span class="sp-k">%s</span>'
                    '<span class="sp-t"><i class="%s" style="width:%.2f%%"></i></span>'
@@ -458,12 +477,13 @@ def r_split(d):
 
 
 
-OPTIONAL = {"CLOCK", "DROPOFF", "SPLIT"}
+OPTIONAL = {"CLOCK", "DROPOFF", "SPLIT", "PLAIN"}
 
 RENDER = {"UPDATED": r_updated, "READERS": r_readers, "ARRIVAL": r_arrival,
           "MACHINES": r_machines, "ACTIONS": r_actions,
           "PARTICIPATION": r_participation, "SEASON1": r_season1,
-          "HOME": r_home, "CLOCK": r_clock, "DROPOFF": r_dropoff, "SPLIT": r_split}
+          "HOME": r_home, "CLOCK": r_clock, "DROPOFF": r_dropoff, "SPLIT": r_split,
+          "PLAIN": r_plain}
 
 # Regions that carry one of the approved sentences from scripts/impact_copy.py,
 # chosen by the numbers. The renderer selects; it never composes.

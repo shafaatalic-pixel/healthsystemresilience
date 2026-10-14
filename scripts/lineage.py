@@ -49,7 +49,7 @@ PAGES = {
     'initiative.html': (
         'Where this came from', 'A pilot proposed from a published, measured argument.',
         'This page is the third step of a thread that began with an article. Each step is public and dated.',
-        3, 'band', r'\n<div class="wrap">\n<section class="pai-role" id="host"', True),
+        3, 'article', r'<section class="pai-card" id="evidence"', True),
     'roundtable.html': (
         'Where this question sits', 'Roundtable &#8470; 02 puts a published argument back to practitioners.',
         'The question is the fourth step of a thread from a published argument to a proposed pilot.',

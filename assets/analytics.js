@@ -388,6 +388,8 @@
  }
 
  function installCampaign() {
+ /* The initiative page is a decision page for a clinic; no campaign bar there. */
+ if (/\/initiative\.html$/.test(location.pathname)) { barHidden(); return; }
  /* Layout-shift contract: every page reserves 45px at the top of <body> in its <head>
  (body{padding-top:45px}; html.hs-bar-on body, html.hs-nobar body {padding-top:0}).
  renderCampaign() inserts the fixed-height bar and adds hs-bar-on in the same frame.

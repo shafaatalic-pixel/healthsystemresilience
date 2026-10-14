@@ -23,7 +23,7 @@ STEPS = [
     ('Put to peers', 'Roundtable &#8470; 02: where does preventive care break down?',
      '/roundtable.html#rt-02', 'Open since 9 Sep 2026 &middot; moderated, on the record'),
     ('Next', 'Colorectal Cancer Screening Completion Pilot', '/initiative.html#host',
-     '<b>One host clinic sought</b> &middot; 12 months &middot; no HSREP fee for the first 3 months'),
+     '<b>One host clinic sought</b> &middot; 12 months &middot; no fee from the clinic'),
     ('Then', 'The same routine, five other completion gaps', '/initiative-next.html#other-gaps',
      'Roadmap, <b>not scheduled</b> &middot; blood pressure, diabetic eye exam, kidney test, two follow-ups'),
 ]

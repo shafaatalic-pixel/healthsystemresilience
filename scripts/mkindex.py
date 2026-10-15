@@ -33,6 +33,7 @@ KINDS = [
     ("initiative.html", ("initiative", "Initiative", 1, "Prevention Adoption Initiative")),
     ("initiative-next.html", ("initiative", "Initiative", 1, "Initiative roadmap")),
     ("dashboard-demo.html", ("initiative", "Initiative", 1, "Dashboard demonstration")),
+    ("pilot-fit.html", ("initiative", "Initiative", 1, "Host clinic fit check")),
     ("impact.html", ("evidence", "Evidence", 2, "Impact")),
     ("methodology.html", ("evidence", "Evidence", 2, "Methodology")),
     ("corrections.html", ("evidence", "Evidence", 2, "Corrections log")),

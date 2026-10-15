@@ -33,10 +33,12 @@ P = os.path.join(ROOT, "impact.html")
 HERO = ('<div class="hero"><div class="wrap">\n'
         ' <div class="ey">The record</div>\n'
         ' <h1>What the record shows.</h1>\n'
-        " <p>The platform's own account of itself: how far the arguments travelled, "
-        "who actually read them, what people did next, and what did not work. It is "
-        "kept as advocacy intelligence rather than as a scoreboard, which means the "
-        "uncomfortable figures are here too.</p>\n"
+        " <p>This page is about the website, not about patients: how many people came "
+        "here, how many read, how many answered, and where they came from. Impact, for this "
+        "project, would be a clinic hosting the pilot, professionals answering the open "
+        "questions, and the arguments being cited. None of that has happened yet; the numbers "
+        "below are the early readership, kept as a working record rather than a scoreboard, "
+        "so the uncomfortable figures are here too.</p>\n"
         "</div></div>")
 
 NAME = "Impact, what the record shows - HSREP"

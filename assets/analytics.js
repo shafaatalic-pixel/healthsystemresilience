@@ -389,7 +389,7 @@
 
  function installCampaign() {
  /* The initiative page is a decision page for a clinic; no campaign bar there. */
- if (/\/initiative\.html$/.test(location.pathname)) { barHidden(); return; }
+ if (/\/(index|initiative|initiative-next|dashboard-demo)\.html$/.test(location.pathname) || location.pathname === "/") { barHidden(); return; }
  /* Layout-shift contract: every page reserves 45px at the top of <body> in its <head>
  (body{padding-top:45px}; html.hs-bar-on body, html.hs-nobar body {padding-top:0}).
  renderCampaign() inserts the fixed-height bar and adds hs-bar-on in the same frame.
@@ -404,9 +404,6 @@
  }
 
  function improveSiteIA() {
- document.querySelectorAll("header nav a,.hs-hnav a,#hmenu-panel a").forEach(function (a) {
- if (/season-1\.html/.test(a.getAttribute("href") || "")) a.textContent = "Evidence";
- });
  var skip = document.querySelector(".skip-link");
  if (skip && document.body.firstElementChild !== skip) document.body.insertBefore(skip, document.body.firstChild);
  document.querySelectorAll(".chip,.er-chip").forEach(function (b) {

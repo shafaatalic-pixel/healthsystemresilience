@@ -38,7 +38,7 @@ PAGES = {
         'The thread', 'From a published argument to a proposed pilot.',
         'HSREP argues in public, measures how the argument travels, proposes something that can be '
         'tested, and puts it back to the people who do the work. One thread, dated at every step.',
-        0, 'band', r'<section class="rt-campaign-panel"', True),
+        0, 'band', r'<!-- § 02 FINDINGS -->', True),
     'articles/when-we-ignore-prevention-we-pay/when-we-ignore-prevention-we-pay.html': (
         'What this argument became', 'This piece is the first step of a thread that runs to a proposed pilot.',
         None, 1, 'article', r'<div class="engage" id="engage">', True),

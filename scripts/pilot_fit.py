@@ -23,7 +23,7 @@ QUESTIONS = [
     dict(key='where', label='Location', q='Where is your clinic?',
          opts=[('Southeast Michigan', 2, None),
                ('Elsewhere in Michigan', 1, 'The pilot is written for one Southeast Michigan health center, where the weekly on-site hours are possible. A clinic elsewhere in Michigan is worth a conversation; the on-site day would need rethinking.'),
-               ('Outside Michigan', 0, 'The first pilot is in Michigan, where its founder is based and the grant routes (a Medicaid plan, a Michigan health foundation, an MDHHS subaward) sit. A later site elsewhere would need its own partners.', True)]),
+               ('Outside Michigan', 0, 'The first pilot is in Michigan, where its founder is based and the funding routes (a Medicaid plan\u2019s quality-incentive dollars, a Michigan health foundation, an MDHHS subaward) sit. A later site elsewhere would need its own partners.', True)]),
     dict(key='setting', label='Setting', q='What kind of setting is it?',
          opts=[('Federally qualified health center, or look-alike', 2, None),
                ('Another community or safety-net clinic', 2, None),
@@ -50,10 +50,10 @@ QUESTIONS = [
          opts=[('Yes, we already produce similar extracts', 2, None),
                ('Probably, with some help', 1, 'The 19 columns are mapped once with your IT lead before month one; the data spec is on the initiative page. Most modern EHRs can schedule it.'),
                ('No, or I am not sure', 0, 'The weekly list is built from that nightly file. Without it there is no list. Your IT lead can judge from the data spec in a short look.')]),
-    dict(key='loi', label='Commitment', q='Could leadership sign a letter of intent before month one, knowing there is a decision point at month three and no fee to HSREP at any point?',
+    dict(key='loi', label='Commitment', q='Could leadership sign a written agreement before month one, covering the scope, a feasibility rate for months 1 to 3 that your clinic pays, and a decision at month three to continue or stop?',
          opts=[('Yes', 2, None),
-               ('It would need a board or CEO decision', 1, 'The letter of intent is what lets the academic partner and HSREP apply for the grant that pays months 4 to 12. A 30-minute conversation is usually what leadership wants first.'),
-               ('No', 0, 'Without a letter of intent before month one there is no grant application, so the pilot cannot go past month three.')]),
+               ('It would need a board or CEO decision', 1, 'The agreement sets the scope and the two rates before month one, and the money can come from your own budget, quality-incentive dollars or a grant your clinic holds. A 30-minute conversation is usually what leadership wants first.'),
+               ('No', 0, 'Without a written agreement before month one the pilot cannot start.')]),
 ]
 
 BANDS = [
@@ -61,7 +61,7 @@ BANDS = [
     (14, 'ready', 'Ready to talk',
      'Your clinic matches what the pilot asks for. The next step is a 30-minute conversation, then your IT lead looks at the data spec and you name a quality-improvement lead.'),
     (10, 'gaps', 'A fit, with gaps to close',
-     'Most of what the pilot needs is in place. The items below are the ones to settle before a letter of intent; none of them is unusual, and a 30-minute conversation is where they are usually resolved.'),
+     'Most of what the pilot needs is in place. The items below are the ones to settle before the agreement; none of them is unusual, and a 30-minute conversation is where they are usually resolved.'),
     (6, 'notyet', 'Not yet',
      'Some of what the pilot runs on is missing. The items below are what would have to be in place first. The open roundtable question is a good way to stay in the conversation meanwhile.'),
     (0, 'no', 'Not this pilot',
@@ -163,6 +163,11 @@ def build():
                '<meta name="description" content="Eight questions, two minutes. See whether your health center matches what the Colorectal Cancer Screening Completion Pilot asks of a host, and what would close any gap. Nothing is stored or sent.">', s, 1)
     s = s.replace('<link rel="canonical" href="https://hsraep.org/accessibility.html">', '<link rel="canonical" href="https://hsraep.org/pilot-fit.html">', 1)
     s = s.replace('</head>', '<style id="pf-css">' + CSS + '</style></head>', 1)
+    # The fit check is an initiative page: the founder assistant, not Ask HSREP (16 Oct 2026).
+    s = re.sub(r'<button class="hs-ask" type="button" data-askhs-open aria-haspopup="dialog" aria-expanded="false" aria-label="Ask HSREP" title="[^"]*">',
+               '<button class="hs-ask" type="button" data-ask-open aria-haspopup="dialog" aria-label="Ask Shafaat about the pilot" title="Ask Shafaat about the pilot">', s, 1)
+    s = s.replace('<span>Ask HSREP</span></button>', '<span>Ask Shafaat</span></button>', 1)
+    s = re.sub(r'<script src="/assets/ask-hsrep\.js\?v=[0-9a-z]+" defer></script>', '<script src="/assets/assistant.js?v=20261016f" defer></script>', s, 1)
     # main
     qs = []
     for i, q in enumerate(QUESTIONS, 1):
@@ -170,7 +175,7 @@ def build():
         qs.append('<fieldset class="pf-q"><legend class="n">Question %d of %d</legend><p class="t">%s</p><ul class="pf-opts">%s</ul></fieldset>' % (i, len(QUESTIONS), q['q'], opts))
     main = ('<main><div class="wrap"><p class="eyebrow">Prevention Adoption Initiative</p><h1>Is your clinic a fit for the pilot?</h1>'
             '<p class="updated">Eight questions · about two minutes · nothing is stored or sent</p>'
-            '<p class="lead pf-intro">The <a href="/initiative.html">Colorectal Cancer Screening Completion Pilot</a> asks a host health center for specific things: outreach staff who already mail kits and make calls, a quality-improvement lead, a nightly coded file, and a letter of intent before month one. This check puts your clinic against that list and tells you what would close any gap. It is an HSREP initiative in development; no site, partner or funding exists yet.</p>'
+            '<p class="lead pf-intro">The <a href="/initiative.html">Colorectal Cancer Screening Completion Pilot</a> asks a host health center for specific things: outreach staff who already mail kits and make calls, a quality-improvement lead, a nightly coded file, and a written agreement before month one. This check puts your clinic against that list and tells you what would close any gap. It is an HSREP initiative in development; no site, partner or funding exists yet.</p>'
             '<p class="pf-note">Answers stay in your browser. There is no account, no email, and no one at HSREP sees them unless you copy the result and send it.</p>'
             '<form id="pf-form" onsubmit="return false">' + ''.join(qs) +
             '<div class="pf-actions"><button type="button" class="pf-btn" id="pf-go" disabled>See the result</button><span class="pf-left" id="pf-left"></span></div></form>'

@@ -151,7 +151,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
       para.push(l);
     });
     flush();
-    return out.join('').replace(/(https?:\/\/[^\s<)]+[^\s<).,;:])/g, function (u) {
+    return out.join('').replace(/\*\*([^*<]+)\*\*/g, '<b>$1</b>').replace(/(^|[\s(>])\*([^*<\s][^*<]*)\*(?=[\s.,;:)<]|$)/g, '$1<i>$2</i>').replace(/(https?:\/\/[^\s<)]+[^\s<).,;:])/g, function (u) {
       var same = /^https?:\/\/(www\.)?hsraep\.org/.test(u), href = same ? u.replace(/^https?:\/\/(www\.)?hsraep\.org/, '') || '/' : u;
       var label = same ? ('hsraep.org' + (href === '/' ? '' : href)) : u.replace(/^https?:\/\//, '');
       return '<a href="' + href + '"' + (same ? '' : ' rel="noopener" target="_blank"') + '>' + label + '</a>';

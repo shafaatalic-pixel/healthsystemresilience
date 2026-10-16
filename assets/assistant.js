@@ -1,11 +1,15 @@
-/* "Ask me about the pilot": the founder assistant on the initiative page.
+/* "Ask me about the pilot": the founder assistant on the four initiative pages
+   (initiative, initiative-next, dashboard-demo, pilot-fit). The rest of the site has
+   Ask HSREP (assets/ask-hsrep.js), HSREP's institutional voice.
    A slide-in panel with Shafaat's video presenter and a chat grounded in the HSREP pages.
    Calls /api/ask on this origin (the shafaat-assistant Worker, hsrep site). Nothing else.
    Opens from any element with [data-ask-open], and from the launcher it adds itself.
-   Runs only on /initiative.html. See /privacy.html#ai for how questions are handled. */
+   See /privacy.html#ai for how questions are handled. */
 (function () {
-  if (!/\/initiative\.html$/.test(location.pathname)) return;
-  var CFG = { api: '/api', ts: '0x4AAAAAAFX9JOBFpuSWsf5E', cal: 'https://calendly.com/shafaat-alic/30min', max: 8, from: 'initiative' };
+  var PM = location.pathname.match(/\/(initiative|initiative-next|dashboard-demo|pilot-fit)\.html$/);
+  if (!PM) return;
+  var ONINIT = PM[1] === 'initiative', HOST = ONINIT ? '#host' : '/initiative.html#host';
+  var CFG = { api: '/api', ts: '0x4AAAAAAFX9JOBFpuSWsf5E', cal: 'https://calendly.com/shafaat-alic/30min', max: 8, from: PM[1] };
   var PATHS = [
     ['clinic', 'I run a clinic', [
       'What would my staff actually do each week?',
@@ -162,7 +166,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   function setLeft() { var n = Math.max(0, CFG.max - turns); left.textContent = n ? (n + ' question' + (n === 1 ? '' : 's') + ' left this visit.') : 'Question limit reached for this visit.'; if (!n) { send.disabled = true; q.disabled = true; } }
   function paused(reason) {
     state = 'off';
-    rest.innerHTML = '<div class="ask-rest"><b>My AI stand-in is resting' + (reason === 'daily cap' ? ' (it has answered its share for today)' : '') + '.</b> Everything it would say is on this page: <a href="#host">the terms for a host clinic</a>, <a href="/pilot-fit.html">the fit check</a>, and <a href="' + CFG.cal + '">a 30-minute conversation</a> with me.</div>';
+    rest.innerHTML = '<div class="ask-rest"><b>My AI stand-in is resting' + (reason === 'daily cap' ? ' (it has answered its share for today)' : '') + '.</b> Everything it would say is on ' + (ONINIT ? 'this page' : 'the initiative page') + ': <a href="' + HOST + '">the terms for a host clinic</a>, <a href="/pilot-fit.html">the fit check</a>, and <a href="' + CFG.cal + '">a 30-minute conversation</a> with me.</div>';
     form.style.display = 'none'; paths.style.display = 'none'; sugg.style.display = 'none'; t('ask_paused', { reason: String(reason || '') });
   }
   function showPaths() {
@@ -175,7 +179,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   }
   function intro() {
     if (chat.querySelector('.ask-msg')) return;
-    bot('<p><b>Ask me anything about the pilot.</b> What your staff would do, who pays, what the IT lead has to produce, what happens at month three. I answer from what HSREP has published on this page and the roadmap. On patient data, money and clinical questions I quote the page rather than improvise, and the real conversation is 30 minutes away.</p><p>Pick who you are, or type a question.</p>');
+    bot('<p><b>Ask me anything about the pilot.</b> What your staff would do, who pays, what the IT lead has to produce, what happens at month three. I answer from what HSREP has published on the initiative page, the roadmap, the worklist demo and the fit check. On patient data, money and clinical questions I quote the page rather than improvise, and the real conversation is 30 minutes away.</p><p>Pick who you are, or type a question.</p>');
     showPaths();
   }
   function open() {
@@ -222,7 +226,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
         if (j.paused) { pose('idle'); paused(j.reason); hist.pop(); return; }
         if (j.error) {
           pose('idle'); hist.pop();
-          bot(j.needTurnstile ? 'I could not confirm you are a person (a blocker or a very old browser can cause this). Try again, or go straight to the terms on this page.' : (j.__s === 429 ? 'Too many questions in a short time. Give it a minute.' : 'Something went wrong on my side. Try again in a moment, or read the terms on this page.'));
+          bot(j.needTurnstile ? 'I could not confirm you are a person (a blocker or a very old browser can cause this). Try again, or go straight to <a href="' + HOST + '">the terms for a host clinic</a>.' : (j.__s === 429 ? 'Too many questions in a short time. Give it a minute.' : 'Something went wrong on my side. Try again in a moment, or read <a href="' + HOST + '">the terms for a host clinic</a>.'));
           t('ask_error', { reason: String(j.error).slice(0, 40) }); busy = false; send.disabled = false; return;
         }
         if (j.session) { session = j.session; try { sessionStorage.setItem('hs_ask_session', session); } catch (e) { } }
@@ -238,13 +242,19 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
         t('ask_reply', { seconds: Math.round((Date.now() - t0) / 1000), step: turns, guarded: j.guarded ? 1 : 0, path: path });
         busy = false; send.disabled = false; setLeft(); sugg.style.display = ''; if (turns < CFG.max) q.focus();
       })
-      .catch(function () { pose('idle'); typing.remove(); hist.pop(); bot('I could not reach the assistant. Check your connection and try again, or read the terms on this page.'); busy = false; send.disabled = false; });
+      .catch(function () { pose('idle'); typing.remove(); hist.pop(); bot('I could not reach the assistant. Check your connection and try again, or read <a href="' + HOST + '">the terms for a host clinic</a>.'); busy = false; send.disabled = false; });
   }
 
   form.addEventListener('submit', function (e) { e.preventDefault(); ask(); });
   q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
   q.addEventListener('input', function () { q.style.height = 'auto'; q.style.height = Math.min(140, q.scrollHeight) + 'px'; });
   launch.addEventListener('click', open);
+  /* Keep the launcher clear of the privacy-choice banner while it is on screen. */
+  (function lift() {
+    var c = document.getElementById('hs-consent'), r = c && c.getClientRects().length && getComputedStyle(c).visibility !== 'hidden' ? c.getBoundingClientRect() : null;
+    launch.style.bottom = r && r.height ? Math.round(window.innerHeight - r.top + 12) + 'px' : '';
+    setTimeout(lift, 400);
+  })();
   panel.querySelector('#ask-close').addEventListener('click', close);
   scrim.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('ask-on')) close(); });

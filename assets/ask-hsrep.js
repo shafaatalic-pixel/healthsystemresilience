@@ -1,14 +1,39 @@
-/* "Ask HSREP": questions about the argument, at the end of each article.
-   An inline block, not a floating bubble. HSREP's institutional voice, no video. It answers
-   from the article being read and HSREP's published record (core pages), quotes figures with
-   their sources and gives the corrected fact where a correction is on record.
-   Calls /api/ask on this origin (the shafaat-assistant Worker, hsrep site) with from=<slug>.
-   The markup is in the article (#ask-hsrep, hidden until this script runs, so readers without
-   JavaScript never see a dead box). See /privacy.html#ai for how questions are handled. */
+/* "Ask HSREP": HSREP's institutional assistant. No video, not a person, not the author.
+   Two ways in:
+   1. On each article, an inline block after "Common questions" (#ask-hsrep in the markup,
+      hidden until this script runs, so readers without JavaScript never see a dead box).
+   2. On every other page, the "Ask HSREP" button in the header ([data-askhs-open]) opens a
+      side panel that knows which page the visitor is on. On an article, the header button
+      scrolls to the inline block instead.
+   The four initiative pages keep the founder assistant (assets/assistant.js) and are skipped.
+   Calls /api/ask on this origin (the shafaat-assistant Worker, hsrep site) with from=<page>;
+   the Worker answers from HSREP's core pages plus that page only. See /privacy.html#ai. */
 (function () {
-  var box = document.getElementById('ask-hsrep');
-  if (!box) return;
-  var CFG = { api: '/api', ts: '0x4AAAAAAFX9JOBFpuSWsf5E', max: 6, from: box.getAttribute('data-from') || '' };
+  if (/\/(initiative|initiative-next|dashboard-demo|pilot-fit)\.html$/.test(location.pathname)) return;
+  var PAGES = {
+    home: ['Home', ['What is HSREP, in one paragraph?', 'Why call a health system economic protection?', 'Where should a public-health professional start?']],
+    'season-1': ['Season 1', ['What was Season 1’s central question?', 'How is 57,274 counted?', 'What did Season 1 lead to?']],
+    articles: ['The article library', ['Which article should I read first?', 'Which articles are about Bangladesh, and which about Michigan?', 'Which articles carry corrections?']],
+    impact: ['Impact', ['What do the drop-off lines mean?', 'Why are there no responses yet?', 'Why is 57,274 not on this page?']],
+    methodology: ['Methodology', ['How is 57,274 counted?', 'Why don’t the chapter totals add up exactly?', 'What does reconciled at better than 94% mean?']],
+    roundtable: ['Roundtables', ['Which question should I answer?', 'Will my name be published?', 'Who reads the responses before they go up?']],
+    about: ['About', ['Who runs HSREP, and is it independent?', 'How does HSREP handle corrections?', 'How can my organisation work with HSREP?']],
+    corrections: ['Corrections log', ['Why are some articles not edited in place?', 'Which corrections changed a figure?', 'How do I report a figure that does not hold?']],
+    search: ['Search', ['What has HSREP published on prevention?', 'Which pieces cover Bangladesh?', 'Where is the Season 1 data?']],
+    films: ['Films and explainers', ['What are the films about?', 'Do the films have transcripts?', 'Can I share a film?']],
+    media: ['Media and brand kit', ['Can I republish an HSREP article?', 'How should I describe HSREP in a story?', 'What do the colours of the mark mean?']],
+    identity: ['Identity', ['What does the Humanist Crest stand for?', 'Why three figures at the centre?', 'Where can I download the mark?']],
+    accessibility: ['Accessibility', ['How accessible are the downloads?', 'Do the films have captions?', 'How do I report an accessibility problem?']],
+    privacy: ['Privacy', ['What does the assistant keep?', 'Does HSREP use cookies?', 'How do I ask for my data to be deleted?']],
+    terms: ['Terms of use', ['Can I reuse HSREP content?', 'Which articles are CC BY 4.0?', 'How should I cite HSREP?']],
+    '404': ['This page', ['What is HSREP?', 'Where are the Season 1 articles?', 'How do I find a specific topic?']],
+  };
+  var path = location.pathname.replace(/\/+$/, '/');
+  var key = path === '/' || /\/index\.html$/.test(path) ? 'home' : ((path.match(/^\/([a-z0-9-]+)\.html$/) || [])[1] || '');
+  if (!PAGES[key] && !document.getElementById('ask-hsrep')) key = '404';
+
+  var box = document.getElementById('ask-hsrep'), panel = !box, wrap = null, scrim = null, opener = null;
+  var CFG = { api: '/api', ts: '0x4AAAAAAFX9JOBFpuSWsf5E', max: panel ? 8 : 6, from: box ? (box.getAttribute('data-from') || '') : key };
   if (!/^[a-z0-9-]{3,60}$/.test(CFG.from)) return;
 
   var CSS = '\
@@ -54,16 +79,50 @@
 [data-theme="dark"] .askhs textarea{background:#0F1A2B;border-color:#2A3B57;color:#EAF1F9}\
 [data-theme="dark"] .askhs form button{background:#F26D5A;color:#0A121E}\
 [data-theme="dark"] .askhs .arest{background:#2a2418;border-color:#6a5530;color:#EAF1F9}\
-@media(max-width:600px){.askhs{padding:22px 18px 16px}.askhs h2{font-size:1.25rem}}';
+@media(max-width:600px){.askhs{padding:22px 18px 16px}.askhs h2{font-size:1.25rem}}\
+#askhs-panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100vw);z-index:4100;display:flex;flex-direction:column;background:#FBFCFD;box-shadow:-12px 0 40px rgba(15,32,54,.25);transform:translateX(102%);transition:transform .3s ease}\
+html.askhs-on #askhs-panel{transform:none}\
+#askhs-panel[hidden],#askhs-scrim[hidden]{display:none}\
+#askhs-scrim{position:fixed;inset:0;z-index:4050;background:rgba(15,32,54,.35);opacity:0;transition:opacity .3s}\
+html.askhs-on #askhs-scrim{opacity:1}\
+#askhs-panel .askhs{margin:0;border:0;border-radius:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;background:transparent}\
+#askhs-panel .ap-head{position:relative;background:#0F2036;color:#fff;padding:18px 56px 16px 20px}\
+#askhs-panel .ap-head .ak{color:#AFC0D4;margin-bottom:6px}\
+#askhs-panel .ap-head .ak::before{background:#F26D5A}\
+#askhs-panel .ap-head h2{color:#fff;font-size:1.3rem;margin:0 0 6px}\
+#askhs-panel .ap-head .asub{color:#C9D4E1;font-size:.84rem;margin:0}\
+#askhs-panel .ap-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:22px;line-height:1;cursor:pointer}\
+#askhs-panel .ap-close:hover{background:rgba(255,255,255,.22)}\
+#askhs-panel .ap-body{flex:1;overflow:auto;padding:16px 20px 8px;-webkit-overflow-scrolling:touch}\
+#askhs-panel .ap-foot{padding:0 20px 14px;border-top:1px solid #DCE3EA;background:#fff}\
+#askhs-panel .ap-foot form{margin-top:12px}\
+[data-theme="dark"] #askhs-panel{background:#0F1A2B}\
+[data-theme="dark"] #askhs-panel .ap-foot{background:#14213A;border-top-color:#2A3B57}\
+.hs-ask[aria-expanded="true"]{color:#C43C25;border-color:#C43C25}\
+@media(prefers-reduced-motion:reduce){#askhs-panel,#askhs-scrim{transition:none}}';
 
   function h(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs || {}) { if (k === 'class') e.className = attrs[k]; else e.setAttribute(k, attrs[k]); } if (html != null) e.innerHTML = html; return e; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function t(ev, a) { try { a = a || {}; a.from = CFG.from; if (window.hsTrack) window.hsTrack(ev, a); } catch (e) { } }
 
   document.head.appendChild(h('style', { id: 'askhs-css' }, CSS));
+  function esc0(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  if (panel) {
+    var pg = PAGES[key];
+    scrim = h('div', { id: 'askhs-scrim', hidden: '' });
+    wrap = h('aside', { id: 'askhs-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'askhs-h', hidden: '' });
+    wrap.innerHTML = '<section class="askhs"><div class="ap-head"><div class="ak">Ask HSREP</div><h2 id="askhs-h">Questions about ' + (key === 'home' ? 'HSREP' : 'this page') + '?</h2>' +
+      '<p class="asub">You are on: ' + esc0(pg[0]) + '. An AI assistant answers from HSREP’s published record. It gives each figure with its source, and the corrected fact where a correction is on record. It is not a person.</p>' +
+      '<button type="button" class="ap-close" aria-label="Close">&times;</button></div>' +
+      '<div class="ap-body"><div class="aqs">' + pg[1].map(function (x) { return '<button type="button">' + esc0(x) + '</button>'; }).join('') + '</div><div class="achat" aria-live="polite"></div></div>' +
+      '<div class="ap-foot"><form><textarea rows="1" maxlength="600" placeholder="Ask about HSREP or this page" aria-label="Your question"></textarea><button type="submit">Ask</button></form>' +
+      '<div class="ats"></div><div class="ameta"><span class="aleft">Up to 8 questions per visit.</span><span>Do not type personal health details. <a href="/privacy.html#ai">How questions are handled</a></span></div></div></section>';
+    document.body.appendChild(scrim); document.body.appendChild(wrap);
+    box = wrap.querySelector('.askhs');
+  }
   var qs = box.querySelector('.aqs'), chat = box.querySelector('.achat'), form = box.querySelector('form'), q = box.querySelector('textarea'),
     send = form.querySelector('button'), left = box.querySelector('.aleft');
-  box.hidden = false;
+  if (!panel) box.hidden = false;
 
   var hist = [], turns = 0, busy = false, session = null, tsId = null, tsTok = null, tsWait = null, state = 'unknown';
   try { session = sessionStorage.getItem('hs_askhs_session') || null; turns = parseInt(sessionStorage.getItem('hs_askhs_turns') || '0', 10) || 0; } catch (e) { }
@@ -87,13 +146,14 @@
       return '<a href="' + href + '"' + (same ? '' : ' rel="noopener" target="_blank"') + '>' + label + '</a>';
     });
   }
-  function bot(html) { var d = h('div', { class: 'am bot' }, html); chat.appendChild(d); return d; }
-  function me(text) { chat.appendChild(h('div', { class: 'am me' }, esc(text))); }
+  function down() { if (panel) { var b = wrap.querySelector('.ap-body'); b.scrollTop = b.scrollHeight; } }
+  function bot(html) { var d = h('div', { class: 'am bot' }, html); chat.appendChild(d); down(); return d; }
+  function me(text) { chat.appendChild(h('div', { class: 'am me' }, esc(text))); down(); }
   function setLeft() { var n = Math.max(0, CFG.max - turns); if (left) left.textContent = n ? (n + ' question' + (n === 1 ? '' : 's') + ' left this visit.') : 'Question limit reached for this visit.'; if (!n) { send.disabled = true; q.disabled = true; } }
   function paused(reason) {
     state = 'off';
     qs.style.display = 'none'; form.style.display = 'none';
-    chat.appendChild(h('div', { class: 'arest' }, '<b>Ask HSREP is resting' + (reason === 'daily cap' ? ' (it has answered its share for today)' : '') + '.</b> The common questions above, the <a href="/corrections.html">corrections log</a> and the <a href="/methodology.html">methodology</a> cover most of what it would say. To respond to the argument, use <a href="#engage">Respond as a professional</a>.'));
+    chat.appendChild(h('div', { class: 'arest' }, '<b>Ask HSREP is resting' + (reason === 'daily cap' ? ' (it has answered its share for today)' : '') + '.</b> ' + (panel ? '<a href="/search.html">Search</a> covers every page, and the <a href="/corrections.html">corrections log</a> and the <a href="/methodology.html">methodology</a> hold the figures. To take part, see <a href="/roundtable.html">the roundtable</a>.' : 'The common questions above, the <a href="/corrections.html">corrections log</a> and the <a href="/methodology.html">methodology</a> cover most of what it would say. To respond to the argument, use <a href="#engage">Respond as a professional</a>.')));
     t('askhs_paused', { reason: String(reason || '') });
   }
 
@@ -163,4 +223,28 @@
   q.addEventListener('focus', function () { wake(); }, { once: true });
   qs.addEventListener('pointerenter', function () { wake(); }, { once: true });
   setLeft();
+
+  /* Header button(s). */
+  function open(btn) {
+    opener = btn || null;
+    if (!panel) { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { try { q.focus({ preventScroll: true }); } catch (e) { q.focus(); } }, 450); wake(); t('askhs_header', { mode: 'inline' }); return; }
+    wrap.hidden = false; scrim.hidden = false;
+    requestAnimationFrame(function () { document.documentElement.classList.add('askhs-on'); });
+    setBtns(true); wake(); t('askhs_open', {});
+    setTimeout(function () { q.focus(); }, 320);
+  }
+  function close() {
+    if (!panel) return;
+    document.documentElement.classList.remove('askhs-on'); setBtns(false);
+    setTimeout(function () { wrap.hidden = true; scrim.hidden = true; }, 320);
+    if (opener) try { opener.focus(); } catch (e) { }
+  }
+  function setBtns(on) { Array.prototype.forEach.call(document.querySelectorAll('[data-askhs-open]'), function (b) { b.setAttribute('aria-expanded', on ? 'true' : 'false'); }); }
+  document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-askhs-open]'); if (b) { e.preventDefault(); if (panel && document.documentElement.classList.contains('askhs-on')) close(); else open(b); } });
+  if (panel) {
+    wrap.querySelector('.ap-close').addEventListener('click', close);
+    scrim.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('askhs-on')) close(); });
+    if (location.hash === '#ask') setTimeout(open, 400);
+  }
 })();

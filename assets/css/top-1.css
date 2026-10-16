@@ -77,3 +77,18 @@ html body #hmenu-panel{display:none!important}
 /* the founder's name links to his own site (1 Oct 2026) */
 a.me{color:inherit!important;text-decoration:none!important;border-bottom:1px solid rgba(28,46,74,.28);transition:color .15s,border-color .15s}
 a.me:hover,a.me:focus-visible{color:#C43C25!important;border-bottom-color:currentColor}
+
+/* Ask HSREP / Ask the founder: header button next to Search (16 Oct 2026). Same pill as Search, pulled closer to it. */
+html body header.site.hs-top .hs-ask{display:inline-flex!important;align-items:center!important;gap:7px!important;font:600 .9rem 'Inter','Inter Fallback',sans-serif!important;color:#1C2E4A!important;background:transparent!important;border:1px solid #DCE3EA!important;border-radius:999px!important;padding:9px 14px!important;white-space:nowrap!important;flex:0 0 auto!important;margin:0 0 0 -16px!important;cursor:pointer!important;line-height:normal!important}
+html body header.site.hs-top .hs-ask svg{width:16px!important;height:16px!important;fill:none!important;stroke:currentColor!important;stroke-width:2!important;stroke-linejoin:round!important;flex:none!important}
+html body header.site.hs-top .hs-ask:hover,html body header.site.hs-top .hs-ask[aria-expanded="true"]{color:#C43C25!important;border-color:#C43C25!important}
+@media(min-width:1061px) and (max-width:1240px){
+ html body header.site.hs-top .hs-ask span,html body header.site.hs-top .hs-srch span{display:none!important}
+ html body header.site.hs-top .hs-srch,html body header.site.hs-top .hs-ask{padding:9px 11px!important}
+}
+@media(max-width:640px){
+ html body header.site.hs-top .hs-ask span{display:none!important}
+ html body header.site.hs-top .hs-ask{padding:8px 10px!important;margin:0 0 0 -4px!important}
+}
+@media(max-width:400px){html body header.site.hs-top .hs-top-row{gap:4px!important}html body header.site.hs-top .hs-ask{padding:8px 9px!important;margin:0!important}}
+@media(max-width:340px){html body header.site.hs-top .hs-top-row{gap:3px!important}html body header.site.hs-top .hs-top-logo img{height:29px!important}html body header.site.hs-top .hs-ask{padding:8px!important;margin:0!important}}

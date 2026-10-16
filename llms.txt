@@ -21,7 +21,7 @@
 ## Applied initiative
 
 - [Prevention Adoption Initiative](https://hsraep.org/initiative.html): A proposed, in-development toolkit that closes the "Prevention Adoption Gap", the distance between recommended and completed preventive care in safety-net settings, beginning with a proposed colorectal-cancer screening completion pilot in Southeast Michigan. Status: proposed and in development; nothing has been deployed. All operational designs are illustrative.
-- [Is your clinic a fit for the pilot?](https://hsraep.org/pilot-fit.html): An eight-question check, run in the browser with nothing stored, that compares a health center against what the pilot asks of a host (outreach staff, a quality-improvement lead, a nightly coded file, a letter of intent) and says what would close each gap.
+- [Is your clinic a fit for the pilot?](https://hsraep.org/pilot-fit.html): An eight-question check, run in the browser with nothing stored, that compares a health center against what the pilot asks of a host (outreach staff, a quality-improvement lead, a nightly coded file, a written agreement before month one) and says what would close each gap.
 
 ## Areas of focus
 

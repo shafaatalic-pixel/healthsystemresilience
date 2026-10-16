@@ -20,14 +20,14 @@
       'What do we get if it works?']],
     ['research', 'I evaluate or research', [
       'What is the evaluation protocol?',
-      'Who holds the grant?',
+      'Who pays for the evaluation?',
       'What is published, and when?',
       'How is authorship decided?',
       'What is still open in the design?',
       'What does the feasibility phase measure?']],
     ['fund', 'I fund', [
       'What is the ask, in dollars and months?',
-      'What is spent before month four?',
+      'Who pays for what?',
       'What are the gates?',
       'What benchmark exists?',
       'Who else is involved?',

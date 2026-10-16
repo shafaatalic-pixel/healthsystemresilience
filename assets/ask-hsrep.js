@@ -39,7 +39,7 @@
   var CSS = '\
 .askhs{font-family:var(--sans,Inter,"Inter Fallback",system-ui,sans-serif);margin:26px 0 26px;background:#fff;border:1px solid var(--line,#DCE3EA);border-radius:16px;padding:26px 28px 20px}\
 .askhs .ak{font-family:"IBM Plex Mono","IBM Plex Mono Fallback",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#1C2E4A;margin-bottom:8px;display:flex;align-items:center;gap:8px}\
-.askhs .ak::before{content:"";width:8px;height:8px;border-radius:2px;background:#1C2E4A}\
+.askhs .ak::before{content:"\\2726";font-size:13px;letter-spacing:0;color:#F26D5A}\
 .askhs h2{font-family:Spectral,"Spectral Fallback",Georgia,serif;font-weight:700;font-size:1.42rem;line-height:1.24;margin:0 0 8px;color:#1C2E4A}\
 .askhs .asub{margin:0 0 16px;font-size:.92rem;line-height:1.6;color:#5A5F66;max-width:62ch}\
 .askhs .aqs{display:grid;gap:8px;margin:0 0 14px}\
@@ -58,9 +58,11 @@
 .askhs .atyping i{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:#8A97A6;animation:askhsB 1s infinite}\
 .askhs .atyping i:nth-child(2){animation-delay:.15s}.askhs .atyping i:nth-child(3){animation-delay:.3s}\
 @keyframes askhsB{0%,80%,100%{opacity:.3}40%{opacity:1}}\
-.askhs form{display:flex;gap:8px;margin:14px 0 0}\
-.askhs textarea{flex:1;resize:none;font-family:inherit;font-size:15px;line-height:1.4;padding:10px 12px;border:1px solid #C9D2DC;border-radius:10px;min-height:44px;max-height:140px;background:#fff;color:#28313C}\
-.askhs form button{flex:0 0 auto;font-family:inherit;font-weight:700;font-size:14px;line-height:1;padding:0 20px;border:0;border-radius:999px;background:#1C2E4A;color:#fff;cursor:pointer}\
+.askhs form{display:flex;gap:0;margin:16px 0 0;padding:2px;border-radius:16px;background:linear-gradient(100deg,#F26D5A,#F5B26B 40%,#1C2E4A);box-shadow:0 8px 22px rgba(242,109,90,.18);transition:box-shadow .2s}\
+.askhs form:focus-within{box-shadow:0 0 0 4px rgba(242,109,90,.18),0 10px 26px rgba(242,109,90,.25)}\
+.askhs textarea{flex:1;resize:none;font-family:inherit;font-size:15.5px;line-height:1.4;padding:13px 14px;border:0;border-radius:14px 0 0 14px;min-height:48px;max-height:140px;background:#fff;color:#28313C;outline:none}\
+.askhs form button{flex:0 0 auto;display:flex;align-items:center;gap:6px;font-family:inherit;font-weight:700;font-size:14px;line-height:1;padding:0 18px;border:0;border-radius:0 14px 14px 0;background:#1C2E4A;color:#fff;cursor:pointer}\
+.askhs form button::after{content:"\\2192";font-size:16px}\
 .askhs form button[disabled]{opacity:.5;cursor:default}\
 .askhs .ameta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:#5A5F66}\
 .askhs .ameta a{color:#5A5F66}\
@@ -68,7 +70,6 @@
 .askhs .arest a{color:#C43C25}\
 [data-theme="dark"] .askhs{background:#14213A;border-color:#2A3B57}\
 [data-theme="dark"] .askhs .ak,[data-theme="dark"] .askhs h2{color:#EAF1F9}\
-[data-theme="dark"] .askhs .ak::before{background:#F26D5A}\
 [data-theme="dark"] .askhs .asub,[data-theme="dark"] .askhs .ameta,[data-theme="dark"] .askhs .ameta a,[data-theme="dark"] .askhs .am .gn{color:#AEBCCE}\
 [data-theme="dark"] .askhs .aqs button{background:#1a2942;border-color:#2A3B57;color:#EAF1F9}\
 [data-theme="dark"] .askhs .aqs button:hover{border-color:#F26D5A}\
@@ -76,8 +77,8 @@
 [data-theme="dark"] .askhs .am.me{background:#F26D5A;color:#0A121E}\
 [data-theme="dark"] .askhs .am a{color:#F26D5A}\
 [data-theme="dark"] .askhs .am q{background:#14213A;border-left-color:#F26D5A}\
-[data-theme="dark"] .askhs textarea{background:#0F1A2B;border-color:#2A3B57;color:#EAF1F9}\
-[data-theme="dark"] .askhs form button{background:#F26D5A;color:#0A121E}\
+[data-theme="dark"] .askhs textarea{background:#0F1A2B;color:#EAF1F9}\
+[data-theme="dark"] .askhs form button{background:#1C2E4A;color:#fff}\
 [data-theme="dark"] .askhs .arest{background:#2a2418;border-color:#6a5530;color:#EAF1F9}\
 @media(max-width:600px){.askhs{padding:22px 18px 16px}.askhs h2{font-size:1.25rem}}\
 #askhs-panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100vw);z-index:4100;display:flex;flex-direction:column;background:#FBFCFD;box-shadow:-12px 0 40px rgba(15,32,54,.25);transform:translateX(102%);transition:transform .3s ease}\
@@ -86,18 +87,18 @@ html.askhs-on #askhs-panel{transform:none}\
 #askhs-scrim{position:fixed;inset:0;z-index:4050;background:rgba(15,32,54,.35);opacity:0;transition:opacity .3s}\
 html.askhs-on #askhs-scrim{opacity:1}\
 #askhs-panel .askhs{margin:0;border:0;border-radius:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;background:transparent}\
-#askhs-panel .ap-head{position:relative;background:#0F2036;color:#fff;padding:18px 56px 16px 20px}\
+#askhs-panel .ap-head{position:relative;background:radial-gradient(120% 140% at 100% 0%,rgba(242,109,90,.35),transparent 55%),#0F2036;color:#fff;padding:18px 56px 16px 20px}\
 #askhs-panel .ap-head .ak{color:#AFC0D4;margin-bottom:6px}\
-#askhs-panel .ap-head .ak::before{background:#F26D5A}\
+#askhs-panel .ap-head .ak::before{color:#F5B26B}\
 #askhs-panel .ap-head h2{color:#fff;font-size:1.3rem;margin:0 0 6px}\
 #askhs-panel .ap-head .asub{color:#C9D4E1;font-size:.84rem;margin:0}\
 #askhs-panel .ap-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:22px;line-height:1;cursor:pointer}\
 #askhs-panel .ap-close:hover{background:rgba(255,255,255,.22)}\
 #askhs-panel .ap-body{flex:1;overflow:auto;padding:16px 20px 8px;-webkit-overflow-scrolling:touch}\
-#askhs-panel .ap-foot{padding:0 20px 14px;border-top:1px solid #DCE3EA;background:#fff}\
-#askhs-panel .ap-foot form{margin-top:12px}\
+#askhs-panel .ap-foot{padding:0 20px 14px;background:linear-gradient(180deg,#fff,#FBF6F4);box-shadow:0 -10px 24px rgba(15,32,54,.06)}\
+#askhs-panel .ap-foot form{margin-top:14px}\
 [data-theme="dark"] #askhs-panel{background:#0F1A2B}\
-[data-theme="dark"] #askhs-panel .ap-foot{background:#14213A;border-top-color:#2A3B57}\
+[data-theme="dark"] #askhs-panel .ap-foot{background:#14213A}\
 .hs-ask[aria-expanded="true"]{color:#C43C25;border-color:#C43C25}\
 @media(prefers-reduced-motion:reduce){#askhs-panel,#askhs-scrim{transition:none}}';
 

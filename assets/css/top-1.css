@@ -78,17 +78,25 @@ html body #hmenu-panel{display:none!important}
 a.me{color:inherit!important;text-decoration:none!important;border-bottom:1px solid rgba(28,46,74,.28);transition:color .15s,border-color .15s}
 a.me:hover,a.me:focus-visible{color:#C43C25!important;border-bottom-color:currentColor}
 
-/* Ask HSREP / Ask the founder: header button next to Search (16 Oct 2026). Same pill as Search, pulled closer to it. */
-html body header.site.hs-top .hs-ask{display:inline-flex!important;align-items:center!important;gap:7px!important;font:600 .9rem 'Inter','Inter Fallback',sans-serif!important;color:#1C2E4A!important;background:transparent!important;border:1px solid #DCE3EA!important;border-radius:999px!important;padding:9px 14px!important;white-space:nowrap!important;flex:0 0 auto!important;margin:0 0 0 -16px!important;cursor:pointer!important;line-height:normal!important}
-html body header.site.hs-top .hs-ask svg{width:16px!important;height:16px!important;fill:none!important;stroke:currentColor!important;stroke-width:2!important;stroke-linejoin:round!important;flex:none!important}
-html body header.site.hs-top .hs-ask:hover,html body header.site.hs-top .hs-ask[aria-expanded="true"]{color:#C43C25!important;border-color:#C43C25!important}
+/* Ask HSREP / Ask Shafaat: the header button next to Search (16 Oct 2026).
+   "Live ring": a navy pill with a coral and amber edge that turns slowly. Still for reduced motion.
+   Search is icon-only on desktop to make room; both go icon-only between 1061 and 1240px and on phones. */
+@property --hsAskA{syntax:'<angle>';initial-value:0deg;inherits:false}
+html body header.site.hs-top .hs-srch span{display:none!important}
+html body header.site.hs-top .hs-srch{padding:9px 11px!important}
+html body header.site.hs-top .hs-ask{position:relative!important;display:inline-flex!important;align-items:center!important;gap:8px!important;font:600 .9rem 'Inter','Inter Fallback',sans-serif!important;color:#fff!important;border:2px solid transparent!important;border-radius:999px!important;background:linear-gradient(#1C2E4A,#1C2E4A) padding-box,conic-gradient(from var(--hsAskA),#F26D5A,#F5B26B,#1C2E4A 45%,#1C2E4A 60%,#F26D5A) border-box!important;box-shadow:0 6px 18px rgba(242,109,90,.28)!important;padding:8px 16px 8px 13px!important;white-space:nowrap!important;flex:0 0 auto!important;margin:0 0 0 -14px!important;cursor:pointer!important;line-height:normal!important;animation:hsAskA 4.5s linear infinite;transition:transform .18s,box-shadow .18s}
+html body header.site.hs-top .hs-ask svg{width:15px!important;height:15px!important;fill:#F5B26B!important;stroke:none!important;flex:none!important}
+html body header.site.hs-top .hs-ask:hover,html body header.site.hs-top .hs-ask[aria-expanded="true"]{transform:translateY(-1px);box-shadow:0 10px 26px rgba(242,109,90,.42)!important;color:#fff!important}
+@keyframes hsAskA{to{--hsAskA:360deg}}
+@media(prefers-reduced-motion:reduce){html body header.site.hs-top .hs-ask{animation:none}}
 @media(min-width:1061px) and (max-width:1240px){
- html body header.site.hs-top .hs-ask span,html body header.site.hs-top .hs-srch span{display:none!important}
- html body header.site.hs-top .hs-srch,html body header.site.hs-top .hs-ask{padding:9px 11px!important}
+ html body header.site.hs-top .hs-ask span{display:none!important}
+ html body header.site.hs-top .hs-ask{padding:8px 10px!important}
 }
 @media(max-width:640px){
  html body header.site.hs-top .hs-ask span{display:none!important}
- html body header.site.hs-top .hs-ask{padding:8px 10px!important;margin:0 0 0 -4px!important}
+ html body header.site.hs-top .hs-ask{padding:7px 9px!important;margin:0 0 0 -4px!important}
 }
-@media(max-width:400px){html body header.site.hs-top .hs-top-row{gap:4px!important}html body header.site.hs-top .hs-ask{padding:8px 9px!important;margin:0!important}}
-@media(max-width:340px){html body header.site.hs-top .hs-top-row{gap:3px!important}html body header.site.hs-top .hs-top-logo img{height:29px!important}html body header.site.hs-top .hs-ask{padding:8px!important;margin:0!important}}
+@media(max-width:400px){html body header.site.hs-top .hs-top-row{gap:4px!important}html body header.site.hs-top .hs-ask{padding:7px 8px!important;margin:0!important}}
+@media(max-width:380px){html body header.site.hs-top .hs-top-logo img{height:31px!important}html body header.site.hs-top .hs-top-cta{padding:8px 9px!important;font-size:.72rem!important}html body header.site.hs-top .hs-srch,html body header.site.hs-top #hmenu-btn{padding:8px!important}}
+@media(max-width:340px){html body header.site.hs-top .hs-top-row{gap:2px!important}html body header.site.hs-top .hs-top-logo img{height:27px!important}html body header.site.hs-top .hs-ask{padding:5px 6px!important;margin:0!important}}

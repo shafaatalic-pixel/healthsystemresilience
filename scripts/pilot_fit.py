@@ -167,7 +167,7 @@ def build():
     s = re.sub(r'<button class="hs-ask" type="button" data-askhs-open aria-haspopup="dialog" aria-expanded="false" aria-label="Ask HSREP" title="[^"]*">',
                '<button class="hs-ask" type="button" data-ask-open aria-haspopup="dialog" aria-label="Ask Shafaat about the pilot" title="Ask Shafaat about the pilot">', s, 1)
     s = s.replace('<span>Ask HSREP</span></button>', '<span>Ask Shafaat</span></button>', 1)
-    s = re.sub(r'<script src="/assets/ask-hsrep\.js\?v=[0-9a-z]+" defer></script>', '<script src="/assets/assistant.js?v=20261016f" defer></script>', s, 1)
+    s = re.sub(r'<script src="/assets/ask-hsrep\.js\?v=[0-9a-z]+" defer></script>', '<script src="/assets/assistant.js?v=20261017a" defer></script>', s, 1)
     # main
     qs = []
     for i, q in enumerate(QUESTIONS, 1):

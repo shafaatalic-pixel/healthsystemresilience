@@ -204,12 +204,29 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   function renderTs() { try { tsId = window.turnstile.render('#ask-ts', { sitekey: CFG.ts, appearance: 'interaction-only', callback: function (tok) { tsTok = tok; if (tsWait) { tsWait(tok); tsWait = null; } }, 'expired-callback': function () { tsTok = null; }, 'error-callback': function () { tsTok = null; if (tsWait) { tsWait(null); tsWait = null; } } }); } catch (e) { } }
   function getTs() {
     return new Promise(function (res) {
-      if (!CFG.ts || !window.turnstile) { res(null); return; }
-      if (tsId === null) renderTs();
-      if (tsTok) { var k = tsTok; tsTok = null; res(k); return; }
-      tsWait = res; if (tsId !== null) { try { window.turnstile.reset(tsId); } catch (e) { } }
-      setTimeout(function () { if (tsWait) { tsWait = null; res(null); } }, 20000);
+      if (!CFG.ts) { res(null); return; }
+      var waited = 0;
+      (function go() {
+        if (!window.turnstile) { if ((waited += 200) > 8000) { res(null); return; } setTimeout(go, 200); return; }
+        if (tsId === null) renderTs();
+        if (tsTok) { var k = tsTok; tsTok = null; res(k); return; }
+        tsWait = res; if (tsId !== null) { try { window.turnstile.reset(tsId); } catch (e) { } }
+        setTimeout(function () { if (tsWait) { tsWait = null; res(null); } }, 20000);
+      })();
     });
+  }
+
+  /* A stored session can outlive the server's one-hour token (sessionStorage keeps it for the
+     life of the tab). Drop it when it is near expiry, and if the server still asks for the
+     person check, get a fresh Turnstile token and retry once. */
+  function dropSession() { session = null; try { sessionStorage.removeItem('hs_ask_session'); } catch (e) { } }
+  function freshSession() { if (session) { var e = parseInt(String(session).split('.')[1], 10); if (!e || e * 1000 < Date.now() + 60000) dropSession(); } }
+  function req(retry) {
+    freshSession(); if (!session) loadTs();
+    return (session ? Promise.resolve(null) : getTs()).then(function (tok) {
+      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: path, from: CFG.from }) });
+    }).then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); })
+      .then(function (j) { if (j && j.needTurnstile && !retry) { dropSession(); return req(true); } return j; });
   }
 
   function ask() {
@@ -217,10 +234,8 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
     busy = true; send.disabled = true; sugg.style.display = 'none'; paths.style.display = 'none'; me(text); q.value = ''; q.style.height = '';
     hist.push({ role: 'user', content: text }); pose('thinking');
     var typing = bot('<span class="ask-typing"><i></i><i></i><i></i></span>'); var t0 = Date.now(); t('ask_ask', { step: turns + 1, path: path });
-    (session ? Promise.resolve(null) : getTs()).then(function (tok) {
-      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: path, from: CFG.from }) });
-    })
-      .then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); })
+    req(false)
+      
       .then(function (j) {
         typing.remove();
         if (j.paused) { pose('idle'); paused(j.reason); hist.pop(); return; }

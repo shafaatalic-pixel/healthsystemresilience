@@ -187,6 +187,19 @@ html.askhs-on #askhs-scrim{opacity:1}\
     });
   }
 
+  /* A stored session can outlive the server's one-hour token (sessionStorage keeps it for the
+     life of the tab). Drop it when it is near expiry, and if the server still asks for the
+     person check, get a fresh Turnstile token and retry once. */
+  function dropSession() { session = null; try { sessionStorage.removeItem('hs_askhs_session'); } catch (e) { } }
+  function freshSession() { if (session) { var e = parseInt(String(session).split('.')[1], 10); if (!e || e * 1000 < Date.now() + 60000) dropSession(); } }
+  function req(retry) {
+    freshSession(); if (!session) loadTs();
+    return (session ? Promise.resolve(null) : getTs()).then(function (tok) {
+      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: '', from: CFG.from }) });
+    }).then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); })
+      .then(function (j) { if (j && j.needTurnstile && !retry) { dropSession(); return req(true); } return j; });
+  }
+
   function ask(text) {
     text = String(text || '').trim(); if (!text || busy || turns >= CFG.max || state === 'off') return;
     busy = true; send.disabled = true; me(text); q.value = ''; q.style.height = '';
@@ -194,9 +207,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
     var typing = bot('<span class="atyping" aria-label="Answering"><i></i><i></i><i></i></span>'); var t0 = Date.now(); t('askhs_ask', { step: turns + 1 });
     wake().then(function (ok) {
       if (!ok) { typing.remove(); hist.pop(); busy = false; return null; }
-      return (session ? Promise.resolve(null) : getTs()).then(function (tok) {
-        return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: '', from: CFG.from }) });
-      }).then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); }).then(function (j) {
+      return req(false).then(function (j) {
         typing.remove();
         if (j.paused) { hist.pop(); paused(j.reason); return; }
         if (j.error) {

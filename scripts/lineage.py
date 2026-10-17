@@ -19,13 +19,13 @@ STEPS = [
     ('Measured', 'Season 1: <!--N:total_word-->nine<!--/N--> pieces, two countries', '/season-1.html',
      '<b>57,274 impressions</b> (post appearances, not people), $0 paid &middot; 21 Feb &ndash; 12 Apr 2026'),
     ('Proposed', 'Prevention Adoption Initiative', '/initiative.html',
-     'Published July 2026 with a working <a href="/dashboard-demo.html">worklist demo</a> &middot; <b>in development</b>, nothing deployed'),
+     'Published July 2026 with a working <a href="/dashboard-demo.html">worklist demo</a> &middot; <b>in development</b>'),
     ('Asked practitioners', 'Roundtable &#8470; 02: where does preventive care break down?',
      '/roundtable.html#rt-02', 'Open since 9 Sep 2026 &middot; moderated, on the record'),
     ('Next', 'Colorectal Cancer Screening Completion Pilot', '/initiative.html#host',
-     '<b>One host clinic sought</b> &middot; 12 months &middot; stop at month three'),
+     '<b>One host clinic sought</b> &middot; 12 months &middot; decision at month three'),
     ('Then', 'The same routine, five other completion gaps', '/initiative-next.html#other-gaps',
-     'Roadmap, <b>not scheduled</b> &middot; blood pressure, diabetic eye exam, kidney test, two follow-ups'),
+     'Roadmap, <b>or a clinic&rsquo;s first choice</b> &middot; blood pressure, diabetic eye exam, kidney test, two follow-ups'),
 ]
 
 FOOT = ('Every step is dated and links to the record. The initiative is proposed, not running: '

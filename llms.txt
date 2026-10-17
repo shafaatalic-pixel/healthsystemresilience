@@ -1,6 +1,6 @@
 # HSREP, Health System Resilience & Economic Protection
 
-> HSREP is an independent policy-research and advocacy platform making the case that health-system resilience is economic protection: when health systems hold under shock, households, institutions, and public trust hold with them. It publishes evidence-based arguments, pairs each with usable media and advocacy tools, and turns them into structured professional discussion. Founded 2026 by Md Shafaat Ali Choyon (MBA, MCIM, MPH, CHES®). Independent and non-partisan; all figures carry their source and methodology.
+> HSREP is an independent public-health research and advocacy platform making the case that health-system resilience is economic protection: when health systems hold under shock, households, institutions, and public trust hold with them. It publishes evidence-based arguments, pairs each with usable media and advocacy tools, and turns them into structured professional discussion. Founded 2026 by Md Shafaat Ali Choyon (MBA, MCIM, MPH, CHES®). Independent and non-partisan; all figures carry their source and methodology.
 
 ## Core proposition
 
@@ -20,7 +20,7 @@
 
 ## Applied initiative
 
-- [Prevention Adoption Initiative](https://hsraep.org/initiative.html): A proposed, in-development toolkit that closes the "Prevention Adoption Gap", the distance between recommended and completed preventive care in safety-net settings, beginning with a proposed colorectal-cancer screening completion pilot in Southeast Michigan. Status: proposed and in development; nothing has been deployed. All operational designs are illustrative. How it is paid for: the host clinic contracts the implementation from month one (a feasibility rate for months 1 to 3, the full rate from month four only if it continues at month three, agreed in writing; no amounts are published); the independent evaluation is funded separately through an academic partner, still to be confirmed; HSREP takes no fee.
+- [Prevention Adoption Initiative](https://hsraep.org/initiative.html): A proposed, in-development toolkit that closes the "Prevention Adoption Gap", the distance between recommended and completed preventive care in safety-net settings, beginning with a proposed colorectal-cancer screening completion pilot in Southeast Michigan. A host clinic can instead choose one other completion gap as its first pilot (blood pressure recheck, diabetic eye exam, diabetic kidney tests, follow-up after an abnormal mammogram or cervical result, or its own gap if it passes four tests), one gap per pilot. The coded nightly file stays on the clinic's own systems; nothing is copied to HSREP. Status: proposed and in development; nothing has been deployed. All operational designs are illustrative. How it is paid for: the host clinic contracts the implementation from month one (a feasibility rate for months 1 to 3, the full rate from month four only if it continues at month three, agreed in writing; no amounts are published); the independent evaluation is funded separately through an academic partner, still to be confirmed; HSREP takes no fee.
 - [Is your clinic a fit for the pilot?](https://hsraep.org/pilot-fit.html): An eight-question check, run in the browser with nothing stored, that compares a health center against what the pilot asks of a host (outreach staff, a quality-improvement lead, a nightly coded file, a written agreement before month one) and says what would close each gap.
 
 ## Areas of focus
@@ -50,7 +50,7 @@ Eleven findings came out of the Season 1 data. These are the four that held acro
 
 ## Founder
 
-- Md Shafaat Ali Choyon: growth, marketing and public-health strategist (MBA, MCIM, MPH, CHES®), 16+ years turning complex systems into measurable results. Founder site: https://shafaatalichoyon.com
+- Md Shafaat Ali Choyon: growth, marketing and public-health strategist (MBA, MCIM, MPH, CHES®), 17 years turning complex systems into measurable results. Founder site: https://shafaatalichoyon.com
 
 ## Contact
 

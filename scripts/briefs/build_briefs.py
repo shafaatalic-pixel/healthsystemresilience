@@ -122,7 +122,7 @@ US = dict(
     ("Researchers", "Co-design a publishable pilot", "An independent evaluation: before and after against the site's own trend, with a comparison clinic where possible, reported with RE-AIM. Plan published first; authorship by contribution. Principal investigator: to be confirmed."),
   ],
   data="one nightly coded 19-column file for the pilot, dates as day counts, key kept at the site",
-  demo_h="A proposed 12-month colorectal-cancer completion pilot, with a stop at month three.",
+  demo_h="A proposed 12-month colorectal-cancer completion pilot, with a decision at month three.",
   demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3: feasibility</b> — kits sent and returned, positive tests navigated and booked, days to a booked colonoscopy, staff hours, data completeness. <b>Month 3: decision</b> — the site continues to month 12 if the feasibility measures are met, or it stops. <b>Months 4–12: full pilot.</b> The site keeps its workflow and its data; HSREP is implementation lead, contracted by the site (twenty hours a week in months 1–3, thirty from month four); an academic partner, still to be confirmed, evaluates independently, before and after against the site's own trend with a comparison clinic where possible and a target published in advance. First readout about month six; results published whichever way they go.",
   sources="Borsky et al., Health Affairs 2018 · Healthy People 2030 C-07 (2023 baseline) · HRSA Uniform Data System CY2025, national and Michigan, accessed Aug 2026 · CDC Community Guide (median effects) · Coronado et al., STOP CRC, JAMA Internal Medicine 2018 · Pignone et al., JGIM 2021 (mailed-FIT cost).",
 )

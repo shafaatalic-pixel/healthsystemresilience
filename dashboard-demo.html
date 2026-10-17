@@ -257,7 +257,7 @@ header.d .hb:focus-visible,.ws button:focus-visible,.ws a:focus-visible{outline:
 
 <div class="prodcard"><div class="pk">02 · Data rules &amp; security (HIPAA)</div><h3>A coded file, and the key stays with you</h3>
 <ul>
-<li><b>Phase 1, coded data only:</b> HSREP receives the 19-column file under a <b>data use agreement</b> set up through the academic partner&rsquo;s IRB. Dates arrive as day counts, and the key that links codes to patients never leaves the site.</li>
+<li><b>Phase 1, coded data only, inside the site:</b> the 19-column file lands in a restricted folder on the site&rsquo;s own secure storage, and I work in it through an account the site issues. Nothing is copied to HSREP. Dates arrive as day counts, and the key that links codes to patients never leaves the site. The evaluator receives a separate de-identified extract under its own agreement with the site.</li>
 <li><b>Agreements decided before launch:</b> HSREP is not meant to handle names, record numbers or full dates, and outreach runs in the site&rsquo;s own systems, by its own staff. Whether the coded file, and HSREP&rsquo;s work beside staff, needs a business associate agreement, a limited data set or another arrangement is for the site&rsquo;s privacy officer and counsel to determine, and the sender, transfer route, storage, access and deletion of the phase-1 file are written down and signed off by the site before the first export.</li>
 <li><b>Later phases</b> (FHIR ingest, write-back, any hosted tool) move to a HIPAA-eligible cloud under a signed <b>BAA</b>, with encryption in transit (TLS 1.2+) and at rest (AES-256), role-based access with SSO/MFA, and full audit logging.</li>
 <li><b>Minimum-necessary</b> access throughout; no PHI in analytics, or in this demo.</li>

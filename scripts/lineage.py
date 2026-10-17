@@ -25,7 +25,7 @@ STEPS = [
     ('Next', 'Colorectal Cancer Screening Completion Pilot', '/initiative.html#host',
      '<b>One host clinic sought</b> &middot; 12 months &middot; decision at month three'),
     ('Then', 'The same routine, five other completion gaps', '/initiative-next.html#other-gaps',
-     'Roadmap, <b>not scheduled</b> &middot; blood pressure, diabetic eye exam, kidney test, two follow-ups'),
+     'Roadmap, <b>or a clinic&rsquo;s first choice</b> &middot; blood pressure, diabetic eye exam, kidney test, two follow-ups'),
 ]
 
 FOOT = ('Every step is dated and links to the record. The initiative is proposed, not running: '

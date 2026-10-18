@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-17T08:31:00+00:00",
+ "updated": "2026-10-18T08:48:53+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-17"
+  "to": "2026-10-18"
  },
  "readers": {
   "s30": 87,
@@ -13,12 +13,12 @@
   "bottom": 41
  },
  "raw": {
-  "ga_users": 455,
-  "sessions": 506,
-  "pageviews": 969,
+  "ga_users": 457,
+  "sessions": 516,
+  "pageviews": 1009,
   "engagement_rate": 42,
-  "avg_engaged_seconds": 40,
-  "excluded_datacentre": 133,
+  "avg_engaged_seconds": 44,
+  "excluded_datacentre": 134,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -27,7 +27,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 332,
+  "direct": 340,
   "social": 136,
   "search": 25,
   "referral": 2,
@@ -36,28 +36,28 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 478,
-  "user_prompted": 21,
+  "ai_fetches": 441,
+  "user_prompted": 20,
   "agents": [
    [
     "ClaudeBot",
-    177
+    167
    ],
    [
     "Applebot",
-    85
+    78
    ],
    [
     "OAI-SearchBot",
-    71
-   ],
-   [
-    "GPTBot",
-    55
+    78
    ],
    [
     "Amazonbot",
-    33
+    35
+   ],
+   [
+    "GPTBot",
+    28
    ],
    [
     "PerplexityBot",
@@ -65,7 +65,7 @@
    ],
    [
     "ChatGPT-User",
-    19
+    18
    ],
    [
     "CCBot",
@@ -74,29 +74,25 @@
    [
     "Claude-User",
     2
-   ],
-   [
-    "Meta-ExternalAgent",
-    1
    ]
   ],
-  "search_crawlers": 238,
-  "all_bot_requests": 11325,
-  "human_visits": 4,
-  "google_clicks": 10,
-  "google_impressions": 907,
-  "google_position": 12.7,
+  "search_crawlers": 220,
+  "all_bot_requests": 11542,
+  "human_visits": 7,
+  "google_clicks": 11,
+  "google_impressions": 913,
+  "google_position": 12.6,
   "pages_indexed": 20,
-  "all_requests": 11325,
-  "cached_requests": 2705,
-  "unique_ips": 1454,
+  "all_requests": 11542,
+  "cached_requests": 2769,
+  "unique_ips": 1538,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-10-14"
+  "gsc_through": "2026-10-15"
  },
  "actions": {
   "cta": {
-   "initiative": 28,
+   "initiative": 30,
    "article_open": 12,
    "roundtable": 11,
    "download_pdf": 6,
@@ -107,13 +103,13 @@
    "founder_site": 2,
    "partner": 2
   },
-  "cta_total": 99,
+  "cta_total": 101,
   "cta_people": 24,
-  "cta_labelled": 80,
+  "cta_labelled": 82,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
-  "form_submits": 0,
+  "form_submits": 14,
   "outbound": {
    "buttondown.com": 5,
    "calendly.com": 4,
@@ -124,8 +120,8 @@
   }
  },
  "pages": {
-  "home": 1054,
-  "initiative": 225,
+  "home": 1060,
+  "initiative": 230,
   "about": 115,
   "season": 112,
   "article": 84,

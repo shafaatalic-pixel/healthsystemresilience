@@ -51,6 +51,10 @@ html.ask-on #ask-panel{transform:none}\
 #ask-panel[hidden]{display:none}\
 #ask-scrim{position:fixed;inset:0;z-index:4050;background:rgba(15,32,54,.35);opacity:0;pointer-events:none;transition:opacity .3s}\
 html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
+/* First visit: the privacy-choice banner (#hs-consent, analytics.js) sits bottom-centre and would run under the open panel.\
+   Wide screens: keep it whole and usable in the space left of the panel. Narrow screens: hide it until the panel closes. */\
+@media(min-width:900px){html.ask-on #hs-consent{z-index:4060;left:16px;right:calc(min(440px,100vw) + 16px);max-width:560px}}\
+@media(max-width:899.98px){html.ask-on #hs-consent{visibility:hidden}}\
 .ask-head{display:flex;gap:14px;align-items:flex-end;padding:16px 16px 12px;background:#0F2036;color:#fff}\
 .ask-pres{position:relative;width:92px;flex:0 0 auto}\
 .ask-pres .pw{position:relative;width:92px;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#1C2E4A;box-shadow:0 10px 24px rgba(0,0,0,.35)}\

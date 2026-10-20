@@ -86,6 +86,9 @@ html.askhs-on #askhs-panel{transform:none}\
 #askhs-panel[hidden],#askhs-scrim[hidden]{display:none}\
 #askhs-scrim{position:fixed;inset:0;z-index:4050;background:rgba(15,32,54,.35);opacity:0;transition:opacity .3s}\
 html.askhs-on #askhs-scrim{opacity:1}\
+/* First visit: keep the privacy-choice banner (#hs-consent) clear of the open panel. Wide screens: whole and usable left of the panel; narrow: hidden until it closes. */\
+@media(min-width:900px){html.askhs-on #hs-consent{z-index:4060;left:16px;right:calc(min(460px,100vw) + 16px);max-width:560px}}\
+@media(max-width:899.98px){html.askhs-on #hs-consent{visibility:hidden}}\
 #askhs-panel .askhs{margin:0;border:0;border-radius:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;background:transparent}\
 #askhs-panel .ap-head{position:relative;background:radial-gradient(120% 140% at 100% 0%,rgba(242,109,90,.35),transparent 55%),#0F2036;color:#fff;padding:18px 56px 16px 20px}\
 #askhs-panel .ap-head .ak{color:#AFC0D4;margin-bottom:6px}\

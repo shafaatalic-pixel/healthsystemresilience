@@ -325,3 +325,31 @@
 .pai-gaps .pai-caveat{margin-top:16px}
 @media(max-width:900px){.pai-gaps .gtabs{grid-template-columns:repeat(2,minmax(0,1fr))}.pai-gaps .gsteps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.pai-gaps{padding:16px 14px}.pai-gaps .gtabs{grid-template-columns:1fr;gap:6px}.pai-gaps [role="tab"]{flex-direction:row;align-items:baseline;gap:8px;padding:10px 12px}.pai-gaps .gtop,.pai-gaps .gsteps{grid-template-columns:1fr}}
+
+/* Why one clinic matters: the two sentences under the hero dek. */
+.pai-why1{margin:14px 0 18px;font-size:15px;line-height:1.6;max-width:66ch;color:var(--text,#28313C);padding:12px 16px;border-left:3px solid var(--pai-coral,#F26D5A);background:var(--pai-tint,rgba(242,109,90,.06));border-radius:0 10px 10px 0}
+.pai-why1 b{color:var(--heading)}
+/* Versioned page: the dated line and its PDF, shown at the end of the page and on every printout. */
+.pai-version{margin:22px 0 0;font-size:13px;line-height:1.55;color:var(--muted)}
+.print-only{display:none}
+/* Print and PDF: everything visible, nothing interactive. Tabs are expanded and
+   <details> opened by the beforeprint handler in initiative.html; this keeps the
+   reveal animation, the header and the assistant out of the way. */
+@media print{
+  html,body{background:#fff!important;color:#000!important}
+  .rv,.rvs,html.pai-motion .rv,html.pai-motion .rvs{opacity:1!important;transform:none!important;transition:none!important}
+  header.site,.hs-top,.hs-top-nav,#secnav,nav.hs-band,.pai-rail,.skip-link,#hs-consent,#ask-launch,#ask-panel,#ask-scrim,#askhs-panel,.hs-ask,[role="tablist"],.btn,.cta,.pai-dl,.act,footer,.pai-demo .btn,.wall-cta,.pai-tl .ar{display:none!important}
+  nav#secnav.hs-band,html body #secnav{display:none!important}
+  [role="tabpanel"][hidden]{display:block!important}
+  .print-only{display:block!important}
+  .print-tab-label{grid-column:1/-1;width:100%;font:600 12px/1.4 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:#444;margin:22px 0 6px;border-top:1px solid #ccc;padding-top:10px}
+  details>summary{list-style:none;font-weight:600}
+  details>summary::-webkit-details-marker{display:none}
+  summary::after,details[open] summary::after{content:none!important;display:none!important}
+  .pai-card,.pai-panel,.pai-year,.pai-terms{break-inside:auto}
+  h2,h3{break-after:avoid}
+  .pai-rec>div,.pai-me-grid>div,.ydays>div,.pai-resp>div{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+  .pai-hero a.me::after{content:none}
+  .pai-version{display:block;margin-top:28px;border-top:1px solid #ccc;padding-top:10px}
+}

@@ -279,7 +279,9 @@ def render_wall(questions):
             for para in [p for p in re.split(r"\n\s*\n", r.get("text", "").strip()) if p.strip()]:
                 bits.append("<p>%s</p>" % esc(para.strip()).replace("\n", "<br>"))
             bits.append('<div class="resp-f">')
-            if r.get("seeded"):
+            if r.get("role") == "moderator":
+                bits.append('<span class="resp-chip">Moderator&rsquo;s opening response</span>')
+            elif r.get("seeded"):
                 bits.append('<span class="resp-chip">Invited before the question opened</span>')
             if r.get("note"):
                 bits.append('<span class="resp-chip">%s</span>' % esc(r["note"]))
@@ -431,7 +433,7 @@ def main():
                     "attribution": s.get("attribution", "named"),
                     "name": s.get("name", ""), "affiliation": s.get("affiliation", ""),
                     "text": s.get("text", ""), "status": s.get("status", "pending"),
-                    "seeded": True, "note": s.get("note", ""),
+                    "seeded": True, "note": s.get("note", ""), "role": s.get("role", ""),
                 }
                 if e["attribution"] == "anonymous":
                     e["name"] = e["affiliation"] = ""

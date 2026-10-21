@@ -4,10 +4,24 @@
   "updated": "2026-09-09T04:47:48Z",
   "counts": {
     "received": 0,
-    "published": 0,
+    "published": 1,
     "pending": 0,
     "declined": 0,
     "withheld": 0
   },
-  "responses": []
+  "responses": [
+    {
+      "key": "5931d383b193ce11",
+      "received": "2026-10-21",
+      "attribution": "named",
+      "name": "Md Shafaat Ali Choyon",
+      "affiliation": "Founder, HSREP; moderator of this roundtable",
+      "text": "I am asking this because I have watched the break happen, though not in a U.S. clinic. At Praava Health in Dhaka I ran the diagnostics side of a primary-care network, and for years the pattern was the same: people started a test and did not finish it.\n\nThree things did most of the damage. A price surprise at the next step, after the first test had been cheap. A positive result that arrived with no appointment attached, so the urgency never landed. And a second visit that was hard to make, because of distance, or a day off work that nobody could spare.\n\nThat is one person's experience of one system, not a finding. I expect the U.S. version is different in its details and the same in its shape, and that is what I want to learn from you. Where, in your setting, does the person stop?",
+      "status": "published",
+      "seeded": true,
+      "note": "",
+      "role": "moderator",
+      "id": "r-001"
+    }
+  ]
 }

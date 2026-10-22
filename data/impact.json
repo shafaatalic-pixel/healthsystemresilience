@@ -1,23 +1,23 @@
 {
- "updated": "2026-10-21T09:19:13+00:00",
+ "updated": "2026-10-22T09:22:20+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-21"
+  "to": "2026-10-22"
  },
  "readers": {
-  "s30": 87,
-  "s60": 39,
-  "s120": 23,
-  "s240": 17,
+  "s30": 88,
+  "s60": 40,
+  "s120": 24,
+  "s240": 18,
   "bottom": 41
  },
  "raw": {
-  "ga_users": 465,
-  "sessions": 523,
-  "pageviews": 1017,
-  "engagement_rate": 42,
-  "avg_engaged_seconds": 43,
+  "ga_users": 475,
+  "sessions": 533,
+  "pageviews": 1028,
+  "engagement_rate": 43,
+  "avg_engaged_seconds": 42,
   "excluded_datacentre": 136,
   "excluded_cities": [
    "Ashburn",
@@ -27,21 +27,21 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 344,
-  "social": 139,
+  "direct": 346,
+  "social": 147,
   "search": 25,
   "referral": 2,
-  "facebook": 107,
+  "facebook": 110,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 274,
-  "user_prompted": 7,
+  "ai_fetches": 249,
+  "user_prompted": 5,
   "agents": [
    [
     "ClaudeBot",
-    98
+    84
    ],
    [
     "OAI-SearchBot",
@@ -49,7 +49,7 @@
    ],
    [
     "Applebot",
-    52
+    43
    ],
    [
     "Amazonbot",
@@ -66,25 +66,21 @@
    [
     "Meta-ExternalAgent",
     2
-   ],
-   [
-    "ChatGPT-User",
-    2
    ]
   ],
-  "search_crawlers": 241,
-  "all_bot_requests": 12081,
-  "human_visits": 12,
+  "search_crawlers": 300,
+  "all_bot_requests": 10993,
+  "human_visits": 22,
   "google_clicks": 11,
-  "google_impressions": 942,
+  "google_impressions": 948,
   "google_position": 12.5,
   "pages_indexed": 20,
-  "all_requests": 12081,
-  "cached_requests": 3014,
-  "unique_ips": 1660,
+  "all_requests": 10993,
+  "cached_requests": 2823,
+  "unique_ips": 1716,
   "agent_days": 7,
   "pages_with_impressions": 23,
-  "gsc_through": "2026-10-18"
+  "gsc_through": "2026-10-19"
  },
  "actions": {
   "cta": {
@@ -116,14 +112,14 @@
   }
  },
  "pages": {
-  "home": 1060,
-  "initiative": 230,
+  "home": 1062,
+  "initiative": 231,
   "about": 115,
   "season": 112,
   "article": 84,
   "media": 72,
   "roundtable": 25,
-  "other": 14,
+  "other": 17,
   "films": 5
  },
  "participation": {

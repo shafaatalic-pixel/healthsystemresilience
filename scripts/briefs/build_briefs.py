@@ -27,16 +27,16 @@ body{font-family:'Inter',sans-serif;color:var(--ink);-webkit-print-color-adjust:
 .page{width:8.5in;height:11in;background:var(--paper);display:flex;flex-direction:column;overflow:hidden}
 .top{background:var(--navy);color:#fff;border-bottom:3px solid var(--coral);padding:0 .42in;height:.5in;display:flex;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase}
 .top .r{color:#C9D3DF}
-.body{padding:.2in .42in 0;flex:1;display:flex;flex-direction:column}
+.body{padding:.16in .42in 0;flex:1;display:flex;flex-direction:column}
 h1{font-family:'Spectral',serif;font-weight:700;font-size:23px;color:var(--navy);margin:8px 0 5px;letter-spacing:-.01em;line-height:1.15}
-.sub{font-size:10.2px;color:var(--muted);line-height:1.45;margin:0 0 12px;max-width:7.2in}
+.sub{font-size:10px;color:var(--muted);line-height:1.4;margin:0 0 9px;max-width:7.2in}
 .pitch{background:#fff;border:1px solid var(--hair);border-left:4px solid var(--coral);border-radius:6px;padding:10px 16px 6px}
 .pitch .ph{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);font-weight:500;padding-bottom:6px;border-bottom:1px solid var(--hair)}
 .pitch .ph .st{color:var(--coral);font-size:9px;font-weight:400}
-.pitch .row{display:grid;grid-template-columns:105px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid #EEF1F4;font-size:9.6px;line-height:1.42}
+.pitch .row{display:grid;grid-template-columns:105px 1fr;gap:10px;padding:5px 0;border-bottom:1px solid #EEF1F4;font-size:9.6px;line-height:1.42}
 .pitch .row:last-child{border-bottom:0}
 .pitch .k{font-family:'IBM Plex Mono',monospace;font-size:8.6px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:1px}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9.4px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin:11px 0 5px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9.4px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin:9px 0 5px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 .stat{background:var(--tint);border-radius:6px;padding:9px 13px}
 .stat .n{font-family:'IBM Plex Mono',monospace;font-size:14.5px;font-weight:500;color:var(--navy);margin-bottom:3px}
@@ -56,11 +56,11 @@ h1{font-family:'Spectral',serif;font-weight:700;font-size:23px;color:var(--navy)
 .band .loop{border-top:1px solid rgba(255,255,255,.22);margin-top:8px;padding-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.2px;color:#DCE3EA;line-height:1.45}
 h2{font-family:'Spectral',serif;font-weight:700;font-size:14px;color:var(--navy);margin:0 0 4px}
 .demo p{margin:0;font-size:9.4px;line-height:1.45}
-.foot{margin-top:auto;padding:9px 0 0;border-top:1px solid var(--hair)}
+.foot{margin-top:auto;padding:7px 0 0;border-top:1px solid var(--hair)}
 .foot .cols{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;font-size:8.2px;line-height:1.45}
 .foot .cols .l b{color:var(--navy)}
 .foot .cols .r{color:var(--muted)}
-.foot .src{font-family:'IBM Plex Mono',monospace;font-size:7.2px;color:var(--muted);margin:7px 0 .28in;line-height:1.45}
+.foot .src{font-family:'IBM Plex Mono',monospace;font-size:7px;color:var(--muted);margin:5px 0 .14in;line-height:1.35}
 """
 
 PILLARS_T = """
@@ -69,7 +69,7 @@ PILLARS_T = """
   <div class="cols">
     <div><div class="lab">Core · what the first site runs</div>
       <ul><li>Service redesign &amp; friction reduction</li>
-          <li>Interoperable data infrastructure <small>— {data}</small></li>
+          <li>A simple data feed <small>— {data}</small></li>
           <li>Implementation enablement <small>— training so the site runs and sustains it</small></li></ul></div>
     <div><div class="lab rm">Roadmap · after a validated pilot, not in the first pilot</div>
       <ul><li>Predictive AI, explainable</li>
@@ -95,7 +95,7 @@ def page(d):
 {PILLARS_T.replace("{data}", d["data"])}
 <div class="eyebrow">The demonstration</div><div class="demo"><h2>{d['demo_h']}</h2><p>{d['demo_p']}</p></div>
 <div class="foot"><div class="cols">
-<div class="l"><b>Md Shafaat Ali Choyon</b> — Founder, HSREP · MBA, MCIM, MPH, CHES®<br>hsraep.org/initiative · Book 30 min: calendly.com/shafaat-alic/30min<br>LinkedIn: /in/sacgrowthspecialist</div>
+<div class="l"><b>Md Shafaat Ali Choyon</b> — Founder, HSREP · MBA, MCIM, MPH, CHES®<br>hsraep.org/initiative · Book 30 min: calendly.com/shafaat-alic/30min<br>contact@hsraep.org · Version 23 October 2026</div>
 <div class="r">An HSREP initiative in development. All designs are illustrative and future-tense; no patient data has been collected. The first pilot runs on transparent rules and existing staff; AI components are a roadmap item. Operational materials will be reviewed by counsel before any launch.</div>
 </div><div class="src">SOURCES — {d['sources']}</div></div>
 </div></div></body></html>"""
@@ -103,13 +103,15 @@ def page(d):
 US = dict(
   title="Prevention Adoption Initiative — United States brief", country="United States",
   h1="Recommended, reimbursed, and still not completed.",
-  sub="A partnership brief on closing the gap between the preventive care that is recommended and the preventive care that actually gets finished, in the safety-net settings where the gap is widest.",
+  sub="A partnership brief on preventive care that is recommended and reimbursed but not finished, in the safety-net settings where the gap is widest.",
   pitch=[
     ("Problem", "U.S. colorectal-cancer screening sits at <b>63.5% against a 72.8% target</b>, and 44.89% in Federally Qualified Health Centers (CY2025 UDS; Michigan 48.74%). After a positive stool test, 24 to 75% of people get the colonoscopy. The services work; <b>completion</b> is what fails."),
     ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly list. No predictive model and no EHR integration in the first pilot; the nightly coded file never leaves the clinic's systems."),
     ("Evidence", "Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16.1pp, reminders +15.3pp, navigation +13.6pp). Real-world gains depend on <b>how well each step is carried out</b>: in STOP CRC the same programme ranged from -7 to +18 points across 26 clinics, averaging +3.4. This design works on the carrying out."),
-    ("Cost", "The host clinic contracts the implementation from month one: a feasibility rate for months 1–3, the full rate from month four only if it decides to continue, both agreed in writing before the start (planning ranges: about $8,000 to $10,000 for months 1 to 3; about $45,000 to $60,000 for months 4 to 12). The evaluation is funded separately, through an academic partner still to be confirmed. Published benchmark: <b>~$90</b> per additional person screened by mailed FIT (Pignone et al., JGIM 2021; total cost, 2019 dollars; $54.83 direct per person screened), not the pilot's cost."),
-    ("The ask", "One clinic to run a <b>12-month pilot</b>: a <b>3-month feasibility phase</b>, then the full pilot to month 12 if it works. Step one is a 30-minute conversation."),
+    ("Cost", "The host clinic contracts my time as implementation lead from month one: a feasibility rate for months 1–3, the full rate from month four only if it decides to continue, agreed in writing before the start (planning ranges: about $8,000 to $10,000; then about $45,000 to $60,000). HSREP adds no fee on top. The evaluation is funded separately, through an academic partner still to be confirmed. Benchmark, not the pilot's cost: about <b>$91</b> per additional person screened by mailed FIT (Pignone et al., JGIM 2021, 2019 dollars)."),
+
+    ("The ask", "One clinic to run a <b>12-month pilot</b> after a setup period of up to three months: a <b>3-month feasibility phase</b>, then months 4 to 12 only if the feasibility measures are met. Step one is a 30-minute conversation."),
+
   ],
   stats=[
     ("~8%", "of U.S. adults 35+ receive all 15 high-priority preventive services (Borsky, <i>Health Affairs</i> 2018)."),
@@ -117,13 +119,14 @@ US = dict(
     ("44.89%", "CRC screening in Federally Qualified Health Centers, CY2025 UDS (Michigan 48.74%); the gap concentrates here."),
   ],
   cards=[
-    ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot: raise a UDS/HEDIS measure you already report, inside your existing staffing (about 5 to 8 outreach hours a week for a panel of a few hundred overdue patients). You contract the implementation from month one and decide at month three whether to go on. Your clinic is named in what is published only if it chooses to be."),
-    ("Funders / partners", "Fund a cost-effective, scalable model", "Fund either side: a grant to the host clinic for the implementation, or to the academic partner for the evaluation; months 4–12 released only if the feasibility phase shows the routine can run. Criteria agreed before results; a path from one site to a network."),
+    ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot: raise a UDS/HEDIS measure you already report, inside your existing staffing (about 5 to 8 outreach hours a week). You contract my time from month one and decide at month three whether to go on. Your clinic is named only if it chooses to be."),
+
+    ("Funders / partners", "Fund a pilot with a published cost benchmark", "Fund either side: a grant to the host clinic for the implementation, or to the academic partner for the evaluation; months 4–12 released only if the feasibility phase shows the routine can run. Criteria agreed before results; a path from one site to a network."),
     ("Researchers", "Co-design a publishable pilot", "An independent evaluation: before and after against the site's own trend, with a comparison clinic where possible, reported with RE-AIM. Plan published first; authorship by contribution. Principal investigator: to be confirmed."),
   ],
   data="one nightly coded 19-column file for the pilot, dates as day counts, key kept at the site",
   demo_h="A proposed 12-month colorectal-cancer completion pilot, with a decision at month three.",
-  demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3: feasibility</b>: kits sent and returned, positive tests navigated and booked, days to a booked colonoscopy, staff hours, data completeness. <b>Month 3: decision</b>: the site continues to month 12 if the feasibility measures are met, or it stops. <b>Months 4–12: full pilot.</b> The site keeps its workflow and its data; HSREP is implementation lead, contracted by the site (twenty hours a week in months 1–3, thirty from month four); an academic partner, still to be confirmed, evaluates independently, before and after against the site's own trend with a comparison clinic where possible and a target published in advance. First readout about month six; results published whichever way they go.",
+  demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3, feasibility</b>: kits sent and returned, positive tests navigated and booked, staff hours, data completeness. <b>Month 3</b>: continue, or stop. <b>Months 4–12</b>: the full pilot. The site keeps its workflow and its data; I am implementation lead, contracted by the site; an academic partner, still to be confirmed, evaluates against the site's own trend. Results are published whichever way they go.",
   sources="Borsky et al., Health Affairs 2018 · Healthy People 2030 C-07 (2023 baseline) · HRSA Uniform Data System CY2025, national and Michigan, accessed Aug 2026 · CDC Community Guide (median effects) · Coronado et al., STOP CRC, JAMA Internal Medicine 2018 · Pignone et al., JGIM 2021 (mailed-FIT cost).",
 )
 

@@ -115,7 +115,7 @@ US = dict(
   ],
   stats=[
     ("~8%", "of U.S. adults 35+ receive all 15 high-priority preventive services (Borsky, <i>Health Affairs</i> 2018)."),
-    ("63.5% → 72.8%", "CRC screening vs. the Healthy People 2030 target; barely off baseline (2023)."),
+    ("63.5% → 72.8%", "CRC screening, 2023 baseline vs. the Healthy People 2030 target."),
     ("44.89%", "CRC screening in Federally Qualified Health Centers, CY2025 UDS (Michigan 48.74%); the gap concentrates here."),
   ],
   cards=[

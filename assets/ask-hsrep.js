@@ -30,6 +30,13 @@
   };
   var path = location.pathname.replace(/\/+$/, '/');
   var key = path === '/' || /\/index\.html$/.test(path) ? 'home' : ((path.match(/^\/([a-z0-9-]+)\.html$/) || [])[1] || '');
+  // Film transcripts: /transcripts/<slug>.html. The Worker holds each transcript with the article it is drawn from.
+  var tm = path.match(/^\/transcripts\/([a-z0-9-]+)\.html$/);
+  if (tm) {
+    key = tm[1];
+    var th = document.querySelector('main h1');
+    PAGES[key] = ['the transcript of \u201c' + (th ? th.textContent.trim() : 'this film') + '\u201d', ['What is this film arguing, in a few lines?', 'Where do the figures in this film come from?', 'Has anything in this film been corrected since?']];
+  }
   if (!PAGES[key] && !document.getElementById('ask-hsrep')) key = '404';
 
   var box = document.getElementById('ask-hsrep'), panel = !box, wrap = null, scrim = null, opener = null;

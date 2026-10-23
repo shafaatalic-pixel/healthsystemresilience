@@ -8,7 +8,7 @@ replaced in full each time, so edit STEPS or PAGES here, never the HTML.
 """
 import re
 
-CSS = '<link rel="stylesheet" href="/assets/css/lineage-1.css?v=20261002e">'
+CSS = '<link rel="stylesheet" href="/assets/css/lineage-1.css?v=20261023w">'
 START, END = '<!--LINEAGE:START-->', '<!--LINEAGE:END-->'
 
 # Chronological. (verb, title, href, meta)

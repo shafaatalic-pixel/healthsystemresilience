@@ -61,3 +61,7 @@ html.thr-js .thr.in li:nth-child(6){transition-delay:.4s}
 /* dark theme */
 :root[data-theme="dark"] .thr li.here::before{box-shadow:0 0 0 5px rgba(242,109,90,.22)}
 :root[data-theme="dark"] .thr .thr-v .thr-this{white-space:nowrap;background:rgba(242,109,90,.18)}
+
+/* the "this page" tag wraps under its label in narrow columns instead of running into the next step */
+.thr .thr-v{flex-wrap:wrap;row-gap:5px}
+.thr .thr-v .thr-this{max-width:100%}

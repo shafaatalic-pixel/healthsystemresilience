@@ -102,28 +102,28 @@ def page(d):
 
 US = dict(
   title="Prevention Adoption Initiative — United States brief", country="United States",
-  h1="Recommended, reimbursed — and still not completed.",
-  sub="A partnership brief on closing the gap between the preventive care that is recommended and the preventive care that actually gets finished — in the safety-net settings where the gap is widest.",
+  h1="Recommended, reimbursed, and still not completed.",
+  sub="A partnership brief on closing the gap between the preventive care that is recommended and the preventive care that actually gets finished, in the safety-net settings where the gap is widest.",
   pitch=[
-    ("Problem", "U.S. colorectal-cancer screening sits at <b>63.5% against a 72.8% target</b> — and 44.89% in Federally Qualified Health Centers (CY2025 UDS; Michigan 48.74%). The services work; <b>completion</b> is what fails."),
-    ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly dashboard. A predictive model is on the roadmap — not in the first pilot."),
-    ("Evidence", "Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16.1pp, reminders +15.3pp, navigation +13.6pp). Honest caveat: real-world gains depend on <b>how well each step is carried out</b> — STOP CRC averaged ~3.4pp — which this design exists to protect."),
-    ("Cost", "The host clinic contracts the implementation from month one: a feasibility rate for months 1–3, the full rate from month four only if it decides to continue, both agreed in writing before the start. The evaluation is funded separately, through the academic partner. Published benchmark: <b>~$90</b> per additional person screened by mailed FIT (Pignone et al., JGIM 2021; total cost, 2019 dollars; $54.83 direct per person screened) — not the pilot's cost."),
+    ("Problem", "U.S. colorectal-cancer screening sits at <b>63.5% against a 72.8% target</b>, and 44.89% in Federally Qualified Health Centers (CY2025 UDS; Michigan 48.74%). After a positive stool test, 24 to 75% of people get the colonoscopy. The services work; <b>completion</b> is what fails."),
+    ("Solution", "A proposed <b>weekly routine</b>, run by the site's own staff: find who is overdue, rank by three transparent rules, remove friction, and follow every positive test to its next step, tracked on a weekly list. No predictive model and no EHR integration in the first pilot; the nightly coded file never leaves the clinic's systems."),
+    ("Evidence", "Every lever is already recommended by the Community Preventive Services Task Force (mailed FIT +16.1pp, reminders +15.3pp, navigation +13.6pp). Real-world gains depend on <b>how well each step is carried out</b>: in STOP CRC the same programme ranged from -7 to +18 points across 26 clinics, averaging +3.4. This design works on the carrying out."),
+    ("Cost", "The host clinic contracts the implementation from month one: a feasibility rate for months 1–3, the full rate from month four only if it decides to continue, both agreed in writing before the start (planning ranges: about $8,000 to $10,000 for months 1 to 3; about $45,000 to $60,000 for months 4 to 12). The evaluation is funded separately, through an academic partner still to be confirmed. Published benchmark: <b>~$90</b> per additional person screened by mailed FIT (Pignone et al., JGIM 2021; total cost, 2019 dollars; $54.83 direct per person screened), not the pilot's cost."),
     ("The ask", "One clinic to run a <b>12-month pilot</b>: a <b>3-month feasibility phase</b>, then the full pilot to month 12 if it works. Step one is a 30-minute conversation."),
   ],
   stats=[
     ("~8%", "of U.S. adults 35+ receive all 15 high-priority preventive services (Borsky, <i>Health Affairs</i> 2018)."),
-    ("63.5% → 72.8%", "CRC screening vs. the Healthy People 2030 target — barely off baseline (2023)."),
-    ("44.89%", "CRC screening in Federally Qualified Health Centers, CY2025 UDS (Michigan 48.74%) — the gap concentrates here."),
+    ("63.5% → 72.8%", "CRC screening vs. the Healthy People 2030 target; barely off baseline (2023)."),
+    ("44.89%", "CRC screening in Federally Qualified Health Centers, CY2025 UDS (Michigan 48.74%); the gap concentrates here."),
   ],
   cards=[
-    ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot — raise a UDS/HEDIS measure you already report, inside your existing staffing. You contract the implementation from month one and decide at month three whether to go on."),
+    ("Health centers / FQHCs", "Improve a measure you already report", "Host the pilot: raise a UDS/HEDIS measure you already report, inside your existing staffing (about 5 to 8 outreach hours a week for a panel of a few hundred overdue patients). You contract the implementation from month one and decide at month three whether to go on. Your clinic is named in what is published only if it chooses to be."),
     ("Funders / partners", "Fund a cost-effective, scalable model", "Fund either side: a grant to the host clinic for the implementation, or to the academic partner for the evaluation; months 4–12 released only if the feasibility phase shows the routine can run. Criteria agreed before results; a path from one site to a network."),
     ("Researchers", "Co-design a publishable pilot", "An independent evaluation: before and after against the site's own trend, with a comparison clinic where possible, reported with RE-AIM. Plan published first; authorship by contribution. Principal investigator: to be confirmed."),
   ],
   data="one nightly coded 19-column file for the pilot, dates as day counts, key kept at the site",
   demo_h="A proposed 12-month colorectal-cancer completion pilot, with a decision at month three.",
-  demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3: feasibility</b> — kits sent and returned, positive tests navigated and booked, days to a booked colonoscopy, staff hours, data completeness. <b>Month 3: decision</b> — the site continues to month 12 if the feasibility measures are met, or it stops. <b>Months 4–12: full pilot.</b> The site keeps its workflow and its data; HSREP is implementation lead, contracted by the site (twenty hours a week in months 1–3, thirty from month four); an academic partner, still to be confirmed, evaluates independently, before and after against the site's own trend with a comparison clinic where possible and a target published in advance. First readout about month six; results published whichever way they go.",
+  demo_p="One Southeast Michigan health center below the UDS benchmark, with outreach staff and a quality-improvement lead. <b>Months 1–3: feasibility</b>: kits sent and returned, positive tests navigated and booked, days to a booked colonoscopy, staff hours, data completeness. <b>Month 3: decision</b>: the site continues to month 12 if the feasibility measures are met, or it stops. <b>Months 4–12: full pilot.</b> The site keeps its workflow and its data; HSREP is implementation lead, contracted by the site (twenty hours a week in months 1–3, thirty from month four); an academic partner, still to be confirmed, evaluates independently, before and after against the site's own trend with a comparison clinic where possible and a target published in advance. First readout about month six; results published whichever way they go.",
   sources="Borsky et al., Health Affairs 2018 · Healthy People 2030 C-07 (2023 baseline) · HRSA Uniform Data System CY2025, national and Michigan, accessed Aug 2026 · CDC Community Guide (median effects) · Coronado et al., STOP CRC, JAMA Internal Medicine 2018 · Pignone et al., JGIM 2021 (mailed-FIT cost).",
 )
 
@@ -154,6 +154,7 @@ BD = dict(
   sources="WHO Global Health Expenditure (2025) · World Bank health-financing indicators (2021) · Nessa et al., BMC Global and Public Health 2025;3:34 (colposcopy attendance among VIA-positive women, 2018–2023) · DGHS NCDC / NCCBCST national screening programme · e-HIS/DHIS2 evaluations, BMC Public Health &amp; PLOS Glob. Public Health (2025) · CDC Community Guide (mechanism effect sizes).",
 )
 
-for name, d in (("us", US), ("bd", BD)):
+# The Bangladesh brief now lives on hsrep.bd (hsrep-bd repo, scripts/build_brief.py); only the U.S. brief is built here.
+for name, d in (("us", US),):
     open(os.path.join(ROOT, f"brief_{name}.html"), "w", encoding="utf-8").write(page(d))
 print("html written")

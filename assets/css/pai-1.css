@@ -338,6 +338,7 @@
 @media print{
   html,body{background:#fff!important;color:#000!important}
   .rv,.rvs,html.pai-motion .rv,html.pai-motion .rvs{opacity:1!important;transform:none!important;transition:none!important}
+  .rvs>*,.rv-x,html.pai-motion .rvs>*,html.pai-motion .rv-x,html.pai-motion .pai-tl .ms,html.pai-motion .pai-role,html.pai-motion .pai-path,html.pai-motion .pai-path *,html.pai-motion .pai-hero .copy>*,.fx.anim .sysp-bar b,.fx.anim .sysp-bar em,.fx.anim .sysp-grid>div,.fx.anim .lr-node,.fx.anim .lr-arrow,.fx.anim .lr-lab,.fx.anim .lr-mid,.fx.anim .lr-list li,.fx.anim .fidpin{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
   header.site,.hs-top,.hs-top-nav,#secnav,nav.hs-band,.pai-rail,.skip-link,#hs-consent,#ask-launch,#ask-panel,#ask-scrim,#askhs-panel,.hs-ask,[role="tablist"],.btn,.cta,.pai-dl,.act,footer,.pai-demo .btn,.wall-cta,.pai-tl .ar{display:none!important}
   nav#secnav.hs-band,html body #secnav{display:none!important}
   [role="tabpanel"][hidden]{display:block!important}

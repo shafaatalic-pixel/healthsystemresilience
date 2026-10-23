@@ -45,7 +45,7 @@ def edit(rel, pairs):
         print("  already current:", rel)
 
 
-DESC = ("Three open HSREP Roundtable questions, answered on the record by named professionals: "
+DESC = ("Three open HSREP Roundtable questions for named professionals to answer on the record: "
         "where preventive care breaks down between recommended and completed, what makes a health "
         "message land, and what the cost of care does that never reaches the record.")
 SOCIAL_DESC = ("Three questions open with no closing date, each answerable from your own work. "

@@ -138,9 +138,9 @@ def r_machines(d):
         '<div class="imp-note rv"><p>The two highlighted rows are the ones that represent a '
         'person: an assistant fetching this site because someone asked it a question. The '
         'rest are building a corpus. Google&rsquo;s average position for this site is %s%s.</p>'
-        '<p>Scale, for honesty: %s bot requests reached the site in that window against %s '
-        'human visits. Most of that is ordinary crawling and probing. The AI share is what '
-        'is new.</p></div>'
+        '<p>Scale, for honesty: %s requests of every kind reached the site in that window, '
+        'against %s human visits. Most of that is ordinary crawling and probing. The AI share '
+        'is what is new.</p></div>'
         % (m["google_position"], "" if not (m.get("pages_with_impressions")
                                             or m.get("pages_indexed"))
            else ", across %s pages that have appeared in a result"
@@ -268,7 +268,7 @@ def r_home(d):
          '</div>' % (n(r["s30"]), n(r["s240"]), n(m["ai_fetches"]), n(m["google_clicks"])))
     t += ('<p class="snapnote">Engaged readers rather than a visitor count, with datacentre '
           'traffic deducted and named. The record also carries what did not work: %s people '
-          'clicked through to the response form and none submitted one.</p>' % n(p["form_clicks"]))
+          'opened the response form and none submitted one.</p>' % n(p.get("form_people", p["form_clicks"])))
     t += '<p><a class="btn accent" href="impact.html">What the record shows <span class="ar">&rarr;</span></a></p>'
     return t
 
@@ -423,7 +423,7 @@ def r_dropoff(d):
             "people, which makes them an upper bound.")
     return ('<ol class="fn rv">%s</ol>'
             '<p class="fnnote">%s Season 1&rsquo;s %s impressions are deliberately '
-            'not here: that campaign ran four months before this site existed and '
+            'not here: that campaign ended more than three months before this site existed and '
             'cannot have produced these visits.</p>'
             % ("".join(rows), unit, n(d["season1"]["impressions_sum"])))
 

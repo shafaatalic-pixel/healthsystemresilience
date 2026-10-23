@@ -88,13 +88,12 @@ RULES = {
          "sign of an audience that finds HSREP rather than one that is handed it."),
         (lambda d: d["arrival"].get("facebook", 0) > d["arrival"].get("linkedin", 0),
          "Facebook sends {fb} sessions against LinkedIn's {li}. That is the same "
-         "order as the Season 1 impressions: the platform that showed the argument "
-         "to the most people is also the one that brings the most of them here."),
+         "order as the Season 1 impressions: the platform with the most impressions "
+         "is also the one that sends the most visits here."),
         (lambda d: True,
          "LinkedIn sends {li} sessions against Facebook's {fb}, the reverse of the "
-         "Season 1 impressions, where Facebook showed the argument to the most "
-         "people. The platform that reaches the most is not the one that brings "
-         "the most here."),
+         "Season 1 impressions, where Facebook had the most. The platform with "
+         "the most impressions is not the one that sends the most visits here."),
     ],
 }
 

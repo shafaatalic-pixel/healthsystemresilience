@@ -59,7 +59,7 @@ SNAPSHOT_CSS = """<style id="hs-snapshot">
 @media(max-width:640px){#impact-snapshot .snap b{font-size:27px}}
 </style></head>"""
 
-FOUNDER = """<p>Founder of HSREP. A growth, marketing and public-health strategist with seventeen years turning complex systems into measurable results, grounded in public health. HSREP grew out of a Master of Public Health capstone at Eastern Michigan University and now publishes independently. <a href="about.html#founder-principal">Background, standards and disclosures &rarr;</a></p>"""
+FOUNDER = """<p>Founder of HSREP. A growth, marketing and public-health strategist with seventeen years turning complex systems into measurable results, in health care since 2021. HSREP grew out of a Master of Public Health capstone at Eastern Michigan University and now publishes independently. <a href="about.html#founder-principal">Background, standards and disclosures &rarr;</a></p>"""
 
 FAQ_TAIL = ('<p class="faqmore" style="margin:20px 0 0;font-size:15px;color:var(--muted)">'
             'More questions, including how HSREP is funded, how sources and corrections are '

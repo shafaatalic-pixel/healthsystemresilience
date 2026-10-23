@@ -154,6 +154,7 @@ BD = dict(
   sources="WHO Global Health Expenditure (2025) · World Bank health-financing indicators (2021) · Nessa et al., BMC Global and Public Health 2025;3:34 (colposcopy attendance among VIA-positive women, 2018–2023) · DGHS NCDC / NCCBCST national screening programme · e-HIS/DHIS2 evaluations, BMC Public Health &amp; PLOS Glob. Public Health (2025) · CDC Community Guide (mechanism effect sizes).",
 )
 
-for name, d in (("us", US), ("bd", BD)):
+# The Bangladesh brief now lives on hsrep.bd (hsrep-bd repo, scripts/build_brief.py); only the U.S. brief is built here.
+for name, d in (("us", US),):
     open(os.path.join(ROOT, f"brief_{name}.html"), "w", encoding="utf-8").write(page(d))
 print("html written")

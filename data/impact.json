@@ -1,21 +1,21 @@
 {
- "updated": "2026-10-23T09:18:11+00:00",
+ "updated": "2026-10-24T08:50:22+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-23"
+  "to": "2026-10-24"
  },
  "readers": {
-  "s30": 88,
+  "s30": 89,
   "s60": 40,
   "s120": 24,
   "s240": 18,
-  "bottom": 41
+  "bottom": 42
  },
  "raw": {
-  "ga_users": 475,
-  "sessions": 533,
-  "pageviews": 1028,
+  "ga_users": 477,
+  "sessions": 535,
+  "pageviews": 1030,
   "engagement_rate": 43,
   "avg_engaged_seconds": 42,
   "excluded_datacentre": 136,
@@ -28,63 +28,63 @@
  },
  "arrival": {
   "direct": 346,
-  "social": 147,
-  "search": 25,
+  "social": 148,
+  "search": 26,
   "referral": 2,
-  "facebook": 110,
+  "facebook": 111,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 211,
-  "user_prompted": 8,
+  "ai_fetches": 245,
+  "user_prompted": 9,
   "agents": [
+   [
+    "ClaudeBot",
+    77
+   ],
    [
     "OAI-SearchBot",
     56
    ],
    [
-    "ClaudeBot",
-    52
-   ],
-   [
     "Applebot",
-    36
+    40
    ],
    [
     "Amazonbot",
-    34
+    33
    ],
    [
     "GPTBot",
     21
    ],
    [
+    "Meta-ExternalAgent",
+    9
+   ],
+   [
     "Claude-User",
     5
    ],
    [
-    "Meta-ExternalAgent",
-    4
-   ],
-   [
     "ChatGPT-User",
-    3
+    4
    ]
   ],
-  "search_crawlers": 341,
-  "all_bot_requests": 15674,
+  "search_crawlers": 406,
+  "all_bot_requests": 13687,
   "human_visits": 22,
   "google_clicks": 11,
-  "google_impressions": 968,
+  "google_impressions": 977,
   "google_position": 12.4,
   "pages_indexed": 20,
-  "all_requests": 15674,
-  "cached_requests": 3543,
-  "unique_ips": 1704,
+  "all_requests": 13687,
+  "cached_requests": 2522,
+  "unique_ips": 1707,
   "agent_days": 7,
   "pages_with_impressions": 24,
-  "gsc_through": "2026-10-20"
+  "gsc_through": "2026-10-21"
  },
  "actions": {
   "cta": {
@@ -116,7 +116,7 @@
   }
  },
  "pages": {
-  "home": 1062,
+  "home": 1070,
   "initiative": 231,
   "about": 115,
   "season": 112,

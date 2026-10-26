@@ -1,5 +1,5 @@
-/* In Brief audio: a short spoken version of each article's In Brief, narrated in
-   the founder's voice. One player per page, inside .inbrief.
+/* In Brief audio: a short spoken version of each article's In Brief, narrated by an
+   AI version of the founder's voice. One player per page, inside .inbrief.
    Markup: <div class="ib-listen" data-src="..." data-dur="0:51" data-article="slug"></div>
    Audio loads only when the reader presses play. */
 (function () {
@@ -24,7 +24,7 @@
   box.innerHTML =
     '<button type="button" class="ib-play" aria-label="Listen to the brief, ' + dur + '">' + PLAY + '<span class="ib-l">Listen to the brief</span><span class="ib-t">' + dur + '</span></button>' +
     '<div class="ib-bar" role="progressbar" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>' +
-    '<div class="ib-note" hidden></div>';
+    '<div class="ib-note">Narrated by an AI version of the founder’s voice.</div>';
   var btn = box.querySelector('.ib-play'), lab = box.querySelector('.ib-l'), tim = box.querySelector('.ib-t'),
       bar = box.querySelector('.ib-bar'), fill = bar.querySelector('i'), a = null, started = false, done = false;
   function track(n, p) { try { if (window.hsTrack) window.hsTrack(n, p || {}); } catch (e) {} }
@@ -43,7 +43,7 @@
     });
     a.addEventListener('play', ui); a.addEventListener('pause', ui);
     a.addEventListener('ended', function () { done = true; fill.style.width = '100%'; tim.textContent = dur; ui(); track('brief_audio_complete', { article: slug }); started = false; done = false; ui(); });
-    a.addEventListener('error', function () { var n = box.querySelector('.ib-note'); n.textContent = 'Audio could not load. The brief above has the same content.'; n.hidden = false; });
+    a.addEventListener('error', function () { box.querySelector('.ib-note').textContent = 'Audio could not load. The brief above has the same content.'; });
   }
   btn.addEventListener('click', function () {
     if (!a) make();

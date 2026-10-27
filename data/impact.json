@@ -1,23 +1,23 @@
 {
- "updated": "2026-10-26T10:02:43+00:00",
+ "updated": "2026-10-27T09:46:21+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-26"
+  "to": "2026-10-27"
  },
  "readers": {
-  "s30": 89,
+  "s30": 90,
   "s60": 40,
   "s120": 24,
   "s240": 18,
-  "bottom": 42
+  "bottom": 43
  },
  "raw": {
-  "ga_users": 479,
-  "sessions": 537,
-  "pageviews": 1032,
+  "ga_users": 485,
+  "sessions": 543,
+  "pageviews": 1039,
   "engagement_rate": 43,
-  "avg_engaged_seconds": 42,
+  "avg_engaged_seconds": 41,
   "excluded_datacentre": 136,
   "excluded_cities": [
    "Ashburn",
@@ -27,33 +27,33 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 346,
-  "social": 150,
+  "direct": 350,
+  "social": 152,
   "search": 26,
   "referral": 2,
-  "facebook": 113,
+  "facebook": 114,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 282,
+  "ai_fetches": 306,
   "user_prompted": 10,
   "agents": [
    [
     "ClaudeBot",
-    107
-   ],
-   [
-    "Applebot",
-    48
+    121
    ],
    [
     "OAI-SearchBot",
-    44
+    62
+   ],
+   [
+    "Applebot",
+    39
    ],
    [
     "Amazonbot",
-    32
+    30
    ],
    [
     "Meta-ExternalAgent",
@@ -70,21 +70,25 @@
    [
     "Claude-User",
     5
+   ],
+   [
+    "PerplexityBot",
+    3
    ]
   ],
-  "search_crawlers": 572,
-  "all_bot_requests": 12454,
-  "human_visits": 20,
+  "search_crawlers": 603,
+  "all_bot_requests": 13072,
+  "human_visits": 23,
   "google_clicks": 11,
-  "google_impressions": 1020,
-  "google_position": 12.2,
+  "google_impressions": 1028,
+  "google_position": 12.1,
   "pages_indexed": 20,
-  "all_requests": 12454,
-  "cached_requests": 1754,
-  "unique_ips": 1785,
+  "all_requests": 13072,
+  "cached_requests": 2021,
+  "unique_ips": 1837,
   "agent_days": 7,
   "pages_with_impressions": 24,
-  "gsc_through": "2026-10-23"
+  "gsc_through": "2026-10-24"
  },
  "actions": {
   "cta": {
@@ -116,7 +120,7 @@
   }
  },
  "pages": {
-  "home": 1071,
+  "home": 1083,
   "initiative": 231,
   "about": 115,
   "season": 112,

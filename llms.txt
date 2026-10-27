@@ -1,6 +1,6 @@
 # HSREP, Health System Resilience & Economic Protection
 
-> HSREP is an independent public-health research and advocacy platform making the case that health-system resilience is economic protection: when health systems hold under shock, households, institutions, and public trust hold with them. It publishes evidence-based arguments, pairs each with usable media and advocacy tools, and turns them into structured professional discussion. Founded 2026 by Md Shafaat Ali Choyon (MBA, MCIM, MPH, CHES®). Independent and non-partisan; all figures carry their source and methodology.
+> HSREP is an independent public-health research, advocacy and implementation platform making the case that health-system resilience is economic protection: when health systems hold under shock, households, institutions, and public trust hold with them. It publishes evidence-based arguments, pairs each with usable media and advocacy tools, and turns them into structured professional discussion. Founded 2026 by Md Shafaat Ali Choyon (MBA, MCIM, MPH, CHES®). Independent and non-partisan; all figures carry their source and methodology.
 
 ## Core proposition
 

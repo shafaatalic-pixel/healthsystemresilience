@@ -33,7 +33,7 @@ h1{font:600 clamp(28px,7.6vw,34px)/1.12 Spectral,Georgia,serif;color:var(--navy)
 .post{font:500 11.5px/1.4 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.16em;color:#65717E;margin-top:6px}
 .links{display:grid;gap:12px;margin-top:22px}
 .l{display:block;border:1px solid var(--line);border-radius:14px;padding:17px 17px 15px;background:var(--white);text-decoration:none;color:inherit}
-.l .tag{font:500 10.5px/1.4 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+.l .tag{padding-right:74px;font:500 10.5px/1.4 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
 .l .t{font:600 18px/1.3 Inter,sans-serif;color:var(--navy);margin-top:4px}
 .l .d{font-size:14.5px;color:var(--muted);margin-top:5px}
 .l .u{font:500 12.5px 'IBM Plex Mono',ui-monospace,monospace;color:var(--coral);margin-top:10px}
@@ -50,6 +50,38 @@ h1{font:600 clamp(28px,7.6vw,34px)/1.12 Spectral,Georgia,serif;color:var(--navy)
 .sites span{font-size:13.5px;color:var(--muted)}
 .hs-campaign{display:none!important}
 footer .fbot{margin-top:18px;font-size:12px}
+
+/* ---- narrated clips ---- */
+.pl{display:inline-flex;align-items:center;gap:7px;border:1px solid #1C2E4A;background:transparent;color:#1C2E4A;border-radius:999px;padding:7px 13px 7px 11px;font:600 13px/1 Inter,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pl svg{width:13px;height:13px;fill:currentColor;flex:none}
+.pl .i-pause{display:none}
+.pl.on .i-play{display:none}.pl.on .i-pause{display:block}
+.pl.on{background:#1C2E4A;color:#FFFFFF}
+.pl:focus-visible,.abar button:focus-visible{outline:2px solid #1C2E4A;outline-offset:3px}
+.pl .d{font:500 12px/1 'IBM Plex Mono',ui-monospace,monospace;opacity:.85}
+.pl.solid{background:#1C2E4A;color:#FFFFFF}
+.aud{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.ri{position:relative}
+.ri>.pl{position:absolute;top:11px;right:11px;padding:6px 11px 6px 9px;background:#FFFFFF}
+.ri>.pl.on{background:#1C2E4A}
+.abar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#FFFFFF;border-top:1px solid #DCE3EA;box-shadow:0 -8px 24px rgba(0,0,0,.18);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.abar .in{max-width:560px;margin:0 auto}
+.abar .row{display:flex;align-items:center;gap:12px}
+.abar .tg{width:40px;height:40px;border-radius:50%;border:0;background:#1C2E4A;color:#FFFFFF;display:grid;place-items:center;flex:none;cursor:pointer}
+.abar .tg svg{width:16px;height:16px;fill:currentColor}
+.abar .tg .i-pause{display:none}.abar.playing .tg .i-play{display:none}.abar.playing .tg .i-pause{display:block}
+.abar .meta{flex:1;min-width:0}
+.abar .ti{font:600 14px/1.3 Inter,sans-serif;color:#1C2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.abar .tm{font:500 11.5px/1.3 'IBM Plex Mono',ui-monospace,monospace;color:#55606E;margin-top:2px}
+.abar .pg{height:14px;display:flex;align-items:center;cursor:pointer;margin-top:4px}
+.abar .pg i{display:block;height:3px;width:100%;background:#DCE3EA;border-radius:2px;overflow:hidden}
+.abar .pg b{display:block;height:100%;width:0;background:#1C2E4A}
+.abar .tx,.abar .x{border:0;background:transparent;color:#55606E;font:600 12.5px Inter,sans-serif;cursor:pointer;padding:8px 4px;flex:none}
+.abar .x{font-size:20px;line-height:1;padding:6px 6px}
+.abar .tr{max-height:34vh;overflow:auto;font-size:14px;line-height:1.55;color:#1C2E4A;margin:8px 0 2px;padding-top:8px;border-top:1px solid #DCE3EA}
+.abar .ai{font:400 11.5px/1.4 Inter,sans-serif;color:#55606E;margin-top:6px}
+.ri>.l.p+.pl{border-color:#F26D5A;color:#F26D5A;background:#1C2E4A}.ri>.l.p+.pl.on{background:#F26D5A;color:#1C2E4A}
+body.has-bar{padding-bottom:132px}
 @media (max-width:350px){.c{grid-template-columns:1fr}}
 </style>
 </head>
@@ -61,18 +93,19 @@ footer .fbot{margin-top:18px;font-size:12px}
 <h1>Md Shafaat Ali Choyon</h1>
 <p class="role">Founder &amp; Health Communication Strategist</p>
 <p class="post">MBA · MPH · MCIM · CHES®</p>
+<div class="aud"><button type="button" class="pl solid" data-clip="founder" aria-pressed="false" aria-label="Listen: Why I can lead this, 0:34"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg><span>Why I can lead this</span><span class="d">0:34</span></button><button type="button" class="pl" data-all aria-pressed="false" aria-label="Play all clips, 1:52"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg><span>Play all</span><span class="d">1:52</span></button></div>
 
 <div class="links">
- <a class="l p" href="/initiative.html" data-to="initiative-us">
+ <div class="ri"><a class="l p" href="/initiative.html" data-to="initiative-us">
   <div class="tag">United States</div>
   <div class="t">Prevention Adoption Initiative</div>
   <div class="d">A proposed weekly routine that takes more people from a recommended test to a finished one, the evidence behind it, and a 12-month pilot ask.</div>
-  <div class="u">hsraep.org/initiative</div></a>
- <a class="l" href="https://hsrep.bd/initiative.html" data-to="initiative-bd">
+  <div class="u">hsraep.org/initiative</div></a><button type="button" class="pl" data-clip="us" aria-pressed="false" aria-label="Listen: the United States initiative, 0:39"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg><span class="d">0:39</span></button></div>
+ <div class="ri"><a class="l" href="https://hsrep.bd/initiative.html" data-to="initiative-bd">
   <div class="tag">Bangladesh</div>
   <div class="t">Where the routine could run in Bangladesh</div>
   <div class="d">Six in ten VIA-positive women never reach colposcopy. How a weekly follow-up routine could run after its first pilot. Nothing is confirmed.</div>
-  <div class="u">hsrep.bd/initiative</div></a>
+  <div class="u">hsrep.bd/initiative</div></a><button type="button" class="pl" data-clip="bd" aria-pressed="false" aria-label="Listen: the Bangladesh initiative, 0:39"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg><span class="d">0:39</span></button></div>
  <a class="l" href="/identity.html" data-to="identity">
   <div class="tag">The mark &amp; the theme</div>
   <div class="t">What the HSREP crest carries</div>
@@ -95,10 +128,64 @@ footer .fbot{margin-top:18px;font-size:12px}
  <div class="fbot"></div>
 </footer>
 </main>
+<div class="abar" id="abar" role="region" aria-label="Audio player" hidden>
+ <div class="in">
+  <div class="row">
+   <button type="button" class="tg" aria-label="Play or pause"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg></button>
+   <div class="meta"><div class="ti" id="ab-ti"></div><div class="tm" id="ab-tm">0:00</div><div class="pg" id="ab-pg" aria-hidden="true"><i><b id="ab-b"></b></i></div></div>
+   <button type="button" class="tx" id="ab-tx" aria-expanded="false">Transcript</button>
+   <button type="button" class="x" id="ab-x" aria-label="Close player">×</button>
+  </div>
+  <div class="tr" id="ab-tr" hidden></div>
+  <div class="ai">Narrated by an AI version of the founder's voice.</div>
+ </div>
+</div>
 <script>
 (function(){
  function t(e,a,n){n=n||0;try{if(window.hsTrack){window.hsTrack(e,a||{});}else if(n<40){setTimeout(function(){t(e,a,n+1);},250);}}catch(_){}}
  document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[data-to]');if(a)t('card_link',{to:a.dataset.to});});
+})();
+</script>
+<script>
+(function(){
+ var C={"founder": {"src": "/card/audio/founder.mp3", "d": "0:34", "title": "Why I can lead this", "text": "I'm Shafaat, founder of HSREP. Health systems already know what gets people screened and diagnosed. Where they fail is follow-through: the test that never comes back, the positive result or the high blood pressure reading that never reaches the next step. Getting people to finish is what I've done for 17 years, first in marketing and growth, and in health care since 2021. I add an MPH in health education, the CHES® credential, and years running a clinical group's operations as COO. Your staff know your patients. I know why people stop halfway."}, "us": {"src": "/card/audio/us.mp3", "d": "0:39", "title": "The initiative in the United States", "text": "In the United States, health centers already know how to get people screened for colorectal cancer. What fails is follow-through: kits that never come back, and positive results that never reach a colonoscopy. The Prevention Adoption Initiative proposes a weekly routine, run by a clinic's own staff, that closes those gaps. We're looking for one Michigan health center to host a 12-month pilot, with a decision at month three to continue or stop. Colorectal screening comes first. Later, the same routine is designed to carry over to chronic conditions: a high blood pressure reading that never becomes a diagnosis, or the yearly eye exam for people with diabetes."}, "bd": {"src": "/card/audio/bd.mp3", "d": "0:39", "title": "How it could run in Bangladesh", "text": "In Bangladesh, the national programme screened about 1.5 million women for cervical cancer in five years. But six in ten women with a positive result never reached the next step, colposcopy. Chronic conditions show the same gap: about a third of people newly diagnosed with high blood pressure or diabetes at government NCD corners don't come back within three months. The same weekly routine could help both. The provider's own nurse finds who is overdue, ranks them by urgency, calls, books, sends the fare, and closes the case when it's done. Nothing is confirmed yet. The first pilot is in Michigan. This is how it could run here."}},ORDER=["founder", "us", "bd"],V='20261027';
+ function t(e,p,n){n=n||0;try{if(window.hsTrack){window.hsTrack(e,p||{});}else if(n<40){setTimeout(function(){t(e,p,n+1);},250);}}catch(_){}}
+ var a=new Audio();a.preload='none';
+ var bar=document.getElementById('abar'),ti=document.getElementById('ab-ti'),tm=document.getElementById('ab-tm'),pb=document.getElementById('ab-b'),pg=document.getElementById('ab-pg'),tr=document.getElementById('ab-tr'),tx=document.getElementById('ab-tx');
+ var cur=null,q=[],all=false,done={};
+ function f(s){s=Math.max(0,Math.round(s||0));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
+ function sync(){
+  var on=!a.paused&&!a.ended;
+  bar.classList.toggle('playing',on);
+  [].forEach.call(document.querySelectorAll('.pl[data-clip]'),function(b){var me=b.dataset.clip===cur&&on;b.classList.toggle('on',me);b.setAttribute('aria-pressed',me?'true':'false');});
+  var pa=document.querySelector('.pl[data-all]');if(pa){pa.classList.toggle('on',all&&on);}
+ }
+ function show(){bar.hidden=false;document.body.classList.add('has-bar');}
+ function load(id){cur=id;a.src=C[id].src+'?v='+V;ti.textContent=C[id].title;tr.textContent=C[id].text;tm.textContent='0:00 / '+C[id].d;pb.style.width='0';}
+ function play(id,fromAll){
+  if(!fromAll){all=false;q=[];}
+  if(!fromAll&&cur===id&&!a.paused&&!a.ended){a.pause();return;}
+  if(fromAll||cur!==id||a.ended){load(id);t('card_audio_play',{clip:id,all:fromAll?1:0});}
+  show();var p=a.play();if(p&&p.catch)p.catch(function(){});
+ }
+ document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.pl');if(!b)return;
+  e.preventDefault();e.stopPropagation();
+  if(b.hasAttribute('data-all')){
+   if(all&&!a.paused){a.pause();return;}
+   if(all&&a.paused&&cur){a.play();return;}
+   all=true;q=ORDER.slice();t('card_audio_playall',{});play(q.shift(),true);return;
+  }
+  play(b.dataset.clip,false);
+ },true);
+ bar.querySelector('.tg').addEventListener('click',function(){if(!cur)return;if(a.paused||a.ended){a.play();}else{a.pause();}});
+ document.getElementById('ab-x').addEventListener('click',function(){a.pause();all=false;q=[];bar.hidden=true;document.body.classList.remove('has-bar');sync();});
+ tx.addEventListener('click',function(){tr.hidden=!tr.hidden;tx.setAttribute('aria-expanded',tr.hidden?'false':'true');tx.textContent=tr.hidden?'Transcript':'Hide';});
+ pg.addEventListener('click',function(e){if(!a.duration)return;var r=pg.getBoundingClientRect();a.currentTime=Math.min(a.duration,Math.max(0,(e.clientX-r.left)/r.width*a.duration));});
+ a.addEventListener('timeupdate',function(){if(!a.duration)return;pb.style.width=(a.currentTime/a.duration*100)+'%';tm.textContent=f(a.currentTime)+' / '+f(a.duration);});
+ a.addEventListener('play',sync);a.addEventListener('pause',sync);
+ a.addEventListener('ended',function(){if(!done[cur]){done[cur]=1;}t('card_audio_complete',{clip:cur});if(all&&q.length){play(q.shift(),true);}else{if(all)t('card_audio_playall_complete',{});all=false;sync();}});
+ a.addEventListener('error',function(){if(!cur)return;tm.textContent='Audio could not load. The text on this page says the same.';all=false;q=[];sync();});
 })();
 </script>
 </body>

@@ -1,21 +1,21 @@
 {
- "updated": "2026-10-27T09:46:21+00:00",
+ "updated": "2026-10-28T10:31:49+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-27"
+  "to": "2026-10-28"
  },
  "readers": {
-  "s30": 90,
+  "s30": 91,
   "s60": 40,
   "s120": 24,
   "s240": 18,
   "bottom": 43
  },
  "raw": {
-  "ga_users": 485,
-  "sessions": 543,
-  "pageviews": 1039,
+  "ga_users": 487,
+  "sessions": 545,
+  "pageviews": 1041,
   "engagement_rate": 43,
   "avg_engaged_seconds": 41,
   "excluded_datacentre": 136,
@@ -27,32 +27,32 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 350,
+  "direct": 351,
   "social": 152,
-  "search": 26,
+  "search": 27,
   "referral": 2,
   "facebook": 114,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 306,
-  "user_prompted": 10,
+  "ai_fetches": 319,
+  "user_prompted": 8,
   "agents": [
    [
     "ClaudeBot",
-    121
+    137
    ],
    [
     "OAI-SearchBot",
-    62
-   ],
-   [
-    "Applebot",
-    39
+    69
    ],
    [
     "Amazonbot",
+    31
+   ],
+   [
+    "Applebot",
     30
    ],
    [
@@ -65,30 +65,26 @@
    ],
    [
     "ChatGPT-User",
-    5
-   ],
-   [
-    "Claude-User",
-    5
+    8
    ],
    [
     "PerplexityBot",
     3
    ]
   ],
-  "search_crawlers": 603,
-  "all_bot_requests": 13072,
-  "human_visits": 23,
+  "search_crawlers": 661,
+  "all_bot_requests": 12053,
+  "human_visits": 14,
   "google_clicks": 11,
-  "google_impressions": 1028,
+  "google_impressions": 1037,
   "google_position": 12.1,
   "pages_indexed": 20,
-  "all_requests": 13072,
-  "cached_requests": 2021,
-  "unique_ips": 1837,
+  "all_requests": 12053,
+  "cached_requests": 1888,
+  "unique_ips": 1767,
   "agent_days": 7,
   "pages_with_impressions": 24,
-  "gsc_through": "2026-10-24"
+  "gsc_through": "2026-10-25"
  },
  "actions": {
   "cta": {

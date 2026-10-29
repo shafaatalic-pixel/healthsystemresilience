@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-28T10:31:49+00:00",
+ "updated": "2026-10-29T10:51:11+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-28"
+  "to": "2026-10-29"
  },
  "readers": {
   "s30": 91,
@@ -36,55 +36,55 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 319,
-  "user_prompted": 8,
+  "ai_fetches": 409,
+  "user_prompted": 9,
   "agents": [
    [
     "ClaudeBot",
-    137
+    158
    ],
    [
     "OAI-SearchBot",
-    69
+    72
    ],
    [
-    "Amazonbot",
-    31
+    "GPTBot",
+    58
    ],
    [
     "Applebot",
-    30
+    54
+   ],
+   [
+    "Amazonbot",
+    34
    ],
    [
     "Meta-ExternalAgent",
     21
    ],
    [
-    "GPTBot",
-    20
-   ],
-   [
     "ChatGPT-User",
-    8
+    9
    ],
    [
     "PerplexityBot",
     3
    ]
   ],
-  "search_crawlers": 661,
-  "all_bot_requests": 12053,
-  "human_visits": 14,
+  "search_crawlers": 664,
+  "all_bot_requests": 11824,
+  "human_visits": 12,
   "google_clicks": 11,
-  "google_impressions": 1037,
-  "google_position": 12.1,
+  "google_impressions": 1052,
+  "google_position": 11.9,
   "pages_indexed": 20,
-  "all_requests": 12053,
-  "cached_requests": 1888,
-  "unique_ips": 1767,
+  "all_requests": 11824,
+  "cached_requests": 1839,
+  "unique_ips": 1693,
   "agent_days": 7,
   "pages_with_impressions": 24,
-  "gsc_through": "2026-10-25"
+  "gsc_through": "2026-10-26"
  },
  "actions": {
   "cta": {

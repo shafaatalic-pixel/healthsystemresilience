@@ -117,6 +117,9 @@ html.askhs-on #askhs-scrim{opacity:1}\
   function t(ev, a) { try { a = a || {}; a.from = CFG.from; if (window.hsTrack) window.hsTrack(ev, a); } catch (e) { } }
 
   document.head.appendChild(h('style', { id: 'askhs-css' }, CSS));
+  if (!window.AskFB) { var fbs = h('script', { src: '/assets/ask-feedback.js?v=20261030a', defer: '' }); document.head.appendChild(fbs); }
+  var URLP = (function () { try { return new URLSearchParams(location.search); } catch (e) { return { get: function () { return null; } }; } })();
+  var VIA = String(URLP.get('utm_source') || URLP.get('ref') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 16);
   function esc0(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   if (panel) {
     var pg = PAGES[key];
@@ -127,7 +130,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
       '<button type="button" class="ap-close" aria-label="Close">&times;</button></div>' +
       '<div class="ap-body"><div class="aqs">' + pg[1].map(function (x) { return '<button type="button">' + esc0(x) + '</button>'; }).join('') + '</div><div class="achat" aria-live="polite"></div></div>' +
       '<div class="ap-foot"><form><textarea rows="1" maxlength="600" placeholder="Ask about HSREP or this page" aria-label="Your question"></textarea><button type="submit">Ask</button></form>' +
-      '<div class="ats"></div><div class="ameta"><span class="aleft">Up to 8 questions per visit.</span><span>Do not type personal health details. <a href="/privacy.html#ai">How questions are handled</a></span></div></div></section>';
+      '<div class="ats"></div><div class="ameta"><span class="aleft">Up to 8 questions per visit.</span><span>Do not type personal health details. Questions are stored without names to improve the service and for research. <a href="/privacy.html#ai">How questions are handled</a></span></div></div></section>';
     document.body.appendChild(scrim); document.body.appendChild(wrap);
     box = wrap.querySelector('.askhs');
   }
@@ -205,7 +208,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
   function req(retry) {
     freshSession(); if (!session) loadTs();
     return (session ? Promise.resolve(null) : getTs()).then(function (tok) {
-      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: '', from: CFG.from }) });
+      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: '', from: CFG.from, chip: VIA ? 'via-' + VIA : '' }) });
     }).then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); })
       .then(function (j) { if (j && j.needTurnstile && !retry) { dropSession(); return req(true); } return j; });
   }
@@ -229,7 +232,8 @@ html.askhs-on #askhs-scrim{opacity:1}\
         turns = Math.min(CFG.max, turns + 1); try { sessionStorage.setItem('hs_askhs_turns', String(turns)); } catch (e) { }
         hist.push({ role: 'assistant', content: j.reply || '' });
         var html = fmt(j.reply || '');
-        bot(html);
+        var d = bot(html);
+        if (window.AskFB) window.AskFB.attach(d, { api: CFG.api, key: 'hs_askhs', session: function () { return session; }, turn: turns, from: CFG.from, track: t });
         t('askhs_reply', { seconds: Math.round((Date.now() - t0) / 1000), step: turns, guarded: j.guarded ? 1 : 0 });
         busy = false; send.disabled = false; setLeft();
       });
@@ -267,6 +271,6 @@ html.askhs-on #askhs-scrim{opacity:1}\
     wrap.querySelector('.ap-close').addEventListener('click', close);
     scrim.addEventListener('click', close);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('askhs-on')) close(); });
-    if (location.hash === '#ask') setTimeout(open, 400);
+    if (location.hash === '#ask' || URLP.get('ask') === '1') setTimeout(function () { open(); var pq = URLP.get('q'); if (pq) { q.value = String(pq).slice(0, 600); q.dispatchEvent(new Event('input')); } }, 400);
   }
 })();

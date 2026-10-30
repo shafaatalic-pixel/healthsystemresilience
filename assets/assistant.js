@@ -18,6 +18,13 @@
       'What happens at month three?',
       'Can we stop if it is not working?',
       'What do we get if it works?']],
+    ['plan', 'I work at a health plan', [
+      'Why would a health plan care about this?',
+      'How could quality-incentive dollars pay for it?',
+      'Which measure does it move?',
+      'What data would the plan see?',
+      'What happens at month three?',
+      'Could it run in more clinics later?']],
     ['research', 'I evaluate or research', [
       'What is the evaluation protocol?',
       'Who pays for the evaluation?',
@@ -40,6 +47,12 @@
       'How is this different from what we do now?',
       'Who is behind this?']],
   ];
+  /* Links from emails and posts: ?ask=1 opens the panel, &as=clinic|plan|research|fund|care picks the path,
+     &q=<question> arrives typed (the visitor still presses Ask). utm_source or ref is logged as the chip (via-<source>). */
+  var URLP = (function () { try { return new URLSearchParams(location.search); } catch (e) { return { get: function () { return null; } }; } })();
+  var ALIAS = { clinic: 'clinic', plan: 'plan', 'health-plan': 'plan', payer: 'plan', research: 'research', evaluator: 'research', evaluate: 'research', fund: 'fund', funder: 'fund', care: 'care' };
+  var VIA = String(URLP.get('utm_source') || URLP.get('ref') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 16);
+  if (!window.AskFB) { var fbs = document.createElement('script'); fbs.src = '/assets/ask-feedback.js?v=20261030a'; fbs.defer = true; document.head.appendChild(fbs); }
   var CSS = '\
 #ask-launch{position:fixed;right:18px;bottom:18px;z-index:4000;display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:0;border-radius:999px;background:#0F2036;color:#fff;font:600 14px/1 Inter,"Inter Fallback",system-ui,sans-serif;box-shadow:0 10px 28px rgba(15,32,54,.35);cursor:pointer}\
 #ask-launch img{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 20%;display:block}\
@@ -90,6 +103,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
 .ask-form textarea{flex:1;resize:none;font:15px/1.4 Inter,"Inter Fallback",system-ui,sans-serif;padding:10px 12px;border:1px solid #C9D2DC;border-radius:10px;min-height:42px;max-height:140px}\
 .ask-form button{flex:0 0 auto;font:700 14px/1 Inter,"Inter Fallback",system-ui,sans-serif;padding:0 18px;border:0;border-radius:999px;background:#BC3A26;color:#fff;cursor:pointer}\
 .ask-form button[disabled]{opacity:.5;cursor:default}\
+.ask-form.preset button{box-shadow:0 0 0 3px rgba(242,109,90,.45)}\
 .ask-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:4px 16px 12px;font-size:12px;color:#5A6572;background:#fff}\
 .ask-meta a{color:#5A6572}\
 .ask-rest{background:#FBF4E6;border:1px solid #E9CFA0;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;margin:0 0 12px}\
@@ -126,7 +140,7 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
     '<div class="ask-body" id="ask-body"><div id="ask-rest"></div><div class="ask-paths" id="ask-paths" role="group" aria-label="Who are you?"></div><div class="ask-sugg" id="ask-sugg"></div><div id="ask-chat" aria-live="polite"></div></div>' +
     '<form class="ask-form" id="ask-form"><textarea id="ask-q" rows="1" maxlength="600" placeholder="Ask about the pilot" aria-label="Your question"></textarea><button type="submit" id="ask-send">Ask</button></form>' +
     '<div id="ask-ts"></div>' +
-    '<div class="ask-meta"><span id="ask-left">Up to 8 questions per visit.</span><span><a href="/privacy.html#ai">How questions are handled</a></span></div>';
+    '<div class="ask-meta"><span id="ask-left">Up to 8 questions per visit.</span><span>Questions are stored without names to improve the service and for research. <a href="/privacy.html#ai">How questions are handled</a></span></div>';
   document.body.appendChild(launch); document.body.appendChild(scrim); document.body.appendChild(panel);
 
   var chat = panel.querySelector('#ask-chat'), form = panel.querySelector('#ask-form'), q = panel.querySelector('#ask-q'), send = panel.querySelector('#ask-send'),
@@ -228,14 +242,14 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   function req(retry) {
     freshSession(); if (!session) loadTs();
     return (session ? Promise.resolve(null) : getTs()).then(function (tok) {
-      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: path, from: CFG.from }) });
+      return fetch(CFG.api + '/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ messages: hist.slice(-8), session: session, turnstile: tok, ind: path, from: CFG.from, chip: VIA ? 'via-' + VIA : '' }) });
     }).then(function (r) { return r.json().then(function (j) { j.__s = r.status; return j; }); })
       .then(function (j) { if (j && j.needTurnstile && !retry) { dropSession(); return req(true); } return j; });
   }
 
   function ask() {
     var text = q.value.trim(); if (!text || busy || turns >= CFG.max) return;
-    busy = true; send.disabled = true; sugg.style.display = 'none'; paths.style.display = 'none'; me(text); q.value = ''; q.style.height = '';
+    busy = true; send.disabled = true; form.classList.remove('preset'); sugg.style.display = 'none'; paths.style.display = 'none'; me(text); q.value = ''; q.style.height = '';
     hist.push({ role: 'user', content: text }); pose('thinking');
     var typing = bot('<span class="ask-typing"><i></i><i></i><i></i></span>'); var t0 = Date.now(); t('ask_ask', { step: turns + 1, path: path });
     req(false)
@@ -257,7 +271,8 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
         if (/pilot-fit/.test(j.reply || '')) acts.push('<a href="/pilot-fit.html">Check your clinic’s fit</a>');
         if (/dashboard-demo/.test(j.reply || '')) acts.push('<a href="/dashboard-demo.html">Open the worklist demo</a>');
         if (acts.length) html += '<div class="ask-actions">' + acts.join('') + '</div>';
-        var d = bot(html); pose('talking'); setTimeout(function () { pose('greet'); }, Math.min(9000, 1200 + (j.reply || '').length * 12));
+        var d = bot(html); pose('talking');
+        if (window.AskFB) window.AskFB.attach(d.querySelector('.bub'), { api: CFG.api, key: 'hs_ask', session: function () { return session; }, turn: turns, from: CFG.from, ind: function () { return path; }, track: t }); setTimeout(function () { pose('greet'); }, Math.min(9000, 1200 + (j.reply || '').length * 12));
         t('ask_reply', { seconds: Math.round((Date.now() - t0) / 1000), step: turns, guarded: j.guarded ? 1 : 0, path: path });
         busy = false; send.disabled = false; setLeft(); sugg.style.display = ''; if (turns < CFG.max) q.focus();
       })
@@ -277,6 +292,12 @@ html.ask-on #ask-scrim{opacity:1;pointer-events:auto}\
   panel.querySelector('#ask-close').addEventListener('click', close);
   scrim.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('ask-on')) close(); });
-  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-ask-open]'); if (a) { e.preventDefault(); open(); } });
-  if (location.hash === '#ask') setTimeout(open, 400);
+  /* Pick a path and/or put a question in the box (from a link or a button with data-as / data-q). */
+  function preset(o) {
+    var a = ALIAS[String(o.as || '').toLowerCase()];
+    if (a && !chat.querySelector('.ask-msg.me')) { path = a; showPaths(); showSugg(); t('ask_path', { path: path, via: o.via || 'link' }); }
+    if (o.q) { q.value = String(o.q).slice(0, 600); q.style.height = 'auto'; q.style.height = Math.min(140, q.scrollHeight) + 'px'; form.classList.add('preset'); }
+  }
+  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-ask-open]'); if (a) { e.preventDefault(); open(); preset({ as: a.getAttribute('data-as'), q: a.getAttribute('data-q'), via: 'button' }); } });
+  if (location.hash === '#ask' || URLP.get('ask') === '1') setTimeout(function () { open(); preset({ as: URLP.get('as'), q: URLP.get('q'), via: VIA || 'link' }); }, 400);
 })();

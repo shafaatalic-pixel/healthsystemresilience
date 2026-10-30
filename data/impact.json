@@ -1,23 +1,23 @@
 {
- "updated": "2026-10-29T10:51:11+00:00",
+ "updated": "2026-10-30T10:50:04+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-29"
+  "to": "2026-10-30"
  },
  "readers": {
-  "s30": 91,
-  "s60": 40,
+  "s30": 92,
+  "s60": 41,
   "s120": 24,
   "s240": 18,
-  "bottom": 43
+  "bottom": 44
  },
  "raw": {
-  "ga_users": 487,
-  "sessions": 545,
-  "pageviews": 1041,
+  "ga_users": 488,
+  "sessions": 549,
+  "pageviews": 1049,
   "engagement_rate": 43,
-  "avg_engaged_seconds": 41,
+  "avg_engaged_seconds": 42,
   "excluded_datacentre": 136,
   "excluded_cities": [
    "Ashburn",
@@ -36,20 +36,20 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 409,
-  "user_prompted": 9,
+  "ai_fetches": 405,
+  "user_prompted": 6,
   "agents": [
    [
     "ClaudeBot",
-    158
+    161
    ],
    [
     "OAI-SearchBot",
-    72
+    69
    ],
    [
     "GPTBot",
-    58
+    59
    ],
    [
     "Applebot",
@@ -61,30 +61,30 @@
    ],
    [
     "Meta-ExternalAgent",
-    21
+    19
    ],
    [
     "ChatGPT-User",
-    9
+    6
    ],
    [
     "PerplexityBot",
     3
    ]
   ],
-  "search_crawlers": 664,
-  "all_bot_requests": 11824,
-  "human_visits": 12,
-  "google_clicks": 11,
-  "google_impressions": 1052,
-  "google_position": 11.9,
+  "search_crawlers": 706,
+  "all_bot_requests": 11994,
+  "human_visits": 15,
+  "google_clicks": 12,
+  "google_impressions": 1069,
+  "google_position": 11.8,
   "pages_indexed": 20,
-  "all_requests": 11824,
-  "cached_requests": 1839,
-  "unique_ips": 1693,
+  "all_requests": 11994,
+  "cached_requests": 1920,
+  "unique_ips": 1759,
   "agent_days": 7,
-  "pages_with_impressions": 24,
-  "gsc_through": "2026-10-26"
+  "pages_with_impressions": 25,
+  "gsc_through": "2026-10-27"
  },
  "actions": {
   "cta": {
@@ -97,11 +97,12 @@
    "book_call": 4,
    "respond": 4,
    "founder_site": 2,
-   "partner": 2
+   "partner": 2,
+   "linkedin": 1
   },
-  "cta_total": 101,
-  "cta_people": 24,
-  "cta_labelled": 82,
+  "cta_total": 102,
+  "cta_people": 25,
+  "cta_labelled": 83,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
@@ -112,6 +113,7 @@
    "tally.so": 4,
    "shafaatalichoyon.com": 3,
    "easternecho.com": 2,
+   "linkedin.com": 1,
    "thedailystar.net": 1
   }
  },
@@ -120,7 +122,7 @@
   "initiative": 231,
   "about": 115,
   "season": 112,
-  "article": 84,
+  "article": 86,
   "media": 72,
   "roundtable": 25,
   "other": 17,

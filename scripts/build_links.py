@@ -101,7 +101,7 @@ CSS = """<style id="lk-css">
 
 
 # Posts not yet scheduled stay off the page until they are (HSREP 3: Shafaat's decision pending, 31 Oct 2026).
-HOLD = {"hsrep3"}
+HOLD = set()  # hsrep3 released 31 Oct (scheduled Dec 15)
 
 
 def at_ms(d, hhmm="11:00"):

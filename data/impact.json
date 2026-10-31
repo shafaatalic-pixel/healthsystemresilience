@@ -1,23 +1,23 @@
 {
- "updated": "2026-10-30T10:50:04+00:00",
+ "updated": "2026-10-31T10:20:32+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-10-30"
+  "to": "2026-10-31"
  },
  "readers": {
-  "s30": 92,
-  "s60": 41,
-  "s120": 24,
-  "s240": 18,
-  "bottom": 44
+  "s30": 105,
+  "s60": 54,
+  "s120": 37,
+  "s240": 31,
+  "bottom": 45
  },
  "raw": {
-  "ga_users": 488,
-  "sessions": 549,
-  "pageviews": 1049,
+  "ga_users": 510,
+  "sessions": 571,
+  "pageviews": 1083,
   "engagement_rate": 43,
-  "avg_engaged_seconds": 42,
+  "avg_engaged_seconds": 40,
   "excluded_datacentre": 136,
   "excluded_cities": [
    "Ashburn",
@@ -27,25 +27,25 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 351,
-  "social": 152,
+  "direct": 363,
+  "social": 163,
   "search": 27,
   "referral": 2,
-  "facebook": 114,
+  "facebook": 115,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 405,
-  "user_prompted": 6,
+  "ai_fetches": 397,
+  "user_prompted": 5,
   "agents": [
    [
     "ClaudeBot",
-    161
+    147
    ],
    [
     "OAI-SearchBot",
-    69
+    73
    ],
    [
     "GPTBot",
@@ -53,38 +53,38 @@
    ],
    [
     "Applebot",
-    54
+    56
    ],
    [
     "Amazonbot",
-    34
+    33
    ],
    [
     "Meta-ExternalAgent",
-    19
-   ],
-   [
-    "ChatGPT-User",
-    6
+    16
    ],
    [
     "PerplexityBot",
-    3
+    8
+   ],
+   [
+    "ChatGPT-User",
+    5
    ]
   ],
-  "search_crawlers": 706,
-  "all_bot_requests": 11994,
-  "human_visits": 15,
+  "search_crawlers": 670,
+  "all_bot_requests": 7854,
+  "human_visits": 35,
   "google_clicks": 12,
-  "google_impressions": 1069,
-  "google_position": 11.8,
+  "google_impressions": 1083,
+  "google_position": 11.7,
   "pages_indexed": 20,
-  "all_requests": 11994,
-  "cached_requests": 1920,
-  "unique_ips": 1759,
+  "all_requests": 7854,
+  "cached_requests": 1469,
+  "unique_ips": 1993,
   "agent_days": 7,
   "pages_with_impressions": 25,
-  "gsc_through": "2026-10-27"
+  "gsc_through": "2026-10-28"
  },
  "actions": {
   "cta": {
@@ -96,13 +96,13 @@
    "newsletter": 5,
    "book_call": 4,
    "respond": 4,
-   "founder_site": 2,
+   "founder_site": 3,
    "partner": 2,
    "linkedin": 1
   },
-  "cta_total": 102,
-  "cta_people": 25,
-  "cta_labelled": 83,
+  "cta_total": 103,
+  "cta_people": 26,
+  "cta_labelled": 84,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
@@ -110,8 +110,8 @@
   "outbound": {
    "buttondown.com": 5,
    "calendly.com": 4,
+   "shafaatalichoyon.com": 4,
    "tally.so": 4,
-   "shafaatalichoyon.com": 3,
    "easternecho.com": 2,
    "linkedin.com": 1,
    "thedailystar.net": 1
@@ -125,7 +125,7 @@
   "article": 86,
   "media": 72,
   "roundtable": 25,
-  "other": 17,
+  "other": 19,
   "films": 5
  },
  "participation": {

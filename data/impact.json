@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-01T11:13:39+00:00",
+ "updated": "2026-11-02T12:17:58+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-01"
+  "to": "2026-11-02"
  },
  "readers": {
   "s30": 106,
   "s60": 55,
   "s120": 38,
   "s240": 31,
-  "bottom": 46
+  "bottom": 47
  },
  "raw": {
-  "ga_users": 511,
-  "sessions": 573,
+  "ga_users": 512,
+  "sessions": 574,
   "pageviews": 1086,
   "engagement_rate": 43,
   "avg_engaged_seconds": 40,
@@ -36,55 +36,67 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 380,
-  "user_prompted": 4,
+  "ai_fetches": 550,
+  "user_prompted": 38,
   "agents": [
    [
     "ClaudeBot",
-    145
+    172
    ],
    [
     "OAI-SearchBot",
-    77
+    89
    ],
    [
     "GPTBot",
-    59
-   ],
-   [
-    "Applebot",
-    46
+    84
    ],
    [
     "Amazonbot",
-    34
+    48
    ],
    [
-    "PerplexityBot",
-    8
-   ],
-   [
-    "Meta-ExternalAgent",
-    7
+    "Applebot",
+    44
    ],
    [
     "ChatGPT-User",
-    4
+    24
+   ],
+   [
+    "Bytespider",
+    22
+   ],
+   [
+    "CCBot",
+    18
+   ],
+   [
+    "Meta-ExternalAgent",
+    18
+   ],
+   [
+    "PerplexityBot",
+    17
+   ],
+   [
+    "Claude-User",
+    14
    ]
   ],
-  "search_crawlers": 627,
-  "all_bot_requests": 9658,
-  "human_visits": 36,
+  "search_crawlers": 655,
+  "all_bot_requests": 10149,
+  "human_visits": 35,
   "google_clicks": 12,
-  "google_impressions": 1104,
-  "google_position": 11.7,
+  "google_impressions": 1119,
+  "google_position": 11.6,
   "pages_indexed": 20,
-  "all_requests": 9658,
-  "cached_requests": 1448,
-  "unique_ips": 2134,
+  "all_requests": 10149,
+  "cached_requests": 1354,
+  "unique_ips": 2219,
   "agent_days": 7,
   "pages_with_impressions": 28,
-  "gsc_through": "2026-10-29"
+  "gsc_through": "2026-10-30"
  },
  "actions": {
   "cta": {
@@ -120,8 +132,8 @@
  "pages": {
   "home": 1083,
   "initiative": 231,
+  "season": 117,
   "about": 115,
-  "season": 112,
   "article": 86,
   "media": 72,
   "roundtable": 25,

@@ -30,6 +30,12 @@ POSTS = [
         ("The Season 1 record", "57,274 impressions at $0 ad spend, every figure sourced", "/season-1.html", "season"),
         ("The prevention initiative", "Our first applied work, in development", "/initiative.html", "initiative"),
         ("Ask HSREP", "Answers from HSREP's published record", "/?ask=1", "ask")]),
+    # Roundtable Reels (3 Nov 2026): one per open question, Thursdays 11:00 AM
+    ("2026-11-05", "rt02", "Roundtable № 02: where does preventive care break down in your setting?", [
+        ("Answer № 02", "About five minutes, in writing; named, anonymous or private", "/roundtable.html#respond", "answer"),
+        ("Read the question", "The evidence behind it and the answers so far", "/roundtable.html", "roundtable"),
+        ("The initiative", "The proposed pilot this question informs", "/initiative.html", "initiative"),
+        ("Ask HSREP", "Answers from HSREP's published record", "/?ask=1", "ask")]),
     ("2026-11-06", "hsrep5", "From a recommended test to a finished one", [
         ("The initiative", "A weekly routine for the follow-through gap", "/initiative.html", "initiative"),
         ("", "Eight questions, two minutes, nothing stored", "/pilot-fit.html", "fit"),
@@ -38,10 +44,20 @@ POSTS = [
         ("What a host commits", "Hours, roles, data and the month-3 decision", "/initiative.html#host", "initiative"),
         ("", "Eight questions, two minutes, nothing stored", "/pilot-fit.html", "fit"),
         ("Ask about the pilot", "For health-center teams", "/initiative.html?ask=1&as=clinic", "ask")]),
+    ("2026-11-12", "rt03", "Roundtable № 03: what does the cost of care do that never shows up in the record?", [
+        ("Answer № 03", "About five minutes, in writing; named, anonymous or private", "/roundtable.html#respond", "answer"),
+        ("Read the question", "The evidence behind it and the answers so far", "/roundtable.html", "roundtable"),
+        ("The article", "When illness becomes a bill: the medical debt crisis", ART.format("when-illness-becomes-a-bill-medical-debt"), "article"),
+        ("Ask HSREP", "Answers from HSREP's published record", "/?ask=1", "ask")]),
     ("2026-11-17", "hsrep6", "Execution is the intervention", [
         ("The routine", "Find. Rank. Act. Close.", "/initiative.html#how", "initiative"),
         ("Where it goes next", "The other completion gaps it fits", "/initiative-next.html", "next"),
         ("Ask about the pilot", "For health-center teams", "/initiative.html?ask=1&as=clinic", "ask")]),
+    ("2026-11-19", "rt01", "Roundtable № 01: what actually reaches a particular group?", [
+        ("Answer № 01", "About five minutes, in writing; named, anonymous or private", "/roundtable.html#respond", "answer"),
+        ("Read the question", "The Season 1 finding behind it", "/roundtable.html", "roundtable"),
+        ("The Season 1 record", "57,274 impressions at $0 ad spend, every figure sourced", "/season-1.html", "season"),
+        ("Ask HSREP", "Answers from HSREP's published record", "/?ask=1", "ask")]),
     ("2026-11-24", "hsrep7", "One routine, the measures you already pay for", [
         ("Where it goes next", "Health plans and the measures they reward", "/initiative-next.html", "next"),
         ("The initiative", "The first pilot: colorectal, one Michigan health center", "/initiative.html", "initiative"),

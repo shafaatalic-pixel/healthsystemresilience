@@ -1,102 +1,103 @@
 {
- "updated": "2026-11-02T12:17:58+00:00",
+ "updated": "2026-11-03T11:52:39+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-02"
+  "to": "2026-11-03"
  },
  "readers": {
-  "s30": 106,
-  "s60": 55,
-  "s120": 38,
-  "s240": 31,
+  "s30": 109,
+  "s60": 58,
+  "s120": 41,
+  "s240": 34,
   "bottom": 47
  },
  "raw": {
-  "ga_users": 512,
-  "sessions": 574,
-  "pageviews": 1086,
+  "ga_users": 524,
+  "sessions": 586,
+  "pageviews": 1104,
   "engagement_rate": 43,
-  "avg_engaged_seconds": 40,
-  "excluded_datacentre": 136,
+  "avg_engaged_seconds": 39,
+  "excluded_datacentre": 140,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
-   "Council Bluffs"
+   "Council Bluffs",
+   "Des Moines"
   ],
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 363,
-  "social": 163,
+  "direct": 366,
+  "social": 172,
   "search": 27,
   "referral": 2,
-  "facebook": 115,
+  "facebook": 120,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
   "ai_fetches": 550,
-  "user_prompted": 38,
+  "user_prompted": 48,
   "agents": [
    [
     "ClaudeBot",
-    172
-   ],
-   [
-    "OAI-SearchBot",
-    89
+    176
    ],
    [
     "GPTBot",
     84
    ],
    [
-    "Amazonbot",
-    48
+    "OAI-SearchBot",
+    69
    ],
    [
     "Applebot",
-    44
+    54
+   ],
+   [
+    "Amazonbot",
+    46
    ],
    [
     "ChatGPT-User",
-    24
+    25
+   ],
+   [
+    "Claude-User",
+    23
    ],
    [
     "Bytespider",
     22
    ],
    [
+    "Meta-ExternalAgent",
+    19
+   ],
+   [
     "CCBot",
     18
    ],
    [
-    "Meta-ExternalAgent",
-    18
-   ],
-   [
     "PerplexityBot",
-    17
-   ],
-   [
-    "Claude-User",
     14
    ]
   ],
-  "search_crawlers": 655,
-  "all_bot_requests": 10149,
-  "human_visits": 35,
+  "search_crawlers": 701,
+  "all_bot_requests": 11048,
+  "human_visits": 41,
   "google_clicks": 12,
-  "google_impressions": 1119,
-  "google_position": 11.6,
+  "google_impressions": 1128,
+  "google_position": 11.5,
   "pages_indexed": 20,
-  "all_requests": 10149,
-  "cached_requests": 1354,
-  "unique_ips": 2219,
+  "all_requests": 11048,
+  "cached_requests": 1518,
+  "unique_ips": 2293,
   "agent_days": 7,
   "pages_with_impressions": 28,
-  "gsc_through": "2026-10-30"
+  "gsc_through": "2026-10-31"
  },
  "actions": {
   "cta": {
@@ -130,13 +131,13 @@
   }
  },
  "pages": {
-  "home": 1083,
+  "home": 1084,
   "initiative": 231,
   "season": 117,
   "about": 115,
   "article": 86,
   "media": 72,
-  "roundtable": 25,
+  "roundtable": 26,
   "other": 20,
   "films": 5
  },

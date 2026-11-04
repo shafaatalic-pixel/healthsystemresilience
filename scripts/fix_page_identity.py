@@ -49,8 +49,8 @@ DESC = ("Three open HSREP Roundtable questions for named professionals to answer
         "where preventive care breaks down between recommended and completed, what makes a health "
         "message land, and what the cost of care does that never reaches the record.")
 SOCIAL_DESC = ("Three questions open with no closing date, each answerable from your own work. "
-               "Responses are read before publication, appear under the contributor's name, and "
-               "enter a citable synthesis.")
+               "Every response is read before publication, you choose whether your name appears, "
+               "and published responses enter a citable synthesis.")
 
 edit("roundtable.html", [
     # --- head: identity and social cards -----------------------------------

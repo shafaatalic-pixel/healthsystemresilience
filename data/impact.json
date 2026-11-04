@@ -1,24 +1,24 @@
 {
- "updated": "2026-11-03T11:52:39+00:00",
+ "updated": "2026-11-04T12:02:29+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-03"
+  "to": "2026-11-04"
  },
  "readers": {
-  "s30": 109,
-  "s60": 58,
-  "s120": 41,
-  "s240": 34,
+  "s30": 115,
+  "s60": 64,
+  "s120": 47,
+  "s240": 39,
   "bottom": 47
  },
  "raw": {
-  "ga_users": 524,
-  "sessions": 586,
-  "pageviews": 1104,
-  "engagement_rate": 43,
-  "avg_engaged_seconds": 39,
-  "excluded_datacentre": 140,
+  "ga_users": 542,
+  "sessions": 604,
+  "pageviews": 1125,
+  "engagement_rate": 42,
+  "avg_engaged_seconds": 38,
+  "excluded_datacentre": 142,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -28,21 +28,21 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 366,
-  "social": 172,
-  "search": 27,
+  "direct": 379,
+  "social": 174,
+  "search": 28,
   "referral": 2,
-  "facebook": 120,
+  "facebook": 121,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 550,
+  "ai_fetches": 559,
   "user_prompted": 48,
   "agents": [
    [
     "ClaudeBot",
-    176
+    182
    ],
    [
     "GPTBot",
@@ -50,7 +50,7 @@
    ],
    [
     "OAI-SearchBot",
-    69
+    67
    ],
    [
     "Applebot",
@@ -58,15 +58,15 @@
    ],
    [
     "Amazonbot",
-    46
-   ],
-   [
-    "ChatGPT-User",
-    25
+    48
    ],
    [
     "Claude-User",
-    23
+    26
+   ],
+   [
+    "ChatGPT-User",
+    22
    ],
    [
     "Bytespider",
@@ -74,7 +74,7 @@
    ],
    [
     "Meta-ExternalAgent",
-    19
+    20
    ],
    [
     "CCBot",
@@ -82,22 +82,22 @@
    ],
    [
     "PerplexityBot",
-    14
+    16
    ]
   ],
-  "search_crawlers": 701,
-  "all_bot_requests": 11048,
-  "human_visits": 41,
+  "search_crawlers": 731,
+  "all_bot_requests": 11452,
+  "human_visits": 57,
   "google_clicks": 12,
-  "google_impressions": 1128,
-  "google_position": 11.5,
+  "google_impressions": 1137,
+  "google_position": 11.6,
   "pages_indexed": 20,
-  "all_requests": 11048,
-  "cached_requests": 1518,
-  "unique_ips": 2293,
+  "all_requests": 11452,
+  "cached_requests": 1508,
+  "unique_ips": 2286,
   "agent_days": 7,
   "pages_with_impressions": 28,
-  "gsc_through": "2026-10-31"
+  "gsc_through": "2026-11-01"
  },
  "actions": {
   "cta": {
@@ -131,14 +131,14 @@
   }
  },
  "pages": {
-  "home": 1084,
+  "home": 1096,
   "initiative": 231,
   "season": 117,
   "about": 115,
   "article": 86,
   "media": 72,
   "roundtable": 26,
-  "other": 20,
+  "other": 21,
   "films": 5
  },
  "participation": {

@@ -40,25 +40,38 @@ def norm(s):
     return re.sub(r'\s+', ' ', s).strip()
 
 
+def q1(fr):
+    """Round a Fraction to one decimal, half up, exactly (no floating point)."""
+    from decimal import Decimal, ROUND_HALF_UP
+    return str((Decimal(fr.numerator) / Decimal(fr.denominator)).quantize(Decimal('0.1'), rounding=ROUND_HALF_UP))
+
+
+def gap_tenths(rate):
+    """Points below the 72.8% target in whole tenths, rounded half up from exact hundredths."""
+    h = TARGET_X10 * 10 - int(round(rate * 100))
+    return max(0, (h + 5) // 10)
+
+
 def expected(src):
+    from fractions import Fraction as F
     C = src['centers']
     N, D = src['totals']['num'], src['totals']['den']
     pub = [c for c in C if c['rate_published']]
-    gap = lambda r: TARGET_X10 / 10 - r
-    rate_of = lambda cs: 100 * sum(c['num'] for c in cs) / sum(c['den'] for c in cs)
+    gap = lambda r: gap_tenths(r) / 10
+    rate_of = lambda cs: F(100 * sum(c['num'] for c in cs), sum(c['den'] for c in cs))
     rural = [c for c in pub if c['setting'] == 'Rural']
     urban = [c for c in pub if c['setting'] == 'Urban']
     need = max(0, -(-(TARGET_X10 * D - 1000 * N) // 1000))
     e = {
         'year': src['source']['reporting_year'], 'nc': len(C), 'npub': len(pub), 'nsup': len(C) - len(pub),
-        'num': N, 'den': D, 'r1': '%.1f' % (100 * N / D), 'gap1': '%.1f' % (TARGET_X10 / 10 - 100 * N / D),
+        'num': N, 'den': D, 'r1': q1(F(100 * N, D)), 'gap1': q1(F(TARGET_X10, 10) - F(100 * N, D)),
         'notup': D - N, 'need': need, 'need_round': int(round(need, -2)),
         'need60': max(0, -(-(600 * D - 1000 * N) // 1000)),
-        'met': sum(1 for c in pub if c['rate'] >= TARGET_X10 / 10),
+        'met': sum(1 for c in pub if gap_tenths(c['rate']) == 0),
         'b1': sum(1 for c in pub if 0 < gap(c['rate']) <= 10),
         'b2': sum(1 for c in pub if 10 < gap(c['rate']) <= 25),
         'b3': sum(1 for c in pub if gap(c['rate']) > 25),
-        'rural': '%.1f' % rate_of(rural), 'urban': '%.1f' % rate_of(urban), 'nr': len(rural), 'nu': len(urban),
+        'rural': q1(rate_of(rural)), 'urban': q1(rate_of(urban)), 'nr': len(rural), 'nu': len(urban),
         'perm': src['totals']['active_permanent'], 'seas': src['totals']['active_seasonal'],
         'mob': src['totals']['active_mobile_van'], 'nozip': src['totals']['permanent_without_zip'],
         'refreshed': datetime.strptime(src['source']['refreshed'].split()[0], '%m/%d/%Y'),
@@ -187,6 +200,10 @@ def run(root='.', built=None, llms=None):
         want = 'all %d federally funded health centers in Michigan, from HRSA\'s %d data' % (e['nc'], e['year'])
         if not d or want not in html.unescape(d.group(1)):
             fail('gap-map.html: meta description should say "%s"' % want)
+
+    pj = open(os.path.join(root, 'assets/gapmap-1.js'), encoding='utf-8').read()
+    if 'Math.round((Math.round(T*100)-Math.round(c.rate*100))/10)/10' not in pj:
+        fail('gapmap-1.js must compute points below target from whole hundredths (floating point showed 26.4 for 46.35)')
 
     js = open(os.path.join(root, 'assets/gapmap-tour-1.js'), encoding='utf-8').read()
     steps = tour_steps(js)

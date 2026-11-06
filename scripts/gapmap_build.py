@@ -96,11 +96,15 @@ def build():
     s = re.sub(r'<meta name="twitter:description" content="[^"]*">', f'<meta name="twitter:description" content="{OG_DESC}">', s, count=1)
     # the worklist page's structured data describes the worklist; replace it with the map's
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '', s, flags=re.S)
+    # the founder assistant only runs on the initiative pages; the Gap Map uses Ask HSREP (header button, from the shell)
+    s = re.sub(r'<script src="/assets/assistant\.js[^"]*" defer></script>', '', s)
+    if 'ask-hsrep.js' not in s:
+        raise SystemExit('shell has no Ask HSREP script')
     s = s.replace('</head>', jsonld() + '<link rel="stylesheet" href="/assets/css/gapmap-1.css?v=20261106a"></head>', 1)
     s = BAND_RE.sub(lambda m: band('/gap-map.html', m.group(1)), s, count=1)
     s = sub1(r'<main\b.*?</main>\s*(?:<div id="gm-tip"[^>]*></div>)?', main.strip(), s, re.S)
     if 'gapmap-1.js' not in s:
-        s = s.replace('</body>', '<script src="/assets/gapmap-1.js?v=20261106a" defer></script>'
+        s = s.replace('</body>', '<script src="/assets/gapmap-1.js?v=20261106b" defer></script>'
                       '<script src="/assets/gapmap-tour-1.js?v=20261106a" defer></script></body>', 1)
     for t in ('</head>', '<body', '</body>', '</html>'):
         assert t in s, t

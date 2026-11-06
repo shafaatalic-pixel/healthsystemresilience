@@ -3,7 +3,7 @@
 'use strict';
 function boot(D){
 var T=D.meta.target, NS='http://www.w3.org/2000/svg';
-var C=D.centers; C.forEach(function(c,i){c.i=i;c.pub=c.rate!=null;c.gap=c.pub?Math.max(0,Math.round((T-c.rate)*10)/10):null;c.need=c.pub?Math.max(0,Math.ceil((728*c.den-1000*c.num)/1000)):null;c.siteCities={};});
+var C=D.centers; C.forEach(function(c,i){c.i=i;c.pub=c.rate!=null;c.gap=c.pub?Math.max(0,Math.round((Math.round(T*100)-Math.round(c.rate*100))/10)/10):null;/* whole hundredths: no floating-point rounding (46.35 -> 26.5, not 26.4) */c.need=c.pub?Math.max(0,Math.ceil((728*c.den-1000*c.num)/1000)):null;c.siteCities={};});
 D.sites.forEach(function(s){C[s[0]].siteCities[s[3].toLowerCase()]=1;});
 var byId={};C.forEach(function(c){byId[c.id]=c;});
 var MI={n:D.meta.mi_num,d:D.meta.mi_den};MI.r=100*MI.n/MI.d;

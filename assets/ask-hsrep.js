@@ -5,11 +5,14 @@
    2. On every other page, the "Ask HSREP" button in the header ([data-askhs-open]) opens a
       side panel that knows which page the visitor is on. On an article, the header button
       scrolls to the inline block instead.
-   The four initiative pages keep the founder assistant (assets/assistant.js) and are skipped.
+   Three initiative pages keep only the founder assistant (assets/assistant.js) and are skipped.
+   The Completion Worklist page (dashboard-demo.html) has both: Ask HSREP in the header and the
+   founder assistant's own launcher. Pages with no header button (the Worklist demo app at
+   /worklist/ and the quick demo) get a floating "Ask HSREP" button instead.
    Calls /api/ask on this origin (the shafaat-assistant Worker, hsrep site) with from=<page>;
    the Worker answers from HSREP's core pages plus that page only. See /privacy.html#ai. */
 (function () {
-  if (/\/(initiative|initiative-next|dashboard-demo|pilot-fit)\.html$/.test(location.pathname)) return;
+  if (/\/(initiative|initiative-next|pilot-fit)\.html$/.test(location.pathname)) return;
   var PAGES = {
     home: ['Home', ['What is HSREP, in one paragraph?', 'Why call a health system economic protection?', 'Where should a public-health professional start?']],
     'season-1': ['Season 1', ['What was Season 1’s central question?', 'How is 57,274 counted?', 'What did Season 1 lead to?']],
@@ -27,9 +30,15 @@
     privacy: ['Privacy', ['What does the assistant keep?', 'Does HSREP use cookies?', 'How do I ask for my data to be deleted?']],
     terms: ['Terms of use', ['Can I reuse HSREP content?', 'Which articles are CC BY 4.0?', 'How should I cite HSREP?']],
     '404': ['This page', ['What is HSREP?', 'Where are the Season 1 articles?', 'How do I find a specific topic?']],
+    'gap-map': ['the Prevention Gap Map', ['How do I read this map?', 'Where do these numbers come from?', 'What would it take for Michigan to reach 72.8%?']],
+    'completion-worklist': ['the Completion Worklist', ['What does the Completion Worklist do?', 'Does any patient data leave the clinic?', 'How would a clinic start using it?']],
+    'worklist': ['the Completion Worklist demo', ['Where should I start in this demo?', 'Is anything I enter here sent anywhere?', 'How would my clinic use this for real?']],
+    'worklist-quick': ['the 30-second quick demo', ['What are the three ranking rules?', 'Why keep a positive test open until the colonoscopy?', 'Are these real patients?']],
   };
   var path = location.pathname.replace(/\/+$/, '/');
-  var key = path === '/' || /\/index\.html$/.test(path) ? 'home' : ((path.match(/^\/([a-z0-9-]+)\.html$/) || [])[1] || '');
+  var key = path === '/' || path === '/index.html' ? 'home' : /^\/worklist\/(index\.html)?$/.test(path) ? 'worklist' : ((path.match(/^\/([a-z0-9-]+)\.html$/) || [])[1] || '');
+  // The founder assistant on the same page sends from=dashboard-demo; Ask HSREP uses its own key so the Worker can tell them apart.
+  if (key === 'dashboard-demo') key = 'completion-worklist';
   // Film transcripts: /transcripts/<slug>.html. The Worker holds each transcript with the article it is drawn from.
   var tm = path.match(/^\/transcripts\/([a-z0-9-]+)\.html$/);
   if (tm) {
@@ -110,6 +119,12 @@ html.askhs-on #askhs-scrim{opacity:1}\
 [data-theme="dark"] #askhs-panel{background:#0F1A2B}\
 [data-theme="dark"] #askhs-panel .ap-foot{background:#14213A}\
 .hs-ask[aria-expanded="true"]{color:#C43C25;border-color:#C43C25}\
+.askhs-fab{position:fixed;right:max(16px, env(safe-area-inset-right, 0px));bottom:max(16px, env(safe-area-inset-bottom, 0px));z-index:1250;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;border:0;background:#1C2E4A;color:#fff;font:600 14px var(--sans,Inter,system-ui,sans-serif);cursor:pointer;box-shadow:0 8px 24px rgba(15,32,54,.28)}\
+.askhs-fab::before{content:"\\2726";color:#F5B26B;font-size:14px}\
+.askhs-fab:hover{background:#0F2036}\
+.askhs-fab.left{right:auto;left:max(16px, env(safe-area-inset-left, 0px))}\
+.askhs-fab[aria-expanded="true"]{background:#C43C25}\
+@media print{.askhs-fab{display:none}}\
 @media(prefers-reduced-motion:reduce){#askhs-panel,#askhs-scrim{transition:none}}';
 
   function h(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs || {}) { if (k === 'class') e.className = attrs[k]; else e.setAttribute(k, attrs[k]); } if (html != null) e.innerHTML = html; return e; }
@@ -267,6 +282,12 @@ html.askhs-on #askhs-scrim{opacity:1}\
   }
   function setBtns(on) { Array.prototype.forEach.call(document.querySelectorAll('[data-askhs-open]'), function (b) { b.setAttribute('aria-expanded', on ? 'true' : 'false'); }); }
   document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-askhs-open]'); if (b) { e.preventDefault(); if (panel && document.documentElement.classList.contains('askhs-on')) close(); else open(b); } });
+  /* No header button on this page (the Worklist demo app, the quick demo): add a floating one,
+     under the privacy-choice banner (z-index 1300). The app keeps its tour card bottom right, so there it sits left. */
+  if (panel && !document.querySelector('[data-askhs-open]')) {
+    var fab = h('button', { type: 'button', class: 'askhs-fab' + (key === 'worklist' ? ' left' : ''), 'data-askhs-open': '', 'aria-haspopup': 'dialog', 'aria-expanded': 'false', 'aria-label': 'Ask HSREP: questions about this page' }, 'Ask HSREP');
+    document.body.appendChild(fab);
+  }
   if (panel) {
     wrap.querySelector('.ap-close').addEventListener('click', close);
     scrim.addEventListener('click', close);

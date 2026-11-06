@@ -1,0 +1,145 @@
+<main id="main" tabindex="-1" class="pai gm">
+
+<section class="pai-hero"><div class="wrap">
+<div class="copy">
+<span class="pai-chip" style="align-self:flex-start">Public data · 2025 · updated each year</span>
+<span class="kicker">The Prevention Gap Map · Michigan</span>
+<h1>Find the gap. See where to start.</h1>
+<p class="dek">Colorectal cancer screening at every federally funded health center in Michigan, from HRSA's 2025 data. Find a center, compare it with others, and see what closing the gap would take.</p>
+<div class="cw-cta gm-cta"><a class="btn pai-primary" href="#explore">Explore the map</a><a class="btn pai-secondary" href="#explore" data-focus-search>Find a health center</a><a class="btn pai-secondary" href="#next">Get a free follow-up readout</a></div>
+</div>
+<aside class="gm-herocard" aria-label="Michigan at a glance">
+<span class="mono">Michigan health centers · 2025</span>
+<div class="gm-big"><span id="gm-mi-rate">48.7</span><small>%</small></div>
+<p>of adults aged 46 to 75 up to date on colorectal screening</p>
+<div class="gm-track" aria-hidden="true"><i id="gm-track-fill"></i><b style="left:72.8%"></b></div>
+<div class="gm-tracklab"><span>Michigan 48.7%</span><span>Target 72.8%</span></div>
+<dl class="gm-herostats">
+<div><dt>Gap to target</dt><dd>24.1 points</dd></div>
+<div><dt>More adults screened</dt><dd id="gm-hero-need">45,138</dd></div>
+<div><dt>At or above target</dt><dd>1 of 35</dd></div>
+</dl>
+</aside>
+</div></section>
+
+<div class="wrap"><div class="pai-body">
+<nav class="pai-rail" aria-label="On this page"><span class="mono">On this page</span><a href="#explore">Explore</a><a href="#compare">Compare</a><a href="#distribution">All centers</a><a href="#signals">What it means</a><a href="#scenario">Scenario</a><a href="#next">The next step</a><a href="#methods">How this is made</a></nav>
+<div>
+
+<section class="pai-card gm-explore" id="explore" aria-labelledby="exh">
+<span class="mono">01 · Explore</span>
+<h2 id="exh">From the whole state to one clinic.</h2>
+<p class="lede">Search a center or a city, filter, or tap a dot. The map, list, table and export all follow the same filters.</p>
+
+<div class="gm-filters" role="group" aria-label="Filters">
+<label class="gm-search"><span class="gm-sr">Search</span><input type="search" id="gm-q" placeholder="Search a center or city, e.g. Ypsilanti" autocomplete="off"></label>
+<label><span class="gm-flab">Setting</span><select id="gm-setting"><option value="">All settings</option><option>Urban</option><option>Rural</option></select></label>
+<label><span class="gm-flab">Distance from target</span><select id="gm-band"><option value="">All</option><option value="met">At or above target</option><option value="b1">Within 10 points</option><option value="b2">10 to 25 points below</option><option value="b3">More than 25 points below</option><option value="np">Rate not published</option></select></label>
+<label><span class="gm-flab">Order</span><select id="gm-sort"><option value="name">Name, A to Z</option><option value="city">City, A to Z</option><option value="need">Planning view: most additional adults</option></select></label>
+<button type="button" class="gm-reset" id="gm-reset">Reset</button>
+</div>
+
+<div class="gm-viewbar">
+<div class="gm-tabs" role="tablist" aria-label="View"><button role="tab" aria-selected="true" id="gm-tab-map">Map</button><button role="tab" aria-selected="false" id="gm-tab-table">Table</button></div>
+<div class="gm-regions" aria-label="Zoom to a region"><button data-region="all" aria-pressed="true">Whole state</button><button data-region="detroit">Detroit metro</button><button data-region="west">West</button><button data-region="mid">Flint, Lansing, Saginaw</button><button data-region="north">Northern</button><button data-region="up">Upper Peninsula</button></div>
+</div>
+
+<div class="gm-stage">
+<div class="gm-mapwrap" id="gm-mapview">
+<div class="gm-mapbox">
+<svg id="gm-map" role="img" aria-label="Map of Michigan health center clinic sites, shaded by each health center's distance from the 72.8 percent target"></svg>
+<div class="gm-zoom"><button type="button" id="gm-zin" aria-label="Zoom in">+</button><button type="button" id="gm-zout" aria-label="Zoom out">&minus;</button><button type="button" id="gm-zreset" aria-label="Reset zoom">&#8634;</button></div>
+<div class="gm-count" id="gm-count"></div>
+</div>
+<div class="gm-legend" aria-label="Legend"><span><i style="background:var(--gm-met)"></i>At or above target</span><span><i style="background:var(--gm-b1)"></i>Within 10 points</span><span><i style="background:var(--gm-b2)"></i>10 to 25 points below</span><span><i style="background:var(--gm-b3)"></i>More than 25 points below</span><span><i style="background:var(--gm-np)"></i>Rate not published</span></div>
+<p class="gm-careful"><b>Read the map carefully.</b> A dot is a clinic site. Its color is its health center's rate; HRSA does not publish rates for single sites. A lower rate is a reason to look at barriers, not a judgment of care.</p>
+</div>
+<div class="gm-tablewrap" id="gm-tableview" hidden>
+<div class="cw-table" role="region" aria-label="Health center table" tabindex="0"><table class="gm-table"><thead><tr><th data-k="name" aria-sort="ascending"><button type="button">Health center</button></th><th data-k="city"><button type="button">City</button></th><th data-k="setting"><button type="button">Setting</button></th><th data-k="nsites" class="n"><button type="button">Sites</button></th><th data-k="rate" class="n"><button type="button">Rate</button></th><th data-k="gap" class="n"><button type="button">Points below target</button></th><th data-k="need" class="n"><button type="button">More adults to target</button></th></tr></thead><tbody id="gm-tbody"></tbody></table></div>
+<p class="gm-note">Rates are HRSA's as published. Points below target = 72.8 minus the rate. More adults to target assumes the same number of eligible adults. Where HRSA did not publish a rate, nothing is calculated.</p>
+</div>
+
+<aside class="gm-panel" id="gm-panel" aria-live="polite">
+<div id="gm-panel-empty">
+<span class="mono">Choose a health center</span>
+<p>Tap a dot or a name to see one center's numbers.</p>
+<ul class="gm-list" id="gm-list"></ul>
+<p class="gm-note" id="gm-listnote"></p>
+</div>
+<div id="gm-panel-one" hidden></div>
+</aside>
+</div>
+<div class="gm-actions"><button type="button" class="btn pai-secondary gm-sm" id="gm-export">Download the filtered data (CSV)</button></div>
+</section>
+
+<section class="pai-card" id="compare" aria-labelledby="cph">
+<span class="mono">02 · Compare</span>
+<h2 id="cph">Put up to three centers side by side.</h2>
+<p class="lede">Patients, neighborhoods and resources differ, so a comparison starts a conversation; it does not settle one.</p>
+<div class="gm-compare" id="gm-compare"></div>
+</section>
+
+<section class="pai-card" id="distribution" aria-labelledby="dsh">
+<span class="mono">03 · Every center against the target</span>
+<h2 id="dsh">One center, one dot.</h2>
+<p class="lede">The dashed line is the 72.8% target; the solid line is the Michigan rate. Size the dots by eligible adults to see where the most people are.</p>
+<div class="gm-tabs gm-sizebar" role="group" aria-label="Dot size"><button type="button" aria-pressed="true" data-size="equal">Equal dots</button><button type="button" aria-pressed="false" data-size="den">Size by eligible adults</button></div>
+<div class="gm-stripbox"><svg id="gm-strip" viewBox="0 0 1000 250" role="img" aria-label="Screening rate of each Michigan health center against the target and the Michigan rate"></svg></div>
+<p class="gm-note">35 of 39 centers have a published rate. The four without one are not shown here. The Michigan rate uses all 39 centers' published totals.</p>
+</section>
+
+<section class="pai-card plain" id="signals" aria-labelledby="sgh">
+<span class="mono">04 · What it means</span>
+<h2 id="sgh">Useful signals. Better questions.</h2>
+<p class="lede">These describe the 2025 numbers. They do not explain why a gap exists.</p>
+<div class="gm-signals">
+<div><span class="mono">The size of the gap</span><b>96,170</b><p>eligible adults not up to date. Reaching 72.8% means about 45,100 more of them screened.</p><a href="#scenario">Try a different goal &rarr;</a></div>
+<div><span class="mono">Setting</span><b>57.8% <small>vs</small> 43.9%</b><span class="gm-note" style="margin:0">rural vs urban centers</span><p>Weighted by eligible adults across 15 rural and 20 urban centers with a published rate.</p><a href="#explore" data-setfilter="setting:Urban">See the urban centers &rarr;</a></div>
+<div><span class="mono">Where to look first</span><b>16 <small>of 35 centers</small></b><p>are more than 25 points below the target. The question is what stands in the way: access, outreach, kits returned, or follow-up.</p><a href="#explore" data-setfilter="band:b3">See these centers &rarr;</a></div>
+</div>
+</section>
+
+<section class="pai-card" id="scenario" aria-labelledby="sch">
+<span class="mono">05 · A scenario</span>
+<h2 id="sch">Move the goal. See what it takes.</h2>
+<p class="lede">Arithmetic, not a forecast: the number of eligible adults stays at 187,620, and nothing is assumed about cost, time or uptake.</p>
+<div class="gm-scen">
+<div><label for="gm-goal" class="gm-flab">Statewide screening goal: <b id="gm-goal-v">72.8%</b></label>
+<input type="range" id="gm-goal" min="49" max="90" step="0.1" value="72.8">
+<div class="gm-scale"><span>49%</span><button type="button" id="gm-goal-reset">Reset to the 72.8% target</button><span>90%</span></div></div>
+<div class="gm-scenout"><span class="mono">More adults screened</span><b id="gm-goal-n">45,138</b><p id="gm-goal-p">to move Michigan's health centers from 48.7% to 72.8%.</p></div>
+</div>
+</section>
+
+<section class="gm-next" id="next" aria-labelledby="nxh">
+<div class="gm-next-in">
+<div>
+<span class="mono">06 · The next step · NCQA COF-E, 2027</span>
+<h2 id="nxh">A screening test is step one. A positive test needs a colonoscopy.</h2>
+<p>A screening rate counts people who completed a test. It cannot show how many positive stool tests never became a colonoscopy. From 2027, NCQA's new COF-E measure will count that step for adults 45 to 75, within 180 days.</p>
+<ol class="gm-chain" aria-label="From test to completed care"><li>Screening test</li><li>Positive result</li><li class="gm-open">Colonoscopy within 180 days<small>Not in this data</small></li></ol>
+</div>
+<div class="gm-next-cta">
+<a href="/dashboard-demo.html"><b>Close the follow-up step &rarr;</b>The Completion Worklist puts positive tests without a colonoscopy at the top of a weekly list. Try it with invented patients.</a>
+<a href="mailto:contact@hsraep.org?subject=Free%20follow-up%20readout"><b>Get a free follow-up readout &rarr;</b>Send two counts: positive stool tests, and how many had a colonoscopy within 180 days. Get one page back. No patient data.</a>
+</div>
+</div>
+</section>
+
+<section class="pai-card plain" id="methods" aria-labelledby="mth">
+<span class="mono">07 · How this is made</span>
+<h2 id="mth">Transparent by design.</h2>
+<p class="lede">Checked against HRSA's file on November 5, 2026. Data year 2025; the next update is expected in mid 2027.</p>
+<div class="cw-faq gm-faq">
+<details open><summary>Source and period</summary><p>HRSA Uniform Data System, Health Center Program awardee data, reporting year 2025 (file H80-2025, Table 6B, colorectal cancer screening, adults 46 to 75), refreshed by HRSA on May 7, 2026. Target: Healthy People 2030, objective C-07, 72.8%. <a href="https://data.hrsa.gov/data/download">HRSA data downloads</a> · <a href="https://odphp.health.gov/healthypeople">Healthy People 2030</a></p></details>
+<details><summary>What we calculate</summary><p>Points below target = 72.8 minus the published rate. More adults to target = 72.8% of eligible adults minus those screened, rounded up, never below zero. Michigan figures add up all 39 centers' published totals (91,450 of 187,620). Urban and rural figures use only centers with a published rate. HRSA notes it cannot verify data others reprocess, so these sums are HSREP's.</p></details>
+<details><summary>Rates HRSA did not publish</summary><p>Four centers have no published rate for 2025. They appear in grey. No rate, gap or count is estimated or shown for them, in any view or export.</p></details>
+<details><summary>Sites and the map</summary><p>355 permanent clinic sites active on December 31, 2025 (HRSA Form 5B), placed at the center of their ZIP code, so nearby sites can overlap. Every site shows its health center's rate. Names are shown in title case; one spelling in HRSA's file is corrected.</p></details>
+<details><summary>Not a ranking</summary><p>A lower rate often reflects patients who move often, lack housing or a phone, speak other languages, or live far from colonoscopy, not weaker care. The list is ordered A to Z by default; the planning view orders by the number of adults, for partners deciding where help would reach the most people.</p></details>
+<details><summary>Updates and citation</summary><p>Updated once a year when HRSA releases new data. Each yearly edition gets its own DOI. Cite as: HSREP. Prevention Gap Map, Michigan, data year 2025. hsraep.org/gap-map.</p></details>
+</div>
+</section>
+
+</div></div></div>
+</main>
+<div id="gm-tip" role="tooltip"></div>

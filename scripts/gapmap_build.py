@@ -16,7 +16,7 @@ Run from the website root:  python3 scripts/gapmap_build.py
 import json
 import re
 
-TODAY = '2026-11-05'
+TODAY = '2026-11-06'
 URL = 'https://hsraep.org/gap-map.html'
 TITLE = 'Prevention Gap Map: Michigan colorectal screening | HSREP'
 DESC = ("Colorectal cancer screening at all 39 federally funded health centers in Michigan, "
@@ -80,11 +80,12 @@ def build():
     s = re.sub(r'<meta name="twitter:description" content="[^"]*">', f'<meta name="twitter:description" content="{OG_DESC}">', s, count=1)
     # the worklist page's structured data describes the worklist; replace it with the map's
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '', s, flags=re.S)
-    s = s.replace('</head>', jsonld() + '<link rel="stylesheet" href="/assets/css/gapmap-1.css?v=20261105a"></head>', 1)
+    s = s.replace('</head>', jsonld() + '<link rel="stylesheet" href="/assets/css/gapmap-1.css?v=20261106a"></head>', 1)
     s = BAND_RE.sub(lambda m: band('/gap-map.html', m.group(1)), s, count=1)
     s = sub1(r'<main\b.*?</main>\s*(?:<div id="gm-tip"[^>]*></div>)?', main.strip(), s, re.S)
     if 'gapmap-1.js' not in s:
-        s = s.replace('</body>', '<script src="/assets/gapmap-1.js?v=20261105a" defer></script></body>', 1)
+        s = s.replace('</body>', '<script src="/assets/gapmap-1.js?v=20261106a" defer></script>'
+                      '<script src="/assets/gapmap-tour-1.js?v=20261106a" defer></script></body>', 1)
     for t in ('</head>', '<body', '</body>', '</html>'):
         assert t in s, t
     open('gap-map.html', 'w', encoding='utf-8').write(s)

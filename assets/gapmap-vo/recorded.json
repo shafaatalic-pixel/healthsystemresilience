@@ -1,0 +1,65 @@
+{
+ "note": "Captions as they were when each clip was recorded (6 Nov 2026, ElevenLabs \"Shafaat (own voice)\", Eleven v4). gapmap_verify.py fails if a caption changes without its clip being re-recorded and this file updated.",
+ "steps": [
+  {
+   "file": "step-01.mp3",
+   "title": "Fewer than half are up to date.",
+   "caption": "At Michigan's 39 federally funded health centers, 48.7% of adults aged 46 to 75 were up to date on colorectal cancer screening in 2025. The target is 72.8%.",
+   "spoken": "[warm, confident storyteller] Fewer than half are up to date. At Michigan's thirty-nine federally funded health centers, forty-eight point seven percent of adults aged forty-six to seventy-five were up to date on colorectal cancer screening in twenty twenty-five. The target is seventy-two point eight percent."
+  },
+  {
+   "file": "step-02.mp3",
+   "title": "Every dot is a clinic.",
+   "caption": "Each dot is a clinic site, colored by its health center's rate: green at or above the target, deeper red the further below. Grey means HRSA did not publish a rate.",
+   "spoken": "[clear, inviting] Every dot is a clinic. Each dot is a clinic site, colored by its health center's rate: green at or above the target, deeper red the further below. Grey means Hersa did not publish a rate."
+  },
+  {
+   "file": "step-03.mp3",
+   "title": "Zoom in to where you work.",
+   "caption": "Jump to a region like Detroit, scroll to zoom, or search any center or city, including the names people actually use.",
+   "spoken": "[warm, a little playful] Zoom in to where you work. Jump to a region like Detroit, scroll to zoom, or search any center or city, including the names people actually use."
+  },
+  {
+   "file": "step-04.mp3",
+   "title": "Open any center.",
+   "caption": "Each center shows its rate, its eligible adults, and how many more screenings would reach the target. Every center has its own link you can share.",
+   "spoken": "[confident] Open any center. Each center shows its rate, its eligible adults, and how many more screenings would reach the target. Every center has its own link you can share."
+  },
+  {
+   "file": "step-05.mp3",
+   "title": "Put three side by side.",
+   "caption": "Patients, neighborhoods and resources differ, so a comparison starts a conversation. It does not settle one.",
+   "spoken": "[reflective, sincere] Put three side by side. Patients, neighborhoods and resources differ, so a comparison starts a conversation. It does not settle one."
+  },
+  {
+   "file": "step-06.mp3",
+   "title": "All 35 against one line.",
+   "caption": "Each dot is a center with a published rate. The dashed line is the target. Size the dots by eligible adults to see where the most people are.",
+   "spoken": "[clear, inviting] All thirty-five against one line. Each dot is a center with a published rate. The dashed line is the target. Size the dots by eligible adults to see where the most people are."
+  },
+  {
+   "file": "step-07.mp3",
+   "title": "Useful signals. Better questions.",
+   "caption": "Rural centers reached 57.8%, urban centers 43.9%, and 16 centers are more than 25 points below the target. The question is what stands in the way: access, outreach, kits returned, or follow-up.",
+   "spoken": "[with quiet conviction] Useful signals. Better questions. Rural centers reached fifty-seven point eight percent, urban centers forty-three point nine percent, and sixteen centers are more than twenty-five points below the target. The question is what stands in the way: access, outreach, kits returned, or follow-up."
+  },
+  {
+   "file": "step-08.mp3",
+   "title": "Move the goal. See what it takes.",
+   "caption": "Reaching 72.8% means 45,138 more adults screened. Even a goal of 60% would mean 21,122 more. It is arithmetic, not a forecast.",
+   "spoken": "[confident] Move the goal. See what it takes. Reaching seventy-two point eight percent means forty-five thousand, one hundred thirty-eight more adults screened. Even a goal of sixty percent would mean twenty-one thousand, one hundred twenty-two more. It is arithmetic, not a forecast."
+  },
+  {
+   "file": "step-09.mp3",
+   "title": "A test is only step one.",
+   "caption": "A screening rate cannot show whether a positive stool test led to a colonoscopy. The Completion Worklist is built for that step, and you can send two counts for a free one-page readout.",
+   "spoken": "[with quiet conviction] A test is only step one. A screening rate cannot show whether a positive stool test led to a colonoscopy. The Completion Worklist is built for that step, and you can send two counts for a free one-page readout."
+  },
+  {
+   "file": "step-10.mp3",
+   "title": "Public data. Not a ranking.",
+   "caption": "Every number comes from HRSA's public 2025 file, the methods are open, and the map is updated each year. A lower rate is a reason to look at barriers, not a judgment of care.",
+   "spoken": "[warm, inviting] Public data. Not a ranking. Every number comes from Hersa's public twenty twenty-five file, the methods are open, and the map is updated each year. A lower rate is a reason to look at barriers, not a judgment of care."
+  }
+ ]
+}

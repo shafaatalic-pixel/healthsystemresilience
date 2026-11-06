@@ -1,0 +1,726 @@
+{
+ "source": {
+  "file": "H80-2025.xlsx",
+  "sha256": "1f8a7503f54892163a32083ec46c59f4695c9ad6c0e37a9c458fc88f7111fbfb",
+  "url": "https://data.hrsa.gov/data/download",
+  "refreshed": "05/07/2026 12:00 AM EST",
+  "reporting_year": 2025,
+  "extracted": "2026-11-06",
+  "state": "MI"
+ },
+ "totals": {
+  "centers": 39,
+  "rates_published": 35,
+  "num": 91450,
+  "den": 187620,
+  "active_permanent": 383,
+  "active_seasonal": 44,
+  "active_mobile_van": 29,
+  "active_other": 0,
+  "permanent_without_zip": 28
+ },
+ "centers": [
+  {
+   "k": "050210",
+   "hrsa_name": "BALDWIN FAMILY HEALTH CARE, INC.",
+   "city": "Baldwin",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 55.51,
+   "num": 3816,
+   "den": 6875,
+   "sites": {
+    "active_permanent": 18,
+    "active_seasonal": 1,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 2,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "050220",
+   "hrsa_name": "INTERCARE COMMUNITY HEALTH NETWORK",
+   "city": "Bangor",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 47.93,
+   "num": 4528,
+   "den": 9447,
+   "sites": {
+    "active_permanent": 9,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "050290",
+   "hrsa_name": "MIDMICHIGAN HEALTH SERVICES",
+   "city": "Houghton Lake",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 64.54,
+   "num": 4039,
+   "den": 6258,
+   "sites": {
+    "active_permanent": 9,
+    "active_seasonal": 2,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "050360",
+   "hrsa_name": "GREAT LAKES BAY HEALTH CENTERS",
+   "city": "Saginaw",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 51.61,
+   "num": 8359,
+   "den": 16198,
+   "sites": {
+    "active_permanent": 25,
+    "active_seasonal": 1,
+    "active_mobile_van": 7,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "050390",
+   "hrsa_name": "NORTHWEST MICHIGAN HEALTH SERVICES, INC.",
+   "city": "Traverse City",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 59.71,
+   "num": 1002,
+   "den": 1678,
+   "sites": {
+    "active_permanent": 10,
+    "active_seasonal": 2,
+    "active_mobile_van": 2,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "051020",
+   "hrsa_name": "HACKLEY COMMUNITY CARE CENTER, INC.",
+   "city": "Muskegon",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 54,
+   "num": 2499,
+   "den": 4628,
+   "sites": {
+    "active_permanent": 16,
+    "active_seasonal": 6,
+    "active_mobile_van": 2,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "051680",
+   "hrsa_name": "EAST JORDAN FAMILY HEALTH CENTER",
+   "city": "East Jordan",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 63.07,
+   "num": 2302,
+   "den": 3650,
+   "sites": {
+    "active_permanent": 2,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "0516820",
+   "hrsa_name": "MGH FAMILY HC DBA MUSKEGON FAMILY CARE",
+   "city": "Muskegon",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 59.97,
+   "num": 2454,
+   "den": 4092,
+   "sites": {
+    "active_permanent": 1,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "051830",
+   "hrsa_name": "COUNTY OF INGHAM, HEALTH DEPARTMENT",
+   "city": "Lansing",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 26.11,
+   "num": 1082,
+   "den": 4144,
+   "sites": {
+    "active_permanent": 10,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "051880",
+   "hrsa_name": "DETROIT HEALTH CARE FOR THE HOMELESS",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 47.16,
+   "num": 1056,
+   "den": 2239,
+   "sites": {
+    "active_permanent": 5,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "051980",
+   "hrsa_name": "ALCONA CITIZENS FOR HEALTH, INC.",
+   "city": "Harrisville",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 64.08,
+   "num": 8078,
+   "den": 12606,
+   "sites": {
+    "active_permanent": 18,
+    "active_seasonal": 15,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 5,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "052030",
+   "hrsa_name": "CHERRY STREET SERVICES, INC.",
+   "city": "Grand Rapids",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 34.71,
+   "num": 3492,
+   "den": 10060,
+   "sites": {
+    "active_permanent": 21,
+    "active_seasonal": 2,
+    "active_mobile_van": 2,
+    "active_other": 0,
+    "permanent_without_zip": 2,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "052070",
+   "hrsa_name": "DETROIT COMMUNITY HEALTH CONNECTION, INC.",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": false,
+   "rate": null,
+   "num": 404,
+   "den": 2619,
+   "sites": {
+    "active_permanent": 7,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "052200",
+   "hrsa_name": "DOWNRIVER COMMUNITY SERVICES, INC.",
+   "city": "Algonac",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 42.14,
+   "num": 1553,
+   "den": 3685,
+   "sites": {
+    "active_permanent": 3,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "052250",
+   "hrsa_name": "STERLING AREA HEALTH CENTER",
+   "city": "Sterling",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 39.7,
+   "num": 1311,
+   "den": 3302,
+   "sites": {
+    "active_permanent": 11,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "052910",
+   "hrsa_name": "FAMILY MEDICAL CENTER OF MICHIGAN, INC.",
+   "city": "Carleton",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 45.64,
+   "num": 2713,
+   "den": 5944,
+   "sites": {
+    "active_permanent": 56,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 2,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "0530870",
+   "hrsa_name": "BAY MILLS INDIAN COMMUNITY",
+   "city": "Brimley",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 52.88,
+   "num": 468,
+   "den": 885,
+   "sites": {
+    "active_permanent": 5,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "0530900",
+   "hrsa_name": "WESTERN WAYNE FAMILY HEALTH CENTERS",
+   "city": "Inkster",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 49.29,
+   "num": 1452,
+   "den": 2946,
+   "sites": {
+    "active_permanent": 5,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "053160",
+   "hrsa_name": "THUNDER BAY COMMUNITY HEALTH SERVICE, INC.",
+   "city": "Hillman",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 56.73,
+   "num": 3886,
+   "den": 6850,
+   "sites": {
+    "active_permanent": 25,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "053300",
+   "hrsa_name": "HAMILTON COMMUNITY HEALTH NETWORK, INC.",
+   "city": "Flint",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 29.96,
+   "num": 2526,
+   "den": 8430,
+   "sites": {
+    "active_permanent": 11,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "0537520",
+   "hrsa_name": "COVENANT COMMUNITY CARE INC.",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 39.77,
+   "num": 1428,
+   "den": 3591,
+   "sites": {
+    "active_permanent": 4,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "056230",
+   "hrsa_name": "FAMILY HEALTH CENTER, INC.",
+   "city": "Kalamazoo",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 39.44,
+   "num": 2751,
+   "den": 6975,
+   "sites": {
+    "active_permanent": 4,
+    "active_seasonal": 0,
+    "active_mobile_van": 2,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "056430",
+   "hrsa_name": "GRACE HEALTH, INC.",
+   "city": "Battle Creek",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 53.42,
+   "num": 3927,
+   "den": 7351,
+   "sites": {
+    "active_permanent": 14,
+    "active_seasonal": 4,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "056770",
+   "hrsa_name": "COMMUNITY HEALTH & SOCIAL SERVICES CENTER, INC.",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 49.69,
+   "num": 1903,
+   "den": 3830,
+   "sites": {
+    "active_permanent": 7,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "056900",
+   "hrsa_name": "LAKELAND IMMEDIATE CARE CENTER",
+   "city": "Cassopolis",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 46.35,
+   "num": 2211,
+   "den": 4770,
+   "sites": {
+    "active_permanent": 4,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "057030",
+   "hrsa_name": "CENTER FOR FAMILY HEALTH",
+   "city": "Jackson",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 57.6,
+   "num": 3930,
+   "den": 6823,
+   "sites": {
+    "active_permanent": 7,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E00210",
+   "hrsa_name": "DETROIT CENTRAL CITY COMMUNITY MENTAL HEALTH INC.",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 18.64,
+   "num": 332,
+   "den": 1781,
+   "sites": {
+    "active_permanent": 4,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E00271",
+   "hrsa_name": "ISABELLA CITIZENS FOR HEALTH, INC.",
+   "city": "Mount Pleasant",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 68.67,
+   "num": 3960,
+   "den": 5767,
+   "sites": {
+    "active_permanent": 3,
+    "active_seasonal": 10,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 2,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E00433",
+   "hrsa_name": "TRAVERSE HEALTH CLINIC AND COALITION",
+   "city": "Traverse City",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 60,
+   "num": 1083,
+   "den": 1805,
+   "sites": {
+    "active_permanent": 1,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E00445",
+   "hrsa_name": "UPPER GREAT LAKES FAMILY HEALTH CENTER",
+   "city": "GWINN",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 73.47,
+   "num": 5921,
+   "den": 8059,
+   "sites": {
+    "active_permanent": 12,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 1,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E00483",
+   "hrsa_name": "THE WELLNESS PLAN MEDICAL CENTERS",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": false,
+   "rate": null,
+   "num": 521,
+   "den": 3272,
+   "sites": {
+    "active_permanent": 4,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E00484",
+   "hrsa_name": "WAYNE, COUNTY OF",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": false,
+   "rate": null,
+   "num": 33,
+   "den": 360,
+   "sites": {
+    "active_permanent": 2,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01033",
+   "hrsa_name": "GENESEE HEALTH SYSTEM",
+   "city": "Flint",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 45.17,
+   "num": 715,
+   "den": 1583,
+   "sites": {
+    "active_permanent": 3,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01101",
+   "hrsa_name": "MYCARE HEALTH CENTER",
+   "city": "Center Line",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 34.41,
+   "num": 605,
+   "den": 1758,
+   "sites": {
+    "active_permanent": 4,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01147",
+   "hrsa_name": "OAKLAND INTEGRATED HEALTHCARE NETWORK",
+   "city": "Pontiac",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 29.57,
+   "num": 1373,
+   "den": 4643,
+   "sites": {
+    "active_permanent": 19,
+    "active_seasonal": 0,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01203",
+   "hrsa_name": "PACKARD HEALTH, INC.",
+   "city": "Ann Arbor",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 49.2,
+   "num": 2802,
+   "den": 5695,
+   "sites": {
+    "active_permanent": 7,
+    "active_seasonal": 1,
+    "active_mobile_van": 0,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01226",
+   "hrsa_name": "COVERED BRIDGE HEALTHCARE OF ST. JOSEPH COUNTY, INC.",
+   "city": "Centreville",
+   "setting": "Rural",
+   "rate_published": true,
+   "rate": 24.7,
+   "num": 247,
+   "den": 1000,
+   "sites": {
+    "active_permanent": 1,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 0,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01257",
+   "hrsa_name": "INSTITUTUTE FOR POPULATION HEALTH, INC.",
+   "city": "Detroit",
+   "setting": "Urban",
+   "rate_published": false,
+   "rate": null,
+   "num": 44,
+   "den": 335,
+   "sites": {
+    "active_permanent": 3,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 2,
+    "inactive": 0
+   }
+  },
+  {
+   "k": "05E01262",
+   "hrsa_name": "CATHERINES HEALTH CENTER",
+   "city": "GRAND RAPIDS",
+   "setting": "Urban",
+   "rate_published": true,
+   "rate": 38.2,
+   "num": 644,
+   "den": 1686,
+   "sites": {
+    "active_permanent": 13,
+    "active_seasonal": 0,
+    "active_mobile_van": 1,
+    "active_other": 0,
+    "permanent_without_zip": 2,
+    "inactive": 0
+   }
+  }
+ ]
+}

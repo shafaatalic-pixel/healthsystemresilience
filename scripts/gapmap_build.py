@@ -11,10 +11,26 @@ Also adds the "Gap Map" tab to the Prevention Adoption Initiative band on the
 other initiative pages, and the page to sitemap.xml and llms.txt.
 Safe to run more than once.
 
+Before writing anything, every figure is verified against HRSA's own numbers
+(scripts/gapmap_verify.py, ground truth data/source/hrsa-h80-<year>-michigan.json
+made by scripts/gapmap_extract.py). If a single figure disagrees, the page is not written.
+
+Yearly update, in order:
+  1. python3 scripts/gapmap_extract.py ~/Downloads/H80-<year>.xlsx
+  2. rebuild data/gapmap-<year>.json (rates, counts, ALL active permanent sites)
+  3. update copy in scripts/gapmap_main.html, the tour captions (re-record changed clips and
+     assets/gapmap-vo/recorded.json) and the llms.txt line
+  4. python3 scripts/gapmap_build.py   (refuses to build until everything matches)
+
 Run from the website root:  python3 scripts/gapmap_build.py
 """
 import json
+import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import gapmap_verify  # noqa: E402
 
 TODAY = '2026-11-06'
 URL = 'https://hsraep.org/gap-map.html'
@@ -88,6 +104,13 @@ def build():
                       '<script src="/assets/gapmap-tour-1.js?v=20261106a" defer></script></body>', 1)
     for t in ('</head>', '<body', '</body>', '</html>'):
         assert t in s, t
+    # Every figure is checked against HRSA's own numbers before the page is written.
+    errs = gapmap_verify.run('.', built=s)
+    if errs:
+        print('NOT WRITTEN: gap-map.html fails verification against HRSA (%d):' % len(errs))
+        for x in errs:
+            print('  - ' + x)
+        raise SystemExit(1)
     open('gap-map.html', 'w', encoding='utf-8').write(s)
     print('wrote gap-map.html', len(s))
 
@@ -138,3 +161,10 @@ if __name__ == '__main__':
     bands()
     sitemap()
     llms()
+    errs = gapmap_verify.run('.')
+    if errs:
+        print('Verification FAILED after build (%d):' % len(errs))
+        for x in errs:
+            print('  - ' + x)
+        raise SystemExit(1)
+    print('verified against HRSA: all figures match')

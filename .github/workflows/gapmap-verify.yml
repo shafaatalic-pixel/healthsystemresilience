@@ -1,0 +1,45 @@
+name: Gap Map figures (must match HRSA)
+
+# Every number on the Prevention Gap Map is recomputed from HRSA's own file
+# (data/source/hrsa-h80-<year>-michigan.json) and compared with what visitors
+# see: centers, rates, counts, every center's clinic sites and map dots, the
+# page copy, the tour captions and narration, and llms.txt. Added 6 Nov 2026
+# after the map had shown 355 of HRSA's 383 sites. A failure here means a
+# published figure is wrong: fix it, do not skip the check.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "gap-map.html"
+      - "data/gapmap-*.json"
+      - "data/source/**"
+      - "assets/gapmap-*"
+      - "assets/gapmap-vo/**"
+      - "scripts/gapmap_*"
+      - "llms.txt"
+  pull_request:
+    paths:
+      - "gap-map.html"
+      - "data/**"
+      - "assets/gapmap-*"
+      - "assets/gapmap-vo/**"
+      - "scripts/gapmap_*"
+      - "llms.txt"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Verify every Gap Map figure against HRSA
+        run: python scripts/gapmap_verify.py

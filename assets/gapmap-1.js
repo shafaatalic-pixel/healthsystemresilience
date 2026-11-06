@@ -86,7 +86,7 @@ function renderTable(f){var k=st.tsort.k,dir=st.tsort.dir,a=f.slice();
 document.querySelectorAll('.gm-table th button').forEach(function(b){b.onclick=function(){var k=b.parentNode.dataset.k;st.tsort=st.tsort.k===k?{k:k,dir:-st.tsort.dir}:{k:k,dir:1};renderTable(filtered());};});
 
 /* detail panel */
-function ev(n,p){try{if(window.gtag)window.gtag('event',n,p||{});}catch(e){}}
+function ev(n,p){if(window.__gmTour)return;try{if(window.gtag)window.gtag('event',n,p||{});}catch(e){}}
 function select(id){var c=byId[id];if(!c)return;st.sel=id;ev('gapmap_center',{center:id});
  $('#gm-panel-empty').hidden=true;var p=$('#gm-panel-one');p.hidden=false;p.className='gm-one';
  var h='<button type="button" class="gm-back" id="gm-back">&larr; All centers</button><span class="mono" style="display:block;color:var(--pai-coral-text)">'+BANDTXT[band(c)]+'</span><h3>'+esc(c.name)+'</h3><p class="gm-sub">'+(c.aka?esc(c.aka)+' · ':'')+esc(c.city)+' · '+c.setting+' · '+c.nsites+(c.nsites===1?' clinic site':' clinic sites')+'</p>';
@@ -158,6 +158,7 @@ setTimeout(function(){$('#gm-track-fill').style.width=MI.r.toFixed(1)+'%';},250)
 
 render();renderCmp();layoutStrip();scen();
 var m=(location.hash||'').match(/center=([a-z0-9-]+)/);if(m&&byId[m[1]])select(m[1]);
+window.GM={select:select,clearSel:clearSel,tab:tab,cmp:function(){return st.cmp.slice();},setCmp:function(a){st.cmp=a.filter(function(x){return byId[x];}).slice(0,3);renderCmp();},goal:function(v){goal.value=v==null?T:v;scen();}};
 }
 if(window.GM_DATA)boot(window.GM_DATA);else fetch('/data/gapmap-2025.json').then(function(r){return r.json();}).then(boot);
 })();

@@ -73,6 +73,8 @@ document.addEventListener('toggle', ev => { const t = ev.target; if (t && t.id =
 document.addEventListener('click', ev => { if (S && ev.target.closest && ev.target.closest('.banner a[href="#start"], .ctx a[href="#start"]')) S.ui.setupOpen = true; }, true);
 // One demo label: the bar under the header says it, so the header chip only shows for a real list.
 { const base = render; render = function(){ const r = base.apply(this, arguments); const sc = document.getElementById('sourceChip'); if (sc) sc.hidden = isSynthetic(); return r; }; }
+// On phones the bar keeps only its first words, so the start card shows sooner.
+{ const sp = document.querySelector('#pubBar > span:first-child'); if (sp && !sp.querySelector('.pb-more')){ const b = sp.querySelector('b'); if (b && b.nextSibling && b.nextSibling.nodeType === 3){ const m = document.createElement('span'); m.className = 'pb-more'; m.textContent = b.nextSibling.nodeValue; b.nextSibling.replaceWith(m); } } }
 // Ask HSREP sits in the bar, so no floating button covers the page.
 { const pa = document.querySelector('#pubBar .pb-a'); if (pa && !pa.querySelector('[data-askhs-open]')) pa.insertAdjacentHTML('afterbegin', '<button type="button" class="btn sm" data-askhs-open aria-haspopup="dialog" aria-expanded="false" data-no-tr>Ask HSREP</button>'); }
 // A tour shows its own language and programme, but does not change what the next visit opens with.

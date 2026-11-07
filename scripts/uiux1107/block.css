@@ -35,3 +35,18 @@ details.setupwrap .sw-body{display:flex;flex-direction:column;gap:16px;padding:1
   html.touring body{padding-bottom:var(--tour-h, 46vh)}
   .tour-hl,.case-hl{scroll-margin-top:16px}
 }
+@media (max-width:600px){
+  header.top .wrap{padding-block:10px;gap:8px}
+  .brand .lockup{height:40px;width:auto}
+  .brand .apptitle .eb{display:none}
+  #pubBar{padding:8px 12px;font-size:13px;gap:6px}
+  #pubBar .pb-more{display:none}
+  #pubBar .pb-a{gap:6px;flex-wrap:nowrap}
+  #pubBar .pb-a .btn{padding:6px 9px;font-size:13px;white-space:nowrap}
+  .journey{gap:8px}
+  .journey a{padding:8px 10px;align-items:center}
+  .journey a .k{width:28px;height:28px}
+  .journey a .k svg{width:15px;height:15px}
+  .journey a .s{display:none}
+  .pubstart h1{font-size:26px}
+}

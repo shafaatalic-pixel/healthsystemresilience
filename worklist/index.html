@@ -307,6 +307,21 @@ details.setupwrap .sw-body{display:flex;flex-direction:column;gap:16px;padding:1
   html.touring body{padding-bottom:var(--tour-h, 46vh)}
   .tour-hl,.case-hl{scroll-margin-top:16px}
 }
+@media (max-width:600px){
+  header.top .wrap{padding-block:10px;gap:8px}
+  .brand .lockup{height:40px;width:auto}
+  .brand .apptitle .eb{display:none}
+  #pubBar{padding:8px 12px;font-size:13px;gap:6px}
+  #pubBar .pb-more{display:none}
+  #pubBar .pb-a{gap:6px;flex-wrap:nowrap}
+  #pubBar .pb-a .btn{padding:6px 9px;font-size:13px;white-space:nowrap}
+  .journey{gap:8px}
+  .journey a{padding:8px 10px;align-items:center}
+  .journey a .k{width:28px;height:28px}
+  .journey a .k svg{width:15px;height:15px}
+  .journey a .s{display:none}
+  .pubstart h1{font-size:26px}
+}
 </style>
 
 <a class="skip" href="#app" data-act="skip">Skip to the main content</a>
@@ -4478,6 +4493,8 @@ document.addEventListener('toggle', ev => { const t = ev.target; if (t && t.id =
 document.addEventListener('click', ev => { if (S && ev.target.closest && ev.target.closest('.banner a[href="#start"], .ctx a[href="#start"]')) S.ui.setupOpen = true; }, true);
 // One demo label: the bar under the header says it, so the header chip only shows for a real list.
 { const base = render; render = function(){ const r = base.apply(this, arguments); const sc = document.getElementById('sourceChip'); if (sc) sc.hidden = isSynthetic(); return r; }; }
+// On phones the bar keeps only its first words, so the start card shows sooner.
+{ const sp = document.querySelector('#pubBar > span:first-child'); if (sp && !sp.querySelector('.pb-more')){ const b = sp.querySelector('b'); if (b && b.nextSibling && b.nextSibling.nodeType === 3){ const m = document.createElement('span'); m.className = 'pb-more'; m.textContent = b.nextSibling.nodeValue; b.nextSibling.replaceWith(m); } } }
 // Ask HSREP sits in the bar, so no floating button covers the page.
 { const pa = document.querySelector('#pubBar .pb-a'); if (pa && !pa.querySelector('[data-askhs-open]')) pa.insertAdjacentHTML('afterbegin', '<button type="button" class="btn sm" data-askhs-open aria-haspopup="dialog" aria-expanded="false" data-no-tr>Ask HSREP</button>'); }
 // A tour shows its own language and programme, but does not change what the next visit opens with.

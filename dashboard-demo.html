@@ -485,6 +485,9 @@ html.hmenu-open #hmenu-panel{display:block}
 .cw-role{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#B8402C}
 .cw-meta{font-size:13.5px;color:var(--muted,#55606E)}
 .cw-sub{font-size:17px;margin:22px 0 0}
+/* journey-1107 */
+.cw-two li a{color:inherit;text-decoration:underline;text-decoration-color:rgba(184,64,44,.45);text-underline-offset:3px}
+.cw-two li a:hover{color:#B8402C}
 
 .cw-five{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:10px}
 .cw-five div{display:flex;flex-direction:column;gap:6px;border-top:3px solid #F26D5A;padding-top:10px;min-width:0}
@@ -580,10 +583,10 @@ html.hmenu-open #hmenu-panel{display:block}
 <section class="pai-card plain" id="programmes" aria-labelledby="progh">
 <span class="mono">04 · Twenty programmes</span>
 <h2 id="progh">Colorectal first. Nineteen more ready.</h2>
-<p class="lede">Each programme has its own deadline, wording and measure. A host clinic starts with one.</p>
+<p class="lede">Each programme has its own deadline, wording and measure. A host clinic starts with one. Each name below opens that programme in the demo; the Bangladesh ones open in Bangla.</p>
 <div class="cw-two">
-<div><b>United States</b><ul><li>Colorectal: positive stool test to colonoscopy</li><li>Cervical: abnormal Pap or HPV to colposcopy</li><li>Breast: abnormal mammogram to diagnostic follow-up</li><li>Blood pressure: high reading to recheck</li><li>Hepatitis C: reactive antibody to confirmatory test</li><li>Diabetes: A1c test, yearly eye exam, yearly kidney test</li><li>Lung: yearly low-dose CT</li><li>Prediabetes: referral to a prevention program</li><li>Childhood vaccines: next dose due</li></ul></div>
-<div><b>Bangladesh</b><ul><li>Cervical: VIA-positive to colposcopy</li><li>Hypertension: raised reading to confirming visit</li><li>Hypertension: 90-day check after starting treatment</li><li>Diabetes: raised glucose to confirming test</li><li>Diabetes: HbA1c 90 days after starting treatment</li><li>Diabetes: yearly eye check, yearly kidney check</li><li>Kidney: abnormal result to confirming test</li><li>Factory anaemia: repeat haemoglobin after iron</li><li>Colorectal and screening lists for private networks</li></ul></div>
+<div><b>United States</b><ul><li><a href="/worklist/#prog-us-crc">Colorectal: positive stool test to colonoscopy</a></li><li><a href="/worklist/#prog-us-cerv">Cervical: abnormal Pap or HPV to colposcopy</a></li><li><a href="/worklist/#prog-us-breast">Breast: abnormal mammogram to diagnostic follow-up</a></li><li><a href="/worklist/#prog-us-bp">Blood pressure: high reading to recheck</a></li><li><a href="/worklist/#prog-us-hcv">Hepatitis C: reactive antibody to confirmatory test</a></li><li>Diabetes: <a href="/worklist/#prog-us-a1c">A1c test</a>, <a href="/worklist/#prog-us-dm-eye">yearly eye exam</a>, <a href="/worklist/#prog-us-dm-kidney">yearly kidney test</a></li><li><a href="/worklist/#prog-us-lung">Lung: yearly low-dose CT</a></li><li><a href="/worklist/#prog-us-dpp">Prediabetes: referral to a prevention program</a></li><li><a href="/worklist/#prog-us-vax">Childhood vaccines: next dose due</a></li></ul></div>
+<div><b>Bangladesh</b><ul><li><a href="/worklist/#prog-bd-cerv">Cervical: VIA-positive to colposcopy</a></li><li><a href="/worklist/#prog-bd-htn">Hypertension: raised reading to confirming visit</a></li><li><a href="/worklist/#prog-bd-htn-control">Hypertension: 90-day check after starting treatment</a></li><li><a href="/worklist/#prog-bd-dm">Diabetes: raised glucose to confirming test</a></li><li><a href="/worklist/#prog-bd-dm-a1c">Diabetes: HbA1c 90 days after starting treatment</a></li><li>Diabetes: <a href="/worklist/#prog-bd-dm-eye">yearly eye check</a>, <a href="/worklist/#prog-bd-dm-kidney">yearly kidney check</a></li><li><a href="/worklist/#prog-bd-ckd">Kidney: abnormal result to confirming test</a></li><li><a href="/worklist/#prog-bd-anaemia">Factory anaemia: repeat haemoglobin after iron</a></li><li>Colorectal and screening lists for private networks</li></ul></div>
 </div>
 </section>
 
@@ -792,5 +795,6 @@ apply();})();
  window.addEventListener('beforeprint',expand);window.addEventListener('afterprint',restore);
  if(/[?&]print=1/.test(location.search)){document.documentElement.classList.add('pai-print');expand();}
 })();</script>
+<script src="/assets/present.js?v=20261107a" defer></script>
 </body>
 </html>

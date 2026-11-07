@@ -472,6 +472,20 @@ html.hmenu-open #hmenu-panel{display:block}
 .cw-tour:hover,.cw-tour:focus-visible{border-color:#F26D5A;transform:translateY(-2px)}
 .cw-tour b{font-size:17px;line-height:1.3}
 .cw-tour .go{margin-top:auto;font-weight:600;color:#B8402C}
+/* uiux-1107: sample case and grouped tours */
+.cw-feature{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:12px;margin-top:14px}
+@media(max-width:720px){.cw-feature{grid-template-columns:minmax(0,1fr)}}
+.cw-case{display:flex;flex-direction:column;gap:8px;border:1px solid rgba(28,46,74,.18);border-left:4px solid #F26D5A;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#fff;transition:border-color .2s,transform .2s}
+.cw-case:hover,.cw-case:focus-visible{border-color:#F26D5A;transform:translateY(-2px)}
+.cw-case-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.cw-id{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-weight:600;font-size:19px;color:#1C2E4A}
+.cw-badge{font-size:13px;font-weight:600;color:#B8402C;border:1px solid #B8402C;border-radius:999px;padding:2px 10px}
+.cw-case .go,.cw-tour-main .go{margin-top:auto;font-weight:600;color:#B8402C}
+.cw-tour-main{border-left:4px solid #F26D5A}
+.cw-role{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#B8402C}
+.cw-meta{font-size:13.5px;color:var(--muted,#55606E)}
+.cw-sub{font-size:17px;margin:22px 0 0}
+
 .cw-five{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:10px}
 .cw-five div{display:flex;flex-direction:column;gap:6px;border-top:3px solid #F26D5A;padding-top:10px;min-width:0}
 .cw-table{overflow-x:auto;margin-top:10px}
@@ -503,7 +517,7 @@ html.hmenu-open #hmenu-panel{display:block}
 <span class="kicker">The Completion Worklist</span>
 <h1>Get the follow-up done, not just found.</h1>
 <p class="dek">A worklist for the step after a positive or due screening result. It tells staff who to contact first and why, a named person approves every message, approved messages go out and visits get booked through the clinic&rsquo;s own accounts, and it shows what is working. Try every screen now, with invented people.</p>
-<div class="cw-cta"><a class="btn pai-primary" href="/worklist/#tour-overview">Take the five-minute tour</a><a class="btn pai-secondary" href="/worklist/">Open the demo</a><a class="btn pai-secondary" href="https://calendly.com/shafaat-alic/30min">Book 30 minutes</a></div>
+<div class="cw-cta"><a class="btn pai-primary" href="/worklist/#tour-overview">Take the five-minute tour</a><a class="btn pai-secondary" href="/worklist/#case-P-1407">Try a sample case</a><a class="btn pai-secondary" href="https://calendly.com/shafaat-alic/30min">Book 30 minutes</a></div>
 <dl class="cw-glance" aria-label="At a glance">
 <div><dt>What it is</dt><dd>A browser tool built on coded lists: no names, record numbers or full dates. A list stays in the browser it was opened in.</dd></div>
 <div><dt>Who it is for</dt><dd>Health centers and clinics in the US, and NGO, factory and public programmes in Bangladesh, with screens in English and Bangla.</dd></div>
@@ -513,23 +527,27 @@ html.hmenu-open #hmenu-panel{display:block}
 </div></div></section>
 
 <div class="wrap"><div class="pai-body">
-<nav class="pai-rail" aria-label="On this page"><span class="mono">On this page</span><a href="#tours">Guided tours</a><a href="#does">What it does</a><a href="#editions">Two editions</a><a href="#programmes">Twenty programmes</a><a href="#safe">Built to be safe</a><a href="#next">Next steps</a><a href="#faq">Questions</a><a href="#it">For your IT team</a></nav>
+<nav class="pai-rail" aria-label="On this page"><span class="mono">On this page</span><a href="#tours">Try it</a><a href="#does">What it does</a><a href="#editions">Two editions</a><a href="#programmes">Twenty programmes</a><a href="#safe">Built to be safe</a><a href="#next">Next steps</a><a href="#faq">Questions</a><a href="#it">For your IT team</a></nav>
 <div>
 
 
 <section class="pai-card" id="tours" aria-labelledby="toursh">
-<span class="mono">01 · Guided tours</span>
-<h2 id="toursh">Six tours, one for each part of the job.</h2>
-<p class="lede">Each one opens the demo and walks you through it, screen by screen. Most take under five minutes.</p>
-<div class="cw-grid">
-<a class="cw-tour" href="/worklist/#tour-overview"><span class="mono">9 steps</span><b>The five-minute overview</b><span>From the list to a sent message, and what it all adds up to.</span><span class="go">Start the tour &rarr;</span></a>
-<a class="cw-tour" href="/worklist/#tour-safe"><span class="mono">6 steps</span><b>Check and send safely</b><span>The approval step, practice checks, sending limits and replies.</span><span class="go">Start the tour &rarr;</span></a>
-<a class="cw-tour" href="/worklist/#tour-plan"><span class="mono">5 steps</span><b>Plan the week</b><span>Step plans, caseloads, the team huddle and read-aloud.</span><span class="go">Start the tour &rarr;</span></a>
-<a class="cw-tour" href="/worklist/#tour-works"><span class="mono">4 steps</span><b>See what works</b><span>Numbers for review, fairness, a comparison group and the funder report.</span><span class="go">Start the tour &rarr;</span></a>
-<a class="cw-tour" href="/worklist/#tour-ready"><span class="mono">5 steps</span><b>Make it ready for your clinic</b><span>Clinical sign-off, the compliance pack, your own export and the pilot checklist.</span><span class="go">Start the tour &rarr;</span></a>
-<a class="cw-tour" href="/worklist/#tour-bd" lang="bn"><span class="mono">৬ ধাপ</span><b>বাংলায় ঘুরে দেখুন</b><span>বাংলাদেশের উচ্চ রক্তচাপ কর্মসূচি, বাংলা স্ক্রিনে।</span><span class="go">শুরু করুন &rarr;</span></a>
+<span class="mono">01 · Try it</span>
+<h2 id="toursh">Start with one person on the list.</h2>
+<p class="lede">The demo holds thirty invented people. Open the sample case to see who comes first, why, and what to do next, or take the five-minute tour.</p>
+<div class="cw-feature">
+<a class="cw-case" href="/worklist/#case-P-1407"><span class="mono">Sample case · 30 seconds</span><span class="cw-case-top"><span class="cw-id">P-1407</span><span class="cw-badge">30 days past the 180-day window</span></span><span>Positive stool test 210 days ago, no colonoscopy yet. Nobody has contacted them. Arabic speaker, prefers a phone call.</span><span><b>Next step:</b> make the first message. <b>Help to offer:</b> book an interpreter.</span><span class="go">Open this case &rarr;</span></a>
+<a class="cw-tour cw-tour-main" href="/worklist/#tour-overview"><span class="cw-role">Start with this one</span><b>The five-minute overview</b><span>From the list to a sent message, and what it all adds up to.</span><span class="cw-meta">Colorectal · English · 9 steps</span><span class="go">Start the tour &rarr;</span></a>
 </div>
-<p class="cw-quick">Short on time? <a href="/worklist-quick.html">Try the 30-second quick demo</a>: thirty invented patients and the three ranking rules, nothing else.</p>
+<h3 class="cw-sub">Or explore by task</h3>
+<div class="cw-grid">
+<a class="cw-tour" href="/worklist/#tour-safe"><span class="cw-role">For outreach staff</span><b>Check and send safely</b><span>The approval step, practice checks, sending limits and replies.</span><span class="cw-meta">Colorectal · English · 6 steps</span><span class="go">Start the tour &rarr;</span></a>
+<a class="cw-tour" href="/worklist/#tour-plan"><span class="cw-role">For clinic managers</span><b>Plan the week</b><span>Step plans, caseloads, the team huddle and read-aloud.</span><span class="cw-meta">Colorectal · English · 5 steps</span><span class="go">Start the tour &rarr;</span></a>
+<a class="cw-tour" href="/worklist/#tour-works"><span class="cw-role">For quality leads and funders</span><b>See what works</b><span>Numbers for review, fairness, a comparison group and the funder report.</span><span class="cw-meta">Colorectal · English · 4 steps</span><span class="go">Start the tour &rarr;</span></a>
+<a class="cw-tour" href="/worklist/#tour-ready"><span class="cw-role">For clinical leads and IT</span><b>Make it ready for your clinic</b><span>Clinical sign-off, the compliance pack, your own export and the pilot checklist.</span><span class="cw-meta">Colorectal · English · 5 steps</span><span class="go">Start the tour &rarr;</span></a>
+<a class="cw-tour" href="/worklist/#tour-bd"><span class="cw-role">In Bangla · বাংলায়</span><b lang="bn">বাংলায় ঘুরে দেখুন</b><span lang="bn">বাংলাদেশের উচ্চ রক্তচাপ কর্মসূচি, বাংলা স্ক্রিনে।</span><span class="cw-meta">Bangladesh hypertension · Bangla · 6 steps</span><span class="go" lang="bn">শুরু করুন &rarr;</span></a>
+</div>
+<p class="cw-quick">Just the ranking rules? <a href="/worklist-quick.html">Try the quick demo</a>: thirty invented patients and the three rules, nothing else.</p>
 </section>
 
 <section class="pai-card plain" id="does" aria-labelledby="doesh">

@@ -1,0 +1,37 @@
+
+/* uiux-1107: start card, grouped tours, setup drawer, docked tour box */
+.pubstart{gap:14px}
+.pubstart h1{margin:0}
+.ps-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:12px}
+@media (max-width:760px){.ps-grid{grid-template-columns:minmax(0,1fr)}}
+.ps-case,.ps-tour{border:1px solid var(--hair);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:var(--surface);min-width:0}
+.ps-case{border-left:4px solid var(--coral)}
+.ps-case .row:last-child,.ps-tour .row:last-child{margin-top:auto}
+.ps-id{font-family:var(--mono);font-weight:600;font-size:17px;color:var(--navy)}
+.ps-tour b{font-size:16px;color:var(--navy)}
+.ps-sub{font-size:15px;margin:6px 0 0;color:var(--navy)}
+.tourcard .tc-role{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-text)}
+html[lang="bn"] .tourcard .tc-role,.tourcard[lang="bn"] .tc-role{letter-spacing:.02em;text-transform:none;font-family:'Noto Sans Bengali',var(--mono)}
+.tourcard .tc-meta{font-size:12.5px;color:var(--muted);margin-top:auto}
+.tourcard.feat{border-left:4px solid var(--coral)}
+details.setupwrap{border:1px solid var(--hair);border-radius:12px;background:var(--surface)}
+details.setupwrap>summary{cursor:pointer;list-style:none;padding:14px 44px 14px 16px;display:flex;flex-direction:column;gap:2px;position:relative}
+details.setupwrap>summary::-webkit-details-marker{display:none}
+details.setupwrap>summary::after{content:"";position:absolute;right:18px;top:50%;width:9px;height:9px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+details.setupwrap[open]>summary::after{transform:translateY(-30%) rotate(225deg)}
+details.setupwrap>summary b{font-size:17px;color:var(--navy)}
+details.setupwrap>summary:focus-visible{outline:3px solid var(--coral);outline-offset:2px;border-radius:12px}
+details.setupwrap[open]>summary{border-bottom:1px solid var(--hair)}
+details.setupwrap .sw-body{display:flex;flex-direction:column;gap:16px;padding:16px}
+.case-hl{outline:3px solid var(--coral)!important;outline-offset:4px;border-radius:10px}
+#tourBox .tb-h{position:sticky;top:-12px;background:var(--surface);padding:2px 0 4px;z-index:1}
+#tourBox .tb-x{white-space:nowrap}
+@media (min-width:1100px){
+  html.touring body > .wrap{padding-right:calc(400px + max(16px, env(safe-area-inset-right, 0px)))}
+  html.touring #tourBox{top:50%;bottom:auto;transform:translateY(-50%);width:368px;max-height:calc(100vh - 32px);overflow:auto}
+}
+@media (max-width:1099.98px){
+  #tourBox{left:0;right:0;bottom:0;width:auto;border-radius:14px 14px 0 0;border-width:2px 0 0;max-height:46vh;overflow:auto;padding-bottom:max(12px, env(safe-area-inset-bottom, 0px))}
+  html.touring body{padding-bottom:var(--tour-h, 46vh)}
+  .tour-hl,.case-hl{scroll-margin-top:16px}
+}

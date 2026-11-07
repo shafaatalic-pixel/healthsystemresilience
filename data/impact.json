@@ -1,23 +1,23 @@
 {
- "updated": "2026-11-06T12:01:55+00:00",
+ "updated": "2026-11-07T11:00:05+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-06"
+  "to": "2026-11-07"
  },
  "readers": {
-  "s30": 127,
-  "s60": 76,
-  "s120": 59,
-  "s240": 51,
+  "s30": 131,
+  "s60": 80,
+  "s120": 63,
+  "s240": 55,
   "bottom": 47
  },
  "raw": {
-  "ga_users": 585,
-  "sessions": 648,
-  "pageviews": 1199,
+  "ga_users": 592,
+  "sessions": 656,
+  "pageviews": 1209,
   "engagement_rate": 42,
-  "avg_engaged_seconds": 36,
+  "avg_engaged_seconds": 35,
   "excluded_datacentre": 149,
   "excluded_cities": [
    "Ashburn",
@@ -28,29 +28,29 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 411,
-  "social": 176,
+  "direct": 417,
+  "social": 178,
   "search": 28,
   "referral": 2,
-  "facebook": 122,
+  "facebook": 124,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 523,
+  "ai_fetches": 496,
   "user_prompted": 49,
   "agents": [
    [
     "ClaudeBot",
-    190
+    173
    ],
    [
     "OAI-SearchBot",
-    62
+    55
    ],
    [
     "Amazonbot",
-    49
+    50
    ],
    [
     "Applebot",
@@ -66,7 +66,7 @@
    ],
    [
     "Bytespider",
-    22
+    23
    ],
    [
     "ChatGPT-User",
@@ -77,27 +77,27 @@
     20
    ],
    [
-    "PerplexityBot",
-    19
-   ],
-   [
     "CCBot",
     18
+   ],
+   [
+    "PerplexityBot",
+    14
    ]
   ],
-  "search_crawlers": 800,
-  "all_bot_requests": 15399,
-  "human_visits": 98,
+  "search_crawlers": 856,
+  "all_bot_requests": 16635,
+  "human_visits": 89,
   "google_clicks": 12,
-  "google_impressions": 1167,
-  "google_position": 11.4,
+  "google_impressions": 1183,
+  "google_position": 11.3,
   "pages_indexed": 20,
-  "all_requests": 15399,
-  "cached_requests": 2744,
-  "unique_ips": 2401,
+  "all_requests": 16635,
+  "cached_requests": 2716,
+  "unique_ips": 2434,
   "agent_days": 7,
   "pages_with_impressions": 28,
-  "gsc_through": "2026-11-03"
+  "gsc_through": "2026-11-04"
  },
  "actions": {
   "cta": {
@@ -138,7 +138,7 @@
   "article": 86,
   "media": 72,
   "roundtable": 26,
-  "other": 21,
+  "other": 22,
   "films": 5
  },
  "participation": {

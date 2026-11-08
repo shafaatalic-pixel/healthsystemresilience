@@ -1,0 +1,66 @@
+{
+ "note": "Recorded 8 Nov 2026 in ElevenLabs, voice \"Shafaat (own voice)\", model Eleven v4, stability 50%, similarity 75%. Scripts approved by Shafaat on 8 Nov 2026. If a caption changes, re-record its clip and update this file.",
+ "page": "/worklist/#tour-voice",
+ "steps": [
+  {
+   "file": "step-01.mp3",
+   "caption": "This is the Completion Worklist, and everyone in it is invented. It's built for the step after a screening result. When a stool test comes back positive, the person still needs a colonoscopy, and that's the step where many people get lost. The worklist tells staff who to contact first and what help to offer, and then it shows what got finished.",
+   "spoken": "[warm, clear] This is the Completion Worklist, and everyone in it is invented. It's built for the step after a screening result. When a stool test comes back positive, the person still needs a colonoscopy, and that's the step where many people get lost. The worklist tells staff who to contact first and what help to offer, and then it shows what got finished."
+  },
+  {
+   "file": "step-02.mp3",
+   "caption": "The list is built from the clinic's nightly file. It holds everyone still waiting on their next step. This week that's 14 people overdue for a stool test and 9 positive tests waiting for a colonoscopy. The longest wait is at the top, and the numbers in color are already past the 180-day window.",
+   "spoken": "[clear] The list is built from the clinic's nightly file. It holds everyone still waiting on their next step. This week, that's fourteen people overdue for a stool test, and nine positive tests waiting for a colonoscopy. The longest wait is at the top, and the numbers in color are already past the one-hundred-eighty-day window."
+  },
+  {
+   "file": "step-03.mp3",
+   "caption": "Three plain rules set the order: days overdue, days since a positive test, and missed visits. There's no hidden model, and the reason sits beside every case, so anyone on staff can check it. P-1407 is first. Their test was positive 210 days ago, and nobody has contacted them yet.",
+   "spoken": "[confident] Three plain rules set the order: days overdue, days since a positive test, and missed visits. There's no hidden model, and the reason sits beside every case, so anyone on staff can check it. P fourteen-oh-seven is first. Their test was positive two hundred ten days ago, and nobody has contacted them yet."
+  },
+  {
+   "file": "step-04.mp3",
+   "caption": "Here's where this differs from the usual approach. A standard reminder goes out the same way to everyone. Here, each person gets help matched to what's in the way. P-1407 speaks Arabic and prefers a phone call, so the help to offer is an interpreter.",
+   "spoken": "[with quiet conviction] Here's where this differs from the usual approach. A standard reminder goes out the same way to everyone. Here, each person gets help matched to what's in the way. P fourteen-oh-seven speaks Arabic and prefers a phone call, so the help to offer is an interpreter."
+  },
+  {
+   "file": "step-05.mp3",
+   "caption": "The tool drafts the message in Arabic from wording the clinic has already signed off. Before it goes out, a named person ticks five checks: the right site, the right instructions, safe for a shared phone, the right language, and a fix for the barrier. If anyone edits or translates it, a second person has to approve it too.",
+   "spoken": "[clear] The tool drafts the message in Arabic from wording the clinic has already signed off. Before it goes out, a named person ticks five checks: the right site, the right instructions, safe for a shared phone, the right language, and a fix for the barrier. If anyone edits or translates it, a second person has to approve it too."
+  },
+  {
+   "file": "step-06.mp3",
+   "caption": "When someone answers, the worklist reads the reply. STOP in English, Spanish, Arabic or Bangla ends every message and booking for that person at once. A yes or a question waits for someone on staff.",
+   "spoken": "[calm, clear] When someone answers, the worklist reads the reply. Stop, in English, Spanish, Arabic or Bangla, ends every message and booking for that person at once. A yes, or a question, waits for someone on staff."
+  },
+  {
+   "file": "step-07.mp3",
+   "caption": "Approved messages go out through the clinic's own accounts, and visits go on the clinic's own calendar. US texting limits are built in: at most one a day and three a week per person. In this demo it's all simulated, so nothing leaves your browser.",
+   "spoken": "[clear] Approved messages go out through the clinic's own accounts, and visits go on the clinic's own calendar. U.S. texting limits are built in: at most one a day and three a week per person. In this demo it's all simulated, so nothing leaves your browser."
+  },
+  {
+   "file": "step-08.mp3",
+   "caption": "Nobody depends on someone remembering. Every person follows the same plan: a text on day 0, a call on day 5, a letter on day 12 and a visit on day 20. A step only counts as done when it shows in the record.",
+   "spoken": "[confident] Nobody depends on someone remembering. Every person follows the same plan: a text on day zero, a call on day five, a letter on day twelve, and a visit on day twenty. A step only counts as done when it shows in the record."
+  },
+  {
+   "file": "step-09.mp3",
+   "caption": "Each week the list turns into a few plain findings, each with one action: who is close to the deadline, what keeps getting in the way, which group is falling behind. This is the page I'd go through with your quality-improvement lead every week, and together we'd decide what to change for the next one.",
+   "spoken": "[warm, engaged] Each week, the list turns into a few plain findings, each with one action: who is close to the deadline, what keeps getting in the way, which group is falling behind. This is the page I'd go through with your quality-improvement lead every week, and together we'd decide what to change for the next one."
+  },
+  {
+   "file": "step-10.mp3",
+   "caption": "Completion is also counted by language, insurance and age. That way a group that's falling behind shows up early instead of disappearing into the average.",
+   "spoken": "[sincere] Completion is also counted by language, insurance and age. That way, a group that's falling behind shows up early, instead of disappearing into the average."
+  },
+  {
+   "file": "step-11.mp3",
+   "caption": "To know whether the routine itself made the difference, the clinic can hold back a comparison group chosen at random, if its committee approves. The worklist shows the difference with an honest range and drafts the report. With an academic partner, that evaluation is independent.",
+   "spoken": "[reflective] To know whether the routine itself made the difference, the clinic can hold back a comparison group chosen at random, if its committee approves. The worklist shows the difference with an honest range, and drafts the report. With an academic partner, that evaluation is independent."
+  },
+  {
+   "file": "step-12.mp3",
+   "caption": "Here's my part. I map your nightly file once with your IT lead, build the weekly list, write and test the scripts with your outreach staff, and review each week with your quality-improvement lead. Your staff keep making the calls and mailing the kits, as they do now. At month three we look at the numbers together and decide whether to continue or stop. This is an HSREP initiative in development, and no clinic is running it yet. If you'd like to see how it fits your clinic, book 30 minutes with me.",
+   "spoken": "[warm, sincere] Here's my part. I map your nightly file once with your I-T lead, build the weekly list, write and test the scripts with your outreach staff, and review each week with your quality-improvement lead. Your staff keep making the calls and mailing the kits, as they do now. At month three, we look at the numbers together and decide whether to continue or stop. This is an H-S-R-E-P initiative in development, and no clinic is running it yet. If you'd like to see how it fits your clinic, book thirty minutes with me."
+  }
+ ]
+}

@@ -1,23 +1,23 @@
 {
- "updated": "2026-11-09T12:46:36+00:00",
+ "updated": "2026-11-10T12:32:44+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-09"
+  "to": "2026-11-10"
  },
  "readers": {
-  "s30": 140,
-  "s60": 80,
+  "s30": 146,
+  "s60": 82,
   "s120": 63,
   "s240": 55,
-  "bottom": 49
+  "bottom": 54
  },
  "raw": {
-  "ga_users": 625,
-  "sessions": 690,
-  "pageviews": 1280,
-  "engagement_rate": 43,
-  "avg_engaged_seconds": 34,
+  "ga_users": 706,
+  "sessions": 771,
+  "pageviews": 1476,
+  "engagement_rate": 41,
+  "avg_engaged_seconds": 31,
   "excluded_datacentre": 150,
   "excluded_cities": [
    "Ashburn",
@@ -28,21 +28,21 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 450,
+  "direct": 530,
   "social": 178,
-  "search": 28,
+  "search": 29,
   "referral": 2,
   "facebook": 124,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 341,
-  "user_prompted": 15,
+  "ai_fetches": 319,
+  "user_prompted": 6,
   "agents": [
    [
     "ClaudeBot",
-    111
+    90
    ],
    [
     "GPTBot",
@@ -50,30 +50,30 @@
    ],
    [
     "OAI-SearchBot",
-    46
+    47
    ],
    [
     "Amazonbot",
-    42
+    45
    ],
    [
     "Applebot",
     42
    ],
    [
-    "Claude-User",
-    14
+    "Bytespider",
+    12
    ],
    [
     "Meta-ExternalAgent",
     11
    ],
    [
-    "Bytespider",
-    11
+    "PerplexityBot",
+    8
    ],
    [
-    "PerplexityBot",
+    "Claude-User",
     5
    ],
    [
@@ -81,19 +81,19 @@
     1
    ]
   ],
-  "search_crawlers": 816,
-  "all_bot_requests": 18790,
-  "human_visits": 114,
+  "search_crawlers": 790,
+  "all_bot_requests": 25073,
+  "human_visits": 183,
   "google_clicks": 12,
-  "google_impressions": 1208,
+  "google_impressions": 1213,
   "google_position": 11.2,
   "pages_indexed": 20,
-  "all_requests": 18790,
-  "cached_requests": 4104,
-  "unique_ips": 2400,
+  "all_requests": 25073,
+  "cached_requests": 7569,
+  "unique_ips": 2367,
   "agent_days": 7,
   "pages_with_impressions": 28,
-  "gsc_through": "2026-11-06"
+  "gsc_through": "2026-11-07"
  },
  "actions": {
   "cta": {
@@ -128,14 +128,14 @@
  },
  "pages": {
   "home": 1123,
-  "initiative": 241,
+  "initiative": 261,
   "season": 117,
   "about": 115,
-  "article": 86,
+  "article": 88,
   "media": 72,
-  "other": 31,
+  "other": 49,
   "roundtable": 26,
-  "demo": 15,
+  "demo": 18,
   "films": 5
  },
  "participation": {

@@ -89,7 +89,7 @@ a{color:var(--coral-text)}
 <div class="vt-end" id="vtEnd" hidden>
 <span class="mono">Start with your part</span>
 <h2>If you run a health center, start with a 30-minute conversation.</h2>
-<p>Or keep exploring on your own. The demo stays open, with every screen working and nothing sent.</p>
+<p>Not ready for a call? <a href="mailto:contact@hsraep.org?subject=Free%20follow-up%20readout" data-ev="twocounts" style="color:#fff">Send two counts</a>: positive stool tests, and how many had a colonoscopy within 180 days. You get a one-page readout back, and no patient data is needed.</p>
 <div class="row"><a class="btn pri" href="https://calendly.com/shafaat-alic/30min" data-ev="book">Book 30 minutes</a><a class="btn sec" href="/worklist/#tour-voice" data-ev="worklist_voice">Hear the worklist in detail, 4 min</a><a class="btn sec" href="/worklist/#case-P-1407" data-ev="demo">Try the demo yourself</a></div>
 <div class="row"><a class="btn sec" href="/gap-map.html" data-ev="gapmap">Find your center on the Gap Map</a><a class="btn sec" href="/initiative.html#host" data-ev="host">Hosting, research and funding</a><button type="button" class="btn sec" data-vt="replay">&#8635; Watch again</button></div>
 </div>
@@ -109,6 +109,7 @@ a{color:var(--coral-text)}
 <span class="n" id="vtN">0 / 10</span>
 </div>
 <a class="vt-open" id="vtOpen" href="/gap-map.html" target="_blank" rel="noopener">Open this page in a new tab &#8599;</a>
+<a class="vt-open vt-book" href="https://calendly.com/shafaat-alic/30min" data-ev="book_cap">Run a health center? Book 30 minutes &#8599;</a>
 <p class="vt-note">Figures come from the pages shown: HRSA UDS 2025 for the map, published studies for the initiative, invented people for the demo.</p>
 </section>
 </main>
@@ -157,6 +158,7 @@ a{color:var(--coral-text)}
   function clip(k){return '/assets/tour-vo/step-'+(k<9?'0':'')+(k+1)+'.mp3?v='+VER;}
   // Inside the frame: hide the site's own floating buttons and bars, and mark what this stop is about.
   var CSS='.hs-campaign,#ask-launch,.askhs-fab,#hsPresent,.gt-launch,.gt-bar,.gt-hole,#tourBox{display:none!important}html.hs-presenting body{padding-bottom:0!important}'+
+    'html.pai-motion .rv,html.pai-motion .rvs,html.pai-motion .rvs>*{opacity:1!important;transform:none!important}'+
     '.vt-hl{outline:3px solid #F26D5A!important;outline-offset:6px!important;border-radius:12px;transition:outline-color .3s}html{scroll-behavior:auto!important}';
   function doc(){try{return frame.contentDocument;}catch(e){return null;}}
   function prep(){var d=doc();if(!d||!d.head)return;if(!d.getElementById('vtInj')){var s=d.createElement('style');s.id='vtInj';s.textContent=CSS;d.head.appendChild(s);}

@@ -1,24 +1,24 @@
 {
- "updated": "2026-11-10T12:32:44+00:00",
+ "updated": "2026-11-11T11:49:41+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-10"
+  "to": "2026-11-11"
  },
  "readers": {
-  "s30": 146,
-  "s60": 82,
-  "s120": 63,
-  "s240": 55,
+  "s30": 154,
+  "s60": 86,
+  "s120": 66,
+  "s240": 58,
   "bottom": 54
  },
  "raw": {
-  "ga_users": 706,
-  "sessions": 771,
-  "pageviews": 1476,
+  "ga_users": 753,
+  "sessions": 820,
+  "pageviews": 1534,
   "engagement_rate": 41,
-  "avg_engaged_seconds": 31,
-  "excluded_datacentre": 150,
+  "avg_engaged_seconds": 29,
+  "excluded_datacentre": 169,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -28,21 +28,21 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 530,
-  "social": 178,
-  "search": 29,
+  "direct": 553,
+  "social": 180,
+  "search": 32,
   "referral": 2,
-  "facebook": 124,
+  "facebook": 126,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 319,
-  "user_prompted": 6,
+  "ai_fetches": 290,
+  "user_prompted": 3,
   "agents": [
    [
     "ClaudeBot",
-    90
+    68
    ],
    [
     "GPTBot",
@@ -50,14 +50,14 @@
    ],
    [
     "OAI-SearchBot",
-    47
-   ],
-   [
-    "Amazonbot",
     45
    ],
    [
     "Applebot",
+    45
+   ],
+   [
+    "Amazonbot",
     42
    ],
    [
@@ -70,36 +70,36 @@
    ],
    [
     "PerplexityBot",
-    8
+    6
    ],
    [
     "Claude-User",
-    5
+    2
    ],
    [
     "ChatGPT-User",
     1
    ]
   ],
-  "search_crawlers": 790,
-  "all_bot_requests": 25073,
-  "human_visits": 183,
+  "search_crawlers": 806,
+  "all_bot_requests": 30860,
+  "human_visits": 212,
   "google_clicks": 12,
-  "google_impressions": 1213,
-  "google_position": 11.2,
+  "google_impressions": 1220,
+  "google_position": 11.1,
   "pages_indexed": 20,
-  "all_requests": 25073,
-  "cached_requests": 7569,
-  "unique_ips": 2367,
+  "all_requests": 30860,
+  "cached_requests": 10377,
+  "unique_ips": 2598,
   "agent_days": 7,
   "pages_with_impressions": 28,
-  "gsc_through": "2026-11-07"
+  "gsc_through": "2026-11-08"
  },
  "actions": {
   "cta": {
    "initiative": 31,
+   "roundtable": 13,
    "article_open": 12,
-   "roundtable": 11,
    "book_call": 9,
    "download_pdf": 6,
    "season_open": 6,
@@ -109,9 +109,9 @@
    "partner": 2,
    "linkedin": 1
   },
-  "cta_total": 109,
-  "cta_people": 30,
-  "cta_labelled": 90,
+  "cta_total": 111,
+  "cta_people": 32,
+  "cta_labelled": 92,
   "downloads": 11,
   "film_plays": 16,
   "shares": 11,
@@ -127,13 +127,13 @@
   }
  },
  "pages": {
-  "home": 1123,
+  "home": 1132,
   "initiative": 261,
   "season": 117,
   "about": 115,
   "article": 88,
   "media": 72,
-  "other": 49,
+  "other": 52,
   "roundtable": 26,
   "demo": 18,
   "films": 5

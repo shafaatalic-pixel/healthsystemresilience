@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-11T11:49:41+00:00",
+ "updated": "2026-11-12T12:36:17+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-11"
+  "to": "2026-11-12"
  },
  "readers": {
-  "s30": 154,
-  "s60": 86,
+  "s30": 155,
+  "s60": 87,
   "s120": 66,
   "s240": 58,
-  "bottom": 54
+  "bottom": 56
  },
  "raw": {
-  "ga_users": 753,
-  "sessions": 820,
-  "pageviews": 1534,
+  "ga_users": 759,
+  "sessions": 826,
+  "pageviews": 1540,
   "engagement_rate": 41,
   "avg_engaged_seconds": 29,
   "excluded_datacentre": 169,
@@ -28,36 +28,36 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 553,
+  "direct": 558,
   "social": 180,
-  "search": 32,
+  "search": 33,
   "referral": 2,
   "facebook": 126,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 290,
+  "ai_fetches": 274,
   "user_prompted": 3,
   "agents": [
-   [
-    "ClaudeBot",
-    68
-   ],
    [
     "GPTBot",
     58
    ],
    [
-    "OAI-SearchBot",
-    45
+    "Applebot",
+    52
    ],
    [
-    "Applebot",
-    45
+    "ClaudeBot",
+    48
    ],
    [
     "Amazonbot",
+    43
+   ],
+   [
+    "OAI-SearchBot",
     42
    ],
    [
@@ -66,7 +66,7 @@
    ],
    [
     "Meta-ExternalAgent",
-    11
+    10
    ],
    [
     "PerplexityBot",
@@ -81,19 +81,19 @@
     1
    ]
   ],
-  "search_crawlers": 806,
-  "all_bot_requests": 30860,
-  "human_visits": 212,
-  "google_clicks": 12,
-  "google_impressions": 1220,
-  "google_position": 11.1,
+  "search_crawlers": 870,
+  "all_bot_requests": 30024,
+  "human_visits": 180,
+  "google_clicks": 13,
+  "google_impressions": 1237,
+  "google_position": 11.0,
   "pages_indexed": 20,
-  "all_requests": 30860,
-  "cached_requests": 10377,
-  "unique_ips": 2598,
+  "all_requests": 30024,
+  "cached_requests": 9815,
+  "unique_ips": 2646,
   "agent_days": 7,
-  "pages_with_impressions": 28,
-  "gsc_through": "2026-11-08"
+  "pages_with_impressions": 29,
+  "gsc_through": "2026-11-09"
  },
  "actions": {
   "cta": {
@@ -127,7 +127,7 @@
   }
  },
  "pages": {
-  "home": 1132,
+  "home": 1133,
   "initiative": 261,
   "season": 117,
   "about": 115,

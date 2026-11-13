@@ -1,0 +1,41 @@
+unit,cascade_position,date,fb_views,viewers,total_engagement,reactions,clicks,comments,shares,likes,loves,notes
+Launch Post,Announcement,2026-02-21,1793,870,123,37,79,0,0,16,23,#HealthSystemResilience launch
+Chapter 1,Teaser,2026-02-22,822,560,112,41,62,3,0,,,
+Chapter 1,Article Post,2026-02-22,6305,2583,704,189,467,16,0,108,92,Daily Star; tagged PM & Health Minister
+Chapter 1,Explainer Video,2026-02-23,482,,46,18,20,3,0,10,10,
+Chapter 1,Slider,2026-02-26,1267,571,81,14,60,3,0,7,9,
+Chapter 1,Infographic,2026-02-28,1149,658,43,11,30,1,0,8,3,
+Chapter 1,Transition,2026-03-01,923,475,35,11,19,0,0,2,11,
+Chapter 2,Teaser,2026-03-03,673,576,29,10,17,1,0,,,
+Chapter 2,Article Post,2026-03-04,1794,863,143,48,85,1,0,36,18,
+Chapter 2,Explainer Video,2026-03-05,169,123,13,9,2,1,0,,,
+Chapter 2,Slider,2026-03-06,911,535,17,7,8,1,0,4,3,
+Chapter 2,Infographic,2026-03-07,912,556,28,10,16,1,0,,,
+Chapter 2,Transition,2026-03-08,807,499,23,7,16,0,0,3,5,
+Chapter 3,Teaser,2026-03-09,212,165,11,2,7,1,0,,2,
+Chapter 3,Article Post,2026-03-09,1361,772,68,24,39,1,0,15,12,
+Chapter 3,Explainer Video,2026-03-10,139,106,5,4,0,1,0,2,2,
+Chapter 3,Slider,2026-03-12,762,436,24,7,15,1,0,4,3,
+Chapter 3,Infographic,2026-03-14,674,407,7,4,1,1,0,1,3,
+Chapter 3,Transition,2026-03-14,526,240,17,4,9,2,0,3,5,Previews Special Report
+Special Report,Article Post,2026-03-15,1032,567,38,9,25,1,0,3,7,
+Special Report,Explainer Video,2026-03-16,159,126,12,5,4,1,0,,,
+Special Report,Slider,2026-03-18,880,444,35,5,28,1,0,,,
+Special Report,Infographic,2026-03-18,555,298,14,7,5,1,0,,,
+Chapter 4,Teaser,2026-03-30,541,495,15,4,8,1,0,,,
+Chapter 4,Article Post,2026-03-30,2559,1575,83,33,43,2,0,22,13,Daily Star; tagged PM & Health Minister (replica of Ch.1 mechanism)
+Chapter 4,Explainer Video,2026-03-31,251,215,11,9,1,1,0,,,
+Chapter 4,Slider,2026-04-01,404,268,11,4,6,1,0,,,
+Chapter 4,Infographic,2026-04-02,248,433,15,8,5,1,0,4,4,Viewer anomaly: viewers > views (UI quirk)
+Chapter 5,Teaser,2026-04-04,174,149,4,2,1,1,0,,,
+Chapter 5,Article Post,2026-04-03,414,537,40,16,18,1,0,9,9,Viewer anomaly: viewers > views
+Chapter 5,Explainer Video,2026-04-04,529,470,24,6,14,1,0,3,5,Algo-promoted: 46.7% US
+Chapter 5,Slider,2026-04-05,417,238,11,5,5,1,0,2,3,
+Chapter 5,Infographic,2026-04-06,464,286,14,5,8,0,0,4,1,
+Chapter 6,Teaser,2026-04-07,379,343,2,1,1,0,0,,,
+Chapter 6,Article Post,2026-04-07,1450,907,87,38,48,1,0,17,21,
+Chapter 6,Explainer Video,2026-04-08,286,248,11,5,3,2,0,5,0,
+Chapter 6,Slider,2026-04-09,1073,730,28,5,22,1,0,4,1,Algo-promoted: 70.2% US / 59.8% Suggested
+Chapter 6,Infographic,2026-04-10,1828,1366,79,8,68,0,0,8,0,BREAKOUT: 82.3% US / 77.5% Suggested / 81.3% non-followers
+Chapter 6,Transition (to Closing),2026-04-10,351,177,9,4,4,0,0,3,0,
+Season Closing,Closing Post,2026-04-11,629,429,9,0,7,1,0,0,0,48.5% US / 39.3% BD: bi-national convergence

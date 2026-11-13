@@ -12,7 +12,11 @@ on:
     branches: [main]
     paths:
       - "gap-map.html"
+      - "data.html"
       - "data/gapmap-*.json"
+      - "data/*.csv"
+      - "assets/HSR_Season1_Master_Dataset.xlsx"
+      - "scripts/open_data.py"
       - "data/source/**"
       - "assets/gapmap-*"
       - "assets/gapmap-vo/**"
@@ -43,3 +47,5 @@ jobs:
           python-version: "3.12"
       - name: Verify every Gap Map figure against HRSA
         run: python scripts/gapmap_verify.py
+      - name: Verify the open data files and data.html against their sources
+        run: python scripts/open_data.py --check

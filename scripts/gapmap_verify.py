@@ -220,6 +220,12 @@ def run(root='.', built=None, llms=None):
         if not os.path.exists(os.path.join(root, 'assets/gapmap-vo', r['file'])):
             fail('missing narration clip ' + r['file'])
 
+    csvp = os.path.join(root, 'data/gapmap-%d-michigan-centers.csv' % e['year'])
+    if os.path.exists(csvp) or os.path.exists(os.path.join(root, 'data.html')):
+        import open_data                      # the downloadable CSV, row by row against HRSA
+        for x in open_data.check_gap_csv(src, G, csvp):
+            fail(x)
+
     if llms is None and os.path.exists(os.path.join(root, 'llms.txt')):
         llms = open(os.path.join(root, 'llms.txt'), encoding='utf-8').read()
     if llms is not None:

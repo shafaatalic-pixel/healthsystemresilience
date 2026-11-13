@@ -1,0 +1,40 @@
+unit,cascade_position,date,ig_total_views,from_other,ig_native_calc,from_home,from_profile,reached,interactions,likes,comments,saves,shares,notes
+Launch Post,Announcement,2026-02-21,261,95,166,128,38,116,9,6,0,0,1,
+Chapter 1,Teaser,2026-02-22,,,356,,,,,,,,,Locked total from handoff
+Chapter 1,Article Post,2026-02-22,,,203,,,,,,,,,Locked total from handoff
+Chapter 1,Slider,2026-02-26,,,199,,,,,,,,,Locked total from handoff
+Chapter 1,Infographic,2026-02-28,,,145,,,,,,,,,Locked total from handoff
+Chapter 1,Transition,2026-03-01,,,249,,,,,,,,,Locked total from handoff
+Chapter 2,Teaser (Reel),2026-03-03,835,673,162,,,136,4,3,1,0,0,Reel: From Other inferred from FB cross-post
+Chapter 2,Article Post,2026-03-04,377,96,281,258,23,178,20,18,1,1,0,
+Chapter 2,Explainer Video (Reel),2026-03-05,98,,98,,,61,6,4,1,0,0,Reel: no From Other; native IG
+Chapter 2,Slider,2026-03-06,1084,926,158,143,15,59,7,6,1,0,0,
+Chapter 2,Infographic,2026-03-07,1021,926,95,79,16,63,6,5,1,0,0,
+Chapter 2,Transition,2026-03-08,958,823,135,108,27,47,6,6,0,0,0,
+Chapter 3,Teaser (Reel),2026-03-09,339,212,127,,,92,5,3,1,1,0,Reel: cross-validated via FB
+Chapter 3,Article Post,2026-03-09,2091,1427,664,596,68,361,19,15,2,0,1,
+Chapter 3,Explainer Video (Reel),2026-03-10,241,139,102,,,56,3,2,1,0,0,Reel: cross-validated via FB
+Chapter 3,Slider,2026-03-12,946,828,118,103,15,70,4,3,1,0,0,
+Chapter 3,Infographic,2026-03-14,843,753,90,78,12,79,5,3,2,0,0,
+Chapter 3,Transition,2026-03-14,715,595,120,111,9,85,7,6,1,0,0,
+Special Report,Article Post,2026-03-15,1242,1117,125,109,16,94,5,3,1,0,0,
+Special Report,Explainer Video (Reel),2026-03-16,276,159,117,,,74,4,3,1,0,0,Reel: perfect cross-validation
+Special Report,Slider,2026-03-18,1186,960,226,202,24,110,4,3,1,0,0,
+Special Report,Infographic,2026-03-18,662,568,94,81,13,45,3,2,1,0,0,
+Chapter 4,Teaser (Reel),2026-03-30,772,541,231,,,168,4,2,1,0,0,Reel: cross-validated
+Chapter 4,Article Post,2026-03-30,2955,2783,172,157,15,188,6,3,1,0,2,
+Chapter 4,Explainer Video (Reel),2026-03-31,477,251,226,,,141,8,5,1,1,1,Reel: cross-validated
+Chapter 4,Slider,2026-04-01,604,471,133,124,9,79,5,4,1,0,0,
+Chapter 4,Infographic,2026-04-02,416,301,115,109,6,80,5,4,1,0,0,
+Chapter 5,Teaser (Reel),2026-04-04,388,174,214,,,173,2,1,1,0,0,Reel: cross-validated
+Chapter 5,Article Post,2026-04-03,1404,666,738,552,186,529,22,17,2,0,1,SEASON'S BIGGEST IG NATIVE POST
+Chapter 5,Explainer Video (Reel),2026-04-04,705,529,176,,,110,4,1,1,0,2,Reel: cross-validated
+Chapter 5,Slider,2026-04-05,624,469,155,150,5,78,3,3,1,0,0,
+Chapter 5,Infographic,2026-04-06,632,552,80,73,7,95,3,3,0,0,0,
+Chapter 6,Teaser (Reel),2026-04-07,539,380,159,,,119,2,1,1,0,0,Reel: cross-validated
+Chapter 6,Article Post,2026-04-07,2073,1700,373,330,43,333,11,5,1,0,2,
+Chapter 6,Explainer Video (Reel),2026-04-08,394,287,107,,,60,4,3,1,0,0,Reel: cross-validated
+Chapter 6,Slider,2026-04-09,1224,1118,106,101,5,63,2,0,0,0,0,
+Chapter 6,Infographic,2026-04-10,1935,1874,61,58,3,54,1,0,0,0,0,
+Chapter 6,Transition (to Closing),2026-04-10,461,390,71,63,8,47,2,2,0,0,0,
+Season Closing,Closing Post,2026-04-11,126,50,76,67,9,70,1,1,0,0,0,

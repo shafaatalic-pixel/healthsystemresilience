@@ -29,6 +29,8 @@ KINDS = [
     ("media.html", ("platform", "Platform", 4, "Media and brand kit")),
     ("identity.html", ("platform", "Platform", 4, "Identity")),
     ("roundtable.html", ("platform", "Platform", 4, "Roundtable")),
+    ("data.html", ("platform", "Platform", 4, "Open data")),
+    ("what-is-health-system-resilience.html", ("platform", "Platform", 4, "Definition")),
     ("season-1.html", ("season", "Season", 1, "Season 1")),
     ("initiative.html", ("initiative", "Initiative", 1, "Prevention Adoption Initiative")),
     ("initiative-next.html", ("initiative", "Initiative", 1, "Initiative roadmap")),

@@ -1,0 +1,40 @@
+bhcmis_id,hrsa_name,health_center,city,setting,rate_published,adults_46_75_screened,adults_46_75_eligible,screening_rate_pct,points_below_target_72_8,permanent_clinic_sites
+050210,"BALDWIN FAMILY HEALTH CARE, INC.","Baldwin Family Health Care, Inc.",Baldwin,Rural,yes,3816,6875,55.51,17.3,18
+050220,INTERCARE COMMUNITY HEALTH NETWORK,Intercare Community Health Network,Bangor,Rural,yes,4528,9447,47.93,24.9,9
+050290,MIDMICHIGAN HEALTH SERVICES,MidMichigan Health Services,Houghton Lake,Rural,yes,4039,6258,64.54,8.3,9
+050360,GREAT LAKES BAY HEALTH CENTERS,Great Lakes Bay Health Centers,Saginaw,Urban,yes,8359,16198,51.61,21.2,25
+050390,"NORTHWEST MICHIGAN HEALTH SERVICES, INC.","Northwest Michigan Health Services, Inc.",Traverse City,Rural,yes,1002,1678,59.71,13.1,10
+051020,"HACKLEY COMMUNITY CARE CENTER, INC.","Hackley Community Care Center, Inc.",Muskegon,Urban,yes,2499,4628,54,18.8,16
+051680,EAST JORDAN FAMILY HEALTH CENTER,East Jordan Family Health Center,East Jordan,Rural,yes,2302,3650,63.07,9.7,2
+0516820,MGH FAMILY HC DBA MUSKEGON FAMILY CARE,MGH Family Health Center (Muskegon Family Care),Muskegon,Urban,yes,2454,4092,59.97,12.8,1
+051830,"COUNTY OF INGHAM, HEALTH DEPARTMENT",Ingham County Health Department,Lansing,Urban,yes,1082,4144,26.11,46.7,10
+051880,DETROIT HEALTH CARE FOR THE HOMELESS,Detroit Health Care for the Homeless,Detroit,Urban,yes,1056,2239,47.16,25.6,5
+051980,"ALCONA CITIZENS FOR HEALTH, INC.","Alcona Citizens for Health, Inc.",Harrisville,Rural,yes,8078,12606,64.08,8.7,18
+052030,"CHERRY STREET SERVICES, INC.","Cherry Street Services, Inc.",Grand Rapids,Urban,yes,3492,10060,34.71,38.1,21
+052070,"DETROIT COMMUNITY HEALTH CONNECTION, INC.","Detroit Community Health Connection, Inc.",Detroit,Urban,no,,,,,7
+052200,"DOWNRIVER COMMUNITY SERVICES, INC.","Downriver Community Services, Inc.",Algonac,Urban,yes,1553,3685,42.14,30.7,3
+052250,STERLING AREA HEALTH CENTER,Sterling Area Health Center,Sterling,Rural,yes,1311,3302,39.7,33.1,11
+052910,"FAMILY MEDICAL CENTER OF MICHIGAN, INC.","Family Medical Center of Michigan, Inc.",Carleton,Rural,yes,2713,5944,45.64,27.2,56
+0530870,BAY MILLS INDIAN COMMUNITY,Bay Mills Indian Community,Brimley,Rural,yes,468,885,52.88,19.9,5
+0530900,WESTERN WAYNE FAMILY HEALTH CENTERS,Western Wayne Family Health Centers,Inkster,Urban,yes,1452,2946,49.29,23.5,5
+053160,"THUNDER BAY COMMUNITY HEALTH SERVICE, INC.","Thunder Bay Community Health Service, Inc.",Hillman,Rural,yes,3886,6850,56.73,16.1,25
+053300,"HAMILTON COMMUNITY HEALTH NETWORK, INC.","Hamilton Community Health Network, Inc.",Flint,Urban,yes,2526,8430,29.96,42.8,11
+0537520,COVENANT COMMUNITY CARE INC.,Covenant Community Care Inc.,Detroit,Urban,yes,1428,3591,39.77,33.0,4
+056230,"FAMILY HEALTH CENTER, INC.","Family Health Center, Inc.",Kalamazoo,Urban,yes,2751,6975,39.44,33.4,4
+056430,"GRACE HEALTH, INC.","Grace Health, Inc.",Battle Creek,Urban,yes,3927,7351,53.42,19.4,14
+056770,"COMMUNITY HEALTH & SOCIAL SERVICES CENTER, INC.","Community Health & Social Services Center, Inc.",Detroit,Urban,yes,1903,3830,49.69,23.1,7
+056900,LAKELAND IMMEDIATE CARE CENTER,Lakeland Immediate Care Center,Cassopolis,Rural,yes,2211,4770,46.35,26.5,4
+057030,CENTER FOR FAMILY HEALTH,Center for Family Health,Jackson,Urban,yes,3930,6823,57.6,15.2,7
+05E00210,DETROIT CENTRAL CITY COMMUNITY MENTAL HEALTH INC.,Detroit Central City Community Mental Health Inc.,Detroit,Urban,yes,332,1781,18.64,54.2,4
+05E00271,"ISABELLA CITIZENS FOR HEALTH, INC.","Isabella Citizens for Health, Inc.",Mount Pleasant,Rural,yes,3960,5767,68.67,4.1,3
+05E00433,TRAVERSE HEALTH CLINIC AND COALITION,Traverse Health Clinic and Coalition,Traverse City,Rural,yes,1083,1805,60,12.8,1
+05E00445,UPPER GREAT LAKES FAMILY HEALTH CENTER,Upper Great Lakes Family Health Center,Gwinn,Rural,yes,5921,8059,73.47,0.0,12
+05E00483,THE WELLNESS PLAN MEDICAL CENTERS,The Wellness Plan Medical Centers,Detroit,Urban,no,,,,,4
+05E00484,"WAYNE, COUNTY OF",Wayne County,Detroit,Urban,no,,,,,2
+05E01033,GENESEE HEALTH SYSTEM,Genesee Health System,Flint,Urban,yes,715,1583,45.17,27.6,3
+05E01101,MYCARE HEALTH CENTER,MyCare Health Center,Center Line,Urban,yes,605,1758,34.41,38.4,4
+05E01147,OAKLAND INTEGRATED HEALTHCARE NETWORK,Oakland Integrated Healthcare Network,Pontiac,Urban,yes,1373,4643,29.57,43.2,19
+05E01203,"PACKARD HEALTH, INC.","Packard Health, Inc.",Ann Arbor,Urban,yes,2802,5695,49.2,23.6,7
+05E01226,"COVERED BRIDGE HEALTHCARE OF ST. JOSEPH COUNTY, INC.","Covered Bridge Healthcare of St. Joseph County, Inc.",Centreville,Rural,yes,247,1000,24.7,48.1,1
+05E01257,"INSTITUTUTE FOR POPULATION HEALTH, INC.","Institute for Population Health, Inc.",Detroit,Urban,no,,,,,3
+05E01262,CATHERINES HEALTH CENTER,Catherine's Health Center,Grand Rapids,Urban,yes,644,1686,38.2,34.6,13

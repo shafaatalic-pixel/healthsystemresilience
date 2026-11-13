@@ -1,0 +1,5 @@
+platform,metric,season1_total,source
+Facebook,Views,36997,Meta Professional Dashboard (dashboard-authoritative)
+LinkedIn,Impressions,13054,LinkedIn Analytics (dashboard-authoritative)
+Instagram,Native views (total views minus cross-post referral views),7223,"Instagram post insights, calculated post by post"
+All three,Organic views and impressions,57274,"Sum of the three rows above; Feb 21 to Apr 12, 2026; $0 ad spend"

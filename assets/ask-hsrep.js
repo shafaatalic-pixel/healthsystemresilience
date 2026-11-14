@@ -13,6 +13,19 @@
    the Worker answers from HSREP's core pages plus that page only. See /privacy.html#ai. */
 (function () {
   if (/\/(initiative|initiative-next|pilot-fit)\.html$/.test(location.pathname)) return;
+  /* Diabetes guide: eight suggested questions in each language. The panel shows the set that
+     matches the page language (#dm.dm-lbn / .dm-len) and follows the page's language toggle. */
+  var DMQ = {
+    en: ['My sugar is high but I feel fine. Do I still need my medicine?', 'Which blood test numbers mean prediabetes or diabetes?', 'How should I store insulin in hot weather?', 'Do I have to stop eating rice if I have diabetes?', 'When is high blood sugar an emergency?', 'What should I do when I am sick and have diabetes?', 'How can I lower my risk of type 2 diabetes?', 'Does diabetes run in families?'],
+    bn: ['সুগার বেশি কিন্তু শরীর ভালো লাগলে কি ওষুধ খেতে হবে?', 'রক্ত পরীক্ষার কোন ফলাফলে প্রিডায়াবেটিস বা ডায়াবেটিস বোঝায়?', 'গরমে ইনসুলিন কীভাবে রাখব?', 'ডায়াবেটিস হলে কি ভাত একেবারে বাদ দিতে হবে?', 'সুগার বেশি হলে কখন তা জরুরি অবস্থা?', 'ডায়াবেটিস থাকা অবস্থায় অসুস্থ হলে কী করব?', 'টাইপ ২ ডায়াবেটিসের ঝুঁকি কীভাবে কমাব?', 'ডায়াবেটিস কি বংশগত?']
+  };
+  function dmLang() {
+    var r = document.getElementById('dm');
+    if (r && r.classList.contains('dm-len')) return 'en';
+    if (r && r.classList.contains('dm-lbn')) return 'bn';
+    try { var l = localStorage.getItem('dm-l'); if (l) return l === 'bn' ? 'bn' : 'en'; } catch (e) { }
+    return /[?&]lang=bn/.test(location.search) ? 'bn' : 'en';
+  }
   var PAGES = {
     home: ['Home', ['What is HSREP, in one paragraph?', 'Why call a health system economic protection?', 'Where should a public-health professional start?']],
     'season-1': ['Season 1', ['What was Season 1’s central question?', 'How is 57,274 counted?', 'What did Season 1 lead to?']],
@@ -33,9 +46,7 @@
     'gap-map': ['the Prevention Gap Map', ['How do I read this map?', 'Where do these numbers come from?', 'What would it take for Michigan to reach 72.8%?']],
     'completion-worklist': ['the Completion Worklist', ['What does the Completion Worklist do?', 'Does any patient data leave the clinic?', 'How would a clinic start using it?']],
     'worklist': ['the Completion Worklist demo', ['Where should I start in this demo?', 'Is anything I enter here sent anywhere?', 'How would my clinic use this for real?']],
-    diabetes: (function () { var bn = false; try { var l = localStorage.getItem('dm-l'); bn = l ? l === 'bn' : (/[?&]lang=bn/.test(location.search) || (Intl.DateTimeFormat().resolvedOptions().timeZone || '').indexOf('America') !== 0); } catch (e) { bn = /[?&]lang=bn/.test(location.search); }
-      return bn ? ['ডায়াবেটিস গাইড', ['সুগার বেশি কিন্তু শরীর ভালো লাগলে কি ওষুধ খেতে হবে?', 'ডায়াবেটিস হলে কি ভাত একেবারে বাদ দিতে হবে?', 'গরমে ইনসুলিন কীভাবে রাখব?']]
-        : ['the diabetes guide', ['My sugar is high but I feel fine. Do I still need my medicine?', 'Which blood test numbers mean prediabetes or diabetes?', 'How should I store insulin in hot weather?']]; })(),
+    diabetes: ['the diabetes guide', DMQ.en],
     'worklist-quick': ['the 30-second quick demo', ['What are the three ranking rules?', 'Why keep a positive test open until the colonoscopy?', 'Are these real patients?']],
   };
   var path = location.pathname.replace(/\/+$/, '/');
@@ -258,9 +269,24 @@ html.askhs-on #askhs-scrim{opacity:1}\
     }).catch(function () { typing.remove(); hist.pop(); bot('Ask HSREP could not be reached. Check your connection and try again.'); busy = false; send.disabled = false; });
   }
 
-  Array.prototype.forEach.call(qs.querySelectorAll('button'), function (b) {
-    b.addEventListener('click', function () { b.remove(); if (!qs.querySelector('button')) qs.style.display = 'none'; ask(b.textContent); });
+  qs.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button'); if (!b || !qs.contains(b)) return;
+    if (b.hasAttribute('data-i')) dmUsed[b.getAttribute('data-i')] = 1;
+    b.remove(); if (!qs.querySelector('button')) qs.style.display = 'none'; ask(b.textContent);
   });
+  /* Diabetes guide: chips in the page language; asked questions stay gone in both languages. */
+  var dmUsed = {}, dmShown = null;
+  function renderDm() {
+    if (key !== 'diabetes' || state === 'off') return;
+    var L = dmLang(); if (L === dmShown) return; dmShown = L;
+    qs.innerHTML = DMQ[L].map(function (x, i) { return dmUsed[i] ? '' : '<button type="button" data-i="' + i + '" lang="' + L + '">' + esc0(x) + '</button>'; }).join('');
+    qs.style.display = qs.querySelector('button') ? '' : 'none';
+  }
+  if (key === 'diabetes') {
+    renderDm();
+    var dmRoot = document.getElementById('dm');
+    if (dmRoot && window.MutationObserver) new MutationObserver(renderDm).observe(dmRoot, { attributes: true, attributeFilter: ['class'] });
+  }
   form.addEventListener('submit', function (e) { e.preventDefault(); ask(q.value); });
   q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(q.value); } });
   q.addEventListener('input', function () { q.style.height = 'auto'; q.style.height = Math.min(140, q.scrollHeight) + 'px'; });
@@ -271,6 +297,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
   /* Header button(s). */
   function open(btn) {
     opener = btn || null;
+    renderDm();
     if (btn && btn.classList && btn.classList.contains('dm-chipq')) { var cq = (btn.innerText || btn.textContent || '').trim(); if (cq) setTimeout(function () { ask(cq); }, panel ? 380 : 500); }
     if (!panel) { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { try { q.focus({ preventScroll: true }); } catch (e) { q.focus(); } }, 450); wake(); t('askhs_header', { mode: 'inline' }); return; }
     wrap.hidden = false; scrim.hidden = false;

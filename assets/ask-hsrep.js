@@ -50,7 +50,7 @@
     'worklist-quick': ['the 30-second quick demo', ['What are the three ranking rules?', 'Why keep a positive test open until the colonoscopy?', 'Are these real patients?']],
   };
   var path = location.pathname.replace(/\/+$/, '/');
-  var key = path === '/' || path === '/index.html' ? 'home' : /^\/worklist\/(index\.html)?$/.test(path) ? 'worklist' : ((path.match(/^\/([a-z0-9-]+)\.html$/) || [])[1] || '');
+  var key = path === '/' || path === '/index.html' ? 'home' : /^\/worklist\/(index\.html)?$/.test(path) ? 'worklist' : ((path.match(/^\/([a-z0-9-]+)(?:\.html)?$/) || [])[1] || '');
   // The founder assistant on the same page sends from=dashboard-demo; Ask HSREP uses its own key so the Worker can tell them apart.
   if (key === 'dashboard-demo') key = 'completion-worklist';
   // Film transcripts: /transcripts/<slug>.html. The Worker holds each transcript with the article it is drawn from.

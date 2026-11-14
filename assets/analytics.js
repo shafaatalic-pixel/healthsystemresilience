@@ -220,6 +220,7 @@
  if (/methodology/.test(p)) return "methodology";
  if (/search/.test(p)) return "search";
  if (/dashboard|bdot-demo/.test(p)) return "demo";
+ if (/^\/(diabetes)(\.html)?$/.test(p)) return "campaign";
  if (/(privacy|terms|accessibility)/.test(p)) return "legal";
  if (p === "/" || /index\.html$/.test(p)) return "home";
  return "other";

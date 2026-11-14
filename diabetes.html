@@ -169,7 +169,7 @@
 @media(max-width:720px){.endcta .in{flex-direction:column;align-items:flex-start}.endcta .act{width:100%;min-width:0}}
 </style>
 <style id="hs-shead-stack">.shead .top:has(.lead){flex-direction:column;align-items:flex-start;gap:0}</style>
-<script src="/assets/analytics.js?v=20261015b" defer></script><script src="/assets/ask-hsrep.js?v=20261114c" defer></script>
+<script src="/assets/analytics.js?v=20261114a" defer></script><script src="/assets/ask-hsrep.js?v=20261114d" defer></script>
 <link rel="manifest" href="/site.webmanifest"><style id="hs-social">footer .folw{margin-top:18px}footer .folw .fll{display:block;font-family:var(--font-mono,ui-monospace,SFMono-Regular,Menlo,monospace);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8EA1B8;margin-bottom:9px}footer .folw .fl-row{display:flex;gap:9px}footer .folw a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#DCE5EF;margin:0;padding:0;text-decoration:none;transition:background .16s,border-color .16s,color .16s,transform .16s}footer .folw a svg{width:16px;height:16px;fill:currentColor}footer .folw a:hover,footer .folw a:focus-visible{transform:translateY(-2px);color:#fff}footer .folw a.li:hover,footer .folw a.li:focus-visible{background:#0A66C2;border-color:#0A66C2}footer .folw a.ig:hover,footer .folw a.ig:focus-visible{background:#C13584;border-color:#C13584}footer .folw a.yt:hover,footer .folw a.yt:focus-visible{background:#CC0000;border-color:#CC0000}footer .folw a.fb:hover,footer .folw a.fb:focus-visible{background:#1877F2;border-color:#1877F2}footer.foot .folw{margin-top:0;display:flex;align-items:center;gap:11px}footer.foot .folw .fll{margin:0;color:#9FB0C4;font-size:9.5px}footer.foot .folw a{width:34px;height:34px}@media(max-width:640px){footer.foot .folw .fll{display:none}}@media(prefers-reduced-motion:reduce){footer .folw a{transition:none}footer .folw a:hover{transform:none}}</style><style id="hs-imgfix">img{width:auto;height:auto}</style>
 <style id="hs-reserve">body{padding-top:45px}html.hs-bar-on body,html.hs-nobar body{padding-top:0}body:has(>.hs-campaign){padding-top:0}</style><script>try{if(sessionStorage.getItem("hsrep-campaign-dismissed-v2")==="roundtable")document.documentElement.classList.add("hs-nobar")}catch(e){}</script>
 <style id="mth-hmenu">
@@ -655,6 +655,34 @@
  // share
  var cp=document.getElementById('sh-cp');if(cp)cp.addEventListener('click',function(){var u='https://hsraep.org/diabetes'+(lang()==='bn'?'?lang=bn':'');
   (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){cp.textContent=S[lang()].copied}).catch(function(){cp.textContent=u})});
+ // tracking: counts only. The risk test's answers and score, and which warning signs are tapped, are never sent.
+ (function(){
+  function ctry(){return root.classList.contains('dm-us')?'us':'bd'}
+  var q=[],ready=false;
+  function T(n,p){p=p||{};p.page_group='campaign';p.campaign='diabetes';p.lang=lang();p.country=ctry();p.engagement_type=p.engagement_type||'campaign';
+   if(ready&&window.hsTrack){try{window.hsTrack(n,p)}catch(e){}}else q.push([n,p])}
+  function flush(){if(!window.hsTrack)return;ready=true;q.splice(0).forEach(function(a){try{window.hsTrack(a[0],a[1])}catch(e){}})}
+  window.addEventListener('load',function(){setTimeout(flush,800)});
+  T('dm_view_'+lang());T('dm_ver_'+ctry());
+  var curL=lang(),curC=ctry();
+  document.querySelectorAll('[data-lang]').forEach(function(b){b.addEventListener('click',function(){if(b.dataset.lang!==curL){curL=b.dataset.lang;T('dm_switch_to_'+curL)}})});
+  document.querySelectorAll('[data-set]').forEach(function(b){b.addEventListener('click',function(){if(b.dataset.set!==curC){curC=b.dataset.set;T('dm_switch_to_'+curC)}})});
+  var rs=0,rc=0;
+  qz.querySelectorAll('.dm-opt').forEach(function(b){b.addEventListener('click',function(){if(!rs){rs=1;T('dm_risk_start')}})});
+  document.getElementById('bmi-go').addEventListener('click',function(){if(!rc&&!document.getElementById('bmi-err').textContent&&document.querySelector('#rq-out .dm-res')){rc=1;T('dm_risk_complete')}});
+  document.getElementById('rq-again').addEventListener('click',function(){rc=0;T('dm_risk_restart')});
+  var su=0;root.querySelectorAll('.dm-sym').forEach(function(c){c.addEventListener('click',function(){if(!su){su=1;T('dm_signs_used')}})});
+  root.querySelectorAll('.dm-tab').forEach(function(t){t.addEventListener('click',function(){var k=(t.getAttribute('aria-controls')||'').replace(/^p-/,'');if(k)T('dm_tab_'+k,{tab:k})})});
+  var cards=[].slice.call(root.querySelectorAll('.dm-fc')),seen=[],qd=0,qr=0;
+  cards.forEach(function(c,i){c.querySelectorAll('[data-g]').forEach(function(b){b.addEventListener('click',function(){if(seen[i])return;seen[i]=1;var ok=b.dataset.g===c.dataset.a?1:0;qd++;qr+=ok;
+   T('dm_quiz_answer',{item:String(i+1),correct:ok});if(qd===cards.length)T('dm_quiz_complete',{score:String(qr)})})})});
+  [['sh-wa','whatsapp'],['sh-fb','facebook'],['sh-cp','copy']].forEach(function(x){var e=document.getElementById(x[1]?x[0]:'');if(e)e.addEventListener('click',function(){T('dm_share_'+x[1],{method:x[1]})})});
+  root.querySelectorAll('.dm-chipq').forEach(function(b,i){b.addEventListener('click',function(){T('dm_ask_chip',{item:String(i+1)})})});
+  var ab=root.querySelector('.dm-ask .dm-btn');if(ab)ab.addEventListener('click',function(){T('dm_ask_open')});
+  if('IntersectionObserver' in window){var sv={};var so=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var id=e.target.dataset.dmsec;so.unobserve(e.target);if(sv[id])return;sv[id]=1;T('dm_seen_'+id,{section:id,engagement_type:'section'})})},{threshold:0});
+   root.querySelectorAll('.kicker[id]').forEach(function(k){k.dataset.dmsec=k.id;so.observe(k)});
+   var ak=root.querySelector('.dm-ask .kicker');if(ak){ak.dataset.dmsec='ask';so.observe(ak)}}
+ })();
 })();
 </script>
 <section class="endcta"><div class="wrap"><div class="in">

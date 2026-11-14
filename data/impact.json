@@ -1,24 +1,24 @@
 {
- "updated": "2026-11-13T12:07:53+00:00",
+ "updated": "2026-11-14T11:24:41+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-13"
+  "to": "2026-11-14"
  },
  "readers": {
-  "s30": 155,
-  "s60": 87,
-  "s120": 66,
-  "s240": 58,
-  "bottom": 56
+  "s30": 172,
+  "s60": 98,
+  "s120": 79,
+  "s240": 70,
+  "bottom": 55
  },
  "raw": {
-  "ga_users": 759,
-  "sessions": 826,
-  "pageviews": 1540,
+  "ga_users": 806,
+  "sessions": 873,
+  "pageviews": 1596,
   "engagement_rate": 41,
-  "avg_engaged_seconds": 29,
-  "excluded_datacentre": 169,
+  "avg_engaged_seconds": 28,
+  "excluded_datacentre": 175,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -28,37 +28,37 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 558,
-  "social": 180,
-  "search": 33,
+  "direct": 566,
+  "social": 216,
+  "search": 32,
   "referral": 2,
-  "facebook": 126,
+  "facebook": 135,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 263,
+  "ai_fetches": 275,
   "user_prompted": 3,
   "agents": [
    [
     "GPTBot",
-    60
+    68
    ],
    [
     "Amazonbot",
-    52
+    54
    ],
    [
     "Applebot",
-    51
+    52
    ],
    [
     "OAI-SearchBot",
-    44
+    50
    ],
    [
     "ClaudeBot",
-    19
+    15
    ],
    [
     "Meta-ExternalAgent",
@@ -66,7 +66,7 @@
    ],
    [
     "Bytespider",
-    12
+    11
    ],
    [
     "PerplexityBot",
@@ -85,19 +85,19 @@
     1
    ]
   ],
-  "search_crawlers": 998,
-  "all_bot_requests": 32935,
-  "human_visits": 180,
+  "search_crawlers": 1029,
+  "all_bot_requests": 34151,
+  "human_visits": 217,
   "google_clicks": 14,
   "google_impressions": 1248,
   "google_position": 11.0,
   "pages_indexed": 20,
-  "all_requests": 32935,
-  "cached_requests": 10281,
-  "unique_ips": 2642,
+  "all_requests": 34151,
+  "cached_requests": 10582,
+  "unique_ips": 2750,
   "agent_days": 7,
   "pages_with_impressions": 29,
-  "gsc_through": "2026-11-10"
+  "gsc_through": "2026-11-11"
  },
  "actions": {
   "cta": {
@@ -105,19 +105,19 @@
    "roundtable": 13,
    "article_open": 12,
    "book_call": 9,
+   "season_open": 7,
    "download_pdf": 6,
-   "season_open": 6,
    "newsletter": 5,
    "respond": 4,
    "founder_site": 3,
    "partner": 2,
    "linkedin": 1
   },
-  "cta_total": 111,
-  "cta_people": 32,
-  "cta_labelled": 92,
+  "cta_total": 112,
+  "cta_people": 33,
+  "cta_labelled": 93,
   "downloads": 11,
-  "film_plays": 16,
+  "film_plays": 17,
   "shares": 11,
   "form_submits": 14,
   "outbound": {
@@ -131,14 +131,14 @@
   }
  },
  "pages": {
-  "home": 1133,
+  "home": 1135,
   "initiative": 261,
   "season": 117,
   "about": 115,
   "article": 88,
   "media": 72,
-  "other": 52,
-  "roundtable": 26,
+  "other": 67,
+  "roundtable": 32,
   "demo": 18,
   "films": 5
  },

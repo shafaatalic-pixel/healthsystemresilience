@@ -33,6 +33,9 @@
     'gap-map': ['the Prevention Gap Map', ['How do I read this map?', 'Where do these numbers come from?', 'What would it take for Michigan to reach 72.8%?']],
     'completion-worklist': ['the Completion Worklist', ['What does the Completion Worklist do?', 'Does any patient data leave the clinic?', 'How would a clinic start using it?']],
     'worklist': ['the Completion Worklist demo', ['Where should I start in this demo?', 'Is anything I enter here sent anywhere?', 'How would my clinic use this for real?']],
+    diabetes: (function () { var bn = false; try { var l = localStorage.getItem('dm-l'); bn = l ? l === 'bn' : (/[?&]lang=bn/.test(location.search) || (Intl.DateTimeFormat().resolvedOptions().timeZone || '').indexOf('America') !== 0); } catch (e) { bn = /[?&]lang=bn/.test(location.search); }
+      return bn ? ['ডায়াবেটিস গাইড', ['সুগার বেশি কিন্তু শরীর ভালো লাগলে কি ওষুধ খেতে হবে?', 'ডায়াবেটিস হলে কি ভাত একেবারে বাদ দিতে হবে?', 'গরমে ইনসুলিন কীভাবে রাখব?']]
+        : ['the diabetes guide', ['My sugar is high but I feel fine. Do I still need my medicine?', 'Which blood test numbers mean prediabetes or diabetes?', 'How should I store insulin in hot weather?']]; })(),
     'worklist-quick': ['the 30-second quick demo', ['What are the three ranking rules?', 'Why keep a positive test open until the colonoscopy?', 'Are these real patients?']],
   };
   var path = location.pathname.replace(/\/+$/, '/');
@@ -144,7 +147,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
       '<p class="asub">You are on: ' + esc0(pg[0]) + '. An AI assistant answers from HSREP’s published record. It gives each figure with its source, and the corrected fact where a correction is on record. It is not a person.</p>' +
       '<button type="button" class="ap-close" aria-label="Close">&times;</button></div>' +
       '<div class="ap-body"><div class="aqs">' + pg[1].map(function (x) { return '<button type="button">' + esc0(x) + '</button>'; }).join('') + '</div><div class="achat" aria-live="polite"></div></div>' +
-      '<div class="ap-foot"><form><textarea rows="1" maxlength="600" placeholder="Ask about HSREP or this page" aria-label="Your question"></textarea><button type="submit">Ask</button></form>' +
+      '<div class="ap-foot"><form><textarea rows="1" maxlength="600" placeholder="' + (key === 'diabetes' ? 'Ask in English or Bangla / বাংলায় বা ইংরেজিতে জিজ্ঞেস করুন' : 'Ask about HSREP or this page') + '" aria-label="Your question"></textarea><button type="submit">Ask</button></form>' +
       '<div class="ats"></div><div class="ameta"><span class="aleft">Up to 8 questions per visit.</span><span>Do not type personal health details. Questions are stored without names to improve the service and for research. <a href="/privacy.html#ai">How questions are handled</a></span></div></div></section>';
     document.body.appendChild(scrim); document.body.appendChild(wrap);
     box = wrap.querySelector('.askhs');
@@ -268,6 +271,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
   /* Header button(s). */
   function open(btn) {
     opener = btn || null;
+    if (btn && btn.classList && btn.classList.contains('dm-chipq')) { var cq = (btn.innerText || btn.textContent || '').trim(); if (cq) setTimeout(function () { ask(cq); }, panel ? 380 : 500); }
     if (!panel) { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { try { q.focus({ preventScroll: true }); } catch (e) { q.focus(); } }, 450); wake(); t('askhs_header', { mode: 'inline' }); return; }
     wrap.hidden = false; scrim.hidden = false;
     requestAnimationFrame(function () { document.documentElement.classList.add('askhs-on'); });

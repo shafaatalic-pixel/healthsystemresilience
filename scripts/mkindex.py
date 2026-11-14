@@ -31,6 +31,7 @@ KINDS = [
     ("roundtable.html", ("platform", "Platform", 4, "Roundtable")),
     ("data.html", ("platform", "Platform", 4, "Open data")),
     ("what-is-health-system-resilience.html", ("platform", "Platform", 4, "Definition")),
+    ("diabetes.html", ("platform", "Platform", 4, "Diabetes guide")),
     ("season-1.html", ("season", "Season", 1, "Season 1")),
     ("initiative.html", ("initiative", "Initiative", 1, "Prevention Adoption Initiative")),
     ("initiative-next.html", ("initiative", "Initiative", 1, "Initiative roadmap")),

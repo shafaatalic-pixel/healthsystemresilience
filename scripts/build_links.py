@@ -49,6 +49,10 @@ POSTS = [
         ("Read the question", "The evidence behind it and the answers so far", "/roundtable.html", "roundtable"),
         ("The article", "When illness becomes a bill: the medical debt crisis", ART.format("when-illness-becomes-a-bill-medical-debt"), "article"),
         ("Ask HSREP", "Answers from HSREP's published record", "/?ask=1", "ask")]),
+    ("2026-11-13", "wdd", "World Diabetes Day: find it early, keep the shelf full", [
+        ("The diabetes guide", "Risk test, symptoms, who to call, care for type 1 and type 2", "/diabetes.html", "diabetes"),
+        ("বাংলায় পড়ুন", "একই গাইড, বাংলায়", "/diabetes.html?lang=bn", "diabetes-bn"),
+        ("Ask HSREP", "Ask about diabetes in English or Bangla", "/?ask=1", "ask")], "23:50"),
     ("2026-11-17", "hsrep6", "Execution is the intervention", [
         ("The routine", "Find. Rank. Act. Close.", "/initiative.html#how", "initiative"),
         ("Where it goes next", "The other completion gaps it fits", "/initiative-next.html", "next"),

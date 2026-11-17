@@ -14,7 +14,7 @@ SEARCH_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><pa
               '4.6 13.4l4.2 4.2 1.4-1.4-4.2-4.2A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/></svg>')
 MENU_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>')
 NAV = [('Home', '/index.html'), ('Evidence', '/season-1.html'), ('Articles', '/articles.html'),
-       ('Impact', '/impact.html'), ('Initiative', '/initiative.html'), ('About', '/about.html')]
+       ('Prevention', '/prevention.html'), ('Impact', '/impact.html'), ('Initiative', '/initiative.html'), ('About', '/about.html')]
 
 # which top-nav item is "here" on each page
 HERE = {
@@ -22,11 +22,12 @@ HERE = {
     'season-1.html': 'Evidence', 'methodology.html': 'Evidence',
     'articles.html': 'Articles', 'films.html': 'Articles',
     'impact.html': 'Impact',
+    'prevention.html': 'Prevention', 'diabetes.html': 'Prevention',
     'initiative.html': 'Initiative', 'initiative-next.html': 'Initiative',
     'about.html': 'About', 'media.html': 'About', 'identity.html': 'About',
 }
 SKIP = {'roundtable-console.html', 'dashboard-demo.html'}  # private console; demo keeps its app header
-LINK = '<link rel="stylesheet" href="/assets/css/top-1.css?v=20261001me">'
+LINK = '<link rel="stylesheet" href="/assets/css/top-1.css?v=20261117a">'
 
 
 # pages whose main action is not the roundtable get their own header button

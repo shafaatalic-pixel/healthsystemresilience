@@ -100,3 +100,6 @@ html body header.site.hs-top .hs-ask:hover,html body header.site.hs-top .hs-ask[
 @media(max-width:400px){html body header.site.hs-top .hs-top-row{gap:4px!important}html body header.site.hs-top .hs-ask{padding:7px 8px!important;margin:0!important}}
 @media(max-width:380px){html body header.site.hs-top .hs-top-logo img{height:31px!important}html body header.site.hs-top .hs-top-cta{padding:8px 9px!important;font-size:.72rem!important}html body header.site.hs-top .hs-srch,html body header.site.hs-top #hmenu-btn{padding:8px!important}}
 @media(max-width:340px){html body header.site.hs-top .hs-top-row{gap:2px!important}html body header.site.hs-top .hs-top-logo img{height:27px!important}html body header.site.hs-top .hs-ask{padding:5px 6px!important;margin:0!important}}
+
+/* 2026-11-17: room for "Prevention" in the top nav: links never wrap; tighter gaps on desktop (checked 1061 to 1440 px) */
+html body header.site.hs-top .hs-top-nav a{white-space:nowrap!important}@media(min-width:1061px){html body header.site.hs-top .hs-top-nav{gap:14px!important}html body header.site.hs-top .hs-top-row{gap:18px!important}}

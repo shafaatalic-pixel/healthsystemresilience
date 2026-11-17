@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-16T12:39:52+00:00",
+ "updated": "2026-11-17T13:14:25+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-16"
+  "to": "2026-11-17"
  },
  "readers": {
-  "s30": 179,
+  "s30": 181,
   "s60": 103,
-  "s120": 82,
+  "s120": 83,
   "s240": 70,
-  "bottom": 57
+  "bottom": 58
  },
  "raw": {
-  "ga_users": 828,
-  "sessions": 895,
-  "pageviews": 1634,
+  "ga_users": 830,
+  "sessions": 897,
+  "pageviews": 1638,
   "engagement_rate": 41,
   "avg_engaged_seconds": 29,
   "excluded_datacentre": 175,
@@ -29,20 +29,20 @@
  },
  "arrival": {
   "direct": 575,
-  "social": 225,
-  "search": 33,
+  "social": 226,
+  "search": 34,
   "referral": 2,
   "facebook": 140,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 817,
+  "ai_fetches": 828,
   "user_prompted": 122,
   "agents": [
    [
     "Applebot",
-    138
+    128
    ],
    [
     "ClaudeBot",
@@ -50,23 +50,23 @@
    ],
    [
     "GPTBot",
-    96
+    100
    ],
    [
     "OAI-SearchBot",
-    96
+    98
    ],
    [
     "Amazonbot",
-    76
+    85
+   ],
+   [
+    "PerplexityBot",
+    68
    ],
    [
     "Claude-User",
     64
-   ],
-   [
-    "PerplexityBot",
-    61
    ],
    [
     "ChatGPT-User",
@@ -82,22 +82,22 @@
    ],
    [
     "Bytespider",
-    28
+    27
    ]
   ],
-  "search_crawlers": 1170,
-  "all_bot_requests": 34195,
-  "human_visits": 204,
+  "search_crawlers": 1237,
+  "all_bot_requests": 37413,
+  "human_visits": 205,
   "google_clicks": 15,
-  "google_impressions": 1280,
-  "google_position": 10.8,
+  "google_impressions": 1292,
+  "google_position": 10.7,
   "pages_indexed": 20,
-  "all_requests": 34195,
-  "cached_requests": 8970,
-  "unique_ips": 2764,
+  "all_requests": 37413,
+  "cached_requests": 9624,
+  "unique_ips": 2975,
   "agent_days": 7,
   "pages_with_impressions": 29,
-  "gsc_through": "2026-11-13"
+  "gsc_through": "2026-11-14"
  },
  "actions": {
   "cta": {
@@ -126,12 +126,13 @@
    "shafaatalichoyon.com": 4,
    "tally.so": 4,
    "easternecho.com": 2,
+   "hsrep.bd": 1,
    "linkedin.com": 1,
    "thedailystar.net": 1
   }
  },
  "pages": {
-  "home": 1145,
+  "home": 1163,
   "initiative": 262,
   "season": 117,
   "about": 115,
@@ -140,7 +141,7 @@
   "media": 72,
   "roundtable": 32,
   "demo": 18,
-  "campaign": 13,
+  "campaign": 15,
   "films": 5
  },
  "participation": {

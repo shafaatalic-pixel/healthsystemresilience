@@ -25,8 +25,13 @@ SANDBOX = "--sandbox" in sys.argv
 BASE = "https://sandbox.zenodo.org/api" if SANDBOX else "https://zenodo.org/api"
 TOKEN = os.environ.get("ZENODO_TOKEN", "")
 ORCID = os.environ.get("ORCID", "").strip()
-PDF = sys.argv[sys.argv.index("--pdf") + 1] if "--pdf" in sys.argv else "assets/HSREP_Prevention_Adoption_Initiative_Page_2026-10-21.pdf"
-VERSION = sys.argv[sys.argv.index("--version") + 1] if "--version" in sys.argv else "2026-10-21"
+# 2026-11-17: no defaults. A bare run once re-deposited the 21 Oct PDF as a new version.
+if "--pdf" not in sys.argv or "--version" not in sys.argv:
+    sys.exit("usage: python3 scripts/zenodo_deposit_page.py --pdf assets/HSREP_Prevention_Adoption_Initiative_Page_YYYY-MM-DD.pdf --version YYYY-MM-DD [--dry-run]")
+PDF = sys.argv[sys.argv.index("--pdf") + 1]
+VERSION = sys.argv[sys.argv.index("--version") + 1]
+if VERSION not in os.path.basename(PDF):
+    sys.exit("--version %s does not match the PDF name %s" % (VERSION, os.path.basename(PDF)))
 OUT = os.path.join(ROOT, "data", "dois_pages.json")
 COMMUNITY = "hsrep"
 

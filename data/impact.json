@@ -1,22 +1,22 @@
 {
- "updated": "2026-11-17T13:14:25+00:00",
+ "updated": "2026-11-18T12:58:51+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-17"
+  "to": "2026-11-18"
  },
  "readers": {
-  "s30": 181,
-  "s60": 103,
+  "s30": 184,
+  "s60": 104,
   "s120": 83,
   "s240": 70,
   "bottom": 58
  },
  "raw": {
-  "ga_users": 830,
-  "sessions": 897,
-  "pageviews": 1638,
-  "engagement_rate": 41,
+  "ga_users": 839,
+  "sessions": 906,
+  "pageviews": 1647,
+  "engagement_rate": 42,
   "avg_engaged_seconds": 29,
   "excluded_datacentre": 175,
   "excluded_cities": [
@@ -29,36 +29,36 @@
  },
  "arrival": {
   "direct": 575,
-  "social": 226,
+  "social": 235,
   "search": 34,
   "referral": 2,
-  "facebook": 140,
+  "facebook": 148,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 828,
+  "ai_fetches": 872,
   "user_prompted": 122,
   "agents": [
    [
     "Applebot",
-    128
+    139
+   ],
+   [
+    "GPTBot",
+    108
    ],
    [
     "ClaudeBot",
     106
    ],
    [
-    "GPTBot",
-    100
+    "Amazonbot",
+    104
    ],
    [
     "OAI-SearchBot",
-    98
-   ],
-   [
-    "Amazonbot",
-    85
+    97
    ],
    [
     "PerplexityBot",
@@ -69,12 +69,12 @@
     64
    ],
    [
-    "ChatGPT-User",
-    58
+    "Meta-ExternalAgent",
+    61
    ],
    [
-    "Meta-ExternalAgent",
-    54
+    "ChatGPT-User",
+    58
    ],
    [
     "CCBot",
@@ -85,19 +85,19 @@
     27
    ]
   ],
-  "search_crawlers": 1237,
-  "all_bot_requests": 37413,
-  "human_visits": 205,
+  "search_crawlers": 1219,
+  "all_bot_requests": 30880,
+  "human_visits": 87,
   "google_clicks": 15,
-  "google_impressions": 1292,
-  "google_position": 10.7,
+  "google_impressions": 1306,
+  "google_position": 10.6,
   "pages_indexed": 20,
-  "all_requests": 37413,
-  "cached_requests": 9624,
-  "unique_ips": 2975,
+  "all_requests": 30880,
+  "cached_requests": 5728,
+  "unique_ips": 3181,
   "agent_days": 7,
-  "pages_with_impressions": 29,
-  "gsc_through": "2026-11-14"
+  "pages_with_impressions": 30,
+  "gsc_through": "2026-11-15"
  },
  "actions": {
   "cta": {
@@ -132,7 +132,7 @@
   }
  },
  "pages": {
-  "home": 1163,
+  "home": 1165,
   "initiative": 262,
   "season": 117,
   "about": 115,
@@ -140,8 +140,8 @@
   "other": 79,
   "media": 72,
   "roundtable": 32,
+  "campaign": 20,
   "demo": 18,
-  "campaign": 15,
   "films": 5
  },
  "participation": {

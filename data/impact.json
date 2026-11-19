@@ -1,24 +1,24 @@
 {
- "updated": "2026-11-18T12:58:51+00:00",
+ "updated": "2026-11-19T12:56:12+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-18"
+  "to": "2026-11-19"
  },
  "readers": {
-  "s30": 184,
-  "s60": 104,
-  "s120": 83,
-  "s240": 70,
+  "s30": 186,
+  "s60": 105,
+  "s120": 84,
+  "s240": 71,
   "bottom": 58
  },
  "raw": {
-  "ga_users": 839,
-  "sessions": 906,
-  "pageviews": 1647,
+  "ga_users": 845,
+  "sessions": 913,
+  "pageviews": 1653,
   "engagement_rate": 42,
   "avg_engaged_seconds": 29,
-  "excluded_datacentre": 175,
+  "excluded_datacentre": 179,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -28,7 +28,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 575,
+  "direct": 581,
   "social": 235,
   "search": 34,
   "referral": 2,
@@ -37,12 +37,12 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 872,
+  "ai_fetches": 869,
   "user_prompted": 122,
   "agents": [
    [
     "Applebot",
-    139
+    133
    ],
    [
     "GPTBot",
@@ -54,11 +54,11 @@
    ],
    [
     "Amazonbot",
-    104
+    105
    ],
    [
     "OAI-SearchBot",
-    97
+    98
    ],
    [
     "PerplexityBot",
@@ -70,7 +70,7 @@
    ],
    [
     "Meta-ExternalAgent",
-    61
+    62
    ],
    [
     "ChatGPT-User",
@@ -85,19 +85,19 @@
     27
    ]
   ],
-  "search_crawlers": 1219,
-  "all_bot_requests": 30880,
+  "search_crawlers": 1196,
+  "all_bot_requests": 27155,
   "human_visits": 87,
   "google_clicks": 15,
-  "google_impressions": 1306,
+  "google_impressions": 1317,
   "google_position": 10.6,
   "pages_indexed": 20,
-  "all_requests": 30880,
-  "cached_requests": 5728,
-  "unique_ips": 3181,
+  "all_requests": 27155,
+  "cached_requests": 3391,
+  "unique_ips": 3112,
   "agent_days": 7,
   "pages_with_impressions": 30,
-  "gsc_through": "2026-11-15"
+  "gsc_through": "2026-11-16"
  },
  "actions": {
   "cta": {
@@ -134,8 +134,8 @@
  "pages": {
   "home": 1165,
   "initiative": 262,
+  "about": 117,
   "season": 117,
-  "about": 115,
   "article": 88,
   "other": 79,
   "media": 72,

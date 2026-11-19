@@ -63,7 +63,7 @@
   if (!PAGES[key] && !document.getElementById('ask-hsrep')) key = '404';
 
   var box = document.getElementById('ask-hsrep'), panel = !box, wrap = null, scrim = null, opener = null;
-  var CFG = { api: '/api', ts: '0x4AAAAAAFX9JOBFpuSWsf5E', max: panel ? 8 : 6, from: box ? (box.getAttribute('data-from') || '') : key };
+  var CFG = { api: '/api', ts: '0x4AAAAAAFX9JOBFpuSWsf5E', max: key === 'diabetes' ? 15 : (panel ? 8 : 6), from: box ? (box.getAttribute('data-from') || '') : key };
   if (!/^[a-z0-9-]{3,60}$/.test(CFG.from)) return;
 
   var CSS = '\
@@ -159,7 +159,7 @@ html.askhs-on #askhs-scrim{opacity:1}\
       '<button type="button" class="ap-close" aria-label="Close">&times;</button></div>' +
       '<div class="ap-body"><div class="aqs">' + pg[1].map(function (x) { return '<button type="button">' + esc0(x) + '</button>'; }).join('') + '</div><div class="achat" aria-live="polite"></div></div>' +
       '<div class="ap-foot"><form><textarea rows="1" maxlength="600" placeholder="' + (key === 'diabetes' ? 'Ask in English or Bangla / বাংলায় বা ইংরেজিতে জিজ্ঞেস করুন' : 'Ask about HSREP or this page') + '" aria-label="Your question"></textarea><button type="submit">Ask</button></form>' +
-      '<div class="ats"></div><div class="ameta"><span class="aleft">Up to 8 questions per visit.</span><span>Do not type personal health details. Questions are stored without names to improve the service and for research. <a href="/privacy.html#ai">How questions are handled</a></span></div></div></section>';
+      '<div class="ats"></div><div class="ameta"><span class="aleft">Up to ' + CFG.max + ' questions per visit.</span><span>Do not type personal health details. Questions are stored without names to improve the service and for research. <a href="/privacy.html#ai">How questions are handled</a></span></div></div></section>';
     document.body.appendChild(scrim); document.body.appendChild(wrap);
     box = wrap.querySelector('.askhs');
   }

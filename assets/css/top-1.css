@@ -103,3 +103,12 @@ html body header.site.hs-top .hs-ask:hover,html body header.site.hs-top .hs-ask[
 
 /* 2026-11-17: room for "Prevention" in the top nav: links never wrap; tighter gaps on desktop (checked 1061 to 1440 px) */
 html body header.site.hs-top .hs-top-nav a{white-space:nowrap!important}@media(min-width:1061px){html body header.site.hs-top .hs-top-nav{gap:14px!important}html body header.site.hs-top .hs-top-row{gap:18px!important}}
+/* Phone and tablet section strip (20 Nov 2026): the main menu folds behind "Menu" below 1061px, so the sections get a swipeable row under the header. Static HTML on every page; hidden on desktop. */
+html body nav.hs-mbar{display:none!important}
+@media(max-width:1060px){
+html body nav.hs-mbar{display:flex!important;align-items:center!important;gap:8px!important;margin:0!important;padding:9px 16px!important;background:#fff!important;border:0!important;border-bottom:1px solid #DCE3EA!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap!important;position:static!important}
+html body nav.hs-mbar::-webkit-scrollbar{display:none}
+html body nav.hs-mbar a{flex:none!important;display:inline-block!important;margin:0!important;padding:6px 12px!important;font:600 .84rem/1.25 'Inter','Inter Fallback',system-ui,sans-serif!important;color:#1C2E4A!important;text-decoration:none!important;background:#F4F7FA!important;border:1px solid #DCE3EA!important;border-radius:999px!important}
+html body nav.hs-mbar a.lead{background:#FDEEEA!important;border-color:#F26D5A!important;color:#C43C25!important}
+html body nav.hs-mbar a[aria-current="page"]{background:#1C2E4A!important;border-color:#1C2E4A!important;color:#fff!important}
+}

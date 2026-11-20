@@ -27,7 +27,7 @@ HERE = {
     'about.html': 'About', 'media.html': 'About', 'identity.html': 'About',
 }
 SKIP = {'roundtable-console.html', 'dashboard-demo.html'}  # private console; demo keeps its app header
-LINK = '<link rel="stylesheet" href="/assets/css/top-1.css?v=20261117a">'
+LINK = '<link rel="stylesheet" href="/assets/css/top-1.css?v=20261120a">'
 
 
 # pages whose main action is not the roundtable get their own header button
@@ -46,7 +46,19 @@ def header(here, cta=('Join Roundtable', '/roundtable.html')):
             f'<a class="hs-top-cta" href="{cta[1]}">{cta[0]}</a>'
             '<button id="hmenu-btn" type="button" aria-label="Menu" aria-expanded="false" '
             f'aria-controls="hmenu-panel">{MENU_SVG}<span>Menu</span></button>'
-            '</div></div></header>')
+            '</div></div></header>' + mbar(here))
+
+
+# phone and tablet section strip under the header (shown below 1061px; see top-1.css)
+MBAR = [('Prevention guides', '/prevention.html', 'lead'), ('Season 1', '/season-1.html', ''), ('Articles', '/articles.html', ''),
+        ('Initiative', '/initiative.html', ''), ('Impact', '/impact.html', ''), ('About', '/about.html', '')]
+
+
+def mbar(here):
+    cur = dict(NAV).get(here, '')
+    return ('<nav class="hs-mbar" aria-label="Sections">' + ''.join(
+        f'<a' + (f' class="{c}"' if c else '') + f' href="{h}"' + (' aria-current="page"' if h == cur else '') + f'>{t}</a>'
+        for t, h, c in MBAR) + '</nav>')
 
 
 def pai_band(cur):

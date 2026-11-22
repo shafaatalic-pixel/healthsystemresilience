@@ -1,24 +1,24 @@
 {
- "updated": "2026-11-21T12:33:29+00:00",
+ "updated": "2026-11-22T12:30:54+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-21"
+  "to": "2026-11-22"
  },
  "readers": {
-  "s30": 190,
-  "s60": 105,
-  "s120": 84,
-  "s240": 72,
+  "s30": 192,
+  "s60": 107,
+  "s120": 86,
+  "s240": 74,
   "bottom": 58
  },
  "raw": {
-  "ga_users": 862,
-  "sessions": 930,
-  "pageviews": 1670,
-  "engagement_rate": 42,
-  "avg_engaged_seconds": 29,
-  "excluded_datacentre": 180,
+  "ga_users": 869,
+  "sessions": 938,
+  "pageviews": 1680,
+  "engagement_rate": 41,
+  "avg_engaged_seconds": 28,
+  "excluded_datacentre": 182,
   "excluded_cities": [
    "Ashburn",
    "Boardman",
@@ -28,8 +28,8 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 593,
-  "social": 240,
+  "direct": 599,
+  "social": 241,
   "search": 34,
   "referral": 2,
   "facebook": 152,
@@ -37,28 +37,28 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 901,
-  "user_prompted": 124,
+  "ai_fetches": 872,
+  "user_prompted": 123,
   "agents": [
    [
     "Applebot",
-    174
-   ],
-   [
-    "ClaudeBot",
-    104
-   ],
-   [
-    "OAI-SearchBot",
-    103
+    163
    ],
    [
     "Amazonbot",
     103
    ],
    [
+    "OAI-SearchBot",
+    102
+   ],
+   [
     "GPTBot",
-    100
+    97
+   ],
+   [
+    "ClaudeBot",
+    91
    ],
    [
     "Claude-User",
@@ -74,7 +74,7 @@
    ],
    [
     "ChatGPT-User",
-    57
+    56
    ],
    [
     "CCBot",
@@ -85,19 +85,19 @@
     27
    ]
   ],
-  "search_crawlers": 1243,
-  "all_bot_requests": 27287,
-  "human_visits": 73,
+  "search_crawlers": 1329,
+  "all_bot_requests": 25714,
+  "human_visits": 42,
   "google_clicks": 17,
-  "google_impressions": 1350,
-  "google_position": 10.4,
+  "google_impressions": 1365,
+  "google_position": 10.3,
   "pages_indexed": 20,
-  "all_requests": 27287,
-  "cached_requests": 3708,
-  "unique_ips": 3207,
+  "all_requests": 25714,
+  "cached_requests": 3085,
+  "unique_ips": 3089,
   "agent_days": 7,
-  "pages_with_impressions": 33,
-  "gsc_through": "2026-11-18"
+  "pages_with_impressions": 34,
+  "gsc_through": "2026-11-19"
  },
  "actions": {
   "cta": {

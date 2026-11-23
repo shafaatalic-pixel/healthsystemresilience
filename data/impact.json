@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-22T12:30:54+00:00",
+ "updated": "2026-11-23T14:29:55+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-22"
+  "to": "2026-11-23"
  },
  "readers": {
-  "s30": 192,
+  "s30": 193,
   "s60": 107,
   "s120": 86,
   "s240": 74,
   "bottom": 58
  },
  "raw": {
-  "ga_users": 869,
-  "sessions": 938,
-  "pageviews": 1680,
+  "ga_users": 875,
+  "sessions": 945,
+  "pageviews": 1686,
   "engagement_rate": 41,
   "avg_engaged_seconds": 28,
   "excluded_datacentre": 182,
@@ -28,76 +28,76 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 599,
-  "social": 241,
+  "direct": 602,
+  "social": 244,
   "search": 34,
   "referral": 2,
-  "facebook": 152,
+  "facebook": 153,
   "linkedin": 22
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 872,
-  "user_prompted": 123,
+  "ai_fetches": 424,
+  "user_prompted": 17,
   "agents": [
    [
     "Applebot",
-    163
+    125
    ],
    [
     "Amazonbot",
-    103
+    87
    ],
    [
     "OAI-SearchBot",
-    102
+    62
    ],
    [
     "GPTBot",
-    97
+    41
    ],
    [
     "ClaudeBot",
-    91
-   ],
-   [
-    "Claude-User",
-    67
-   ],
-   [
-    "PerplexityBot",
-    64
+    34
    ],
    [
     "Meta-ExternalAgent",
-    63
+    26
    ],
    [
-    "ChatGPT-User",
-    56
-   ],
-   [
-    "CCBot",
-    39
+    "PerplexityBot",
+    15
    ],
    [
     "Bytespider",
-    27
+    11
+   ],
+   [
+    "ChatGPT-User",
+    9
+   ],
+   [
+    "Claude-User",
+    8
+   ],
+   [
+    "CCBot",
+    6
    ]
   ],
-  "search_crawlers": 1329,
-  "all_bot_requests": 25714,
-  "human_visits": 42,
+  "search_crawlers": 1349,
+  "all_bot_requests": 26489,
+  "human_visits": 47,
   "google_clicks": 17,
-  "google_impressions": 1365,
+  "google_impressions": 1382,
   "google_position": 10.3,
   "pages_indexed": 20,
-  "all_requests": 25714,
-  "cached_requests": 3085,
-  "unique_ips": 3089,
+  "all_requests": 26489,
+  "cached_requests": 3271,
+  "unique_ips": 3155,
   "agent_days": 7,
   "pages_with_impressions": 34,
-  "gsc_through": "2026-11-19"
+  "gsc_through": "2026-11-20"
  },
  "actions": {
   "cta": {
@@ -137,7 +137,7 @@
   "about": 117,
   "season": 117,
   "article": 88,
-  "other": 79,
+  "other": 81,
   "media": 72,
   "roundtable": 33,
   "campaign": 21,

@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-25T14:14:01+00:00",
+ "updated": "2026-11-26T13:49:57+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-25"
+  "to": "2026-11-26"
  },
  "readers": {
-  "s30": 195,
-  "s60": 107,
-  "s120": 86,
-  "s240": 74,
+  "s30": 196,
+  "s60": 108,
+  "s120": 87,
+  "s240": 75,
   "bottom": 61
  },
  "raw": {
-  "ga_users": 882,
-  "sessions": 953,
-  "pageviews": 1696,
+  "ga_users": 887,
+  "sessions": 960,
+  "pageviews": 1702,
   "engagement_rate": 41,
   "avg_engaged_seconds": 28,
   "excluded_datacentre": 182,
@@ -28,7 +28,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 607,
+  "direct": 613,
   "social": 247,
   "search": 34,
   "referral": 2,
@@ -37,20 +37,20 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 621,
+  "ai_fetches": 676,
   "user_prompted": 102,
   "agents": [
    [
     "Applebot",
-    125
+    134
    ],
    [
     "Amazonbot",
-    97
+    99
    ],
    [
     "OAI-SearchBot",
-    87
+    90
    ],
    [
     "ChatGPT-User",
@@ -62,15 +62,15 @@
    ],
    [
     "GPTBot",
-    36
+    72
    ],
    [
     "Bytespider",
-    31
+    37
    ],
    [
     "Meta-ExternalAgent",
-    28
+    27
    ],
    [
     "CCBot",
@@ -85,19 +85,19 @@
     17
    ]
   ],
-  "search_crawlers": 1499,
-  "all_bot_requests": 26941,
-  "human_visits": 44,
+  "search_crawlers": 1466,
+  "all_bot_requests": 28581,
+  "human_visits": 43,
   "google_clicks": 17,
-  "google_impressions": 1407,
+  "google_impressions": 1422,
   "google_position": 10.2,
   "pages_indexed": 20,
-  "all_requests": 26941,
-  "cached_requests": 2844,
-  "unique_ips": 2900,
+  "all_requests": 28581,
+  "cached_requests": 2986,
+  "unique_ips": 2908,
   "agent_days": 7,
   "pages_with_impressions": 34,
-  "gsc_through": "2026-11-22"
+  "gsc_through": "2026-11-23"
  },
  "actions": {
   "cta": {
@@ -139,7 +139,7 @@
   "article": 88,
   "other": 83,
   "media": 72,
-  "roundtable": 33,
+  "roundtable": 35,
   "campaign": 21,
   "demo": 18,
   "films": 5

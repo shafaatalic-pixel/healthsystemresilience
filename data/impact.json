@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T13:46:35+00:00",
+ "updated": "2026-11-28T12:54:52+00:00",
  "source": "GA4 Data API, Cloudflare GraphQL, Search Console API",
  "window": {
   "from": "2026-07-22",
-  "to": "2026-11-27"
+  "to": "2026-11-28"
  },
  "readers": {
   "s30": 196,
   "s60": 108,
   "s120": 87,
   "s240": 75,
-  "bottom": 61
+  "bottom": 62
  },
  "raw": {
-  "ga_users": 889,
-  "sessions": 962,
-  "pageviews": 1704,
+  "ga_users": 890,
+  "sessions": 963,
+  "pageviews": 1705,
   "engagement_rate": 41,
   "avg_engaged_seconds": 28,
   "excluded_datacentre": 182,
@@ -28,7 +28,7 @@
   "excluded_is_floor": true
  },
  "arrival": {
-  "direct": 615,
+  "direct": 616,
   "social": 247,
   "search": 34,
   "referral": 2,
@@ -37,32 +37,32 @@
  },
  "machines": {
   "window_days": 7,
-  "ai_fetches": 654,
-  "user_prompted": 102,
+  "ai_fetches": 642,
+  "user_prompted": 100,
   "agents": [
    [
     "Applebot",
-    119
+    117
    ],
    [
     "Amazonbot",
-    93
-   ],
-   [
-    "OAI-SearchBot",
-    90
+    92
    ],
    [
     "ChatGPT-User",
-    83
+    85
    ],
    [
-    "GPTBot",
-    73
+    "OAI-SearchBot",
+    84
    ],
    [
     "ClaudeBot",
     73
+   ],
+   [
+    "GPTBot",
+    72
    ],
    [
     "Bytespider",
@@ -77,27 +77,27 @@
     23
    ],
    [
-    "Claude-User",
-    19
-   ],
-   [
     "PerplexityBot",
     17
+   ],
+   [
+    "Claude-User",
+    15
    ]
   ],
-  "search_crawlers": 1426,
-  "all_bot_requests": 28413,
-  "human_visits": 38,
+  "search_crawlers": 1373,
+  "all_bot_requests": 25321,
+  "human_visits": 30,
   "google_clicks": 17,
-  "google_impressions": 1433,
+  "google_impressions": 1445,
   "google_position": 10.2,
   "pages_indexed": 20,
-  "all_requests": 28413,
-  "cached_requests": 2817,
-  "unique_ips": 2910,
+  "all_requests": 25321,
+  "cached_requests": 1658,
+  "unique_ips": 2889,
   "agent_days": 7,
-  "pages_with_impressions": 35,
-  "gsc_through": "2026-11-24"
+  "pages_with_impressions": 36,
+  "gsc_through": "2026-11-25"
  },
  "actions": {
   "cta": {
